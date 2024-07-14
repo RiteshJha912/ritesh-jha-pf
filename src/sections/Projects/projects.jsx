@@ -8,7 +8,7 @@ import ProjectCard from '../../common/projectCard'
 function projects() {
   return (
     <section id='projects' className={styles.container}>
-        <h1 className='sectionTitle'>Projects</h1>
+        <h1 className='sectionTitle'>Projects 🛠️</h1>
         <div className={styles.projectsContainer}>
             <ProjectCard 
             src={cocktailbazaar}

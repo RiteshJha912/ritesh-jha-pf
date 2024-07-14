@@ -38,7 +38,7 @@
         color: var(--btn-text-color);
         border: none;
         border-radius: 20px;
-        width: 126px;
+        width: 140px;
         height: 50px;
         font-size: 20px;
         font-weight: bold;
@@ -114,6 +114,10 @@
     font-size: 40px;
     margin-bottom: 25px;
 }
+.info p{
+    padding: 40px;
+
+}
 
 @media (width >=800px) {
     .container {
@@ -129,6 +133,9 @@
     .info h1{
         font-size: 60px;
         padding: 0px;
+    }
+    .info p{
+        padding-left: 50px;
     }
 }
 

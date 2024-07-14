@@ -7,7 +7,7 @@ import stallionLogo from '../../assets/TSP.jpg';
 function Projects() {
   return (
     <section id='internships' className={styles.container}>
-      <h1 className='sectionTitle'>Internships</h1>
+      <h1 className='sectionTitle'>Internships 💼</h1>
       <div className={styles.internshipCards}>
         <InternshipCard
           logoSrc={deepCytesLogo}
