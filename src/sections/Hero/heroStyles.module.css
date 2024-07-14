@@ -119,6 +119,11 @@
 
 }
 
+@media (min-width: 380px) and (max-width: 799px) {
+    .container{
+        margin-top: 50px;
+    }
+}
 @media (width >=800px) {
     .container {
         flex-direction: row;
