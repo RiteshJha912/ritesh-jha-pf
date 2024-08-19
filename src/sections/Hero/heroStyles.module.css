@@ -59,7 +59,7 @@ button::before {
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, rgba(255, 255, 255, 0) 60%);
     transform: rotate(30deg);
-    animation: shine 2s infinite;
+    animation: shine 2.5s infinite;
     /* Faster duration here */
     z-index: 1;
 }
@@ -157,7 +157,11 @@ button:active {
     .container{
         margin-top: 50px;
     }
+    .colorMode{
+        right: 20px;
+    }
 }
+
 @media (width >=800px) {
     .container {
         flex-direction: row;
@@ -189,5 +193,8 @@ button:active {
 @media (width <=390px) {
     .container {
         margin-top: 80px;
+    }
+    .colorMode {
+        right: 20px;
     }
 }
