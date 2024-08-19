@@ -15,6 +15,7 @@ function skills() {
         <div className={styles.skillList}>
         <SkillList skill="ReactJS"/>
         <SkillList skill="NodeJS"/>
+        <SkillList skill="ExpressJS"/>
         <SkillList skill="PugJS"/>
         <SkillList skill="MongoDB"/>
         </div>
