@@ -48,7 +48,7 @@ function Hero() {
                 <img src={linkedinIcon} alt="Linkedin Icon" />
             </a>
             </span>
-            <p className={styles.description}>Hello there! I am Ritesh, a Coder with a knack for fortifying digital realms & crafting seamless web experiences, always pushing the boundaries of what's possible.</p>
+            <p className={styles.description}>Hello there! I am Ritesh, a digital architect blending code and creativity.<br/><br/>I specialize in securing the virtual world while crafting intuitive web experiences, constantly exploring new frontiers in tech.</p>
             <a href={CV} download>
                 <button className='hover' >
                     Resumé

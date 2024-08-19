@@ -43,14 +43,18 @@ h3 {
 
 
 @media (max-width: 768px) {
+    h1{
+        font-size: 36px;
+        
+    }
   .internshipCard {
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
     padding: 15px;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 38px;
+    margin-left: 38px;
   }
   h3{
     margin-left: 5px;
