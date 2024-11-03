@@ -34,26 +34,39 @@ function Hero() {
 
       <div className={styles.info}>
         <h1 className={styles.typewriter}>Ritesh Jha</h1>
-        <h3>Coder</h3>
-        <h3>Fullstack Developer</h3>
-        <h3>Digital Security Enthusiast</h3>
-        <span>
-          <a href='https://github.com/RiteshJha912' target='_blank'>
-            <img src={githubIcon} alt='Github Icon' />
+        <h3 className={styles.h3Slide}>Programmer</h3>
+        <h3 className={styles.h3Slide}>Fullstack Developer</h3>
+        <h3 className={styles.h3Slide}>Open Source Contributor</h3>
+        <h3 className={styles.h3Slide}>Digital Security Enthusiast</h3>
+
+        <div className={styles.logoContainer}>
+          <a
+            href='https://github.com/RiteshJha912'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img src={githubIcon} alt='Github Icon' className={styles.logo} />
+            <div className={styles.tooltip}>GitHub</div>
           </a>
           <a
             href='https://www.linkedin.com/in/ritesh-jha-aa490a286/'
             target='_blank'
+            rel='noopener noreferrer'
           >
-            <img src={linkedinIcon} alt='Linkedin Icon' />
+            <img
+              src={linkedinIcon}
+              alt='LinkedIn Icon'
+              className={styles.logo}
+            />
+            <div className={styles.tooltip}>LinkedIn</div>
           </a>
-        </span>
+        </div>
         <p className={styles.description}>
-          Hello there! I am Ritesh, a digital architect blending code and
+          Hello! I'm Ritesh, a digital architect who merges code with
           creativity.
           <br />
-          <br />I specialize in securing the virtual world while crafting
-          intuitive web experiences, constantly exploring new frontiers in tech.
+          <br /> Curious to see how I transform ideas into digital reality?
+          Let’s embark on this adventure together!
         </p>
         <a href={CV} download>
           <button className='hover'>Resumé</button>

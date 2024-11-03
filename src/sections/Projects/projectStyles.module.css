@@ -29,6 +29,11 @@
     gap: 30px;
 }
 
+@media(width <= 799px){
+    .container{
+        margin-top: 40px;
+    }
+}
 @media (width >=800px) {
     .projectsContainer {
         flex-direction: row;

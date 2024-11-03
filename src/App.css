@@ -8,6 +8,7 @@
     --footer-text-color: #888;
 
     --hero-border-color: black;
+     -webkit-tap-highlight-color: transparent;
 }
 
 [data-theme='dark'] {
