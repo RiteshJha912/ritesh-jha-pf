@@ -140,7 +140,6 @@ button:active {
     cursor: pointer;
     transform: scale(1.2) rotate(720deg);
     filter: none;
-    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
 }
 
 .description {
@@ -246,11 +245,12 @@ button:active {
 
 /* Removing the extra blues */
 /* -webkit-tap-highlight-color: transparent; */
+/* Very important */
 
 /* Responsiveness */
 @media (min-width: 380px) and (max-width: 799px) {
     .container{
-        margin-top: 50px;
+        margin-top: 70px;
     }
     .colorMode{
         right: 20px;
@@ -305,11 +305,32 @@ button:active {
         }
     }
 }
-@media (width <=390px) {
+@media (width <=400px) {
     .container {
-        margin-top: 80px;
+        margin-top: 95px;
     }
     .colorMode {
         right: 20px;
+    }
+    .logo {
+        filter: none;
+        transform: none;
+    }
+
+    .logo:hover {
+        transform: none;
+    }
+
+    .logo:not(:hover) {
+        filter: none;
+    }
+
+    .colorMode:hover {
+        transform: none;
+    }
+
+    .tooltip {
+        display: none;
+        opacity: 0;
     }
 }
