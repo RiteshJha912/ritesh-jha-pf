@@ -317,7 +317,7 @@ button:active {
 
 @media (width <=400px) {
     .container {
-        margin-top: 25px;
+        margin-top: 15px;
     }
     .colorMode {
         right: 20px;
