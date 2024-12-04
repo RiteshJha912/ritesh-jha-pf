@@ -11,7 +11,6 @@
     gap: 20px;
 }
 
-
 .internshipCard {
     display: flex;
     align-items: center;
@@ -20,6 +19,8 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .logoContainer {
@@ -41,22 +42,23 @@ h3 {
     margin-left: 5px;
 }
 
-
+/* Media query adjustments */
 @media (max-width: 768px) {
-    h1{
+    h1 {
         font-size: 36px;
-        
     }
-  .internshipCard {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    padding: 15px;
-    margin-right: 38px;
-    margin-left: 38px;
-  }
-  h3{
-    margin-left: 5px;
-  }
+
+    .internshipCard {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 15px;
+        margin-right: 38px;
+        margin-left: 38px;
+    }
+
+    h3 {
+        margin-left: 5px;
+    }
 }

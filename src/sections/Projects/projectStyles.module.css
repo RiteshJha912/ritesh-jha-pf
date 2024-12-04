@@ -20,6 +20,10 @@
     a:hover {
         transform: scale(1.05);
     }
+
+    h3 {
+        margin-top: 25px;
+    }
 }
 
 .projectsContainer {
@@ -28,6 +32,13 @@
     align-items: center;
     gap: 30px;
 }
+
+.projectsContainer a {
+    transition: transform 200ms ease-in-out;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
 
 @media(width <= 799px){
     .container{
