@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import styles from './heroStyles.module.css'
 import heroImg from '../../assets/MainPic.jpg'
 import sun from '../../assets/sun.svg'
@@ -11,10 +12,49 @@ import { useTheme } from '../../common/themeContext'
 
 function Hero() {
   const { theme, toggleTheme } = useTheme()
-
   const themeIcon = theme === 'light' ? sun : moon
   const githubIcon = theme === 'light' ? githubLight : githubDark
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark
+
+  // Typewriter effect states
+  const [currentText, setCurrentText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [loopIndex, setLoopIndex] = useState(0)
+
+  const texts = ['Ritesh Jha', 'Ha3ar6ous']
+  const typingSpeed = 125
+  const erasingSpeed = 40
+  const delayBetweenWords = 1500
+
+  useEffect(() => {
+    let timer
+
+    const handleTyping = () => {
+      const currentWord = texts[loopIndex % texts.length]
+      const nextWord = currentWord.substring(
+        0,
+        currentText.length + (isDeleting ? -1 : 1)
+      )
+
+      setCurrentText(nextWord)
+
+      if (!isDeleting && nextWord === currentWord) {
+        timer = setTimeout(() => setIsDeleting(true), delayBetweenWords)
+      } else if (isDeleting && nextWord === '') {
+        setIsDeleting(false)
+        setLoopIndex(loopIndex + 1)
+      } else {
+        timer = setTimeout(
+          handleTyping,
+          isDeleting ? erasingSpeed : typingSpeed
+        )
+      }
+    }
+
+    timer = setTimeout(handleTyping, isDeleting ? erasingSpeed : typingSpeed)
+
+    return () => clearTimeout(timer)
+  }, [currentText, isDeleting, loopIndex, texts])
 
   return (
     <section id='hero' className={styles.container}>
@@ -33,7 +73,10 @@ function Hero() {
       </div>
 
       <div className={styles.info}>
-        <h1 className={styles.typewriter}>Ritesh Jha</h1>
+        <h2 className={styles.h2}> {'>'}_ Hi I am </h2>
+        <h1 className={styles.typewriter}>
+          <span>{currentText}</span>
+        </h1>
         <h3 className={styles.h3Slide}>Programmer</h3>
         <h3 className={styles.h3Slide}>Fullstack Developer</h3>
         <h3 className={styles.h3Slide}>Open Source Contributor</h3>
@@ -65,8 +108,9 @@ function Hero() {
           Hello! I'm Ritesh, a digital architect who merges code with
           creativity.
           <br />
-          <br /> Curious to see how I transform ideas into digital reality?
-          Let’s embark on this adventure together!
+          <br />
+          Curious to see how I transform ideas into digital reality? Let’s
+          embark on this adventure together!
         </p>
         <a href={CV} download>
           <button className='hover'>Resumé</button>
