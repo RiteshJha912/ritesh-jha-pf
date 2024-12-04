@@ -243,9 +243,9 @@ button:active {
     opacity: 1;
 }
 
-/* Removing the extra blues */
+/* removing the extra blues */
 /* -webkit-tap-highlight-color: transparent; */
-/* Very important */
+/* very important */
 
 /* Responsiveness */
 @media (min-width: 380px) and (max-width: 799px) {
@@ -305,6 +305,16 @@ button:active {
         }
     }
 }
+
+@media (width <= 700px){
+    .info p{
+        display: none;
+    }
+    button{
+        margin-top: 25px;
+    }
+}
+
 @media (width <=400px) {
     .container {
         margin-top: 95px;
