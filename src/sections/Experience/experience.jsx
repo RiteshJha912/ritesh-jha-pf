@@ -24,14 +24,14 @@ function Internships() {
           companyName='DeepCytes Cyber Labs (UK)'
           position='Cybersecurity Analyst/Fellow'
           duration='June 2024 - Present'
-          aosEffect='fade-right'
+          aosEffect='fade-up'
         />
         <InternshipCard
           logoSrc={stallionLogo}
           companyName='The Stallion Project'
           position='Frontend Developer'
           duration='Feb 2024 - April 2024'
-          aosEffect='fade-left'
+          aosEffect='fade-down'
         />
       </div>
     </section>
