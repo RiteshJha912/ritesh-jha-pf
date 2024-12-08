@@ -52,7 +52,7 @@ button {
     overflow: hidden;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
-    /* margin-top: 15px; */
+    /* margin-top: -30px; */
 }
 
 button::before {
@@ -105,7 +105,7 @@ button:active {
 @keyframes blink-caret {
     50% {
         border-color: transparent;
-    }
+    }   
 }
 
 .colorModeContainer {
@@ -147,6 +147,7 @@ button:active {
     font-family: Arial, Helvetica, sans-serif;
 }
 .info p {
+    /* margin-bottom: -30px; */
     padding: 40px;
 
 }
@@ -242,7 +243,7 @@ button:active {
 /* Responsiveness */
 @media (min-width: 380px) and (max-width: 799px) {
     .container {
-        margin-top: 70px;
+        margin-top: 30px;
     }
 
     .colorMode {
@@ -252,6 +253,7 @@ button:active {
     .logo {
         filter: none;
         transform: none;
+        animation: rotateAndScale 1.5s ease-out;
     }
 
     .logo:hover {
@@ -270,12 +272,24 @@ button:active {
         display: none;
         opacity: 0;
     }
+
     .info h2 {
         text-align: center;
         font-size: 20px;
         margin-left: -148px;
     }
 
+    @keyframes rotateAndScale {
+        0% {
+            transform: scale(0.2) rotate(0deg);
+        }
+        50%{
+            transform: scale(0.6) rotate(720deg);
+        }
+        100% {
+            transform: scale(1) rotate(360deg);
+        }
+    }
 }
 
 @media (width >=800px) {
@@ -316,7 +330,7 @@ button:active {
     }
 
     button {
-        margin-top: 25px;
+        margin-top: 15px;
     }
     .info h2 {
         text-align: center;

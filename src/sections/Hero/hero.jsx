@@ -21,7 +21,7 @@ function Hero() {
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopIndex, setLoopIndex] = useState(0)
 
-  const texts = ['Ritesh Jha', 'Ha3ar6ous']
+  const texts = ['Ritesh Jha', 'Hazardous']
   const typingSpeed = 125
   const erasingSpeed = 40
   const delayBetweenWords = 1500
@@ -105,14 +105,18 @@ function Hero() {
           </a>
         </div>
         <p className={styles.description}>
-          Hello! I'm Ritesh, a digital architect who merges code with
-          creativity.
+          From writing code that solves problems to creating meaningful
+          experiences, I always try to stay curious and driven.
           <br />
           <br />
-          Curious to see how I transform ideas into digital reality? Let’s
-          embark on this adventure together!
+          This portfolio isn’t just a showcase, it’s a glimpse into how I think
+          and what I love doing the most.
         </p>
-        <a href={CV} download>
+        <a
+          href='https://drive.google.com/file/d/1JmQCayAbLI8r-QRFkfRs0c43zhq-Ew09/view?usp=drive_link'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <button className='hover'>Resumé</button>
         </a>
       </div>
