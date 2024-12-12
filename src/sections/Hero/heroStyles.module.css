@@ -153,6 +153,11 @@ button:active {
 }
 
 
+
+
+
+
+
 /* Sub-Header Slide down */
 .h3Slide {
     opacity: 0;
@@ -189,7 +194,12 @@ button:active {
 }
 
 
-/* logo position interchange */
+
+
+
+
+
+/* logo rotation and tooltip */
 .logoContainer {
     display: flex;
     justify-content: center;
@@ -236,9 +246,17 @@ button:active {
     opacity: 1;
 }
 
+
+
 /* removing the extra blues */
 /* -webkit-tap-highlight-color: transparent; */
 /* very important */
+
+
+
+
+
+
 
 /* Responsiveness */
 @media (min-width: 360px) and (max-width: 799px) {
@@ -292,6 +310,8 @@ button:active {
     }
 }
 
+
+
 @media (width >=800px) {
     .container {
         flex-direction: row;
@@ -314,6 +334,8 @@ button:active {
         padding-left: 50px;
     }
 }
+
+
 
 @media (width >=1400px) {
     .container {
@@ -339,6 +361,8 @@ button:active {
     }
 }
 
+
+
 @media (width <=400px) {
     .container {
         margin-top: 15px;
@@ -351,6 +375,7 @@ button:active {
     .logo {
         filter: none;
         transform: none;
+        animation: rotateAndScale 1.5s ease-out;
     }
 
     .logo:hover {
@@ -368,5 +393,19 @@ button:active {
     .tooltip {
         display: none;
         opacity: 0;
+    }
+
+    @keyframes rotateAndScale {
+        0% {
+            transform: scale(0.2) rotate(0deg);
+        }
+
+        50% {
+            transform: scale(0.6) rotate(720deg);
+        }
+
+        100% {
+            transform: scale(1) rotate(360deg);
+        }
     }
 }
