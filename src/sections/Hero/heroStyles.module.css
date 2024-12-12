@@ -241,9 +241,9 @@ button:active {
 /* very important */
 
 /* Responsiveness */
-@media (min-width: 380px) and (max-width: 799px) {
+@media (min-width: 360px) and (max-width: 799px) {
     .container {
-        margin-top: 30px;
+        margin-top: 15px;
     }
 
     .colorMode {
@@ -330,7 +330,7 @@ button:active {
     }
 
     button {
-        margin-top: 15px;
+        margin-top: 5px;
     }
     .info h2 {
         text-align: center;
