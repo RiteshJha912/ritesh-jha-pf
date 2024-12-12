@@ -261,7 +261,7 @@ button:active {
 /* Responsiveness */
 @media (min-width: 360px) and (max-width: 799px) {
     .container {
-        margin-top: 15px;
+        margin-top: 7px;
     }
 
     .colorMode {
@@ -307,6 +307,10 @@ button:active {
         100% {
             transform: scale(1) rotate(360deg);
         }
+    }
+
+    .hero{
+        max-width: 185px;
     }
 }
 
@@ -365,7 +369,7 @@ button:active {
 
 @media (width <=400px) {
     .container {
-        margin-top: 15px;
+        margin-top: 7px;
     }
 
     .colorMode {
@@ -407,5 +411,9 @@ button:active {
         100% {
             transform: scale(1) rotate(360deg);
         }
+    }
+
+    .hero {
+        max-width: 185px;
     }
 }
