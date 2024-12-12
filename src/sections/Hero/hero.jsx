@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './heroStyles.module.css'
-import heroImg from '../../assets/MainPic.jpg'
+import heroImg from '../../assets/MainPic2.jpg'
 import sun from '../../assets/sun.svg'
 import moon from '../../assets/moon.svg'
 import githubLight from '../../assets/github-light.svg'
@@ -16,7 +16,7 @@ function Hero() {
   const githubIcon = theme === 'light' ? githubLight : githubDark
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark
 
-  // Typewriter effect states
+  // typewriter
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopIndex, setLoopIndex] = useState(0)
