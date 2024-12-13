@@ -16,7 +16,6 @@ function Hero() {
   const githubIcon = theme === 'light' ? githubLight : githubDark
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark
 
-  // typewriter
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopIndex, setLoopIndex] = useState(0)
@@ -25,6 +24,20 @@ function Hero() {
   const typingSpeed = 125
   const erasingSpeed = 40
   const delayBetweenWords = 1500
+
+  // theme tooltip 
+  const [showThemeTooltip, setShowThemeTooltip] = useState(false)
+
+  useEffect(() => {
+    const tooltipTimer = setTimeout(() => {
+      setShowThemeTooltip(true)
+      setTimeout(() => {
+        setShowThemeTooltip(false)
+      }, 3500) 
+    }, 4500) 
+
+    return () => clearTimeout(tooltipTimer)
+  }, [])
 
   useEffect(() => {
     let timer
@@ -64,12 +77,17 @@ function Hero() {
           src={heroImg}
           alt='Profile Picture of Ritesh Jha'
         />
-        <img
-          className={styles.colorMode}
-          src={themeIcon}
-          alt='Color Mode Icon'
-          onClick={toggleTheme}
-        />
+        <div className={styles.themeButtonContainer}>
+          <img
+            className={styles.colorMode}
+            src={themeIcon}
+            alt='Color Mode Icon'
+            onClick={toggleTheme}
+          />
+          {showThemeTooltip && (
+            <div className={styles.themeTooltip}>Switch to<br/> Light Mode</div>
+          )}
+        </div>
       </div>
 
       <div className={styles.info}>

@@ -112,18 +112,64 @@ button:active {
     position: relative;
 }
 
-.colorMode {
-    position: absolute;
-    right: 0px;
-    width: 25px;
-    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-}
-
 .colorMode:hover {
     cursor: pointer;
     transform: scale(1.2) rotate(720deg);
     filter: none;
 }
+
+.themeButtonContainer {
+    display: inline-block;
+}
+
+.colorMode {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 25px;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.themeTooltip {
+    position: absolute;
+    top: -45px;
+    left: 85%;
+    transform: translateX(-50%);
+    background-color: #444;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    animation: fadeInOut 3s ease;
+    white-space: nowrap;
+    z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+    85%{
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+
 
 .description {
     max-width: 40ch;
@@ -250,6 +296,9 @@ button:active {
 
 
 
+
+
+
 /* removing the extra blues */
 /* -webkit-tap-highlight-color: transparent; */
 /* very important */
@@ -282,7 +331,7 @@ button:active {
     .logo {
         filter: none;
         transform: none;
-        animation: rotateAndScale 1.5s ease-out;
+        animation: rotateAndScale 2.3s ease-out;
     }
 
     .logo:hover {
@@ -328,6 +377,7 @@ button:active {
         height: 45px;
         font-size: 15px;
     }
+    
 }
 
 
@@ -374,7 +424,9 @@ button:active {
     .info p {
         display: none;
     }
-
+    .info h1 {
+        font-size: 36px;
+    }
 
     .info h2 {
         text-align: center;
@@ -388,6 +440,16 @@ button:active {
         height: 45px;
         font-size: 15px;
     }
+
+    .colorMode {
+        width: 20px;
+    }
+    .themeTooltip{
+        font-size: 8px;
+        top: -30px;
+        left: 90%;
+    }
+    
 }
 
 
