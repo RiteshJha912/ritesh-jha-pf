@@ -25,20 +25,35 @@ function Hero() {
   const erasingSpeed = 40
   const delayBetweenWords = 1500
 
-  // theme tooltip 
+  // theme tooltip
   const [showThemeTooltip, setShowThemeTooltip] = useState(false)
 
   useEffect(() => {
-    const tooltipTimer = setTimeout(() => {
-      setShowThemeTooltip(true)
-      setTimeout(() => {
-        setShowThemeTooltip(false)
-      }, 3500) 
-    }, 4500) 
+    let count = 0 
+    const tooltipIntervals = [4000, 15000, 40000] //intervals
 
-    return () => clearTimeout(tooltipTimer)
+    const showTooltip = () => {
+      if (count < tooltipIntervals.length) {
+        setShowThemeTooltip(true)
+        setTimeout(() => setShowThemeTooltip(false), 3500) 
+        count++
+      }
+    }
+
+    const tooltipTimers = tooltipIntervals.map((time, index) =>
+      setTimeout(() => {
+        showTooltip()
+      }, time)
+    )
+
+    return () => {
+      tooltipTimers.forEach(clearTimeout) 
+    }
   }, [])
 
+
+
+  // h1 ka typewriter effect
   useEffect(() => {
     let timer
 
@@ -69,6 +84,8 @@ function Hero() {
     return () => clearTimeout(timer)
   }, [currentText, isDeleting, loopIndex, texts])
 
+
+  
   return (
     <section id='hero' className={styles.container}>
       <div className={styles.colorModeContainer}>
@@ -85,7 +102,10 @@ function Hero() {
             onClick={toggleTheme}
           />
           {showThemeTooltip && (
-            <div className={styles.themeTooltip}>Switch to<br/> Light Mode</div>
+            <div className={styles.themeTooltip}>
+              Switch to
+              <br /> Light Mode
+            </div>
           )}
         </div>
       </div>
