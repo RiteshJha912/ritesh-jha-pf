@@ -30,7 +30,7 @@ function Hero() {
 
   useEffect(() => {
     let count = 0 
-    const tooltipIntervals = [4000, 15000, 40000] //intervals
+    const tooltipIntervals = [4000, 15000, 70000] //intervals
 
     const showTooltip = () => {
       if (count < tooltipIntervals.length) {
@@ -85,7 +85,7 @@ function Hero() {
   }, [currentText, isDeleting, loopIndex, texts])
 
 
-  
+
   return (
     <section id='hero' className={styles.container}>
       <div className={styles.colorModeContainer}>
