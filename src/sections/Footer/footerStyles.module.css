@@ -1,5 +1,6 @@
 .container {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 p {
@@ -25,7 +26,6 @@ p {
 
     40% {
         transform: scale(1.2);
-        /* Enlarged size */
     }
 
     60% {
