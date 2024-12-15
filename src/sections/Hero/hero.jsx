@@ -30,7 +30,7 @@ function Hero() {
 
   useEffect(() => {
     let count = 0 
-    const tooltipIntervals = [4000, 15000, 70000] //intervals
+    const tooltipIntervals = [3900, 70000, 150000] //intervals
 
     const showTooltip = () => {
       if (count < tooltipIntervals.length) {
@@ -103,8 +103,8 @@ function Hero() {
           />
           {showThemeTooltip && (
             <div className={styles.themeTooltip}>
-              Switch to
-              <br /> Light Mode
+              Switch 
+              <br /> theme here 
             </div>
           )}
         </div>

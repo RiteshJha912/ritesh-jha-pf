@@ -1,6 +1,6 @@
-/* * {
+    /* Helps identify problematic elements
+* {
     outline: 1px solid blue;
-    Helps identify problematic elements
 } */
 
 :root {
