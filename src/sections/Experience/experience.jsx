@@ -23,7 +23,7 @@ function Internships() {
           logoSrc={deepCytesLogo}
           companyName='DeepCytes Cyber Labs (UK)'
           position='Cybersecurity Analyst/Fellow'
-          duration='June 2024 - Present'
+          duration='June 2024 - Dec 2024'
           aosEffect='fade-up'
         />
         <InternshipCard
