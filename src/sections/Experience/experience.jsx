@@ -18,6 +18,8 @@ function Internships() {
   return (
     <section id='internships' className={styles.container}>
       <h1 className='sectionTitle'>Internships 💼</h1>
+      <h3 className={styles.workExperience}>
+        Total Work Ex: 8 months</h3>
       <div className={styles.internshipCards}>
         <InternshipCard
           logoSrc={deepCytesLogo}

@@ -42,6 +42,11 @@ h3 {
     margin-left: 5px;
 }
 
+.workExperience {
+    font-size: 20px;
+    margin-top: -40px;
+    margin-bottom: 40px;
+}
 
 /* Media query adjustments */
 @media (max-width: 768px) {
@@ -61,5 +66,12 @@ h3 {
 
     h3 {
         margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px){
+    h3{
+        margin: 0px 10px ;
+        /* margin-bottom: 40px; */
     }
 }

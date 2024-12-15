@@ -53,8 +53,7 @@ function skills() {
         <SkillList skill='Express.js' />
  
       </div>
-      <div className={styles.skillList} data-aos='zoom-out '>
-
+      <div className={styles.skillList} data-aos='zoom-out'>
         <SkillList skill='Pug.js' />
         <SkillList skill='Flask' />
         <SkillList skill='REST API' />
