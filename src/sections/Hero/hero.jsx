@@ -151,7 +151,7 @@ function Hero() {
           and what I love doing the most.
         </p>
         <a
-          href='https://drive.google.com/file/d/1JmQCayAbLI8r-QRFkfRs0c43zhq-Ew09/view?usp=drive_link'
+          // href='https://drive.google.com/file/d/1JmQCayAbLI8r-QRFkfRs0c43zhq-Ew09/view?usp=drive_link'
           target='_blank'
           rel='noopener noreferrer'
         >
