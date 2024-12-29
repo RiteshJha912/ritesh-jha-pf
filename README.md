@@ -45,3 +45,8 @@ project-root/
 │
 └── README.md                          # You are reading this!
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
