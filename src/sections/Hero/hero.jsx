@@ -29,13 +29,13 @@ function Hero() {
   const [showThemeTooltip, setShowThemeTooltip] = useState(false)
 
   useEffect(() => {
-    let count = 0 
+    let count = 0
     const tooltipIntervals = [3900, 70000, 150000] //intervals
 
     const showTooltip = () => {
       if (count < tooltipIntervals.length) {
         setShowThemeTooltip(true)
-        setTimeout(() => setShowThemeTooltip(false), 3500) 
+        setTimeout(() => setShowThemeTooltip(false), 3500)
         count++
       }
     }
@@ -47,11 +47,9 @@ function Hero() {
     )
 
     return () => {
-      tooltipTimers.forEach(clearTimeout) 
+      tooltipTimers.forEach(clearTimeout)
     }
   }, [])
-
-
 
   // h1 ka typewriter effect
   useEffect(() => {
@@ -83,8 +81,6 @@ function Hero() {
 
     return () => clearTimeout(timer)
   }, [currentText, isDeleting, loopIndex, texts])
-
-
 
   return (
     <section id='hero' className={styles.container}>
@@ -144,11 +140,10 @@ function Hero() {
         </div>
         <p className={styles.description}>
           I write code so bad, that even this text is just a filler for my
-          websites UI to not break apart. Then why hire me?
+          website's UI to not break apart. Then why hire me?
           <br />
-          <br />
-          I may be a code rookie, but I break norms, embrace chaos &
-          craft quirky solutions that deliver unexpected ritziness.
+          <br />I may be a code rookie, but I break norms, embrace chaos & craft
+          quirky solutions that deliver unexpected ritziness.
         </p>
         <a>
           <button
