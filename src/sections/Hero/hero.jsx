@@ -103,8 +103,8 @@ function Hero() {
           />
           {showThemeTooltip && (
             <div className={styles.themeTooltip}>
-              Switch 
-              <br /> theme here 
+              Switch
+              <br /> theme here
             </div>
           )}
         </div>
@@ -143,19 +143,24 @@ function Hero() {
           </a>
         </div>
         <p className={styles.description}>
-          From writing code that solves problems to creating meaningful
-          experiences, I always try to stay curious and driven.
+          I write code so bad, that even this text is just a filler for my
+          websites UI to not break apart. Then why hire me?
           <br />
           <br />
-          This portfolio isn’t just a showcase, it’s a glimpse into how I think
-          and what I love doing the most.
+          I may be a code rookie, but I break norms, embrace chaos &
+          craft quirky solutions that deliver unexpected ritziness.
         </p>
-        <a
-          // href='https://drive.google.com/file/d/1JmQCayAbLI8r-QRFkfRs0c43zhq-Ew09/view?usp=drive_link'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <button className='hover'>Resumé</button>
+        <a>
+          <button
+            className='hover'
+            onClick={() =>
+              document
+                .getElementById('contact')
+                .scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            Hire me!
+          </button>{' '}
         </a>
       </div>
     </section>
