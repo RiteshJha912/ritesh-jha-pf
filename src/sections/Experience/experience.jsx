@@ -18,7 +18,7 @@ function Internships() {
 
   return (
     <section id='internships' className={styles.container}>
-      <h1 className='sectionTitle'>Work 💼</h1>
+      <h1 className='sectionTitle'>Experience 💼</h1>
       <h3 className={styles.workExperience}>Total Work Ex: 10 months</h3>
       <div className={styles.internshipCards}>
         <InternshipCard
