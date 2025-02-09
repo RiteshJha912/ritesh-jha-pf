@@ -11,7 +11,6 @@ function Footer() {
   })
 
   useEffect(() => {
-    // Detect Browser
     const getBrowser = () => {
       const userAgent = navigator.userAgent
       if (navigator.brave) return 'Brave'
@@ -29,7 +28,6 @@ function Footer() {
       return 'Unknown'
     }
 
-    // Detect OS
     const getOS = () => {
       const userAgent = navigator.userAgent
       if (/windows nt/i.test(userAgent)) return 'Windows'
@@ -40,10 +38,10 @@ function Footer() {
       return 'Unknown'
     }
 
-    // Fetch Public IP
+    // Fetch IPv4 Address
     const fetchIP = async () => {
       try {
-        const response = await fetch('https://api64.ipify.org?format=json')
+        const response = await fetch('https://api4.ipify.org?format=json')
         const data = await response.json()
         return data.ip
       } catch {
@@ -51,7 +49,6 @@ function Footer() {
       }
     }
 
-    // Fetch Geolocation (No Permission Required)
     const fetchLocation = async (ip) => {
       try {
         const response = await fetch(`https://ipwho.is/${ip}`)
@@ -65,7 +62,6 @@ function Footer() {
       }
     }
 
-    // Fetch and Set IP & Location
     const updateIPAndLocation = async () => {
       const ip = await fetchIP()
       const location =
@@ -77,7 +73,6 @@ function Footer() {
       }))
     }
 
-    // Update Online/Offline Status
     const updateOnlineStatus = () => {
       setInfo((prev) => ({
         ...prev,
@@ -85,7 +80,6 @@ function Footer() {
       }))
     }
 
-    // Set Initial Data
     setInfo((prev) => ({
       ...prev,
       browser: getBrowser(),
@@ -94,7 +88,6 @@ function Footer() {
 
     updateIPAndLocation()
 
-    // Listen for Online/Offline Changes
     window.addEventListener('online', updateOnlineStatus)
     window.addEventListener('offline', updateOnlineStatus)
 
