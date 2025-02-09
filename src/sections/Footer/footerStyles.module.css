@@ -4,16 +4,54 @@
 }
 
 p {
-    font-size: 18px;
+    font-size: 14px;
     color: var(--footer-text-color);
+    margin: -10px 0;
+}
 
-    .heart {
-        display: inline-block;
-        animation: heartbeat 1.2s infinite ease-in-out;
+/* Online/Offline status animation */
+.status {
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.online {
+    color: #0f0;
+    animation: pulse-green 1.5s infinite alternate;
+}
+
+.offline {
+    color: #f00;
+    animation: pulse-red 1.5s infinite alternate;
+}
+
+
+@keyframes pulse-red {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+
+    100% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 1);
     }
 }
 
-/* lub-dub ;-) */
+/* Heart animation */
+.heart {
+    display: inline-block;
+    animation: heartbeat 1.2s infinite ease-in-out;
+}
+
+p:last-child {
+    margin-top: 6px;
+    font-size: 19px;
+  font-weight: 400;
+}
+
+/* Lub-dub ;-) */
 @keyframes heartbeat {
 
     0%,
@@ -33,10 +71,7 @@ p {
         transform: scale(1.2);
     }
 
-    65% {
-        transform: scale(1);
-    }
-
+    65%,
     100% {
         transform: scale(1);
     }
