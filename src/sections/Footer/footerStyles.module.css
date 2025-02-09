@@ -19,7 +19,7 @@ p {
 }
 
 .online {
-    color: #0f0;
+    color: rgb(0, 191, 0);
     animation: pulse-green 1.5s infinite alternate;
 }
 
