@@ -29,12 +29,14 @@ function Footer() {
     }
 
     const getOS = () => {
-      const userAgent = navigator.userAgent
-      if (/windows nt/i.test(userAgent)) return 'Windows'
-      if (/macintosh|mac os/i.test(userAgent)) return 'macOS'
-      if (/linux/i.test(userAgent)) return 'Linux'
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera
+
       if (/android/i.test(userAgent)) return 'Android'
       if (/iphone|ipad|ipod/i.test(userAgent)) return 'iOS'
+      if (/macintosh|mac os/i.test(userAgent)) return 'macOS'
+      if (/windows nt/i.test(userAgent)) return 'Windows'
+      if (/linux/i.test(userAgent)) return 'Linux'
+
       return 'Unknown'
     }
 
