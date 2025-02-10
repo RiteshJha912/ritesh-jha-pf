@@ -12,7 +12,7 @@ function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const inputRef = useRef(null)
   const sectionRef = useRef(null)
-  const terminalRef = useRef(null) 
+  const terminalRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +41,7 @@ function Contact() {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
-      processCommand(input.trim())
+      processCommand(input.trim().toLowerCase())
       setInput('')
     }
   }
@@ -49,6 +49,7 @@ function Contact() {
   const processCommand = (cmd) => {
     const addRegex = /^git add \. "(.*)"$/
     const commitRegex = /^git commit -m "(.*)"$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ // Basic email validation
 
     if (cmd === 'clear') {
       setLogs([
@@ -61,11 +62,11 @@ function Contact() {
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [
         ...prevLogs,
-        `$ info`,
-        ' Use the following commands:',
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        'Use the following commands:',
         '1) git add . "your message"',
         '2) git commit -m "your email"',
-        '3) git push origin ritesh',
+        '3) git push origin main',
         'clear (to Reset terminal)',
       ])
     } else if (addRegex.test(cmd)) {
@@ -73,28 +74,42 @@ function Contact() {
       setMessage(msg)
       setLogs((prevLogs) => [
         ...prevLogs,
-        `$ ${cmd}`,
+        <span className={styles.userCommand}>$ {cmd}</span>,
         `✔ Message added: "${msg}"`,
       ])
     } else if (commitRegex.test(cmd)) {
       const mail = cmd.match(commitRegex)[1]
+
+      if (!emailRegex.test(mail)) {
+        setLogs((prevLogs) => [
+          ...prevLogs,
+          <span className={styles.userCommand}>$ {cmd}</span>,
+          'Invalid email format! Please enter a valid email.',
+        ])
+        return
+      }
+
       setEmail(mail)
-      setLogs((prevLogs) => [...prevLogs, `$ ${cmd}`, `✔ Email set: "${mail}"`])
-    } else if (cmd === 'git push origin ritesh') {
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        `✔ Email set: "${mail}"`,
+      ])
+    } else if (cmd === 'git push origin main') {
       if (message && email) {
         sendFormData()
       } else {
         setLogs((prevLogs) => [
           ...prevLogs,
-          `$ ${cmd}`,
-          '❌ Please add message and email first!',
+          <span className={styles.userCommand}>$ {cmd}</span>,
+          'Please add message and email first!',
         ])
       }
     } else {
       setLogs((prevLogs) => [
         ...prevLogs,
-        `$ ${cmd}`,
-        "❌ Invalid command. Try 'info' for help.",
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        "Invalid command. Try 'info' for help.",
       ])
     }
   }
@@ -111,18 +126,18 @@ function Contact() {
 
       if (response.ok) {
         setSubmitted(true)
-        setLogs((prevLogs) => [...prevLogs, 'Message successfully sent!!!'])
+        setLogs((prevLogs) => [
+          ...prevLogs,
+          '🔥 Message successfully sent!!! 🔥',
+        ])
       } else {
         setLogs((prevLogs) => [
           ...prevLogs,
-          '❌ Failed to send message. Try again later.',
+          'Failed to send message. Try again later.',
         ])
       }
     } catch (error) {
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        '❌ Network error. Please try again.',
-      ])
+      setLogs((prevLogs) => [...prevLogs, 'Network error. Please try again.'])
     }
   }
 
