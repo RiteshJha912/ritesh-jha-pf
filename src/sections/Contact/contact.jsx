@@ -12,7 +12,7 @@ function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const inputRef = useRef(null)
   const sectionRef = useRef(null)
-  const terminalRef = useRef(null) // For auto-scrolling
+  const terminalRef = useRef(null) 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +29,6 @@ function Contact() {
   }, [])
 
   useEffect(() => {
-    // Scroll to the bottom whenever logs update
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight
     }
@@ -63,7 +62,7 @@ function Contact() {
       setLogs((prevLogs) => [
         ...prevLogs,
         `$ info`,
-        '📌 Use the following commands:',
+        ' Use the following commands:',
         '1) git add . "your message"',
         '2) git commit -m "your email"',
         '3) git push origin ritesh',
@@ -88,14 +87,14 @@ function Contact() {
         setLogs((prevLogs) => [
           ...prevLogs,
           `$ ${cmd}`,
-          '❌ Please add message and email first! ❌',
+          '❌ Please add message and email first!',
         ])
       }
     } else {
       setLogs((prevLogs) => [
         ...prevLogs,
         `$ ${cmd}`,
-        "❌ Invalid command. Try 'info' for help. ❌",
+        "❌ Invalid command. Try 'info' for help.",
       ])
     }
   }
@@ -116,13 +115,13 @@ function Contact() {
       } else {
         setLogs((prevLogs) => [
           ...prevLogs,
-          '❌ Failed to send message. Try again later. ❌',
+          '❌ Failed to send message. Try again later.',
         ])
       }
     } catch (error) {
       setLogs((prevLogs) => [
         ...prevLogs,
-        '❌ Network error. Please try again. ❌',
+        '❌ Network error. Please try again.',
       ])
     }
   }
