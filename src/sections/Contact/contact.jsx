@@ -12,6 +12,7 @@ function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const inputRef = useRef(null)
   const sectionRef = useRef(null)
+  const terminalRef = useRef(null) // For auto-scrolling
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,13 @@ function Contact() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    // Scroll to the bottom whenever logs update
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+    }
+  }, [logs])
 
   const handleInputChange = (e) => {
     setInput(e.target.value)
@@ -121,7 +129,7 @@ function Contact() {
 
   return (
     <section id='contact' className={styles.container} ref={sectionRef}>
-      <div className={styles.terminal}>
+      <div className={styles.terminal} ref={terminalRef}>
         {logs.map((log, index) => (
           <p key={index}>{log}</p>
         ))}
