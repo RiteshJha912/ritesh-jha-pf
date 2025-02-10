@@ -143,8 +143,18 @@ function Hero() {
           website's UI to not break apart. Then why hire me?
           <br />
           <br />I may be a code rookie, but I break norms, embrace chaos & craft
-          quirky solutions that deliver unexpected ritziness.
+          quirky solutions that deliver unexpected{' '}
+          <a
+            href='https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun'
+            target='_blank'
+            rel='noopener noreferrer'
+            className={styles.ritzyLink} // Add styling in CSS
+          >
+            ritziness
+          </a>
+          .
         </p>
+
         <a>
           <button
             className='hover'

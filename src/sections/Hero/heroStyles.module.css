@@ -38,6 +38,17 @@ a {
     align-self: center;
 }
 
+.ritzyLink {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.ritzyLink:hover {
+    color: #a855f7;
+    text-decoration: underline;
+}
+
 button {
     background-color: var(--btn-color);
     color: var(--btn-text-color);
