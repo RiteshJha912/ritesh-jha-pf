@@ -38,7 +38,6 @@ function Footer() {
       return 'Unknown'
     }
 
-    // Fetch IPv4 Address
     const fetchIP = async () => {
       try {
         const response = await fetch('https://api4.ipify.org?format=json')
@@ -106,10 +105,10 @@ function Footer() {
             info.onlineStatus === 'Online' ? styles.online : styles.offline
           }`}
         >
-          {info.onlineStatus === 'Online' ? '🟢 Online' : '🔴 Offline'}
+          {info.onlineStatus === 'Online' ? ' Online' : '🔴 Offline'}
         </span>
       </p>
-      <p>Browser: {info.browser}</p>
+      <p>Client: {info.browser}</p>
       <p>OS: {info.os}</p>
       <p>IP Address: {info.ip}</p>
       <p>Location: {info.location}</p>

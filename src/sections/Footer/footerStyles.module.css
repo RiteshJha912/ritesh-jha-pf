@@ -25,13 +25,13 @@ p {
 
 .offline {
     color: #f00;
-    animation: pulse-red 1.5s infinite alternate;
+    animation: pulse-red 0.5s infinite alternate;
 }
 
 
 @keyframes pulse-red {
     0% {
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
     }
 
     100% {
