@@ -11,6 +11,7 @@ p {
 
 /* Online/Offline status animation */
 .status {
+    margin-top: 60px;
     font-weight: bold;
     display: inline-flex;
     align-items: center;
@@ -39,7 +40,7 @@ p {
     }
 }
 
-/* Heart animation */
+
 .heart {
     display: inline-block;
     animation: heartbeat 1.2s infinite ease-in-out;

@@ -49,7 +49,7 @@ function Contact() {
   const processCommand = (cmd) => {
     const addRegex = /^git add \. "(.*)"$/
     const commitRegex = /^git commit -m "(.*)"$/
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
 
     if (cmd === 'clear') {
       setLogs([

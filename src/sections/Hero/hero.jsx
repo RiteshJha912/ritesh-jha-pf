@@ -117,18 +117,23 @@ function Hero() {
         <h3 className={styles.h3Slide}>Digital Security Enthusiast</h3>
 
         <div className={styles.logoContainer}>
-          <a
-            href='https://github.com/RiteshJha912'
-            target='_blank'
-            rel='noopener noreferrer'
+          <div
+            onClick={() =>
+              window.open('https://github.com/RiteshJha912', '_blank')
+            }
+            className={styles.logoWrapper}
           >
             <img src={githubIcon} alt='Github Icon' className={styles.logo} />
             <div className={styles.tooltip}>GitHub</div>
-          </a>
-          <a
-            href='https://www.linkedin.com/in/ritesh-jha-aa490a286/'
-            target='_blank'
-            rel='noopener noreferrer'
+          </div>
+          <div
+            onClick={() =>
+              window.open(
+                'https://www.linkedin.com/in/ritesh-jha-aa490a286/',
+                '_blank'
+              )
+            }
+            className={styles.logoWrapper}
           >
             <img
               src={linkedinIcon}
@@ -136,8 +141,9 @@ function Hero() {
               className={styles.logo}
             />
             <div className={styles.tooltip}>LinkedIn</div>
-          </a>
+          </div>
         </div>
+
         <p className={styles.description}>
           I write code so bad, that even this text is just a filler for my
           website's UI to not break apart. Then why hire me?
