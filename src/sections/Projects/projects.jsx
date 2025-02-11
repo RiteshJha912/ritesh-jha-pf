@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import AOS from 'aos'
-import 'aos/dist/aos.css' 
+import 'aos/dist/aos.css'
 import styles from './projectStyles.module.css'
 import cocktailbazaar from '../../assets/coactailbazaar.png'
 import taskify from '../../assets/taskify.png'
 import analog from '../../assets/clock.png'
 import indiatimes from '../../assets/indiatimes.png'
 import ProjectCard from '../../common/projectCard'
+import ProjectModal from '../../common/projectModal' // Import modal component
 
 function Projects() {
   useEffect(() => {
@@ -17,35 +18,73 @@ function Projects() {
     })
   }, [])
 
+  const projects = [
+    {
+      src: cocktailbazaar,
+      h3: 'Cocktail Bazaar',
+      shortDesc: 'Drinks Database', // Short description for project card
+      longDesc:
+        'A web application that provides a vast collection of cocktail recipes, ingredient details, and preparation steps. Users can search for drinks, explore trending cocktails, and even save favorites. Built with React and integrates external API for real-time data.', // Only for modal
+      github: 'https://github.com/RiteshJha912/cocktail-bazaar-project',
+      live: 'https://cocktailbazaar.com',
+    },
+    {
+      src: taskify,
+      h3: 'Taskify',
+      shortDesc: 'To-do list website',
+      longDesc:
+        'A simple yet powerful to-do list application designed for productivity. Users can create tasks, set deadlines, and mark completed items. Features include drag-and-drop reordering and local storage to save tasks persistently.',
+      github: 'https://github.com/RiteshJha912/taskify-final',
+      live: 'https://taskify.com',
+    },
+    {
+      src: analog,
+      h3: 'Simple Analog Clock',
+      shortDesc: 'Accurate Timekeeping',
+      longDesc:
+        'A minimalistic analog clock that accurately displays real-time hours, minutes, and seconds. Designed with CSS animations and JavaScript for smooth transitions. Perfect for embedding in dashboards or personal projects.',
+      github: 'https://github.com/RiteshJha912/analogclock',
+      live: 'https://analogclock.com',
+    },
+    {
+      src: indiatimes,
+      h3: 'India Times',
+      shortDesc: 'Print media company website',
+      longDesc:
+        'A modernized digital platform for a renowned print media company. Provides real-time news updates, categorized articles, and a seamless reading experience. Built with React and optimized for performance and accessibility.',
+      github: 'https://github.com/RiteshJha912/indiatimes.github.io',
+      live: 'https://indiatimes.com',
+    },
+  ]
+
+
+
+  const [selectedProject, setSelectedProject] = useState(null)
+
   return (
     <section id='projects' className={styles.container}>
       <h1 className='sectionTitle'>Projects 🛠️</h1>
       <div className={styles.projectsContainer}>
-        <ProjectCard
-          src={cocktailbazaar}
-          link='https://github.com/RiteshJha912/cocktail-bazaar-project'
-          h3='Cocktail Bazaar'
-          p='Drinks Database'
-        />
-        <ProjectCard
-          src={taskify}
-          link='https://github.com/RiteshJha912/taskify-final'
-          h3='Taskify'
-          p='To-do list website'
-        />
-        <ProjectCard
-          src={analog}
-          link='https://github.com/RiteshJha912/analogclock'
-          h3='Simple Analog Clock'
-          p='Accurate Timekeeping'
-        />
-        <ProjectCard
-          src={indiatimes}
-          link='https://github.com/RiteshJha912/indiatimes.github.io'
-          h3='India Times'
-          p='Print media company website'
-        />
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            src={project.src}
+            h3={project.h3}
+            p={project.p}
+            onClick={() => {
+              console.log('Clicked on:', project.h3) // Debugging line
+              setSelectedProject(project)
+            }}
+          />
+        ))}
       </div>
+
+      {/* Show Modal if a project is selected */}
+      <ProjectModal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        project={selectedProject}
+      />
     </section>
   )
 }

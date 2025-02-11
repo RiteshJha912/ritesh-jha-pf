@@ -1,13 +1,15 @@
-import React from 'react';
+import React from 'react'
+import styles from './projectCard.module.css' // New CSS file for styling
 
-function ProjectCard({ src, link, h3, p }) {
+function ProjectCard({ src, h3, shortDesc, onClick }) {
   return (
-    <a href={link} target='_blank' data-aos='fade-up'>
-      <img className='hover' src={src} alt={`${h3} logo`} data-aos='fade-up' />
+    <div className={styles.card} onClick={onClick}>
+      <img src={src} alt={h3} className={styles.image} />
       <h3>{h3}</h3>
-      <p>{p}</p>
-    </a>
+      <p>{shortDesc}</p> {/* Show only short description here */}
+    </div>
   )
 }
 
-export default ProjectCard;
+
+export default ProjectCard

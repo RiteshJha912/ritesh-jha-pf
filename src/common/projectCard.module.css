@@ -1,0 +1,14 @@
+.card {
+    cursor: pointer;
+    text-align: center;
+    transition: transform 200ms ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.image {
+    max-width: 250px;
+    border-radius: 10px;
+}
