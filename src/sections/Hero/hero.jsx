@@ -111,10 +111,18 @@ function Hero() {
             <span>{currentText || '\u00A0'}</span>
           </h1>
         </div>
-        <h3 className={styles.h3Slide}>Programmer</h3>
-        <h3 className={styles.h3Slide}>Fullstack Developer</h3>
-        <h3 className={styles.h3Slide}>Open Source Contributor</h3>
-        <h3 className={styles.h3Slide}>Digital Security Enthusiast</h3>
+        <h3 className={styles.h3Slide}>
+          {'<'}Programmer{'/>'}
+        </h3>
+        <h3 className={styles.h3Slide}>
+          {'<'}Fullstack Developer{'/>'}
+        </h3>
+        <h3 className={styles.h3Slide}>
+          {'<'}Open Source Contributor{'/>'}
+        </h3>
+        <h3 className={styles.h3Slide}>
+          {'<'}Digital Security Enthusiast{'/>'}
+        </h3>
 
         <div className={styles.logoContainer}>
           <div
@@ -145,11 +153,11 @@ function Hero() {
         </div>
 
         <p className={styles.description}>
-          I write code so bad, that even this text is just a filler for my
-          website's UI to not break apart. Then why hire me?
+          My code is so shady that even this text is just a hack to stop my
+          website’s UI from falling apart. So why hire me?
           <br />
-          <br />I may be a code rookie, but I break norms, embrace chaos & craft
-          quirky solutions that deliver unexpected{' '}
+          <br />A coding rookie, but I bend rules, weaponize chaos, and craft
+          wild fixes that serve unexpected{' '}
           <a
             href='https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun'
             target='_blank'
