@@ -1,51 +1,55 @@
 ## View Porfolio here : https://about-ritesh.netlify.app/
 
 ---
-## Project Structure 
+
+## Project Structure
 
 ```
 project-root/
 ├── src/
-│   ├── asset/                         # Folder for all static assets (images, icons, etc.)  
+│   ├── asset/                         # Folder for all static assets (images, icons, etc.)
 │   │
 │   ├── common/                        # Contains reusable components
-│   │   ├── internshipCard.jsx         
-│   │   ├── projectCard.jsx            
-│   │   ├── skillList.jsx              
+│   │   ├── internshipCard.jsx
+│   │   ├── projectCard.jsx
+│   │   ├── projectCard.module.css
+│   │   ├── projectModal.jsx
+│   │   ├── projectModal.module.css
+│   │   ├── skillList.jsx
 │   │   └── themeContext.jsx           # Context API for managing light/dark themes
 │   │
 │   ├── sections/                      # Folder containing different sections of the website
-│   │   ├── Contact/                 
-│   │   │   ├── Contact.jsx            
-│   │   │   └── ContactStyles.module.css 
+│   │   ├── Contact/
+│   │   │   ├── contact.jsx
+│   │   │   └── contactStyles.module.css
 │   │   │
-│   │   ├── Experience/              
-│   │   │   ├── Experience.jsx        
-│   │   │   └── ExperienceStyles.module.css 
+│   │   ├── Experience/
+│   │   │   ├── experience.jsx
+│   │   │   └── experienceStyles.module.css
 │   │   │
-│   │   ├── Footer/                  
-│   │   │   ├── Footer.jsx            
-│   │   │   └── FooterStyles.module.css 
+│   │   ├── Footer/
+│   │   │   ├── footer.jsx
+│   │   │   └── footerStyles.module.css
 │   │   │
 │   │   ├── Hero/                      # (main introductory section)
-│   │   │   ├── Hero.jsx               
-│   │   │   └── HeroStyles.module.css  
-│   │   ├── Projects/               
-│   │   │   ├── Projects.jsx         
-│   │   │   └── ProjectsStyles.module.css 
+│   │   │   ├── hero.jsx
+│   │   │   └── heroStyles.module.css
+│   │   ├── Projects/
+│   │   │   ├── projects.jsx
+│   │   │   └── projectsStyles.module.css
 │   │   │
-│   │   └── Skills/                   
-│   │       ├── Skills.jsx            
-│   │       └── SkillsStyles.module.css 
+│   │   └── Skills/
+│   │       ├── skills.jsx
+│   │       └── skillsStyles.module.css
 │   │
-│   ├── App.css                       
-│   ├── App.jsx                       
-│   ├── index.css                      
-│   └── main.jsx                       
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
 │
 └── README.md                          # You are reading this!
 ```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.     
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
