@@ -156,7 +156,7 @@ function Hero() {
           My code is so shady that even this text is just a hack to stop my
           website’s UI from falling apart. So why hire me?
           <br />
-          <br />A coding rookie, but I bend rules, weaponize chaos, and craft
+          <br />I might be a coding rookie, but I bend rules, weaponize chaos & craft
           wild fixes that serve unexpected{' '}
           <a
             href='https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun'

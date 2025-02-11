@@ -12,11 +12,88 @@
 
 
 
+
 .hero {
     border: 1px dotted var(--hero-border-color);
     border-radius: 200px;
-    max-width: 200px;
-    box-shadow: 0 0 30px 10px var(--hero-border-color);
+    max-width: 185px;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 30px 10px var(--hero-border-color);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 45px 15px var(--hero-border-color);
+        transform: scale(1.02);
+    }
+
+    100% {
+        box-shadow: 0 0 30px 10px var(--hero-border-color);
+        transform: scale(1);
+    }
+}
+
+.heroWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.heroWrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    z-index: -1;
+    animation: radialBreathing 4s ease-in-out infinite;
+}
+
+@keyframes radialBreathing {
+    0% {
+        background: radial-gradient(circle at center, var(--hero-border-color) 0%, transparent 60%);
+    }
+
+    50% {
+        background: radial-gradient(circle at center, var(--hero-border-color) 0%, transparent 70%);
+    }
+
+    100% {
+        background: radial-gradient(circle at center, var(--hero-border-color) 0%, transparent 60%);
+    }
+}
+
+@media (width >=800px) {
+    .hero {
+        max-width: 350px;
+        width: 350px;
+    }
+
+    .heroWrapper::before {
+        top: -30px;
+        left: -30px;
+        right: -30px;
+        bottom: -30px;
+    }
+}
+
+@media (width >=1400px) {
+    .hero {
+        max-width: 400px;
+        width: 400px;
+    }
+
+    .heroWrapper::before {
+        top: -40px;
+        left: -40px;
+        right: -40px;
+        bottom: -40px;
+    }
 }
 
 span {
