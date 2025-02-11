@@ -25,12 +25,11 @@ function Hero() {
   const erasingSpeed = 40
   const delayBetweenWords = 1500
 
-  // theme tooltip
   const [showThemeTooltip, setShowThemeTooltip] = useState(false)
 
   useEffect(() => {
     let count = 0
-    const tooltipIntervals = [3900, 70000, 150000] //intervals
+    const tooltipIntervals = [3900, 70000, 150000]
 
     const showTooltip = () => {
       if (count < tooltipIntervals.length) {
@@ -51,7 +50,6 @@ function Hero() {
     }
   }, [])
 
-  // h1 ka typewriter effect
   useEffect(() => {
     let timer
 
@@ -108,9 +106,11 @@ function Hero() {
 
       <div className={styles.info}>
         <h2 className={styles.h2}> {'>'}_ Hi I am </h2>
-        <h1 className={styles.typewriter}>
-          <span>{currentText}</span>
-        </h1>
+        <div className={styles.typewriterContainer}>
+          <h1 className={styles.typewriter}>
+            <span>{currentText || '\u00A0'}</span>
+          </h1>
+        </div>
         <h3 className={styles.h3Slide}>Programmer</h3>
         <h3 className={styles.h3Slide}>Fullstack Developer</h3>
         <h3 className={styles.h3Slide}>Open Source Contributor</h3>
@@ -154,7 +154,7 @@ function Hero() {
             href='https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun'
             target='_blank'
             rel='noopener noreferrer'
-            className={styles.ritzyLink} // Add styling in CSS
+            className={styles.ritzyLink}
           >
             ritziness
           </a>
@@ -171,7 +171,7 @@ function Hero() {
             }
           >
             Hire me!
-          </button>{' '}
+          </button>
         </a>
       </div>
     </section>

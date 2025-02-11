@@ -5,6 +5,7 @@ function Contact() {
   const [input, setInput] = useState('')
   const [logs, setLogs] = useState([
     'Wanna drop a message for me?',
+    'Lets do it the git way!',
     "Type 'info' to know the git commands",
   ])
   const [message, setMessage] = useState('')
@@ -13,7 +14,6 @@ function Contact() {
   const inputRef = useRef(null)
   const sectionRef = useRef(null)
   const terminalRef = useRef(null)
-
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -36,11 +36,12 @@ function Contact() {
   const processCommand = (cmd) => {
     const addRegex = /^git add \. "(.*)"$/
     const commitRegex = /^git commit -m "(.*)"$/
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     if (cmd === 'clear') {
       setLogs([
         'Wanna drop a message for me?',
+        'Lets do it the git way!',
         "Type 'info' to know the git commands",
       ])
       setMessage('')
@@ -133,7 +134,7 @@ function Contact() {
       <div
         className={styles.terminal}
         ref={terminalRef}
-        onClick={() => inputRef.current?.focus()} 
+        onClick={() => inputRef.current?.focus()}
       >
         {logs.map((log, index) => (
           <p key={index}>{log}</p>
