@@ -69,15 +69,15 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #ffffff;
-    color: #333;
+    background: #ddddddd9;
+    color: #0a0a0a;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 20px;
     line-height: 1;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.163);
     transition: all 0.2s ease;
 }
 
@@ -124,7 +124,7 @@
     gap: 25px;
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.136);
 }
 
 .viewLive {
@@ -146,13 +146,13 @@
 }
 
 .arrowIcon {
-    font-size: 20px;
+    font-size: 18px;
     color: white;
 }
 
 .githubIcon {
     margin-top: 2px;
-    font-size: 32px;
+    font-size: 36px;
     color: #000000;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(0);
@@ -161,7 +161,7 @@
 
 .githubIcon:hover {
     color: #2c2c2ce7;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 @media (max-width: 650px) {

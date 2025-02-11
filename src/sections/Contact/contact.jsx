@@ -14,19 +14,6 @@ function Contact() {
   const sectionRef = useRef(null)
   const terminalRef = useRef(null)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const { top } = sectionRef.current.getBoundingClientRect()
-        if (top >= 0 && top <= window.innerHeight) {
-          inputRef.current?.focus()
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -143,7 +130,11 @@ function Contact() {
 
   return (
     <section id='contact' className={styles.container} ref={sectionRef}>
-      <div className={styles.terminal} ref={terminalRef}>
+      <div
+        className={styles.terminal}
+        ref={terminalRef}
+        onClick={() => inputRef.current?.focus()} 
+      >
         {logs.map((log, index) => (
           <p key={index}>{log}</p>
         ))}
