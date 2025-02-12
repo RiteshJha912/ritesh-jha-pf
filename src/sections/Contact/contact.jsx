@@ -18,6 +18,18 @@ function Contact() {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight
     }
+
+    const preventScroll = (e) => {
+      if (terminalRef.current && terminalRef.current.contains(e.target)) {
+        e.stopPropagation()
+      }
+    }
+
+    document.addEventListener('touchmove', preventScroll, { passive: false })
+
+    return () => {
+      document.removeEventListener('touchmove', preventScroll)
+    }
   }, [logs])
 
   const handleInputChange = (e) => {
@@ -148,7 +160,10 @@ function Contact() {
       <div
         className={styles.terminal}
         ref={terminalRef}
-        onClick={() => inputRef.current?.focus()}
+        onClick={() => {
+          inputRef.current?.focus()
+        }}
+        onTouchStart={(e) => e.stopPropagation()} 
       >
         {logs.map((log, index) => (
           <p key={index}>{log}</p>
