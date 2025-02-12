@@ -46,15 +46,18 @@ function Contact() {
       setEmail('')
       setSubmitted(false)
     } else if (cmd === 'resume') {
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        <span className={styles.userCommand}>$ {cmd}</span>,
-        'Opening resume...',
-      ])
+    setLogs((prevLogs) => [
+      ...prevLogs,
+      <span className={styles.userCommand}>$ {cmd}</span>,
+      'Opening resume...',
+    ]);
+
+    setTimeout(() => {
       window.open(
         'https://drive.google.com/file/d/18lJ4jxkopcmYuBu39FcAOb_qveU7BMpf/view?usp=sharing',
         '_blank'
-      )
+      );
+    }, 500);
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [
         ...prevLogs,
