@@ -5,7 +5,6 @@ function Contact() {
   const [input, setInput] = useState('')
   const [logs, setLogs] = useState([
     'Wanna drop a message for me?',
-    'Lets do it the git way!',
     "Type 'info' to know the git commands",
   ])
   const [message, setMessage] = useState('')
@@ -41,21 +40,33 @@ function Contact() {
     if (cmd === 'clear') {
       setLogs([
         'Wanna drop a message for me?',
-        'Lets do it the git way!',
         "Type 'info' to know the git commands",
       ])
       setMessage('')
       setEmail('')
       setSubmitted(false)
+    } else if (cmd === 'resume') {
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        'Opening resume...',
+      ])
+      window.open(
+        'https://drive.google.com/file/d/18lJ4jxkopcmYuBu39FcAOb_qveU7BMpf/view?usp=sharing',
+        '_blank'
+      )
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [
         ...prevLogs,
         <span className={styles.userCommand}>$ {cmd}</span>,
-        'Use the following commands:',
+        'Use the following commands to send me a message:',
         '1) git add . "your message"',
         '2) git commit -m "your email"',
         '3) git push origin main',
-        'clear (to Reset terminal)',
+        '',
+        'Other commands:',
+        '▶ resume - To view my resume',
+        '▶ clear - To reset terminal',
       ])
     } else if (addRegex.test(cmd)) {
       const msg = cmd.match(addRegex)[1]
