@@ -466,7 +466,7 @@ button:active {
     .logo {
         filter: none;
         transform: none;
-        animation: rotateAndScale 2.3s ease-out;
+        animation: rotateAndScale 2.7s ease-out;
     }
 
     .logo:hover {
