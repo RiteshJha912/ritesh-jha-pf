@@ -11,6 +11,8 @@ project-root/
 │   │
 │   ├── common/                        # Contains reusable components
 │   │   ├── internshipCard.jsx
+│   │   ├── loadingScreen.jsx
+│   │   ├── loadingScreen.module.css
 │   │   ├── projectCard.jsx
 │   │   ├── projectCard.module.css
 │   │   ├── projectModal.jsx
