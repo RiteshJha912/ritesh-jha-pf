@@ -4,7 +4,7 @@
 }
 
 p {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--footer-text-color);
     margin: -10px 0;
 }
@@ -47,9 +47,10 @@ p {
 }
 
 p:last-child {
-    margin-top: 6px;
-    font-size: 24px;
-  font-weight: 400;
+    margin-top: 7px;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0px;
 }
 
 /* Lub-dub ;-) */
