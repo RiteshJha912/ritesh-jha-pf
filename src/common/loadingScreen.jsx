@@ -189,7 +189,7 @@ const LoadingScreen = ({ onFinish }) => {
               info.onlineStatus === 'Online' ? styles.online : styles.offline
             }
           >
-            {info.onlineStatus === 'Online' ? '🟢 Online' : '🔴 Offline'}
+            {info.onlineStatus === 'Online' ? 'Online' : '🔴 Offline'}
           </span>
         </p>
       )}
