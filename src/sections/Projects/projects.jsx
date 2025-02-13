@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import styles from './projectStyles.module.css'
-import cocktailbazaar from '../../assets/coactailbazaar.png'
-import taskify from '../../assets/taskify.png'
-import analog from '../../assets/clock.png'
-import indiatimes from '../../assets/indiatimes.png'
+import hnltech from '../../assets/hnltech.png'
+import koshkeeper from '../../assets/koshkeeper.png'
+import taskifyv2 from '../../assets/taskifyv2.png'
+import devflipper from '../../assets/devflipper.png'
 import ProjectCard from '../../common/projectCard'
 import ProjectModal from '../../common/projectModal' 
+
+
+
 
 function Projects() {
   useEffect(() => {
@@ -20,40 +23,40 @@ function Projects() {
 
   const projects = [
     {
-      src: cocktailbazaar,
-      h3: 'Cocktail Bazaar',
-      shortDesc: 'Drinks Database',
+      src: hnltech,
+      h3: 'HNLTech',
+      shortDesc: 'Software Company Landing Page',
       longDesc:
-        'A web application that provides a vast collection of cocktail recipes, ingredient details, and preparation steps. Users can search for drinks, explore trending cocktails, and even save favorites. Built with React and integrates external API for real-time data.',
-      github: 'https://github.com/RiteshJha912/cocktail-bazaar-project',
-      live: 'https://cocktail-bazaar-reactproject.netlify.app/',
+        'A professional website built for HNLTech Pvt. Ltd., crafted with Next.js & React.js. It enhances their digital presence with smooth animations, theme switching &  3D elements, aligning with their business goals.',
+      github: 'https://github.com/RiteshJha912/hnltech',
+      live: 'https://hnltech.in/',
     },
     {
-      src: taskify,
-      h3: 'Taskify',
+      src: koshkeeper,
+      h3: 'Koshkeeper',
+      shortDesc: 'Expense Tracker',
+      longDesc:
+        'A smart expense tracker using React & Firebase. It enables secure Google login, categorizes transactions & stores financial data permanently, ensuring users can manage their expenses effortlessly with an intuitive UI.',
+      github: 'https://github.com/RiteshJha912/KoshKeeper',
+      live: 'https://expense-tracker99.web.app/',
+    },
+    {
+      src: taskifyv2,
+      h3: 'Taskify-V2',
       shortDesc: 'To-do list website',
       longDesc:
-        'A simple yet powerful to-do list application designed for productivity. Users can create tasks, set deadlines, and mark completed items. Features include drag-and-drop reordering and local storage to save tasks persistently.',
-      github: 'https://github.com/RiteshJha912/taskify-final',
-      live: 'https://taskify-reactsite.netlify.app/',
+        'A full-stack to-do app with React, Node.js, Express & MongoDB. It provides real-time updates, persistent storage & a user-friendly task management experience with seamless cross-browser support.',
+      github: 'https://github.com/RiteshJha912/TaskifyV2-UserSpecific',
+      live: 'https://taskifyv2-final.onrender.com/',
     },
     {
-      src: analog,
-      h3: 'Simple Analog Clock',
-      shortDesc: 'Accurate Timekeeping',
+      src: devflipper,
+      h3: 'Dev-Flipper',
+      shortDesc: '3D Projects Showcase',
       longDesc:
-        'A minimalistic analog clock that accurately displays real-time hours, minutes, and seconds. Designed with CSS animations and JavaScript for smooth transitions. Perfect for embedding in dashboards or personal projects.',
-      github: 'https://github.com/RiteshJha912/analogclock',
-      live: 'https://riteshjha912.github.io/analogclock/',
-    },
-    {
-      src: indiatimes,
-      h3: 'India Times',
-      shortDesc: 'Print media company website',
-      longDesc:
-        'A modernized digital platform for a renowned print media company. Provides real-time news updates, categorized articles, and a seamless reading experience. Built with React and optimized for performance and accessibility.',
-      github: 'https://github.com/RiteshJha912/indiatimes.github.io',
-      live: 'https://riteshjha912.github.io/indiatimes.github.io/',
+        'A 3D project showcase built with Three.js & React Three Fiber. It offers an interactive, visually appealing way to display projects in a dynamic & engaging format.',
+      github: 'https://github.com/RiteshJha912/DevFlipper',
+      live: 'https://dev-flipper.vercel.app/',
     },
   ]
 
@@ -69,7 +72,7 @@ function Projects() {
           <ProjectCard
             key={index}
             src={project.src}
-            h3={project.h3}
+            // h3={project.h3}
             p={project.p}
             onClick={() => {
               console.log('Clicked on:', project.h3) 
