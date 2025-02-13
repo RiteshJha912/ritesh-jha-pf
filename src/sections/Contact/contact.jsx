@@ -66,9 +66,9 @@ function Contact() {
 
     setTimeout(() => {
       window.open(
-        'https://drive.google.com/file/d/18lJ4jxkopcmYuBu39FcAOb_qveU7BMpf/view?usp=sharing',
+        'https://drive.google.com/file/d/1jibFZhfrJS4Gw1x0uGeKMYJMOUbLBNAp/view?usp=sharing',
         '_blank'
-      );
+      )
     }, 500);
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [
