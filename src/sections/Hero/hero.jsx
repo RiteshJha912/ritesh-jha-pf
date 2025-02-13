@@ -8,6 +8,9 @@ import githubDark from '../../assets/github-dark.svg'
 import linkedinLight from '../../assets/linkedin-light.svg'
 import linkedinDark from '../../assets/linkedin-dark.svg'
 
+import heroImg2 from '../../assets/MainPic3.jpg'
+
+
 import { useTheme } from '../../common/themeContext'
 
 function Hero() {
@@ -85,7 +88,7 @@ function Hero() {
       <div className={styles.colorModeContainer}>
         <img
           className={styles.hero}
-          src={heroImg}
+          src={heroImg2}
           alt='Profile Picture of Ritesh Jha'
         />
         <div className={styles.themeButtonContainer}>
@@ -156,16 +159,31 @@ function Hero() {
           My code is so shady that even this text is just a hack to stop my
           website’s UI from falling apart. So why hire me?
           <br />
-          <br />I might be a coding rookie, but I bend rules, weaponize chaos & craft
-          wild fixes that serve unexpected{' '}
-          <a
-            href='https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun'
-            target='_blank'
-            rel='noopener noreferrer'
+          <br />I might be a coding rookie, but I bend rules, weaponize chaos &
+          craft wild fixes that serve unexpected{' '}
+          <span
+            onClick={() =>
+              window.open(
+                'https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun',
+                '_blank',
+                'noopener,noreferrer'
+              )
+            }
             className={styles.ritzyLink}
+            role='button'
+            tabIndex={0}
+            onKeyDown={(e) =>
+              e.key === 'Enter' &&
+              window.open(
+                'https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun',
+                '_blank',
+                'noopener,noreferrer'
+              )
+            }
+            style={{ display: 'inline', cursor: 'pointer' }}
           >
             ritziness
-          </a>
+          </span>
           .
         </p>
 
