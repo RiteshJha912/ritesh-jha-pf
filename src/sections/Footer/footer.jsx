@@ -29,7 +29,7 @@ function Footer() {
             onlineStatus === 'Online' ? styles.online : styles.offline
           }`}
         >
-          {onlineStatus === 'Online' ? '🟢 Online' : '🔴 Offline'}
+          {onlineStatus === 'Online' ? 'Online' : '🔴 Offline'}
         </span>
       </p>
       <p>

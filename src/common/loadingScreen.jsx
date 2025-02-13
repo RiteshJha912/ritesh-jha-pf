@@ -41,34 +41,54 @@ const LoadingScreen = ({ onFinish }) => {
   }
 
   const fetchIP = async () => {
-    try {
-      const response = await fetch('https://api4.ipify.org?format=json')
-      const data = await response.json()
-      return data.ip
-    } catch {
-      return 'Unavailable'
+    const ipApis = [
+      'https://api64.ipify.org?format=json',
+      'https://checkip.amazonaws.com',
+      'https://api.myip.com',
+    ]
+
+    for (let api of ipApis) {
+      try {
+        let response = await fetch(api)
+        let data = api.includes('amazonaws')
+          ? await response.text()
+          : await response.json()
+        return api.includes('amazonaws') ? data.trim() : data.ip || data
+      } catch (error) {
+        console.warn(`Failed to fetch IP from ${api}`)
+      }
     }
+    return 'Unavailable'
   }
 
   const fetchLocation = async (ip) => {
-    try {
-      const response = await fetch(`https://ipwho.is/${ip}`)
-      const data = await response.json()
-      if (data.success) {
-        return `${data.city}, ${data.region}, ${data.country}`
+    if (ip === 'Unavailable') return 'Unavailable'
+
+    const locationApis = [
+      `https://ipwho.is/${ip}`,
+      `http://ip-api.com/json/${ip}`,
+      `https://ipinfo.io/${ip}/json`,
+    ]
+
+    let locations = []
+    for (let api of locationApis) {
+      try {
+        let response = await fetch(api)
+        let data = await response.json()
+        if (data.city && data.country) {
+          locations.push(`${data.city}, ${data.region}, ${data.country}`)
+        }
+      } catch (error) {
+        console.warn(`Failed to fetch location from ${api}`)
       }
-      return 'Unavailable'
-    } catch {
-      return 'Unavailable'
     }
+
+    return locations.length ? locations[0] : 'Unavailable'
   }
 
   const loadCachedData = () => {
     const cachedData = localStorage.getItem('userInfo')
-    if (cachedData) {
-      return JSON.parse(cachedData)
-    }
-    return null
+    return cachedData ? JSON.parse(cachedData) : null
   }
 
   const updateInfoStepByStep = async () => {
