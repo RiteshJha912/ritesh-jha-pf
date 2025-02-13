@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import styles from './heroStyles.module.css'
-import heroImg from '../../assets/MainPic2.jpg'
 import sun from '../../assets/sun.svg'
 import moon from '../../assets/moon.svg'
 import githubLight from '../../assets/github-light.svg'
@@ -8,7 +7,7 @@ import githubDark from '../../assets/github-dark.svg'
 import linkedinLight from '../../assets/linkedin-light.svg'
 import linkedinDark from '../../assets/linkedin-dark.svg'
 
-import heroImg2 from '../../assets/MainPic3.jpg'
+import heroImg from '../../assets/MainPic3.jpg'
 
 
 import { useTheme } from '../../common/themeContext'
@@ -88,7 +87,7 @@ function Hero() {
       <div className={styles.colorModeContainer}>
         <img
           className={styles.hero}
-          src={heroImg2}
+          src={heroImg}
           alt='Profile Picture of Ritesh Jha'
         />
         <div className={styles.themeButtonContainer}>
