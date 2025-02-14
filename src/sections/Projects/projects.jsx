@@ -15,12 +15,14 @@ import ProjectModal from '../../common/projectModal'
 function Projects() {
   useEffect(() => {
     AOS.init({
-      duration: 700,
+      duration: 1000, // animation duration in milliseconds
       easing: 'ease-in-out',
-      once: false,
+      once: false, // animations will trigger multiple times as elements re-enter the viewport
     })
-  }, [])
+  }, []) // runs only once when the component mounts
 
+
+  //  project data storing dynamically 
   const projects = [
     {
       src: hnltech,
@@ -60,8 +62,7 @@ function Projects() {
     },
   ]
 
-
-
+  // manages which project is currently selected for display in the modal
   const [selectedProject, setSelectedProject] = useState(null)
 
   return (
@@ -75,13 +76,16 @@ function Projects() {
             // h3={project.h3}
             p={project.p}
             onClick={() => {
-              console.log('Clicked on:', project.h3) 
-              setSelectedProject(project)
+              console.log('Clicked on:', project.h3)
+              setSelectedProject(project)        // opens the modal with the selected project details
             }}
           />
         ))}
       </div>
 
+
+
+      {/* renders the modal only when a project is selected */}
       <ProjectModal
         isOpen={!!selectedProject}
         onClose={() => setSelectedProject(null)}

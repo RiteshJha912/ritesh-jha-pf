@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../sections/Experience/experienceStyles.module.css'; // Adjust path as needed
+import styles from '../sections/Experience/experienceStyles.module.css';
 
 function InternshipCard({
   logoSrc,
