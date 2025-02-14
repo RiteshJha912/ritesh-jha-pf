@@ -2,9 +2,16 @@ import { useState, useEffect } from 'react'
 import styles from './loadingScreen.module.css'
 
 const LoadingScreen = ({ onFinish }) => {
+  // state to track the loading progress in percentage (0 to 100)
   const [progress, setProgress] = useState(0)
+
+  // state to track the current step of the loading process
   const [step, setStep] = useState(0)
+
+  // state to control the visibility of connection status display
   const [showConnectionStatus, setShowConnectionStatus] = useState(false)
+
+  // state to store user system details such as online status, browser, OS, IP, and location
   const [info, setInfo] = useState({
     onlineStatus: navigator.onLine ? 'Online' : 'Offline',
     browser: 'Detecting...',
@@ -13,9 +20,10 @@ const LoadingScreen = ({ onFinish }) => {
     location: 'Fetching...',
   })
 
+  // function to detect the user's browser from the userAgent string
   const getBrowser = () => {
     const userAgent = navigator.userAgent
-    if (navigator.brave) return 'Brave'
+    if (navigator.brave) return 'Brave' 
     if (/edg\//i.test(userAgent)) return 'Edge'
     if (/opr\//i.test(userAgent) || /opera/i.test(userAgent)) return 'Opera'
     if (/firefox|fxios/i.test(userAgent)) return 'Firefox'
@@ -30,6 +38,7 @@ const LoadingScreen = ({ onFinish }) => {
     return 'Unknown'
   }
 
+  // function to detect the user's operating system from the userAgent string
   const getOS = () => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera
     if (/android/i.test(userAgent)) return 'Android'
@@ -40,6 +49,7 @@ const LoadingScreen = ({ onFinish }) => {
     return 'Unknown'
   }
 
+  // function to fetch the user's IP address from multiple APIs
   const fetchIP = async () => {
     const ipApis = [
       'https://api64.ipify.org?format=json',
@@ -61,6 +71,7 @@ const LoadingScreen = ({ onFinish }) => {
     return 'Unavailable'
   }
 
+  // function to fetch location details based on the retrieved IP address
   const fetchLocation = async (ip) => {
     if (ip === 'Unavailable') return 'Unavailable'
 
@@ -86,16 +97,19 @@ const LoadingScreen = ({ onFinish }) => {
     return locations.length ? locations[0] : 'Unavailable'
   }
 
+  // function to load previously saved user data from local storage
   const loadCachedData = () => {
     const cachedData = localStorage.getItem('userInfo')
     return cachedData ? JSON.parse(cachedData) : null
   }
 
+  // function that updates user system details progressively with delays
   const updateInfoStepByStep = async () => {
-    const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms)) // helper function to create time delays
     const cachedData = loadCachedData()
-    const isFirstLoad = !cachedData
+    const isFirstLoad = !cachedData // check if it's the first time loading data
 
+    // initial delay and revealing connection status
     await delay(isFirstLoad ? 1500 : 750)
     setShowConnectionStatus(true)
     setProgress(20)
@@ -104,6 +118,7 @@ const LoadingScreen = ({ onFinish }) => {
     await delay(isFirstLoad ? 1000 : 500)
     setProgress(35)
 
+    // if cached data exists, load it instead of fetching again
     if (cachedData) {
       setInfo(cachedData)
       setStep(2)
@@ -119,8 +134,9 @@ const LoadingScreen = ({ onFinish }) => {
       await delay(250)
       setProgress(100)
 
-      updateCacheInBackground()
+      updateCacheInBackground() // refresh cache asynchronously
     } else {
+      // fetch fresh data since no cache exists
       const newInfo = {
         onlineStatus: navigator.onLine ? 'Online' : 'Offline',
         browser: getBrowser(),
@@ -144,6 +160,7 @@ const LoadingScreen = ({ onFinish }) => {
       await delay(1000)
       setProgress(80)
 
+      // fetch location if IP is available
       const location =
         newInfo.ip !== 'Unavailable'
           ? await fetchLocation(newInfo.ip)
@@ -151,16 +168,17 @@ const LoadingScreen = ({ onFinish }) => {
       newInfo.location = location
 
       setInfo(newInfo)
-      localStorage.setItem('userInfo', JSON.stringify(newInfo))
+      localStorage.setItem('userInfo', JSON.stringify(newInfo)) // save data in local storage
 
       setStep(5)
       await delay(500)
       setProgress(100)
     }
 
-    setTimeout(onFinish, 500)
+    setTimeout(onFinish, 500) // execute onFinish callback after a slight delay
   }
 
+  // function to update the stored cache with new data in the background
   const updateCacheInBackground = async () => {
     const newInfo = {
       onlineStatus: navigator.onLine ? 'Online' : 'Offline',
@@ -175,12 +193,14 @@ const LoadingScreen = ({ onFinish }) => {
         ? await fetchLocation(newInfo.ip)
         : 'Unavailable'
 
-    localStorage.setItem('userInfo', JSON.stringify(newInfo))
+    localStorage.setItem('userInfo', JSON.stringify(newInfo)) // store the latest details
   }
 
+  // effect hook to initiate the loading sequence and handle online/offline status changes
   useEffect(() => {
     updateInfoStepByStep()
 
+    // function to update connection status dynamically
     const updateConnectionStatus = () => {
       setInfo((prev) => ({
         ...prev,
@@ -188,9 +208,11 @@ const LoadingScreen = ({ onFinish }) => {
       }))
     }
 
+    // event listeners for online/offline status changes
     window.addEventListener('online', updateConnectionStatus)
     window.addEventListener('offline', updateConnectionStatus)
 
+    // cleanup function to remove event listeners when component unmounts
     return () => {
       window.removeEventListener('online', updateConnectionStatus)
       window.removeEventListener('offline', updateConnectionStatus)

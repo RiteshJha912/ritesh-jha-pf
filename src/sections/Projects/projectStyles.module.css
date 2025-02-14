@@ -24,6 +24,7 @@
     h3 {
         margin-top: 25px;
     }
+   
 }
 
 .projectsContainer {
@@ -38,7 +39,6 @@
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
-
 
 @media(width <= 799px){
     .container{
