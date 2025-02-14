@@ -23,7 +23,7 @@ const LoadingScreen = ({ onFinish }) => {
   // function to detect the user's browser from the userAgent string
   const getBrowser = () => {
     const userAgent = navigator.userAgent
-    if (navigator.brave) return 'Brave' 
+    if (navigator.brave) return 'Brave'
     if (/edg\//i.test(userAgent)) return 'Edge'
     if (/opr\//i.test(userAgent) || /opera/i.test(userAgent)) return 'Opera'
     if (/firefox|fxios/i.test(userAgent)) return 'Firefox'
@@ -104,12 +104,12 @@ const LoadingScreen = ({ onFinish }) => {
   }
 
   // function that updates user system details progressively with delays
+  // function that updates user system details progressively with delays
   const updateInfoStepByStep = async () => {
     const delay = (ms) => new Promise((res) => setTimeout(res, ms)) // helper function to create time delays
     const cachedData = loadCachedData()
     const isFirstLoad = !cachedData // check if it's the first time loading data
 
-    // initial delay and revealing connection status
     await delay(isFirstLoad ? 1500 : 750)
     setShowConnectionStatus(true)
     setProgress(20)
@@ -118,7 +118,6 @@ const LoadingScreen = ({ onFinish }) => {
     await delay(isFirstLoad ? 1000 : 500)
     setProgress(35)
 
-    // if cached data exists, load it instead of fetching again
     if (cachedData) {
       setInfo(cachedData)
       setStep(2)
@@ -134,9 +133,8 @@ const LoadingScreen = ({ onFinish }) => {
       await delay(250)
       setProgress(100)
 
-      updateCacheInBackground() // refresh cache asynchronously
+      updateCacheInBackground()
     } else {
-      // fetch fresh data since no cache exists
       const newInfo = {
         onlineStatus: navigator.onLine ? 'Online' : 'Offline',
         browser: getBrowser(),
@@ -160,22 +158,36 @@ const LoadingScreen = ({ onFinish }) => {
       await delay(1000)
       setProgress(80)
 
-      // fetch location if IP is available
-      const location =
-        newInfo.ip !== 'Unavailable'
-          ? await fetchLocation(newInfo.ip)
-          : 'Unavailable'
-      newInfo.location = location
+      // Start a timeout of 3 seconds for fetching location
+      let locationFetched = false
+      const locationTimeout = setTimeout(() => {
+        if (!locationFetched) {
+          console.warn('Location fetch timeout exceeded, skipping...')
+          setInfo((prev) => ({ ...prev, location: 'Unavailable' }))
+          setStep(5)
+          setProgress(100)
+          setTimeout(onFinish, 500) // Proceed without location
+        }
+      }, 3000) // 3 seconds timeout
+
+      if (newInfo.ip !== 'Unavailable') {
+        const location = await fetchLocation(newInfo.ip)
+        locationFetched = true
+        clearTimeout(locationTimeout) // Clear timeout if location fetched in time
+        newInfo.location = location
+      } else {
+        newInfo.location = 'Unavailable'
+      }
 
       setInfo(newInfo)
-      localStorage.setItem('userInfo', JSON.stringify(newInfo)) // save data in local storage
+      localStorage.setItem('userInfo', JSON.stringify(newInfo))
 
       setStep(5)
       await delay(500)
       setProgress(100)
     }
 
-    setTimeout(onFinish, 500) // execute onFinish callback after a slight delay
+    setTimeout(onFinish, 500)
   }
 
   // function to update the stored cache with new data in the background
