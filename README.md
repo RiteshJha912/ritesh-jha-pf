@@ -53,6 +53,7 @@ project-root/
 │
 └── README.md                          # You are reading this!
 ```
+-> Uses React icons library 
 
 ## License
 
