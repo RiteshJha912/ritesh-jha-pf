@@ -104,7 +104,6 @@ const LoadingScreen = ({ onFinish }) => {
   }
 
   // function that updates user system details progressively with delays
-  // function that updates user system details progressively with delays
   const updateInfoStepByStep = async () => {
     const delay = (ms) => new Promise((res) => setTimeout(res, ms)) // helper function to create time delays
     const cachedData = loadCachedData()
