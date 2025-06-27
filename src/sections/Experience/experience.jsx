@@ -6,6 +6,7 @@ import InternshipCard from '../../common/internshipCard'
 import deepCytesLogo from '../../assets/deepcytes.jpg'
 import stallionLogo from '../../assets/TSP.jpg'
 import noxAlgologo from '../../assets/noxalgo.jpg'
+import smowCodelogo from '../../assets/smowcode.jpeg'
 
 function Internships() {
   useEffect(() => {
@@ -19,8 +20,15 @@ function Internships() {
   return (
     <section id='internships' className={styles.container}>
       <h1 className='sectionTitle'>Experience 💼</h1>
-      <h3 className={styles.workExperience}>Total Work Ex: 10 months</h3>
+      <h3 className={styles.workExperience}>Total Work Ex: 1 Year</h3>
       <div className={styles.internshipCards}>
+        <InternshipCard
+          logoSrc={smowCodelogo}
+          companyName='SmowCode'
+          position='Software Developer (AI)'
+          duration='May 2025 - July 2025'
+          aosEffect='fade-down'
+        />
         <InternshipCard
           logoSrc={noxAlgologo}
           companyName='NOXALGO'

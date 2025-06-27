@@ -20,8 +20,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-.terminal {
     touch-action: pan-y;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -43,9 +41,10 @@
 }
 
 .terminal p {
-    margin: 5px 0;
+    margin: 2px 0;
     white-space: pre-wrap;
     text-align: left;
+    line-height: 1.2;
 }
 
 .userCommand {

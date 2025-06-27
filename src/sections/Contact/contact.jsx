@@ -58,18 +58,24 @@ function Contact() {
       setEmail('')
       setSubmitted(false)
     } else if (cmd === 'resume') {
-    setLogs((prevLogs) => [
-      ...prevLogs,
-      <span className={styles.userCommand}>$ {cmd}</span>,
-      'Opening resume...',
-    ]);
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        'Opening resume...',
+      ])
 
-    setTimeout(() => {
-      window.open(
-        'https://drive.google.com/file/d/1jibFZhfrJS4Gw1x0uGeKMYJMOUbLBNAp/view?usp=sharing',
-        '_blank'
-      )
-    }, 500);
+      setTimeout(() => {
+        window.open(
+          'https://drive.google.com/file/d/1jibFZhfrJS4Gw1x0uGeKMYJMOUbLBNAp/view?usp=sharing',
+          '_blank'
+        )
+      }, 500)
+    } else if (cmd === 'contact') {
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        'Email: riteshjha2174@gmail.com / ritesh.exe@proton.me',
+      ])
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [
         ...prevLogs,
@@ -81,6 +87,7 @@ function Contact() {
         '',
         'Other commands:',
         '▶ resume - To view my resume',
+        '▶ contact - To view my contact email',
         '▶ clear - To reset terminal',
       ])
     } else if (addRegex.test(cmd)) {
@@ -163,7 +170,7 @@ function Contact() {
         onClick={() => {
           inputRef.current?.focus()
         }}
-        onTouchStart={(e) => e.stopPropagation()} 
+        onTouchStart={(e) => e.stopPropagation()}
       >
         {logs.map((log, index) => (
           <p key={index}>{log}</p>

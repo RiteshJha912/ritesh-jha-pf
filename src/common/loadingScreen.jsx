@@ -16,8 +16,8 @@ const LoadingScreen = ({ onFinish }) => {
     onlineStatus: navigator.onLine ? 'Online' : 'Offline',
     browser: 'Detecting...',
     os: 'Detecting...',
-    ip: 'Fetching...',
-    location: 'Fetching...',
+    ip: 'Detecting...',
+    location: 'Detecting...',
   })
 
   // function to detect the user's browser from the userAgent string
