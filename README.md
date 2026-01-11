@@ -1,6 +1,4 @@
-## View Porfolio here : https://about-ritesh.netlify.app/
-or 
-View it here : https://about-ritesh.vercel.app/ 
+## View live : https://about-ritesh.vercel.app/ 
 
 ---
 
