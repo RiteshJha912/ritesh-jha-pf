@@ -1,6 +1,4 @@
-## View Porfolio here : https://about-ritesh.netlify.app/
-or 
-View it here : https://about-ritesh.vercel.app/ 
+## View live : https://about-ritesh.vercel.app/ 
 
 ---
 
@@ -59,6 +57,9 @@ project-root/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
 Will work on this to keep updating it constantly.
+
+
+### Revamp hitting soon
 
 
 ### This is one of those only projects for me as a developer which really gave me enough of both adrenaline and fulfillment.
