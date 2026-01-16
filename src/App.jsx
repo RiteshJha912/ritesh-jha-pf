@@ -9,29 +9,29 @@ import Experience from './sections/Experience/experience.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaderFinished, setIsLoaderFinished] = useState(false)
+  const [isHeroLoaded, setIsHeroLoaded] = useState(false)
+  
+  const showLoader = !isLoaderFinished || !isHeroLoaded
 
   useEffect(() => {
-    if (isLoaded) {
+    if (!showLoader) {
       document.body.style.overflow = 'auto' // Allow scrolling after loading
     } else {
       document.body.style.overflow = 'hidden' // Prevent scrolling while loading
     }
-  }, [isLoaded])
+  }, [showLoader])
 
   return (
     <>
-      {!isLoaded && <LoadingScreen onFinish={() => setIsLoaded(true)} />}
-      {isLoaded && (
-        <>
-          <Hero />
-          <Projects />
-          <Skills />
-          <Experience />
-          <Contact />
-          <Footer />
-        </>
-      )}
+      {showLoader && <LoadingScreen onFinish={() => setIsLoaderFinished(true)} />}
+      
+      <Hero onImageLoad={() => setIsHeroLoaded(true)} />
+      <Projects />
+      <Skills />
+      <Experience />
+      <Contact />
+      <Footer />
     </>
   )
 }

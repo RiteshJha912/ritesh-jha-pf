@@ -12,7 +12,7 @@ import heroImg from '../../assets/MainPic3.jpg'
 
 import { useTheme } from '../../common/themeContext'
 
-function Hero() {
+function Hero({ onImageLoad }) {
   const { theme, toggleTheme } = useTheme()
   const themeIcon = theme === 'light' ? sun : moon
   const githubIcon = theme === 'light' ? githubLight : githubDark
@@ -89,6 +89,8 @@ function Hero() {
           className={styles.hero}
           src={heroImg}
           alt='Profile Picture of Ritesh Jha'
+          onLoad={onImageLoad}
+          onError={onImageLoad}
         />
         <div className={styles.themeButtonContainer}>
           <img
