@@ -116,14 +116,14 @@ function Hero({ onImageLoad }) {
           </h1>
         </div>
         <h3 className={styles.h3Slide}>
-          {'<'}Programmer{'/>'}
+          {'<'}Learner{'/>'}
         </h3>
         <h3 className={styles.h3Slide}>
           {'<'}Fullstack Developer{'/>'}
         </h3>
-        <h3 className={styles.h3Slide}>
+        {/* <h3 className={styles.h3Slide}>
           {'<'}Open Source Contributor{'/>'}
-        </h3>
+        </h3> */}
         <h3 className={styles.h3Slide}>
           {'<'}Digital Security Enthusiast{'/>'}
         </h3>
