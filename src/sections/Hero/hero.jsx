@@ -109,23 +109,31 @@ function Hero({ onImageLoad }) {
       </div>
 
       <div className={styles.info}>
-        <h2 className={styles.h2}> {'>'}_ Hi I am </h2>
+        <h2 className={styles.h2}> <span className={styles.codeBracket}>{'>'}_</span> Hi I am </h2>
         <div className={styles.typewriterContainer}>
           <h1 className={styles.typewriter}>
             <span>{currentText || '\u00A0'}</span>
           </h1>
         </div>
         <h3 className={styles.h3Slide}>
-          {'<'}Learner{'/>'}
+          <span className={styles.codeBracket}>{'<'}</span>
+          Learner
+          <span className={styles.codeBracket}>{'/>'}</span>
         </h3>
         <h3 className={styles.h3Slide}>
-          {'<'}Fullstack Developer{'/>'}
+          <span className={styles.codeBracket}>{'<'}</span>
+          Fullstack Developer
+          <span className={styles.codeBracket}>{'/>'}</span>
         </h3>
         {/* <h3 className={styles.h3Slide}>
-          {'<'}Open Source Contributor{'/>'}
+          <span className={styles.codeBracket}>{'<'}</span>
+          Open Source Contributor
+          <span className={styles.codeBracket}>{'/>'}</span>
         </h3> */}
         <h3 className={styles.h3Slide}>
-          {'<'}Digital Security Enthusiast{'/>'}
+          <span className={styles.codeBracket}>{'<'}</span>
+          Digital Security Enthusiast
+          <span className={styles.codeBracket}>{'/>'}</span>
         </h3>
 
         <div className={styles.logoContainer}>
