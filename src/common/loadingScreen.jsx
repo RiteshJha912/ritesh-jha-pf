@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './loadingScreen.module.css'
 
-const LoadingScreen = ({ onFinish }) => {
+const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
   // state to track the loading progress in percentage (0 to 100)
   const [progress, setProgress] = useState(0)
 
@@ -10,6 +10,9 @@ const LoadingScreen = ({ onFinish }) => {
 
   // state to control the visibility of connection status display
   const [showConnectionStatus, setShowConnectionStatus] = useState(false)
+  
+  // state to track when the internal loading steps are complete
+  const [readyToFinish, setReadyToFinish] = useState(false)
 
   // state to store user system details such as online status, browser, OS, IP, and location
   const [info, setInfo] = useState({
@@ -130,7 +133,7 @@ const LoadingScreen = ({ onFinish }) => {
       setProgress(80)
       setStep(5)
       await delay(250)
-      setProgress(100)
+      setProgress(90) // Stall at 90% until hero image loads
 
       updateCacheInBackground()
     } else {
@@ -164,8 +167,8 @@ const LoadingScreen = ({ onFinish }) => {
           console.warn('Location fetch timeout exceeded, skipping...')
           setInfo((prev) => ({ ...prev, location: 'Unavailable' }))
           setStep(5)
-          setProgress(100)
-          setTimeout(onFinish, 500) // Proceed without location
+          setProgress(90)
+          setReadyToFinish(true) // Mark as ready to finish
         }
       }, 3000) // 3 seconds timeout
 
@@ -183,10 +186,10 @@ const LoadingScreen = ({ onFinish }) => {
 
       setStep(5)
       await delay(500)
-      setProgress(100)
+      setProgress(90)
     }
 
-    setTimeout(onFinish, 500)
+    setReadyToFinish(true)
   }
 
   // function to update the stored cache with new data in the background
@@ -228,7 +231,16 @@ const LoadingScreen = ({ onFinish }) => {
       window.removeEventListener('online', updateConnectionStatus)
       window.removeEventListener('offline', updateConnectionStatus)
     }
-  }, [onFinish])
+  }, [])
+
+  // effect to handle the final transition to 100% and finish
+  useEffect(() => {
+    if (readyToFinish && isHeroLoaded) {
+      setProgress(100)
+      const timer = setTimeout(onFinish, 500)
+      return () => clearTimeout(timer)
+    }
+  }, [readyToFinish, isHeroLoaded, onFinish])
 
   return (
     <div className={styles.loader}>

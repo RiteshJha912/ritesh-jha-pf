@@ -24,7 +24,12 @@ function App() {
 
   return (
     <>
-      {showLoader && <LoadingScreen onFinish={() => setIsLoaderFinished(true)} />}
+      {showLoader && (
+        <LoadingScreen
+          onFinish={() => setIsLoaderFinished(true)}
+          isHeroLoaded={isHeroLoaded}
+        />
+      )}
       
       <Hero onImageLoad={() => setIsHeroLoaded(true)} />
       <Projects />

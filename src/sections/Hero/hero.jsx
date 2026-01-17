@@ -149,7 +149,7 @@ function Hero({ onImageLoad }) {
           <div
             onClick={() =>
               window.open(
-                'https://www.linkedin.com/in/ritesh-jha-aa490a286/',
+                'https://www.linkedin.com/in/ritesh-j/',
                 '_blank'
               )
             }
