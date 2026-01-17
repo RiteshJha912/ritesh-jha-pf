@@ -198,7 +198,7 @@ function Hero({ onImageLoad }) {
 
         <a>
           <button
-            className='hover'
+            className={styles.hireBtn}
             onClick={() =>
               document
                 .getElementById('contact')
