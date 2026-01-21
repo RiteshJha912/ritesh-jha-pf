@@ -346,6 +346,8 @@ a {
 
 .description {
     max-width: 40ch;
+    font-size: 14px;
+    /* Reduced from default 16px */
 }
 
 .info {

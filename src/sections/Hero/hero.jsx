@@ -165,11 +165,9 @@ function Hero({ onImageLoad }) {
         </div>
 
         <p className={styles.description}>
-          My code is so shady that even this text is just a hack to stop my
-          website’s UI from falling apart. So why hire me?
-          <br />
-          <br />I might be a coding rookie, but I bend rules, weaponize chaos &
-          craft wild fixes that serve unexpected{' '}
+          somewhere between breaking my own logic and fixing them at 3 am, this
+          website came into existence! it isn't here to impress anyone, its just
+          a checkpoint, a reminder that i didn't quit midway, and picked up some{' '}
           <span
             onClick={() =>
               window.open(
@@ -192,8 +190,8 @@ function Hero({ onImageLoad }) {
             style={{ display: 'inline', cursor: 'pointer' }}
           >
             ritziness
-          </span>
-          .
+          </span>{' '}
+          along the way.
         </p>
 
         <a>

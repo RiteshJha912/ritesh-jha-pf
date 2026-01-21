@@ -77,22 +77,12 @@
     letter-spacing: 0.5px;
     position: relative;
     cursor: pointer;
+    cursor: pointer;
     transition: color 0.6s ease, font-size 0.6s ease;
     font-family: 'Roboto Mono', monospace;
     opacity: 0.8;
-}
-
-.navLink::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--hero-border-color);
-    transition: width 0.3s ease;
-    border-radius: 2px;
+    padding: 15px;
+    /* Increased hit area for magnetic effect */
 }
 
 .navLink:hover {
@@ -100,9 +90,7 @@
     opacity: 1;
 }
 
-.navLink:hover::after {
-    width: 100%;
-}
+/* Removed underline styles for magnetic effect */
 
 .mobileMenuBtn {
     display: none;
