@@ -1,0 +1,228 @@
+.navbar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    /* Changed from fixed % to fit-content to allow smooth min-width animation */
+    min-width: min(600px, 90vw);
+    /* Defines the expanded size */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.scrolled {
+    top: 15px;
+    padding: 5px 30px;
+    width: fit-content;
+    min-width: 0;
+    /* Allows it to shrink to content size */
+    max-width: 90vw;
+    /* Safety cap */
+
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.scrolled .navLink {
+    font-size: 13px;
+    /* Smaller text */
+}
+
+.scrolled .themeToggle {
+    font-size: 18px;
+    /* Smaller icon */
+    width: 30px;
+    height: 30px;
+}
+
+:global([data-theme='dark']) .navbar {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme='dark']) .scrolled {
+    background: rgba(20, 20, 20, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.navLink {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.6s ease, font-size 0.6s ease;
+    font-family: 'Roboto Mono', monospace;
+    opacity: 0.8;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--hero-border-color);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.navLink:hover {
+    color: var(--hero-border-color);
+    opacity: 1;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.mobileMenuBtn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0;
+}
+
+.themeToggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 22px;
+    color: var(--text-color);
+    transition: transform 0.6s ease, color 0.6s ease, width 0.6s ease, height 0.6s ease, font-size 0.6s ease;
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.themeToggle:hover {
+    transform: rotate(30deg) scale(1.1);
+    background: rgba(150, 150, 150, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        width: 85%;
+        /* Increased side gap */
+        padding: 8px 16px;
+        /* Reduced height */
+        justify-content: space-between;
+        top: 25px;
+    }
+
+    .scrolled {
+        width: 85%;
+        /* Shrinks nicely */
+        padding: 8px 15px;
+        top: 15px;
+    }
+
+    .navLinks {
+        position: absolute;
+        top: 70px;
+        /* Below the navbar */
+        right: 0;
+        width: 220px;
+        /* dropdown width */
+        height: auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 20px;
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        transform: scale(0.95);
+        opacity: 0;
+        pointer-events: none;
+        transform-origin: top right;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 1001;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        margin: 0;
+    }
+
+    .navLinks.open {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    :global([data-theme='dark']) .navLinks {
+        background: rgba(30, 30, 30, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .navLink {
+        font-size: 16px;
+        font-weight: 500;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        transition: background 0.2s ease;
+        box-sizing: border-box;
+    }
+
+    .navLink:hover,
+    .navLink:active {
+        background: rgba(125, 125, 125, 0.1);
+        color: var(--hero-border-color);
+    }
+
+    .navLink::after {
+        display: none;
+        /* No underline for dropdown items */
+    }
+
+    .mobileMenuBtn {
+        display: block;
+    }
+
+    /* Move theme toggle to the mobile menu or keep it in header? 
+       Let's keep it visible in header for easy access even on mobile.
+    */
+    .themeToggle {
+        margin-left: 0;
+    }
+}

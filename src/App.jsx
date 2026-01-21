@@ -7,6 +7,8 @@ import Contact from './sections/Contact/contact.jsx'
 import Footer from './sections/Footer/footer.jsx'
 import Experience from './sections/Experience/experience.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
+import Navbar from './sections/Navbar/Navbar.jsx'
+
 
 function App() {
   const [isLoaderFinished, setIsLoaderFinished] = useState(false)
@@ -31,6 +33,7 @@ function App() {
         />
       )}
       
+      <Navbar />
       <Hero onImageLoad={() => setIsHeroLoaded(true)} />
       <Projects />
       <Skills />

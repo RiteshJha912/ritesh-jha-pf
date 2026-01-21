@@ -8,7 +8,9 @@
     min-height: 500px;
     position: relative;
     overflow: hidden;
-    /* Ensure pseudo-element doesn't overflow */
+    padding-top: 120px;
+    /* Offset for navbar */
+    box-sizing: border-box;
 }
 
 .container::before {
@@ -358,7 +360,8 @@ a {
 }
 
 .info h2 {
-    font-size: 25px;
+    font-size: 18px;
+    /* Reduced from 25px */
     text-align: left;
     margin-left: 51px;
     font-family: Arial, Helvetica, sans-serif;
@@ -517,6 +520,8 @@ a {
 @media (min-width: 360px) and (max-width: 799px) {
     .container {
         margin-top: 15px;
+        padding-top: 90px;
+        /* Reduced gap for mobile */
     }
 
     .colorMode {
@@ -592,7 +597,8 @@ a {
     }
 
     .info h1 {
-        font-size: 60px;
+        font-size: 50px;
+        /* Reduced from 60px to create more space */
         padding: 0px;
     }
 

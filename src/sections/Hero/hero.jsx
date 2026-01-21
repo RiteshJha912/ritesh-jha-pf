@@ -92,7 +92,7 @@ function Hero({ onImageLoad }) {
           onLoad={onImageLoad}
           onError={onImageLoad}
         />
-        <div className={styles.themeButtonContainer}>
+{/* <div className={styles.themeButtonContainer}>
           <img
             className={styles.colorMode}
             src={themeIcon}
@@ -105,7 +105,7 @@ function Hero({ onImageLoad }) {
               <br /> theme here
             </div>
           )}
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.info}>
