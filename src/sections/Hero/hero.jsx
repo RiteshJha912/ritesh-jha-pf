@@ -191,7 +191,7 @@ function Hero({ onImageLoad }) {
           >
             ritziness
           </span>{' '}
-          along the way.
+          along the way
         </p>
 
         <a>
