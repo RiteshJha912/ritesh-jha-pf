@@ -195,7 +195,6 @@ function Hero({ onImageLoad }) {
           along the way
         </p>
 
-        <a>
           <button
             className={styles.hireBtn}
             onClick={() =>
@@ -204,9 +203,11 @@ function Hero({ onImageLoad }) {
                 .scrollIntoView({ behavior: 'smooth' })
             }
           >
-            Hire me!
+            <div className={styles.btnTextContainer}>
+              <span className={styles.btnText}>Hire me!</span>
+              <span className={styles.btnTextHover}>Let's Talk</span>
+            </div>
           </button>
-        </a>
       </div>
     </section>
   )

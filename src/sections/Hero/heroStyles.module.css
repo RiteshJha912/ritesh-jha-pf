@@ -155,59 +155,108 @@ a {
     cursor: pointer;
 }
 
+/* Button styles moved to .hireBtn class below */
+/* Button styles moved to .hireBtn class below */
 .hireBtn {
-    background: transparent;
+    position: relative;
+    background: var(--background-color);
     color: var(--hero-border-color);
     border: 1px solid var(--hero-border-color);
-    width: 160px;
-    height: 52px;
+    width: 170px;
+    height: 54px;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
+    /* Reduced from 800 for elegance */
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 20px;
-    position: relative;
+    letter-spacing: 1.5px;
+    border-radius: 30px;
+    /* Full pill shape looks cleaner */
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    /* Center alignment fallback */
+    font-family: 'Roboto Mono', monospace;
+    /* meaningful tech font */
 }
 
-/* Swipe Fill Effect */
+/* The Professional Fill Effect */
 .hireBtn::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 100%;
     height: 100%;
     background: var(--hero-border-color);
     z-index: -1;
-    transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
-    /* Sleek easing */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    /* "Expo" easing for premium feel */
 }
 
+/* Hover State */
 .hireBtn:hover::before {
-    width: 100%;
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .hireBtn:hover {
     color: var(--background-color);
     /* Invert text color */
-    transform: scale(1.05);
-    /* Subtle lift */
     border-color: transparent;
     /* Seamless look */
+    /* Removed the glow/bloom for a cleaner look */
 }
 
+/* Text Handling */
+.btnTextContainer {
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    /* Fixed height for the text window */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.btnText {
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateY(0%);
+    line-height: 20px;
+    /* Match container height */
+}
+
+.btnTextHover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateY(0%);
+    line-height: 20px;
+    color: var(--background-color);
+}
+
+/* Text Swap Animation */
+.hireBtn:hover .btnText {
+    transform: translateY(-150%);
+}
+
+.hireBtn:hover .btnTextHover {
+    transform: translateY(-100%);
+}
+
+/* Active Press */
 .hireBtn:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 10px -5px var(--hero-border-color);
+    transform: scale(0.96);
 }
 
 @keyframes shine {
