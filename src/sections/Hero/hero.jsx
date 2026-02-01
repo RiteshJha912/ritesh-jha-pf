@@ -8,7 +8,7 @@ import linkedinLight from '../../assets/linkedin-light.svg'
 import linkedinDark from '../../assets/linkedin-dark.svg'
 
 // import heroImg from '../../assets/MainPic3.jpg'
-import heroImg from '../../assets/MainPic3.jpg'
+import heroImg from '../../assets/mainpci4.jpg'
 
 
 import { useTheme } from '../../common/themeContext'
@@ -168,7 +168,7 @@ function Hero({ onImageLoad }) {
         <p className={styles.description}>
           somewhere between breaking my own logic and fixing them at 3 am, this
           website came into existence! it isn't here to impress anyone, its just
-          a checkpoint, a reminder that i didn't quit midway, and picked up some{' '}
+          a checkpoint, a reminder that i didn't quit, and picked up some{' '}
           <span
             onClick={() =>
               window.open(
