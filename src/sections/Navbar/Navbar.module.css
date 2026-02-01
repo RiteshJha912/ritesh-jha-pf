@@ -92,6 +92,10 @@
 
 /* Removed underline styles for magnetic effect */
 
+.navIcon {
+    display: none;
+}
+
 .mobileMenuBtn {
     display: none;
     background: none;
@@ -125,28 +129,37 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .navbar {
-        width: 85%;
-        /* Increased side gap */
-        padding: 8px 16px;
-        /* Reduced height */
+        width: 80%;
+        min-width: 0;
+        /* Reset interfering desktop min-width */
+        padding: 12px 20px;
+        /* Slightly reduced padding for better fit */
         justify-content: space-between;
-        top: 25px;
+        top: 20px;
+        border-radius: 8px;
+        /* Less rounded corners, distinct from pill */
     }
 
     .scrolled {
-        width: 85%;
-        /* Shrinks nicely */
-        padding: 8px 15px;
+        width: 140px;
+        /* Shrinks to a compact island */
+        padding: 8px 20px;
         top: 15px;
+        border-radius: 50px;
+        /* Becomes a pill */
+        justify-content: space-between;
+        /* Keeps icons distinct */
     }
 
     .navLinks {
         position: absolute;
-        top: 70px;
-        /* Below the navbar */
+        top: 80px;
+        /* Increased spacing from new navbar height */
         right: 0;
-        width: 220px;
-        /* dropdown width */
+        width: calc(100% + 0px);
+        /* Full width relative to navbar parent */
+        max-width: 300px;
+        /* Cap width */
         height: auto;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
@@ -205,6 +218,11 @@
 
     .mobileMenuBtn {
         display: block;
+    }
+
+    .navIcon {
+        display: block;
+        font-size: 1.2em;
     }
 
     /* Move theme toggle to the mobile menu or keep it in header? 

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 // ...
 
-const NavItem = ({ item, onClick, mobileMenuOpen, className }) => {
+const NavItem = ({ item, onClick, className, iconClassName }) => {
     const itemRef = useRef(null);
 
     const handleMouseMove = (e) => {
@@ -48,7 +48,7 @@ const NavItem = ({ item, onClick, mobileMenuOpen, className }) => {
             onMouseLeave={handleMouseLeave}
             style={{ display: 'flex', alignItems: 'center', gap: '8px' }} // inline flex to keep icon/text together
         >
-             {mobileMenuOpen && item.icon} {item.label}
+             <span className={iconClassName}>{item.icon}</span> {item.label}
         </li>
     );
 };
@@ -118,7 +118,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+        <nav className={`${styles.navbar} ${scrolled && !mobileMenuOpen ? styles.scrolled : ''}`}>
             
             <button 
                 className={styles.mobileMenuBtn} 
@@ -134,7 +134,7 @@ const Navbar = () => {
                         key={item.id}
                         item={item}
                         className={styles.navLink}
-                        mobileMenuOpen={mobileMenuOpen}
+                        iconClassName={styles.navIcon}
                         onClick={() => scrollToSection(item.id)}
                     />
                 ))}
