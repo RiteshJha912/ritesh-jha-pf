@@ -8,7 +8,7 @@ import linkedinLight from '../../assets/linkedin-light.svg'
 import linkedinDark from '../../assets/linkedin-dark.svg'
 
 // import heroImg from '../../assets/MainPic3.jpg'
-import heroImg from '../../assets/mainpci4.jpg'
+import heroImg from '../../assets/mp2.jpg'
 
 
 import { useTheme } from '../../common/themeContext'

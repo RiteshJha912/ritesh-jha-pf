@@ -94,6 +94,17 @@
     .hero {
         max-width: 280px;
         width: 280px;
+        /* Noir/Moody B&W Start State */
+        filter: grayscale(100%) contrast(1.2) brightness(0.9);
+        transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        mix-blend-mode: luminosity;
+        /* Blends with bg for better integration */
+    }
+
+    .hero:hover {
+        /* Vibrant Pop State */
+        filter: grayscale(0%) contrast(1) brightness(1.05) saturate(1.1);
+        mix-blend-mode: normal;
     }
 
     .heroWrapper::before {
