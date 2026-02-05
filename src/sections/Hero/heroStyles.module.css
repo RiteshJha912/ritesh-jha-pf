@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    /* Center the blocks (info, image) horizontally */
     gap: 45px;
     text-align: center;
     height: 100dvh;
@@ -11,6 +13,8 @@
     padding-top: 120px;
     /* Offset for navbar */
     box-sizing: border-box;
+    width: 100%;
+    /* Ensure full width */
 }
 
 .container::before {
@@ -405,33 +409,56 @@ a {
 
 
 .description {
-    max-width: 40ch;
+    max-width: 50ch;
+    /* Increased width to reduce lines */
     font-size: 14px;
-    /* Reduced from default 16px */
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    /* Elegant spacing */
+    line-height: 1.6;
+    /* Better readability */
+    opacity: 0.8;
+    /* Softer look */
 }
 
 .info {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    /* align-items: center; REMOVED - let it stretch or match content so margin-left works relative to block */
+}
+
+/* ... h1/h2 styles restored ... */
+.info h1,
+.info h2,
+.info h3 {
+    margin: -5px 0;
+    /* Restore tight spacing locally */
 }
 
 .info h1 {
     font-size: 40px;
     margin-bottom: 25px;
+    /* Override logic order */
 }
 
 .info h2 {
     font-size: 18px;
-    /* Reduced from 25px */
     text-align: left;
-    margin-left: 51px;
+    margin-left: 0;
+    align-self: center;
+    transform: translateX(-80px);
+    /* Shift left from center axis */
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .info p {
-    /* margin-bottom: -30px; */
-    padding: 40px;
+    padding: 15px 0;
+    /* Reduced padding to pull button up */
+    text-align: center;
+    /* Ensure centered text block */
+    margin: 0 auto;
+    /* Center the block itself */
 }
 
 
@@ -617,6 +644,8 @@ a {
         text-align: center;
         font-size: 20px;
         margin-left: 0;
+        transform: translateX(-40px);
+        /* Align with smaller mobile */
     }
 
     .info p {
@@ -664,10 +693,7 @@ a {
         padding: 0px;
     }
 
-
-    .info p {
-        padding-left: 50px;
-    }
+    /* .info p { padding-left: 50px; } REMOVED to allow proper centering */
 }
 
 
@@ -698,7 +724,9 @@ a {
     .info h2 {
         text-align: center;
         font-size: 20px;
-        margin-left: -148px;
+        margin-left: 0;
+        transform: translateX(-40px);
+        /* "Left center" alignment for mobile */
     }
 
     /* Button override removed - using .hireBtn default */

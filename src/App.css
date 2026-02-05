@@ -1,92 +1,94 @@
-    /* Helps identify problematic elements
 * {
-    outline: 1px solid blue;
-} */
+    box-sizing: border-box;
+}
 
-    :root {
-        --background-color: #fff;
-        --btn-color: black;
-        --btn-text-color: #fff;
-        --project-card-bg: #ffffff00;
-        --text-color: #222;
-        --form-text-color: #555;
-        --footer-text-color: #888;
+:root {
+    --background-color: #fff;
+    --btn-color: black;
+    --btn-text-color: #fff;
+    --project-card-bg: rgba(0, 0, 0, 0.03);
+    --placeholder-gradient: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+    --text-color: #222;
+    --form-text-color: #555;
+    --footer-text-color: #888;
 
-        --hero-border-color: black;
-        -webkit-tap-highlight-color: transparent;
-    }
+    --hero-border-color: black;
+    -webkit-tap-highlight-color: transparent;
+}
 
-    [data-theme='dark'] {
-        --background-color: #222;
-        --btn-color: #fff;
-        --btn-text-color: #222;
-        --project-card-bg: #e7e2e2;
-        --text-color: #fff;
-        --form-text-color: #555;
-        --footer-text-color: #bbb;
+[data-theme='dark'] {
+    --background-color: #222;
+    --btn-color: #fff;
+    --btn-text-color: #222;
+    --project-card-bg: rgba(255, 255, 255, 0.05);
+    --placeholder-gradient: linear-gradient(135deg, #333 0%, #444 100%);
+    --text-color: #fff;
+    --form-text-color: #555;
+    --footer-text-color: #bbb;
 
-        --hero-border-color: white;
-    }
+    --hero-border-color: white;
+}
 
-    body {
-        background-color: var(--background-color);
-        display: flex;
-        justify-content: center;
-        margin: 0 auto 60px;
-        overflow-x: hidden;
-        margin: 0;
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    /* Ensure default font */
+}
 
+#root {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+}
 
-    }
+h1,
+h2,
+h3,
+p {
+    color: var(--text-color);
+    margin: 0;
+    /* Fixed negative margin causing overlaps */
+    padding: 0;
+}
 
+h2,
+h3,
+p {
+    font-family: 'Roboto Mono', monospace;
+}
 
-    #root {
-        display: flex;
-        flex-direction: column;
-        gap: 60px;
-    }
+h1,
+h2 {
+    text-transform: uppercase;
+}
 
-    h1,
-    h2,
-    h3,
-    p {
-        color: var(--text-color);
-        margin: -5px;
-        padding: 0px;
-    }
+h2,
+h3 {
+    font-size: 20px;
+}
 
-    h2,
-    h3,
-    p {
-        font-family: 'Roboto Mono', monospace;
-    }
+h1 {
+    font-family: "Bona Nova SC", serif;
+    font-weight: 700;
+    font-size: 40px;
+}
 
-    h1,
-    h2 {
-        text-transform: uppercase;
-    }
+p {
+    font-size: 16px;
+    font-weight: 300;
+}
 
-    h2,
-    h3 {
-        font-size: 20px;
-    }
+.sectionTitle {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
 
-    h1 {
-        font-family: "Bona Nova SC", serif;
-        font-weight: 700;
-        font-size: 40px;
-    }
-
-    p {
-        font-size: 16px;
-        font-weight: 300;
-    }
-
-    .sectionTitle {
-        margin-top: 60px;
-        margin-bottom: 60px;
-    }
-
-    .hover {
-        cursor: pointer;
-    }
+.hover {
+    cursor: pointer;
+}

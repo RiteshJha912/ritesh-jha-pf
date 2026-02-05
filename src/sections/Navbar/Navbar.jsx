@@ -60,10 +60,16 @@ import { IoClose } from 'react-icons/io5';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import { FaHome, FaProjectDiagram, FaUserTie, FaEnvelope, FaCode } from 'react-icons/fa';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
+// ... existing imports ...
+
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -97,6 +103,21 @@ const Navbar = () => {
         }
     }, [mobileMenuOpen]);
 
+    // Handle scroll from other pages
+    useEffect(() => {
+        if (location.state && location.state.scrollTo) {
+            const id = location.state.scrollTo;
+            const element = document.getElementById(id);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+            // Clear state to prevent scroll on refresh - actually difficult in React Router without history replacement, 
+            // but harmless here.
+        }
+    }, [location]);
+
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
     };
@@ -110,11 +131,22 @@ const Navbar = () => {
     ];
 
     const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (id === 'projects') {
+            navigate('/projects');
+            window.scrollTo(0, 0);
             setMobileMenuOpen(false);
+            return;
         }
+
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: id } });
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        setMobileMenuOpen(false);
     };
 
     return (
