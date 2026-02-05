@@ -4,8 +4,6 @@ import hnltech from '../../assets/hnltech.png';
 import koshkeeper from '../../assets/koshkeeper.png';
 import taskifyv2 from '../../assets/taskifyv2.png';
 import devflipper from '../../assets/devflipper.png';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,11 +13,6 @@ function AllProjects() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-    });
     window.scrollTo(0, 0);
   }, []);
 
@@ -87,13 +80,13 @@ function AllProjects() {
         <button onClick={() => navigate('/')} className={styles.backBtn}>
           <FaArrowLeft /> Back to Home
         </button>
-        <h1 data-aos="fade-down">All Projects 📂</h1>
-        <p className={styles.subtitle} data-aos="fade-down" data-aos-delay="100">
+        <h1>All Projects 📂</h1>
+        <p className={styles.subtitle}>
           A curated list of my technical projects, experiments, and production applications.
         </p>
       </div>
 
-      <div className={styles.controls} data-aos="fade-down" data-aos-delay="200">
+      <div className={styles.controls}>
         <div className={styles.searchBar}>
           <FaSearch className={styles.searchIcon} />
           <input 
@@ -123,8 +116,6 @@ function AllProjects() {
             <div 
               key={index} 
               className={styles.card}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
             >
               <div className={styles.imageWrapper}>
                  <div className={styles.imagePlaceholder}></div>
