@@ -10,7 +10,8 @@
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    /* Thin black boundary for light mode */
     border-radius: 50px;
     padding: 12px 30px;
     display: flex;
@@ -121,13 +122,36 @@
     border-radius: 50%;
 }
 
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.themeToggle>svg {
+    animation: spinSlow 20s linear infinite;
+    transform-origin: center;
+}
+
+/* Ensure hover doesn't break the internal spin, but the container rotates too */
 .themeToggle:hover {
-    transform: rotate(30deg) scale(1.1);
+    transform: scale(1.1);
+    /* Removed rotate(30deg) to avoid dizzying effect */
     background: rgba(150, 150, 150, 0.1);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+
+    /* ... existing ... */
+    .themeToggle {
+        margin-left: 0;
+    }
+
     .navbar {
         width: 80%;
         min-width: 0;

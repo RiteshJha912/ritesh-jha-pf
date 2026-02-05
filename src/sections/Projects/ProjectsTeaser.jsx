@@ -29,8 +29,11 @@ function ProjectsTeaser() {
         return;
       }
 
-      // Linear Interpolation: Move current towards target by 10% each frame
-      const easing = 0.1; 
+      // Linear Interpolation: Move current towards target
+      // Use smoother easing (0.05) when resetting to center, snappier (0.1) when tracking mouse
+      const isResetting = target.current.x === 0 && target.current.y === 0;
+      const easing = isResetting ? 0.05 : 0.1; 
+      
       const diffX = target.current.x - current.current.x;
       const diffY = target.current.y - current.current.y;
 

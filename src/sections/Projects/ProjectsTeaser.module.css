@@ -4,8 +4,7 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    overflow: hidden;
-    /* Prevent x-overflow from wide fanning */
+    /* overflow: hidden; REMOVED to prevent shadow clipping */
     padding: 0 10px;
     /* Safety padding */
     box-sizing: border-box;
@@ -187,7 +186,7 @@
 @media (max-width: 768px) {
     .container {
         padding: 0 5px;
-        overflow-x: hidden;
+        /* overflow-x: hidden; REMOVED to avoid local scrollbars */
     }
 
     .teaserContent {

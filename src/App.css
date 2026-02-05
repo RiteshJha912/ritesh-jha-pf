@@ -29,11 +29,18 @@
     --hero-border-color: white;
 }
 
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body {
     background-color: var(--background-color);
     margin: 0;
     width: 100%;
     overflow-x: hidden;
+    position: relative;
+    /* Ensure containment */
     font-family: 'Roboto', sans-serif;
     /* Ensure default font */
 }
