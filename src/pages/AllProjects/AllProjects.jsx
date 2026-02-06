@@ -76,7 +76,7 @@ function AllProjects() {
 
   return (
     <section className={styles.pageContainer}>
-      <div className={styles.header}>
+      <div className={`${styles.header} ${styles.animateIn}`}>
         <button onClick={() => navigate('/')} className={styles.backBtn}>
           <FaArrowLeft /> Back to Home
         </button>
@@ -86,7 +86,7 @@ function AllProjects() {
         </p>
       </div>
 
-      <div className={styles.controls}>
+      <div className={`${styles.controls} ${styles.animateIn}`}>
         <div className={styles.searchBar}>
           <FaSearch className={styles.searchIcon} />
           <input 
@@ -110,7 +110,7 @@ function AllProjects() {
         </div>
       </div>
 
-      <div className={styles.grid}>
+      <div className={`${styles.grid} ${styles.animateIn}`}>
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => (
             <div 

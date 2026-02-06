@@ -107,7 +107,7 @@ function ProjectsTeaser() {
           <div className={`${styles.card} ${styles.card1}`}>
             <div className={styles.cardContent}>
               <h3>Explore My Work</h3>
-              <p>Check out my latest web applications, experiments, and open source contributions.</p>
+              <p>Check out my latest web builds, security experiments & OSS contributions in progress.</p>
               <button className={styles.viewBtn}>
                 View All Projects <FaArrowRight />
               </button>
