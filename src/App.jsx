@@ -13,8 +13,16 @@ import Navbar from './sections/Navbar/Navbar.jsx'
 
 
 function App() {
-  const [isLoaderFinished, setIsLoaderFinished] = useState(false)
-  const [isHeroLoaded, setIsHeroLoaded] = useState(false)
+  // Check session storage to see if we've already shown the loader in this session
+  const [isLoaderFinished, setIsLoaderFinished] = useState(() => {
+    return sessionStorage.getItem('isLoaderFinished') === 'true'
+  })
+  
+  // If we've already loaded once, we assume hero is "loaded" enough to not block UI 
+  // (browser cache usually handles this fast on refresh)
+  const [isHeroLoaded, setIsHeroLoaded] = useState(() => {
+    return sessionStorage.getItem('isLoaderFinished') === 'true'
+  })
 
   // Handle loading state bypass for non-home routes
   useEffect(() => {
@@ -37,7 +45,10 @@ function App() {
     <BrowserRouter>
       {showLoader && (
         <LoadingScreen
-          onFinish={() => setIsLoaderFinished(true)}
+          onFinish={() => {
+            setIsLoaderFinished(true)
+            sessionStorage.setItem('isLoaderFinished', 'true')
+          }}
           isHeroLoaded={isHeroLoaded}
         />
       )}
