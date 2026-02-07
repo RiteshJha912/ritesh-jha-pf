@@ -30,19 +30,26 @@
     transition: all 0.3s ease;
     font-family: 'Roboto Mono', monospace;
     /* Tech/Code aesthetic */
+    color: #000000;
+    /* Ensure HTML text (footer) is black */
 }
 
 .calendarWrapper text {
     font-family: 'Roboto Mono', monospace !important;
     font-size: 12px;
     /* Ensure readability */
-    fill: var(--text-color);
+    fill: #000000;
     /* Ensure text follows theme */
 }
 
 [data-theme='dark'] .calendarWrapper {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+[data-theme='dark'] .calendarWrapper text {
+    fill: #ffffff;
 }
 
 @media (max-width: 768px) {

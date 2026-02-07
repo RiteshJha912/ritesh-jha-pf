@@ -1,0 +1,459 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 15px;
+    /* Reduced gap */
+    padding: 20px;
+    max-width: 900px;
+    /* Significantly reduced max width */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.card {
+    background: var(--project-card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    /* Slightly tighter radius */
+    padding: 16px;
+    /* Further reduced padding */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+[data-theme='dark'] .card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Grid Areas */
+.aboutCard {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.techCard {
+    grid-column: span 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Stacking from top */
+    gap: 15px;
+    /* Add gap between sections */
+}
+
+.githubCard {
+    grid-column: span 4;
+    min-height: 160px;
+    /* Reduced height */
+    align-items: center;
+}
+
+.emailCard {
+    grid-column: span 2;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+}
+
+.cvCard {
+    grid-column: span 2;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+}
+
+/* Content Styling */
+.cardTitle {
+    font-size: 0.9rem;
+    /* Smaller title */
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family: 'Roboto Mono', monospace;
+    opacity: 0.8;
+}
+
+.cardContent {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+/* About Text */
+.aboutText {
+    font-size: 0.7rem !important;
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.35;
+}
+
+/* Tech Marquee */
+.marqueeWrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Space between rows */
+    padding: 10px 0;
+    margin-top: auto;
+    /* Vertically center in the container */
+    margin-bottom: auto;
+}
+
+.marqueeTrack {
+    display: flex;
+    gap: 12px;
+    /* Gap between items */
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+/* Reverse animation for variety */
+.marqueeTrack.reverse {
+    animation-direction: reverse;
+}
+
+.marqueeTrack:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.techBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    white-space: nowrap;
+    /* Prevent wrapping */
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.techIcon {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+[data-theme='dark'] .techBadge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.techBadge:hover {
+    background: var(--text-color);
+    color: var(--background-color);
+    transform: scale(1.05);
+}
+
+/* Github */
+.githubContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    /* Scrollbar space */
+}
+
+[data-theme='dark'] .githubContent {
+    color: #fff;
+}
+
+[data-theme='dark'] .githubContent text {
+    fill: #fff;
+}
+
+/* Email & CV */
+.emailCard,
+.cvCard {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    /* Ensure pointer */
+}
+
+.emailCard:active,
+.cvCard:active {
+    transform: scale(0.98) translateY(-2px);
+    /* Tactile feedback */
+}
+
+/* Gradient Border Effect */
+.emailCard::before,
+.cvCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    /* Standard property */
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 0.5;
+}
+
+[data-theme='dark'] .emailCard,
+[data-theme='dark'] .cvCard {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+}
+
+.emailCard:hover,
+.cvCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.2);
+    /* Deeper shadow */
+}
+
+[data-theme='dark'] .emailCard:hover,
+[data-theme='dark'] .cvCard:hover {
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3);
+    /* Stronger shadow in dark mode */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.iconLarge {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+/* Tap Flash Effect */
+@keyframes flash {
+    0% {
+        opacity: 0.4;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+.emailCard:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: translate(-50%, -50%);
+    animation: flash 0.4s ease-out;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.emailCard:active .iconLarge {
+    transform: scale(1.4) rotate(15deg);
+    /* Pop the icon on click */
+    color: var(--btn-color);
+}
+
+.cvCard:hover .iconLarge {
+    transform: scale(1.1) rotate(-5deg);
+    color: var(--text-color);
+    filter: drop-shadow(0 0 8px rgba(255, 45, 85, 0.5));
+    /* Subtle red/pink glow */
+}
+
+.copyFeedback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+[data-theme='light'] .copyFeedback {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.showFeedback {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cardAction {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center content */
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    /* Full pill shape */
+    width: fit-content;
+    min-width: 120px;
+    /* Wider button */
+    margin-left: auto;
+    margin-right: auto;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .cardAction {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Always show action button on touch devices or smaller screens */
+@media (max-width: 1024px) {
+    .cardAction {
+        opacity: 1;
+        background: var(--text-color);
+        color: var(--background-color);
+        transform: translateY(0);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.emailCard:hover .cardAction,
+.cvCard:hover .cardAction {
+    opacity: 1;
+    background: var(--text-color);
+    color: var(--background-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.actionIcon {
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+.emailCard:hover .actionIcon,
+.cvCard:hover .actionIcon {
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .aboutCard,
+    .techCard,
+    .githubCard,
+    .emailCard,
+    .cvCard {
+        grid-column: span 2;
+        /* Full width on tablet/smaller desktop */
+        grid-row: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+        grid-template-rows: auto;
+        /* Auto rows */
+        width: 100%;
+        max-width: 100%;
+        padding: 15px 10px;
+        /* Reduced padding for mobile */
+        box-sizing: border-box;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
+    }
+
+    .card {
+        width: 100%;
+        grid-column: span 1 !important;
+        /* Force single column span */
+        grid-row: auto !important;
+    }
+
+    /* Reset specific grid placements for mobile */
+    .aboutCard,
+    .techCard,
+    .githubCard,
+    .emailCard,
+    .cvCard {
+        grid-column: span 1;
+        grid-row: auto;
+    }
+
+    .githubCard {
+        min-height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-x: auto;
+        /* Allow internal scroll for graph if needed */
+    }
+
+    .githubContent {
+        justify-content: center;
+        /* Center align */
+    }
+}

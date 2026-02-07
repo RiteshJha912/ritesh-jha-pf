@@ -124,9 +124,8 @@ const Navbar = () => {
 
     const navItems = [
         { label: 'Home', id: 'hero', icon: <FaHome /> },
-        { label: 'Projects', id: 'projects', icon: <FaProjectDiagram /> },
-        { label: 'Skills', id: 'skills', icon: <FaCode /> },
         { label: 'Experience', id: 'internships', icon: <FaUserTie /> },
+        { label: 'Projects', id: 'projects', icon: <FaProjectDiagram /> },
         { label: 'Contact', id: 'contact', icon: <FaEnvelope /> },
     ];
 

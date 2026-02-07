@@ -6,7 +6,7 @@
 p {
     font-size: 15px;
     color: var(--footer-text-color);
-    margin: -10px 0;
+    margin: 5px 0;
 }
 
 /* Online/Offline status animation */
@@ -47,10 +47,10 @@ p {
 }
 
 p:last-child {
-    margin-top: 7px;
+    margin-top: 10px;
     font-size: 20px;
     font-weight: 400;
-    margin: 0px;
+    margin-bottom: 0;
 }
 
 /* Lub-dub ;-) */

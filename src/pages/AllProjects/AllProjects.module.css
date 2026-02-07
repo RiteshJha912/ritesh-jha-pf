@@ -592,7 +592,26 @@
     }
 }
 
+
 .animateIn {
     animation: fadeIn 0.4s ease-out forwards;
     opacity: 0;
+}
+
+.customIcon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    /* Force explicitly black in light mode. brightness(0) makes it black */
+    filter: brightness(0);
+    transition: opacity 0.2s ease;
+}
+
+[data-theme='dark'] .customIcon {
+    /* In dark mode, invert to make it white so it's visible. */
+    filter: brightness(0) invert(1);
+}
+
+.customIcon:hover {
+    opacity: 0.7;
 }

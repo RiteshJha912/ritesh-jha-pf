@@ -16,10 +16,10 @@ function Github() {
   // Let's interpret "Invert" as swapping the progression of the active cells.
   
   const elegantTheme = {
-   // Light Mode: Bg(Light), Levels: Dark -> Light
-    light: ['#ebedf0', '#575757', '#7c7c7c', '#a1a1a1', '#c6c6c6'],
-    // Dark Mode: Bg(Dark), Levels: Light -> Dark
-    dark: ['#161b22', '#b8b8b8', '#8a8a8a', '#5e5e5e', '#363636'],
+    // Light Mode: Bg(Light), Levels: Light -> Black
+    light: ['#ebedf0', '#b8b8b8', '#8a8a8a', '#5e5e5e', '#000000'],
+    // Dark Mode: Bg(Dark), Levels: Dark -> White
+    dark: ['#161b22', '#4a4a4a', '#7a7a7a', '#a9a9a9', '#ffffff'],
   };
   
   return (

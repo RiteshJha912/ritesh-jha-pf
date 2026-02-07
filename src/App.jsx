@@ -4,11 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Hero from './sections/Hero/hero.jsx'
 import ProjectsTeaser from './sections/Projects/ProjectsTeaser.jsx'
 import AllProjects from './pages/AllProjects/AllProjects.jsx'
-import Skills from './sections/Skills/skills.jsx'
+
 import Contact from './sections/Contact/contact.jsx'
 import Footer from './sections/Footer/footer.jsx'
 import Experience from './sections/Experience/experience.jsx'
-import Github from './sections/Github/Github.jsx'
+import BentoGrid from './sections/BentoGrid/BentoGrid.jsx'
+// import Github from './sections/Github/Github.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
 
@@ -60,11 +61,11 @@ function App() {
         <Route path="/" element={
           <>
             <Hero onImageLoad={() => setIsHeroLoaded(true)} />
-            <ProjectsTeaser />
-            <Skills />
+            <BentoGrid />
             <Experience />
+            <ProjectsTeaser />
             <Contact />
-            <Github />
+            {/* <Github /> */}
           </>
         } />
         

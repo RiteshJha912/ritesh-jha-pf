@@ -14,6 +14,7 @@ import koshkeeper from '../../assets/koshkeeper.png';
 import devflipper from '../../assets/devflipper.png';
 import slinket from '../../assets/slinket.png';
 import coffercrypt from '../../assets/coffercrypt.png';
+import ethlogonew from '../../assets/ethlogonew.png';
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -313,7 +314,11 @@ function AllProjects() {
                       )}
                       {project.live && (
                         <a href={project.live} target="_blank" rel="noreferrer" title="Live Demo">
-                          <FaExternalLinkAlt />
+                          {project.h3 === 'DeBiased' ? (
+                              <img src={ethlogonew} alt="ETHGlobal" className={styles.customIcon} />
+                          ) : (
+                              <FaExternalLinkAlt />
+                          )}
                         </a>
                       )}
                    </div>
