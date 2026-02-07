@@ -61,7 +61,9 @@ function App() {
         <Route path="/" element={
           <>
             <Hero onImageLoad={() => setIsHeroLoaded(true)} />
-            <BentoGrid />
+            <div id="about">
+              <BentoGrid />
+            </div>
             <Experience />
             <ProjectsTeaser />
             <Contact />

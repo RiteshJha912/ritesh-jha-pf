@@ -58,7 +58,7 @@ import { useTheme } from '../../common/themeContext';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoClose } from 'react-icons/io5';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
-import { FaHome, FaProjectDiagram, FaUserTie, FaEnvelope, FaCode } from 'react-icons/fa';
+import { FaHome, FaProjectDiagram, FaUserTie, FaEnvelope, FaCode, FaUser } from 'react-icons/fa';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -124,6 +124,7 @@ const Navbar = () => {
 
     const navItems = [
         { label: 'Home', id: 'hero', icon: <FaHome /> },
+        { label: 'About', id: 'about', icon: <FaUser /> },
         { label: 'Experience', id: 'internships', icon: <FaUserTie /> },
         { label: 'Projects', id: 'projects', icon: <FaProjectDiagram /> },
         { label: 'Contact', id: 'contact', icon: <FaEnvelope /> },

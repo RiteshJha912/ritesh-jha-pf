@@ -169,8 +169,8 @@ function BentoGrid() {
                );
             })}
              {[
-              "Web3", "Agentic AI", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
-              "Network Security", "SEO", "Animation", "3D Graphics", "Data Visualization", 
+              "AI Agents", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
+              "Network Security", "SEO", "Animation", "3D Graphics",  
               "Authentication", "API Testing", "Serverless Data"
             ].map((skill, index) => (
                 <span key={`dup-${index}`} className={styles.techBadge}>{skill}</span>
@@ -227,7 +227,7 @@ function BentoGrid() {
         onClick={() => window.open('https://drive.google.com/file/d/1urfWKJuoSORMONmbX8-0qjpjha7hPXyt/view?usp=sharing', '_blank')}
       >
         <FaFileAlt className={styles.iconLarge} />
-        <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>CV / Resume</h3>
+        <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>Resume</h3>
         <p className={styles.cardContent}>View & Download</p>
         <div className={styles.cardAction}>
           <span>Google Drive</span>
