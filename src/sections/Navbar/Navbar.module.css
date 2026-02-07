@@ -133,13 +133,8 @@
 }
 
 .themeToggle>svg {
-    animation: spinSlow 4s linear infinite;
     transform-origin: center;
-    transition: animation-duration 0.6s ease;
-}
-
-.scrolled .themeToggle>svg {
-    animation-duration: 15s;
+    /* Animation handled in JS for smooth speed transitions */
 }
 
 /* Ensure hover doesn't break the internal spin, but the container rotates too */

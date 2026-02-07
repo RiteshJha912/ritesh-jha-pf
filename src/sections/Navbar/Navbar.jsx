@@ -149,6 +149,46 @@ const Navbar = () => {
         setMobileMenuOpen(false);
     };
 
+    const toggleRef = useRef(null);
+    const rotationRef = useRef(0); // Store rotation in ref to persist across re-renders
+    const speedRef = useRef(scrolled ? 0.2 : 1.5); // Store current speed
+
+    // Smooth rotation logic for theme toggle
+    useEffect(() => {
+        let animationFrameId;
+
+        const animate = () => {
+            // Update target speed based on LASTEST scrolled state (captured in closure or ref if needed, 
+            // but here we can trust the 'scrolled' value from the render scope significantly enough 
+            // if we are careful, or better yet, just use the ref approach completely)
+            
+            // Actually, since we want to avoid re-running the effect on `scrolled` change (which kills the loop),
+            // we should probably just use `scrolled` as a dependency but NOT reset `rotationRef`.
+            // The previous implementation had `let rotation = 0` inside, which reset on every dependency change.
+            // By moving `rotation` to `rotationRef`, we solve the reset issue!
+            
+            const targetSpeed = scrolled ? 0.2 : 1.5; 
+            
+            // Smoothly interpolate current speed to desired speed
+            speedRef.current += (targetSpeed - speedRef.current) * 0.05;
+
+            // Update rotation
+            rotationRef.current += speedRef.current;
+            
+            if (toggleRef.current) {
+                toggleRef.current.style.transform = `rotate(${rotationRef.current}deg)`;
+            }
+            
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, [scrolled]); // Re-running is fine now because we use refs for state!
+
     return (
         <nav className={`${styles.navbar} ${scrolled && !mobileMenuOpen ? styles.scrolled : ''}`}>
             
@@ -177,7 +217,10 @@ const Navbar = () => {
                 onClick={toggleTheme}
                 title="Toggle Theme"
             >
-                {theme === 'light' ? <MdDarkMode /> : <MdLightMode />}
+                {/* Apply ref to the inner span/div wrapping the icon so it rotates independently */}
+                <div ref={toggleRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {theme === 'light' ? <MdDarkMode /> : <MdLightMode />}
+                </div>
             </div>
         </nav>
     );
