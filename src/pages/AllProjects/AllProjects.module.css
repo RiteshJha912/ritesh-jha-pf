@@ -134,6 +134,7 @@
     display: none;
 }
 
+/* FILTER TAB STYLES */
 .filterTab {
     padding: 8px 18px;
     border-radius: 20px;
@@ -146,6 +147,12 @@
     font-size: 13px;
     white-space: nowrap;
     font-weight: 500;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .filterTab:hover {
@@ -158,6 +165,106 @@
     background: var(--text-color);
     color: var(--background-color);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* MYSTERIOUS FEATURED TAB */
+.filterTab.featuredTab {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border: 1px solid transparent;
+    /* Hide default border */
+    overflow: hidden;
+    opacity: 1;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Moving gradient border effect */
+.filterTab.featuredTab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 1.5px;
+    /* Border width */
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--text-color) 50%,
+            transparent 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    background-size: 200% 100%;
+    animation: snakeBorder 3s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Subtle inner glow on active/hover */
+.filterTab.featuredTab:hover,
+.filterTab.featuredTab.activeTab {
+    background: rgba(var(--text-color-rgb), 0.05);
+    /* Very subtle fill */
+    box-shadow: 0 0 15px rgba(var(--text-color-rgb), 0.15);
+}
+
+.filterTab.featuredTab.activeTab::before {
+    background: linear-gradient(90deg,
+            var(--text-color) 0%,
+            var(--accent-color, #c084fc) 50%,
+            var(--text-color) 100%);
+    background-size: 200% 100%;
+    animation: snakeBorder 2s linear infinite;
+}
+
+@keyframes snakeBorder {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* FEATURED CARD STYLING (Subtle Mystery) */
+.featuredCard {
+    border: 1px solid rgba(var(--text-color-rgb), 0.2);
+    /* Subtle pulsing border */
+    animation: softBorderPulse 4s ease-in-out infinite;
+}
+
+.featuredCard .imagePlaceholder {
+    /* Subtle gradient shift */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+[data-theme='dark'] .featuredCard .imagePlaceholder {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+@keyframes softBorderPulse {
+    0% {
+        border-color: rgba(var(--text-color-rgb), 0.2);
+    }
+
+    50% {
+        border-color: rgba(var(--text-color-rgb), 0.6);
+    }
+
+    100% {
+        border-color: rgba(var(--text-color-rgb), 0.2);
+    }
 }
 
 /* GRID & CARDS (Instant Render) */
@@ -186,17 +293,60 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* STATIC PLACEHOLDER */
+/* DYNAMIC IMAGE WRAPPER */
 .imageWrapper {
+    width: 100%;
+    /* Maintain a consistent aspect ratio for uniformity */
+    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
+    /* Embedded Effect: Inner shadow + slightly darkened background + padding gap */
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 15px;
+    /* Gap from all 4 sides */
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08);
+    /* Inner shadow for depth */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-bottom removed */
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover: Fills the area, cropping if needed, NO scaling distortion */
+    border-radius: 12px;
+    /* Smooth corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Lift effect inside the embed */
+    transition: transform 0.3s ease;
+}
+
+/* Specific styling for first 3 projects */
+.imageWrapper img[data-project="Indradhanu Foundation"],
+.imageWrapper img[data-project="Democrazy"],
+.imageWrapper img[data-project="PaperOps.ai"] {
+    object-fit: fill;
+    /* Keep fill for these specific projects */
+}
+
+[data-theme='dark'] .imageWrapper {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .imageWrapper img {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .imagePlaceholder {
-    height: 220px;
     width: 100%;
+    height: 100%;
+    /* Fill the wrapper */
     background: linear-gradient(135deg, #f4f4f4 0%, #fafafa 100%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 [data-theme='dark'] .imagePlaceholder {
@@ -206,22 +356,23 @@
 
 /* CARD DETAILS */
 .cardHeader {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    /* Removed absolute positioning to prevent overlap */
     width: 100%;
     padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(6px);
+    background: var(--background-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    /* Added for separation from content */
 }
 
 [data-theme='dark'] .cardHeader {
-    background: rgba(30, 30, 30, 0.95);
+    background: rgba(255, 255, 255, 0.03);
+    /* Match card bg or slightly distinct */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .cardHeader h3 {
@@ -382,7 +533,7 @@
     }
 
     .controls {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: stretch;
         gap: 15px;
         padding: 20px;
