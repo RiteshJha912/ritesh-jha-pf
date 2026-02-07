@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.calendarWrapper {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    /* Sharper border for distinct edges */
+    background: var(--project-card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Deeper shadow for "pop" */
+    transition: all 0.3s ease;
+    font-family: 'Roboto Mono', monospace;
+    /* Tech/Code aesthetic */
+}
+
+.calendarWrapper text {
+    font-family: 'Roboto Mono', monospace !important;
+    font-size: 12px;
+    /* Ensure readability */
+    fill: var(--text-color);
+    /* Ensure text follows theme */
+}
+
+[data-theme='dark'] .calendarWrapper {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+    .calendarWrapper {
+        padding: 20px;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+}

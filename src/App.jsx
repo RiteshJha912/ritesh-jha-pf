@@ -8,6 +8,7 @@ import Skills from './sections/Skills/skills.jsx'
 import Contact from './sections/Contact/contact.jsx'
 import Footer from './sections/Footer/footer.jsx'
 import Experience from './sections/Experience/experience.jsx'
+import Github from './sections/Github/Github.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
 
@@ -63,6 +64,7 @@ function App() {
             <Skills />
             <Experience />
             <Contact />
+            <Github />
           </>
         } />
         
