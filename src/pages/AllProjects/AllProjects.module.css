@@ -273,23 +273,88 @@
     flex-wrap: wrap;
     gap: 8px;
     margin-top: auto;
+    align-items: center;
 }
 
-.tag {
-    font-size: 11px;
-    padding: 5px 12px;
-    background: var(--text-color);
-    color: var(--background-color);
-    border-radius: 15px;
-    font-family: 'Roboto Mono', monospace;
-    opacity: 1;
+/* Tags Container */
+.tagsContainer {
+    margin-top: auto;
+    /* Pushes to bottom if content is short */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tagGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tagLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Stack Tags - Blue Theme */
+.stackTag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
     font-weight: 500;
+    border-radius: 9999px;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.2s ease;
+    font-family: 'Roboto Mono', monospace;
 }
 
-[data-theme='dark'] .tag {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.stackTag:hover {
+    background-color: rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Domain Tags - Purple Theme */
+.domainTag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    background-color: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    transition: all 0.2s ease;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.domainTag:hover {
+    background-color: rgba(168, 85, 247, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Dark Mode Adjustments */
+[data-theme='dark'] .stackTag {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+[data-theme='dark'] .domainTag {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
 .noResults {
@@ -348,6 +413,12 @@
 
     .card {
         width: 100%;
+    }
+
+    /* Responsive Tags */
+    .stackTag,
+    .domainTag {
+        font-size: 11px;
     }
 }
 
