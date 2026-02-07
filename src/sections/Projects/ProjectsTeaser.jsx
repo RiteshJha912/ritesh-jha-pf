@@ -80,7 +80,7 @@ function ProjectsTeaser() {
 
   return (
     <section id="projects" className={styles.container}>
-      <h1 className="sectionTitle">Projects 🛠️</h1>
+      <h1 className="sectionTitle">Projects</h1>
       
       <div 
         className={styles.teaserContent} 
@@ -107,7 +107,7 @@ function ProjectsTeaser() {
           <div className={`${styles.card} ${styles.card1}`}>
             <div className={styles.cardContent}>
               <h3>Explore My Work</h3>
-              <p>Check out my latest web builds, security experiments & OSS contributions in progress.</p>
+              <p>stuff that I have built, broken, fixed & shipped  all in one place.</p>
               <button className={styles.viewBtn}>
                 View All Projects <FaArrowRight />
               </button>

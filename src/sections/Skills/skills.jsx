@@ -11,7 +11,7 @@ function skills() {
 
   return (
     <section id='skills' className={styles.container}>
-      <h1 className='sectionTitle'>Skills 🧠</h1>
+      <h1 className='sectionTitle'>Skills</h1>
 
       <div className={styles.skillList} data-aos='zoom-out'>
         <SkillList skill='OSINT' />

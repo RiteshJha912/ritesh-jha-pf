@@ -197,8 +197,8 @@
     .cardStack {
         width: 280px;
         /* Reduced width */
-        height: 200px;
-        /* Reduced height */
+        height: 280px;
+        /* Increased height to fit content */
         /* animation: mobileSway 4s ease-in-out infinite alternate; REMOVED per user request */
         margin-bottom: 20px;
         transform: none !important;

@@ -85,7 +85,7 @@ function AllProjects() {
       h3: 'Chromagen',
       shortDesc: 'AI Powered Color Palette Generator',
       longDesc:
-        'Intelligent color palette generator for designers & developers. Generate palettes from text prompts using GAN, extract colors from images with Pylette, test WCAG AA/AAA compliance, simulate color blindness, preview on live UI mockups & export as CSS/JSON. Built by Team BootWinXP at Bit N Build. Features browser extension for extracting palettes from any webpage.',
+        'Intelligent color palette generator for designers & developers. Generate palettes from text prompts using GAN, extract colors from images with Pylette, test WCAG AA/AAA compliance, simulate color blindness, preview on live UI mockups & export as CSS/JSON. Features browser extension for extracting palettes from any webpage. Built by Team BootWinXP at Bit N Build.',
       github: 'https://github.com/Om-Thanage/bootWinXP_Internal-Round_70',
       live: 'https://www.chromagen.xyz/',
       tags: {
@@ -109,7 +109,7 @@ function AllProjects() {
     {
       src: debiased,
       h3: 'DeBiased',
-      shortDesc: 'Anonymous Survey Platform with ZK Proofs',
+      shortDesc: 'Survey Platform with ZK Proofs',
       longDesc:
         'A privacy first survey platform leveraging zero knowledge cryptography to eliminate opinion bias. Enables truthful feedback collection on sensitive topics by verifying respondent demographics via Self Protocol without revealing identity. Features automated rewards through Kadena EVM smart contracts & immutable, encrypted data storage on IPFS/Filecoin. Built by Team BootWinXP at ETHGlobal New Delhi.',
       github: 'https://github.com/ombhanushaliii/debiased',
@@ -260,7 +260,7 @@ function AllProjects() {
           <FaSearch className={styles.searchIcon} />
           <input 
             type="text" 
-            placeholder="Search projects by name or technology..." 
+            placeholder="search project " 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
