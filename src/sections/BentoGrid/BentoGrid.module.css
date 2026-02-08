@@ -60,6 +60,7 @@
     /* Stacking from top */
     gap: 15px;
     /* Add gap between sections */
+    cursor: default;
 }
 
 .githubCard {
@@ -167,6 +168,9 @@
     /* Prevent wrapping */
     transition: all 0.2s ease;
     flex-shrink: 0;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .techIcon {
@@ -297,17 +301,36 @@
     border-radius: 50%;
 }
 
-.emailCard:active .iconLarge {
-    transform: scale(1.4) rotate(15deg);
-    /* Pop the icon on click */
+/* Smooth simple hover */
+.emailCard:hover .iconLarge {
+    transform: scale(1.05);
     color: var(--btn-color);
+}
+
+.iconOpen {
+    animation: smoothOpen 0.3s ease-out forwards;
+    color: var(--btn-color);
+}
+
+@keyframes smoothOpen {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.emailCard:active .iconLarge {
+    transform: scale(0.95);
 }
 
 .cvCard:hover .iconLarge {
     transform: scale(1.1) rotate(-5deg);
     color: var(--text-color);
-    filter: drop-shadow(0 0 8px rgba(255, 45, 85, 0.5));
-    /* Subtle red/pink glow */
 }
 
 .copyFeedback {
@@ -381,6 +404,12 @@
         color: var(--background-color);
         transform: translateY(0);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme='dark'] .cardAction {
+        background: #ffffff;
+        color: #000000;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 

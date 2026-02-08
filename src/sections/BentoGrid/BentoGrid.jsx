@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './BentoGrid.module.css';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../../common/themeContext';
-import { FaCopy, FaDownload, FaEnvelope, FaFileAlt, FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaCode, FaChartLine, FaEthereum, FaLightbulb, FaLink, FaFingerprint, FaBrain, FaDatabase, FaRobot, FaPalette, FaKey, FaHammer, FaArrowRight, FaCheck, FaRegCopy, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaCopy, FaDownload, FaEnvelope, FaEnvelopeOpen, FaFileAlt, FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaCode, FaChartLine, FaEthereum, FaLightbulb, FaLink, FaFingerprint, FaBrain, FaDatabase, FaRobot, FaPalette, FaKey, FaHammer, FaArrowRight, FaCheck, FaRegCopy, FaGoogleDrive } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiSolidity, SiCplusplus, SiPug, SiNextdotjs, SiVite, SiTailwindcss, SiFramer, SiThreedotjs, SiChartdotjs, SiExpress, SiFastapi, SiFlask, SiMongodb, SiPostgresql, SiMysql, SiFirebase, SiGooglesheets, SiIpfs, SiPostman, SiJsonwebtokens, SiGoogle, SiAxios, SiDocker, SiKubernetes } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
 import { IoLogoJavascript } from "react-icons/io5";
@@ -113,7 +113,7 @@ function BentoGrid() {
         <p className={styles.aboutText}>
           So, hello 🙋🏻<br/>
           I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains, ranging from development, AI, cybersecurity, blockchain to IoT and much much more.<br/><br/>
-          I am currently pursuing a Bachelor's of Information Technology degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside of work, I enjoy listening to music while being on long walks(you'll almost always find me with my headphones on :), I also used to deep into geopolitics at some point in time. Adding to all of this, I really like explaining concepts to people, and I weirdly love pitching ideas that I actually believe in.
+          I am currently pursuing a Bachelor's of Information Technology degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside of work, I enjoy listening to music while being on long walks (you'll almost always find me with my headphones on :), I also used to be deep into geopolitics at some point in time. Adding to all of this, I really like explaining concepts to people, and I weirdly love pitching ideas that I actually believe in.
         </p>
       </div>
 
@@ -157,21 +157,16 @@ function BentoGrid() {
         <div className={styles.marqueeWrapper} style={{ marginTop: '0', padding: '5px 0' }}>
            <div className={styles.marqueeTrack}>
             {[
-               "Making Agents", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
-              "Network Security", "SEO", "Animation", "3D Graphics", 
-              "API Testing", "Serverless Data"
-            ].map((skill, index) => {
-               // Duplicate for marquee loop
-               return (
-                 <React.Fragment key={index}>
-                    <span className={styles.techBadge}>{skill}</span>
-                 </React.Fragment>
-               );
-            })}
-             {[
               "AI Agents", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
-              "Network Security", "SEO", "Animation", "3D Graphics",  
-              "Authentication", "API Testing", "Serverless Data"
+              "Network Security", "SEO", "3D Graphics", "Cryptography", 
+              "API Testing", "Serverless Data"
+            ].map((skill, index) => (
+                <span key={`skill-${index}`} className={styles.techBadge}>{skill}</span>
+            ))}
+            {[
+              "AI Agents", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
+              "Network Security", "SEO", "3D Graphics", "Cryptography", 
+              "API Testing", "Serverless Data"
             ].map((skill, index) => (
                 <span key={`dup-${index}`} className={styles.techBadge}>{skill}</span>
             ))}
@@ -212,7 +207,11 @@ function BentoGrid() {
         <div className={`${styles.copyFeedback} ${copied ? styles.showFeedback : ''}`}>
           <FaCheck style={{ marginRight: '6px' }} /> Copied
         </div>
-        <FaEnvelope className={styles.iconLarge} />
+        {copied ? 
+          <FaEnvelopeOpen className={`${styles.iconLarge} ${styles.iconOpen}`} /> 
+          : 
+          <FaEnvelope className={styles.iconLarge} />
+        }
         <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>Email</h3>
         <p className={styles.cardContent}>ritesh.exe@proton.me</p>
         <div className={styles.cardAction}>
@@ -231,7 +230,7 @@ function BentoGrid() {
         <p className={styles.cardContent}>View & Download</p>
         <div className={styles.cardAction}>
           <span>Google Drive</span>
-          <FaExternalLinkAlt className={styles.actionIcon} />
+          <FaGoogleDrive className={styles.actionIcon} />
         </div>
       </div>
     </section>
