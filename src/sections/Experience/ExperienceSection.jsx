@@ -108,6 +108,7 @@ const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
 
         <div className={styles.metaInfo}>
            <span className={styles.idBadge}>ID: {exp.idBadge}</span>
+           <span className={styles.internshipType}>{exp.internshipType}</span>
            <span className={styles.duration}>{exp.date}</span>
         </div>
 
@@ -141,6 +142,7 @@ function Experience() {
       date: 'Jun 2025 - Jul 2025',
       logo: smowCodelogo,
       idBadge: 'DEV-AI1',
+      internshipType: 'Full-time Summer Internship',
       desc: [
         'Built real-time object detection models for ESP32-CAM, targeting industrial IoT factory automation.',
         'Ported models to optimized C libraries and deployed via Smow platform/IDE for edge inference.',
@@ -154,6 +156,7 @@ function Experience() {
       date: 'Dec 2024 - Feb 2025',
       logo: noxAlgologo,
       idBadge: 'DEV-TL1',
+      internshipType: 'Part-time Internship',
       desc: [
         'Led a team of 7 developers, delivering 3+ high-quality websites in a span of 2 months.',
         'Conducted 8+ technical interviews for the development role, evaluating candidates’ skills and fit.',
@@ -167,6 +170,7 @@ function Experience() {
       date: 'Jun 2024 - Dec 2024',
       logo: deepCytesLogo,
       idBadge: 'SEC-OPS',
+      internshipType: 'Part-time Internship',
       desc: [
         'Engineered the DeepCytes OSINT Toolkit, a proprietary search engine accelerating cybercrime investigations.',
         'Hardened security infrastructure and compliance frameworks for high-profile clients through targeted penetration testing.',
@@ -180,6 +184,7 @@ function Experience() {
       date: 'Feb 2024 - April 2024',
       logo: stallionLogo,
       idBadge: 'DEV-FE1',
+      internshipType: 'Part-time Internship',
       desc: [
         'Developed the official diverse-org platform, ensuring architectural alignment with strategic organizational goals.',
         'Modeled scalable, multi-tenant frontend solutions, delivering tailored user experiences for diverse clients.',

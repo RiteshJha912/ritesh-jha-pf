@@ -23,10 +23,6 @@ function AllProjects() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   // Migration of Data from sections/Projects/projects.jsx
   const projects = [
     {

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, createContext, useContext } from 'react'
 import Lenis from 'lenis'
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Hero from './sections/Hero/hero.jsx'
 import ProjectsTeaser from './sections/Projects/ProjectsTeaser.jsx'
 import AllProjects from './pages/AllProjects/AllProjects.jsx'
@@ -15,6 +15,50 @@ import BentoGrid from './sections/BentoGrid/BentoGrid.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
 
+// Create context for Lenis
+const LenisContext = createContext(null)
+
+// ScrollToTop component that uses Lenis
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  const lenis = useContext(LenisContext)
+
+  useEffect(() => {
+    // Reset Lenis scroll position
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true, force: true })
+    }
+    
+    // Also use native scroll methods as fallback
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    
+    // Additional delayed attempts
+    const timeouts = [
+      setTimeout(() => {
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true, force: true })
+        }
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
+      }, 0),
+      setTimeout(() => {
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true, force: true })
+        }
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
+      }, 100)
+    ]
+
+    return () => timeouts.forEach(clearTimeout)
+  }, [pathname, lenis])
+
+  return null
+}
 
 function App() {
   // Check session storage to see if we've already shown the loader in this session
@@ -45,9 +89,19 @@ function App() {
     }
   }, [showLoader])
 
+  // Store Lenis instance in ref
+  const lenisRef = useRef(null)
+
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    })
+
+    lenisRef.current = lenis
 
     function raf(time) {
       lenis.raf(time)
@@ -62,7 +116,8 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <LenisContext.Provider value={lenisRef.current}>
+      <BrowserRouter>
       {showLoader && (
         <LoadingScreen
           onFinish={() => {
@@ -73,6 +128,7 @@ function App() {
         />
       )}
       
+      <ScrollToTop />
       <Navbar />
       
       <Routes>
@@ -95,6 +151,7 @@ function App() {
 
       <Footer />
     </BrowserRouter>
+    </LenisContext.Provider>
   )
 }
 
