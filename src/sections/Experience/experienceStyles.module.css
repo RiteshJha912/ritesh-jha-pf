@@ -1,90 +1,359 @@
-.container {
+/* Section Container */
+.section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    padding: 50px 20px;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
 }
 
-.internshipCards {
+/* Cards Wrapper */
+.cardsContainer {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    padding-bottom: 150px;
+    perspective: 1000px;
 }
 
-.internshipCard {
+/* Individual Card (Base) */
+.card {
+    position: sticky;
+    /* Top set inline */
+
+    /* Dark Mode Defaults */
+    background: linear-gradient(145deg, rgba(28, 28, 30, 0.95) 0%, rgba(18, 18, 20, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+    /* Shape & Layout */
+    border-radius: 12px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 94% 100%, 0 100%);
+
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    transform-origin: center top;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+    overflow: hidden;
+    margin-bottom: 40px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+}
+
+/* Hover State */
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Active/Expanded State */
+.card[data-expanded="true"] {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    z-index: 20 !important;
+    transform: scale(1.02);
+}
+
+/* Header Area */
+.header {
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.logoContainer {
-    flex: 0 0 auto;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
 }
 
 .logo {
-    width: 80px;
-    height: auto;
-    border-radius: 5px;
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.details {
+.titleArea {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    text-align: left;
+    min-width: 0;
+    gap: 2px;
 }
 
-.details h3 {
-    margin-left: 0;
-    /* Reset or adjust as needed */
-    margin-bottom: 8px;
-    /* Add space below company name */
-    font-size: 18px;
-    color: var(--text-color);
+.company {
+    font-family: 'Bona Nova SC', serif;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    font-weight: 700;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.details p {
-    margin-bottom: 5px;
-    /* Add space between lines */
-    font-size: 14px;
-    line-height: 1.4;
-    color: var(--text-color);
+.role {
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(0.75rem, 3vw, 0.9rem);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.workExperience {
-    font-size: 20px;
-    margin-top: -40px;
-    margin-bottom: 40px;
+/* Arrow Icon */
+.arrowIcon {
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.2rem;
+    /* Faster rotation */
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
 }
 
-/* Media query adjustments */
+.card[data-expanded="true"] .arrowIcon {
+    transform: rotate(180deg);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Meta Info Row */
+.metaInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.idBadge,
+.duration {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Content Area (Animation Logic) */
+.content {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0.8;
+    margin-top: 0;
+    /* Faster 0.2s transition */
+    transition: grid-template-rows 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s ease,
+        margin-top 0.2s ease,
+        padding-top 0.2s ease,
+        border-top 0.2s ease;
+}
+
+.content.expandedContent {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* The wrapper inside the grid needs to be the one that expands */
+.bulletList {
+    overflow: hidden;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    min-height: 0;
+}
+
+.bulletItem {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.bulletItem::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    top: -1px;
+}
+
+/* Decorative Elements */
+.watermark {
+    position: absolute;
+    bottom: -15px;
+    right: -5px;
+    font-family: 'Impact', sans-serif;
+    font-size: 70px;
+    color: rgba(255, 255, 255, 0.02);
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-10deg);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.barcode {
+    position: absolute;
+    top: 24px;
+    right: 50px;
+    width: 30px;
+    height: 16px;
+    background: repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent 1px,
+            transparent 3px);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ========================================= */
+/* LIGHT MODE OVERRIDES                      */
+/* ========================================= */
+:global([data-theme='light']) .card {
+    background: linear-gradient(145deg, #ffffff 0%, #f4f4f5 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme='light']) .card:hover {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme='light']) .card[data-expanded="true"] {
+    border-color: #333;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+:global([data-theme='light']) .company {
+    color: #111;
+}
+
+:global([data-theme='light']) .role {
+    color: #555;
+}
+
+:global([data-theme='light']) .arrowIcon {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme='light']) .card[data-expanded="true"] .arrowIcon {
+    color: #111;
+}
+
+:global([data-theme='light']) .metaInfo {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme='light']) .idBadge,
+:global([data-theme='light']) .duration {
+    color: #666;
+}
+
+:global([data-theme='light']) .bulletItem {
+    color: #333;
+}
+
+:global([data-theme='light']) .bulletItem::before {
+    color: #999;
+}
+
+:global([data-theme='light']) .watermark {
+    color: rgba(0, 0, 0, 0.04);
+}
+
+:global([data-theme='light']) .barcode {
+    background: repeating-linear-gradient(90deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 1px,
+            transparent 3px);
+}
+
+:global([data-theme='light']) .content.expandedContent {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================= */
+/* RESPONSIVE STYLES                         */
+/* ========================================= */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 36px;
+    .section {
+        padding: 30px 15px;
     }
 
-    .internshipCard {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        padding: 15px;
-        margin-right: 38px;
-        margin-left: 38px;
+    .cardsContainer {
+        max-width: 100%;
+        padding-bottom: 80px;
     }
 
-    h3 {
-        margin-left: 5px;
+    .card {
+        padding: 20px 15px;
+        margin-bottom: 24px;
+        clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+    }
+
+    .header {
+        gap: 12px;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .watermark {
+        font-size: 50px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .barcode {
+        right: 40px;
+        display: none;
     }
 }
 
 @media (max-width: 400px) {
-    h3 {
-        margin: 0px 10px;
-        /* margin-bottom: 40px; */
+    .company {
+        font-size: 1.1rem;
+    }
+
+    .role {
+        font-size: 0.8rem;
+    }
+
+    .metaInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
     }
 }

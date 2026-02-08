@@ -609,3 +609,47 @@
     opacity: 1;
     color: #10b981;
 }
+
+/* Mobile Improvements for Location & Availability */
+@media (max-width: 600px) {
+    .locationContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .locationItem {
+        font-size: 0.8rem;
+        opacity: 0.9;
+        /* improved visibility */
+    }
+
+    .availabilityLink {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+        /* spread text and arrow */
+        padding: 10px 16px;
+        /* easier tap target */
+        background: rgba(16, 185, 129, 0.04);
+        /* permanent subtle tint */
+        border-color: rgba(16, 185, 129, 0.15);
+    }
+
+    .availabilityLink span::after {
+        display: none;
+        /* Remove underline animation on phone */
+    }
+
+    .availabilityLink .arrowIcon {
+        opacity: 1;
+        color: #10b981;
+        transform: rotate(-45deg);
+        /* Always point up-right to indicate link */
+    }
+
+    [data-theme='dark'] .availabilityLink {
+        background: rgba(16, 185, 129, 0.06);
+        border-color: rgba(16, 185, 129, 0.2);
+    }
+}
