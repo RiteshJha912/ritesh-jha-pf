@@ -138,10 +138,12 @@
 }
 
 /* Ensure hover doesn't break the internal spin, but the container rotates too */
-.themeToggle:hover {
-    transform: scale(1.1);
-    /* Removed rotate(30deg) to avoid dizzying effect */
-    background: rgba(150, 150, 150, 0.1);
+@media (min-width: 769px) {
+    .themeToggle:hover {
+        transform: scale(1.1);
+        /* Removed rotate(30deg) to avoid dizzying effect */
+        background: rgba(150, 150, 150, 0.1);
+    }
 }
 
 /* Mobile Responsive */

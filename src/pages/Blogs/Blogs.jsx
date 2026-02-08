@@ -22,7 +22,7 @@ const Blogs = () => {
         fontFamily: 'Roboto Mono, monospace',
         margin: 0
       }}>
-        Coming Soon!
+        I hope I start writing consistently soon!
       </p>
     </div>
   );

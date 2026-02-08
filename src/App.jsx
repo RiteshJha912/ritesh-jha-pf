@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Lenis from 'lenis'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Hero from './sections/Hero/hero.jsx'
@@ -12,6 +13,7 @@ import Experience from './sections/Experience/ExperienceSection.jsx'
 import BentoGrid from './sections/BentoGrid/BentoGrid.jsx'
 // import Github from './sections/Github/Github.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
+import ClickSparkle from './common/ClickSparkle.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
 
 
@@ -44,6 +46,22 @@ function App() {
     }
   }, [showLoader])
 
+  // Initialize Lenis for smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       {showLoader && (
@@ -56,6 +74,7 @@ function App() {
         />
       )}
       
+      <ClickSparkle />
       <Navbar />
       
       <Routes>

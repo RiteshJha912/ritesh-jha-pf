@@ -245,23 +245,23 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
   return (
     <div className={styles.loader}>
       {!showConnectionStatus ? (
-        <p>Establishing connection...</p>
+        <p>INITIALIZING SECURE HANDSHAKE...</p>
       ) : (
         <p>
-          Connection Status:{' '}
+          CONNECTION STATUS:{' '}
           <span
             className={
               info.onlineStatus === 'Online' ? styles.online : styles.offline
             }
           >
-            {info.onlineStatus === 'Online' ? 'Online' : '🔴 Offline'}
+            {info.onlineStatus === 'Online' ? 'ESTABLISHED' : '🔴 OFFLINE'}
           </span>
         </p>
       )}
-      {step >= 1 && <p>Client: {info.browser}</p>}
-      {step >= 2 && <p>OS: {info.os}</p>}
-      {step >= 3 && <p>IP Address: {info.ip}</p>}
-      {step >= 4 && <p>Location: {info.location}</p>}
+      {step >= 1 && <p>IDENTIFYING BROWSER AGENT: {info.browser.toUpperCase()}</p>}
+      {step >= 2 && <p>SCANNING HOST OS: {info.os.toUpperCase()}</p>}
+      {step >= 3 && <p>TARGET IP LOCKED: <span style={{color: '#fff', fontWeight: 'bold'}}>{info.ip}</span></p>}
+      {step >= 4 && <p>GEOLOCATION PINPOINTED: <span style={{color: '#fff', fontWeight: 'bold'}}>{info.location === 'Unavailable' ? 'CLASSIFIED' : info.location.toUpperCase()}</span></p>}
       <div className={styles.progressContainer}>
         <div
           className={styles.progressBar}

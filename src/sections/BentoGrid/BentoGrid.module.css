@@ -60,7 +60,7 @@
     /* Stacking from top */
     gap: 15px;
     /* Add gap between sections */
-    cursor: default;
+    /* Add gap between sections */
 }
 
 .githubCard {
@@ -169,7 +169,7 @@
     /* Prevent wrapping */
     transition: all 0.2s ease;
     flex-shrink: 0;
-    cursor: default;
+    flex-shrink: 0;
     user-select: none;
     -webkit-user-select: none;
 }
