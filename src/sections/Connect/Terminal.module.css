@@ -1,0 +1,91 @@
+.terminal {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #33ff33;
+    font-family: "Courier New", monospace;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+    border: 4px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    min-height: 400px;
+}
+
+/* Custom Scrollbar */
+.terminal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ffffff;
+}
+
+.terminal p {
+    margin: 2px 0;
+    white-space: pre-wrap;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.userCommand {
+    color: #66ff66;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.prompt {
+    color: #33ff33;
+}
+
+.terminalInput {
+    background: transparent;
+    border: none;
+    color: #33ff33;
+    font-size: 16px;
+    flex-grow: 1;
+    outline: none;
+    font-family: "Courier New", monospace;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .terminal {
+        padding: 15px;
+        border-width: 2px;
+        min-height: 300px;
+    }
+
+    .terminalInput {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .terminal {
+        padding: 10px;
+        border-width: 2px;
+        min-height: 250px;
+    }
+
+    .terminalInput {
+        font-size: 13px;
+    }
+}

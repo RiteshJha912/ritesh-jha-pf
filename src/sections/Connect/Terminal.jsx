@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
-import styles from './contactStyles.module.css'
+import styles from './Terminal.module.css'
 
-function Contact() {
+function Terminal() {
   const [input, setInput] = useState('')
   const [logs, setLogs] = useState([
     'Wanna drop a message for me?',
@@ -11,7 +11,6 @@ function Contact() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const inputRef = useRef(null)
-  const sectionRef = useRef(null)
   const terminalRef = useRef(null)
 
   useEffect(() => {
@@ -57,25 +56,6 @@ function Contact() {
       setMessage('')
       setEmail('')
       setSubmitted(false)
-    } else if (cmd === 'resume') {
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        <span className={styles.userCommand}>$ {cmd}</span>,
-        'Opening resume...',
-      ])
-
-      setTimeout(() => {
-        window.open(
-          'https://drive.google.com/file/d/1jibFZhfrJS4Gw1x0uGeKMYJMOUbLBNAp/view?usp=sharing',
-          '_blank'
-        )
-      }, 500)
-    } else if (cmd === 'contact') {
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        <span className={styles.userCommand}>$ {cmd}</span>,
-        'Email: riteshjha2174@gmail.com / ritesh.exe@proton.me',
-      ])
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [
         ...prevLogs,
@@ -86,8 +66,6 @@ function Contact() {
         '3) git push origin main',
         '',
         'Other commands:',
-        '▶ resume - To view my resume',
-        '▶ contact - To view my contact email',
         '▶ clear - To reset terminal',
       ])
     } else if (addRegex.test(cmd)) {
@@ -163,34 +141,33 @@ function Contact() {
   }
 
   return (
-    <section id='contact' className={styles.container} ref={sectionRef}>
-      <div
-        className={styles.terminal}
-        ref={terminalRef}
-        onClick={() => {
-          inputRef.current?.focus()
-        }}
-        onTouchStart={(e) => e.stopPropagation()}
-      >
-        {logs.map((log, index) => (
-          <p key={index}>{log}</p>
-        ))}
-        {!submitted && (
-          <form>
-            <span className={styles.prompt}>$</span>
-            <input
-              type='text'
-              value={input}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyPress}
-              className={styles.terminalInput}
-              ref={inputRef}
-            />
-          </form>
-        )}
-      </div>
-    </section>
+    <div
+      className={styles.terminal}
+      ref={terminalRef}
+      onClick={() => {
+        inputRef.current?.focus()
+      }}
+      onTouchStart={(e) => e.stopPropagation()}
+    >
+      {logs.map((log, index) => (
+        <p key={index}>{log}</p>
+      ))}
+      {!submitted && (
+        <form onSubmit={(e) => e.preventDefault()}>
+          <span className={styles.prompt}>$</span>
+          <input
+            type='text'
+            value={input}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyPress}
+            className={styles.terminalInput}
+            ref={inputRef}
+            autoComplete="off"
+          />
+        </form>
+      )}
+    </div>
   )
 }
 
-export default Contact
+export default Terminal

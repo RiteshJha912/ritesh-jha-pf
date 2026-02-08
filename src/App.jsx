@@ -7,13 +7,12 @@ import ProjectsTeaser from './sections/Projects/ProjectsTeaser.jsx'
 import AllProjects from './pages/AllProjects/AllProjects.jsx'
 import Blogs from './pages/Blogs/Blogs.jsx'
 
-import Contact from './sections/Contact/contact.jsx'
+import Connect from './sections/Connect/Connect.jsx'
 import Footer from './sections/Footer/footer.jsx'
 import Experience from './sections/Experience/ExperienceSection.jsx'
 import BentoGrid from './sections/BentoGrid/BentoGrid.jsx'
 // import Github from './sections/Github/Github.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
-import ClickSparkle from './common/ClickSparkle.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
 
 
@@ -74,7 +73,6 @@ function App() {
         />
       )}
       
-      <ClickSparkle />
       <Navbar />
       
       <Routes>
@@ -86,7 +84,7 @@ function App() {
             </div>
             <Experience />
             <ProjectsTeaser />
-            <Contact />
+            <Connect />
             {/* <Github /> */}
           </>
         } />

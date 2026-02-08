@@ -202,7 +202,7 @@ function Hero({ onImageLoad }) {
             className={styles.hireBtn}
             onClick={() =>
               document
-                .getElementById('contact')
+                .getElementById('connect')
                 .scrollIntoView({ behavior: 'smooth' })
             }
           >

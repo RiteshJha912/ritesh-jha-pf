@@ -126,7 +126,7 @@ function BentoGrid() {
           </div>
           <div 
             className={styles.availabilityLink}
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('connect')?.scrollIntoView({ behavior: 'smooth' })}
           >
             <span>Available for projects, HMU</span>
             <FaArrowRight className={styles.arrowIcon} />
