@@ -496,3 +496,116 @@
         /* Center align */
     }
 }
+
+
+/* Location & Status in About Card */
+.locationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Aligned start for a cleaner flow */
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    /* Dashed line feels more 'technical/human' note-like */
+    font-size: 0.7rem;
+    font-family: 'Roboto Mono', monospace;
+    /* Match site technical aesthetic */
+    font-weight: 500;
+    color: var(--text-color);
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+[data-theme='dark'] .locationContainer {
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Location Only (Availability separate) */
+.locationItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.locationItem:hover {
+    opacity: 1;
+}
+
+.locationIcon {
+    color: var(--text-color);
+    font-size: 1.1em;
+    opacity: 0.8;
+}
+
+/* New Availability Link Style */
+.availabilityLink {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease-out;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.02);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .availabilityLink {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.availabilityLink span {
+    position: relative;
+    display: inline-block;
+}
+
+/* Fast Underline Effect */
+.availabilityLink span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -1px;
+    left: 0;
+    background-color: #10b981;
+    /* Emerald Green for attention */
+    transform-origin: bottom right;
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.availabilityLink:hover span::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.arrowIcon {
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+/* Hover State - Fast & Clean */
+.availabilityLink:hover {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.2);
+    transform: translateY(-1px);
+}
+
+.availabilityLink:hover .arrowIcon {
+    transform: translateX(3px) rotate(-45deg);
+    opacity: 1;
+    color: #10b981;
+}

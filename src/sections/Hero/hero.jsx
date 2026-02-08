@@ -165,6 +165,8 @@ function Hero({ onImageLoad }) {
           </div>
         </div>
 
+
+
         <p className={styles.description}>
           somewhere between breaking my own logic and fixing them at 3 am, this
           website came into existence! it isn't here to impress anyone, its just

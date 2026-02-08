@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './BentoGrid.module.css';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../../common/themeContext';
-import { FaCopy, FaDownload, FaEnvelope, FaEnvelopeOpen, FaFileAlt, FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaCode, FaChartLine, FaEthereum, FaLightbulb, FaLink, FaFingerprint, FaBrain, FaDatabase, FaRobot, FaPalette, FaKey, FaHammer, FaArrowRight, FaCheck, FaRegCopy, FaGoogleDrive } from 'react-icons/fa';
+import { FaCopy, FaDownload, FaEnvelope, FaEnvelopeOpen, FaFileAlt, FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaCode, FaChartLine, FaEthereum, FaLightbulb, FaLink, FaFingerprint, FaBrain, FaDatabase, FaRobot, FaPalette, FaKey, FaHammer, FaArrowRight, FaCheck, FaRegCopy, FaGoogleDrive, FaMapMarkerAlt, FaCircle } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiSolidity, SiCplusplus, SiPug, SiNextdotjs, SiVite, SiTailwindcss, SiFramer, SiThreedotjs, SiChartdotjs, SiExpress, SiFastapi, SiFlask, SiMongodb, SiPostgresql, SiMysql, SiFirebase, SiGooglesheets, SiIpfs, SiPostman, SiJsonwebtokens, SiGoogle, SiAxios, SiDocker, SiKubernetes } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
 import { IoLogoJavascript } from "react-icons/io5";
@@ -118,6 +118,20 @@ function BentoGrid() {
           I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains, ranging from development, cybersecurity, blockchain, IoT to AI and much much more.<br/><br/>
           I am currently pursuing a Bachelor's of Information Technology degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside of work, I enjoy listening to music while being on long walks (you'll almost always find me with my headphones on :), I also used to be deep into geopolitics at some point in time. Adding to all of this, I really like explaining concepts to people, and I weirdly love pitching ideas that I actually believe in.
         </p>
+        
+        <div className={styles.locationContainer}>
+          <div className={styles.locationItem}>
+            <FaMapMarkerAlt className={styles.locationIcon} />
+            <span>Mumbai, India</span>
+          </div>
+          <div 
+            className={styles.availabilityLink}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <span>Available for projects, HMU</span>
+            <FaArrowRight className={styles.arrowIcon} />
+          </div>
+        </div>
       </div>
 
       {/* 2. Technologies */}
