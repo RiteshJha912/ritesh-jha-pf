@@ -124,15 +124,20 @@ const Navbar = () => {
 
     const navItems = [
         { label: 'Home', id: 'hero', icon: <FaHome /> },
-        { label: 'About', id: 'about', icon: <FaUser /> },
-        { label: 'Experience', id: 'internships', icon: <FaUserTie /> },
         { label: 'Projects', id: 'projects', icon: <FaProjectDiagram /> },
-        { label: 'Contact', id: 'contact', icon: <FaEnvelope /> },
+        { label: 'Blogs', id: 'blogs', icon: <FaCode /> },
     ];
 
     const scrollToSection = (id) => {
         if (id === 'projects') {
             navigate('/projects');
+            window.scrollTo(0, 0);
+            setMobileMenuOpen(false);
+            return;
+        }
+
+        if (id === 'blogs') {
+            navigate('/blogs');
             window.scrollTo(0, 0);
             setMobileMenuOpen(false);
             return;

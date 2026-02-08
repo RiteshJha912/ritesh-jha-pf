@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Hero from './sections/Hero/hero.jsx'
 import ProjectsTeaser from './sections/Projects/ProjectsTeaser.jsx'
 import AllProjects from './pages/AllProjects/AllProjects.jsx'
+import Blogs from './pages/Blogs/Blogs.jsx'
 
 import Contact from './sections/Contact/contact.jsx'
 import Footer from './sections/Footer/footer.jsx'
@@ -72,6 +73,7 @@ function App() {
         } />
         
         <Route path="/projects" element={<AllProjects />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
 
       <Footer />
