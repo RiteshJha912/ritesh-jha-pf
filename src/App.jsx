@@ -7,7 +7,7 @@ import AllProjects from './pages/AllProjects/AllProjects.jsx'
 
 import Contact from './sections/Contact/contact.jsx'
 import Footer from './sections/Footer/footer.jsx'
-import Experience from './sections/Experience/Experience.jsx'
+import Experience from './sections/Experience/ExperienceSection.jsx'
 import BentoGrid from './sections/BentoGrid/BentoGrid.jsx'
 // import Github from './sections/Github/Github.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
