@@ -10,6 +10,7 @@ import { IoLogoJavascript } from "react-icons/io5";
 function BentoGrid() {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [visibleDays, setVisibleDays] = useState(365);
 
   useEffect(() => {
@@ -33,7 +34,9 @@ function BentoGrid() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('ritesh.exe@proton.me');
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setIsEnvelopeOpen(true);
+    setTimeout(() => setCopied(false), 1000);
+    setTimeout(() => setIsEnvelopeOpen(false), 5000);
   };
 
   const transformData = (data) => {
@@ -112,7 +115,7 @@ function BentoGrid() {
         <h3 className={styles.cardTitle}>About Me</h3>
         <p className={styles.aboutText}>
           So, hello 🙋🏻<br/>
-          I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains, ranging from development, AI, cybersecurity, blockchain to IoT and much much more.<br/><br/>
+          I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains, ranging from development, cybersecurity, blockchain, IoT to AI and much much more.<br/><br/>
           I am currently pursuing a Bachelor's of Information Technology degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside of work, I enjoy listening to music while being on long walks (you'll almost always find me with my headphones on :), I also used to be deep into geopolitics at some point in time. Adding to all of this, I really like explaining concepts to people, and I weirdly love pitching ideas that I actually believe in.
         </p>
       </div>
@@ -204,10 +207,7 @@ function BentoGrid() {
         className={`${styles.card} ${styles.emailCard}`} 
         onClick={handleCopyEmail}
       >
-        <div className={`${styles.copyFeedback} ${copied ? styles.showFeedback : ''}`}>
-          <FaCheck style={{ marginRight: '6px' }} /> Copied
-        </div>
-        {copied ? 
+        {isEnvelopeOpen ? 
           <FaEnvelopeOpen className={`${styles.iconLarge} ${styles.iconOpen}`} /> 
           : 
           <FaEnvelope className={styles.iconLarge} />
@@ -216,7 +216,7 @@ function BentoGrid() {
         <p className={styles.cardContent}>ritesh.exe@proton.me</p>
         <div className={styles.cardAction}>
           <span>Tap to Copy</span>
-          <FaRegCopy className={styles.actionIcon} />
+          {copied ? <FaCheck className={styles.actionIcon} /> : <FaRegCopy className={styles.actionIcon} />}
         </div>
       </div>
 
