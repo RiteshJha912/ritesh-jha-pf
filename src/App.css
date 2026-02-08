@@ -45,6 +45,30 @@ body {
     /* Ensure containment */
     font-family: 'Roboto', sans-serif;
     /* Ensure default font */
+    cursor: url('/cursor.svg') 2 2, auto;
+}
+
+/* 
+   CUSTOM INTERACTIVE CURSOR 
+   Uses finger.png for clickable elements 
+*/
+a,
+button,
+input[type="submit"],
+input[type="button"],
+.hover,
+[role="button"],
+label,
+select,
+summary {
+    cursor: url('/finger.png') 0 0, pointer;
+}
+
+/* Maintain standard text cursor where appropriate */
+input[type="text"],
+textarea,
+[contenteditable] {
+    cursor: text;
 }
 
 #root {
@@ -99,7 +123,7 @@ p {
 }
 
 .hover {
-    cursor: pointer;
+    /* cursor is handled above globally now */
 }
 
 /* Custom Scrollbar */
