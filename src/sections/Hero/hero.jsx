@@ -60,18 +60,24 @@ function Hero({ onImageLoad }) {
     }
   }, [])
 
-  // Easter egg hint tooltip
+  // Easter egg hint tooltip - shows only once per tab session (like loading screen)
   useEffect(() => {
-    const isMobile = window.innerWidth <= 800
-    const delay = isMobile ? 3000 : 4000 // 3s on mobile, 4s on desktop
+    // Check if hint has already been shown in this tab session
+    const hintShown = sessionStorage.getItem('easterEggHintShown');
     
-    const hintTimer = setTimeout(() => {
-      setShowEasterEggHint(true)
-      setTimeout(() => setShowEasterEggHint(false), 4000)
-    }, delay)
+    if (!hintShown) {
+      const isMobile = window.innerWidth <= 800;
+      const delay = isMobile ? 3000 : 4000; // 3s on mobile, 4s on desktop
+      
+      const hintTimer = setTimeout(() => {
+        setShowEasterEggHint(true);
+        sessionStorage.setItem('easterEggHintShown', 'true'); // Mark as shown for this tab
+        setTimeout(() => setShowEasterEggHint(false), 4000);
+      }, delay);
 
-    return () => clearTimeout(hintTimer)
-  }, [])
+      return () => clearTimeout(hintTimer);
+    }
+  }, []);
 
   useEffect(() => {
     let timer
