@@ -1,8 +1,6 @@
-# Ritesh Jha - Portfolio Website
+# My corner on the internet 
 
 ## View live : https://about-ritesh.vercel.app/ 
-
-A modern, interactive portfolio website built with React, featuring smooth animations, dynamic theming, and a comprehensive showcase of my work and skills.
 
 ---
 
@@ -146,7 +144,7 @@ npm run preview
 
 ##  Design Philosophy
 
-This portfolio is built with a focus on UX and performance, and does not try to go over the top to show theatrics in design just to satisfy my ego leaving the user with a jittery UX.
+This portfolio is built with a focus on UX and performance, and does not try to go over the top to show theatrics in design just to satisfy my ego leaving the user with a jittery experience.
 
 ---
 
