@@ -1,76 +1,115 @@
 .terminal {
     width: 100%;
-    height: 100%;
-    background: #000;
-    color: #33ff33;
-    font-family: "Courier New", monospace;
+    height: 450px;
+    background: #0d1117;
+    color: #8b949e;
+    font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow-y: auto;
-    border: 4px solid #ffffff;
+    border: 1px solid #30363d;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     touch-action: pan-y;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    min-height: 400px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+/* Terminal header dots */
+.terminal::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
 }
 
 /* Custom Scrollbar */
 .terminal::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .terminal::-webkit-scrollbar-track {
-    background: #000;
+    background: #0d1117;
 }
 
 .terminal::-webkit-scrollbar-thumb {
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 5px #ffffff;
+    background: #30363d;
+    border-radius: 4px;
+}
+
+.terminal::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
 }
 
 .terminal p {
-    margin: 2px 0;
+    margin: 4px 0;
     white-space: pre-wrap;
     text-align: left;
-    line-height: 1.2;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+.terminal p:first-child {
+    margin-top: 30px;
 }
 
 .userCommand {
-    color: #66ff66;
-    font-weight: bold;
+    color: #58a6ff;
+    font-weight: 500;
 }
 
 form {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     width: 100%;
+    margin-top: 4px;
 }
 
 .prompt {
-    color: #33ff33;
+    color: #58a6ff;
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .terminalInput {
     background: transparent;
     border: none;
-    color: #33ff33;
-    font-size: 16px;
+    color: #c9d1d9;
+    font-size: 13px;
     flex-grow: 1;
     outline: none;
-    font-family: "Courier New", monospace;
+    font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+    caret-color: #58a6ff;
 }
 
-/* Responsiveness */
+.terminalInput::selection {
+    background: #58a6ff;
+    color: #0d1117;
+}
+
+/* Responsiveness - Fixed height, scrollable */
 @media (max-width: 768px) {
     .terminal {
-        padding: 15px;
-        border-width: 2px;
-        min-height: 300px;
+        height: 400px;
+        padding: 16px;
+    }
+
+    .terminal p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .prompt {
+        font-size: 14px;
     }
 
     .terminalInput {
@@ -80,9 +119,17 @@ form {
 
 @media (max-width: 480px) {
     .terminal {
-        padding: 10px;
-        border-width: 2px;
-        min-height: 250px;
+        height: 380px;
+        padding: 14px;
+    }
+
+    .terminal p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .prompt {
+        font-size: 13px;
     }
 
     .terminalInput {

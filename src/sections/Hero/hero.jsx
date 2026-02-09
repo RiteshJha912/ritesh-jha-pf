@@ -22,6 +22,7 @@ function Hero({ onImageLoad }) {
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopIndex, setLoopIndex] = useState(0)
+  const [rotationDegrees, setRotationDegrees] = useState(0)
 
   const texts = ['Ritesh Jha', 'Hazardous']
   const typingSpeed = 125
@@ -29,6 +30,12 @@ function Hero({ onImageLoad }) {
   const delayBetweenWords = 1500
 
   const [showThemeTooltip, setShowThemeTooltip] = useState(false)
+  const [showEasterEggHint, setShowEasterEggHint] = useState(false)
+
+  const handleImageClick = () => {
+    setRotationDegrees(prev => prev + 180)
+    setShowEasterEggHint(false) // Hide hint once they discover it
+  }
 
   useEffect(() => {
     let count = 0
@@ -51,6 +58,19 @@ function Hero({ onImageLoad }) {
     return () => {
       tooltipTimers.forEach(clearTimeout)
     }
+  }, [])
+
+  // Easter egg hint tooltip
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 800
+    const delay = isMobile ? 3000 : 4000 // 3s on mobile, 4s on desktop
+    
+    const hintTimer = setTimeout(() => {
+      setShowEasterEggHint(true)
+      setTimeout(() => setShowEasterEggHint(false), 4000)
+    }, delay)
+
+    return () => clearTimeout(hintTimer)
   }, [])
 
   useEffect(() => {
@@ -86,13 +106,33 @@ function Hero({ onImageLoad }) {
   return (
     <section id='hero' className={styles.container}>
       <div className={styles.colorModeContainer}>
-        <img
-          className={styles.hero}
-          src={heroImg}
-          alt='Profile Picture of Ritesh Jha'
-          onLoad={onImageLoad}
-          onError={onImageLoad}
-        />
+        <div 
+          className={styles.flipContainer}
+          onClick={handleImageClick}
+        >
+          <div 
+            className={styles.flipper}
+            style={{ transform: `rotateY(${rotationDegrees}deg)` }}
+          >
+            <div className={styles.front}>
+              <img
+                className={styles.hero}
+                src={heroImg}
+                alt='Profile Picture of Ritesh Jha'
+                onLoad={onImageLoad}
+                onError={onImageLoad}
+              />
+            </div>
+            <div className={styles.back}>
+              <div className={styles.backText}>yeah, vincent van gogh! 🎨</div>
+            </div>
+          </div>
+          {showEasterEggHint && (
+            <div className={styles.easterEggHint}>
+              👆🏼👀
+            </div>
+          )}
+        </div>
 {/* <div className={styles.themeButtonContainer}>
           <img
             className={styles.colorMode}

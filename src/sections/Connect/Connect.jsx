@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Connect.module.css'
 import Terminal from './Terminal'
 import { 
@@ -11,8 +11,18 @@ import {
 } from 'react-icons/si'
 import { FaCode, FaArrowRight } from 'react-icons/fa'
 import { MdEmail, MdAlternateEmail } from 'react-icons/md'
+import { IoCopy, IoCheckmark } from 'react-icons/io5'
+import codolioIcon from '../../assets/codolioicon.png'
 
 function Connect() {
+  const [copiedId, setCopiedId] = useState(null)
+
+  const handleCopy = (text, id) => {
+    navigator.clipboard.writeText(text)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 2000)
+  }
+
   return (
     <section id="connect" className={styles.section}>
       <h1 className="sectionTitle">Connect</h1>
@@ -30,11 +40,6 @@ function Connect() {
                         <span className={styles.linkText}>ritesh.exe@proton.me</span>
                         <span className={styles.arrow}><FaArrowRight size={12}/></span>
                     </a>
-                    <a href="mailto:riteshjha2174@gmail.com" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
-                        <span className={styles.icon}><MdAlternateEmail /></span>
-                        <span className={styles.linkText}>riteshjha2174@gmail.com</span>
-                        <span className={styles.arrow}><FaArrowRight size={12}/></span>
-                    </a>
                 </div>
             </div>
 
@@ -45,11 +50,25 @@ function Connect() {
                     <a href="https://discord.com/users/hazardous_912" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
                         <span className={styles.icon}><SiDiscord /></span>
                         <span className={styles.linkText}>@hazardous_912</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('hazardous_912', 'discord'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'discord' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                     <a href="https://www.instagram.com/ritzardous/" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
                         <span className={styles.icon}><SiInstagram /></span>
                         <span className={styles.linkText}>@ritzardous</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('ritzardous', 'instagram'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'instagram' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                 </div>
@@ -62,21 +81,51 @@ function Connect() {
                    <a href="https://github.com/RiteshJha912" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
                         <span className={styles.icon}><SiGithub /></span>
                         <span className={styles.linkText}>@RiteshJha912</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('RiteshJha912', 'github'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'github' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                     <a href="https://leetcode.com/u/ritzardous/" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
                         <span className={styles.icon}><SiLeetcode /></span>
                         <span className={styles.linkText}>@ritzardous</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('ritzardous', 'leetcode'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'leetcode' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                     <a href="https://www.codechef.com/users/ritzardous" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
                         <span className={styles.icon}><SiCodechef /></span>
                         <span className={styles.linkText}>@ritzardous</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('ritzardous', 'codechef'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'codechef' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                     <a href="https://codolio.com/profile/ritzardous" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
-                        <span className={styles.icon}><FaCode /></span>
+                        <span className={styles.icon}>
+                            <img src={codolioIcon} alt="Codolio" className={styles.codolioImg} />
+                        </span>
                         <span className={styles.linkText}>@ritzardous</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('ritzardous', 'codolio'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'codolio' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                 </div>

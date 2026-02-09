@@ -4,8 +4,8 @@ import styles from './Terminal.module.css'
 function Terminal() {
   const [input, setInput] = useState('')
   const [logs, setLogs] = useState([
-    'Wanna drop a message for me?',
-    "Type 'info' to know the git commands",
+    'For the madlads who wanna HMU the git way',
+    "Type 'info' to see how it works",
   ])
   const [message, setMessage] = useState('')
   const [email, setEmail] = useState('')
@@ -50,8 +50,8 @@ function Terminal() {
 
     if (cmd === 'clear') {
       setLogs([
-        'Wanna drop a message for me?',
-        "Type 'info' to know the git commands",
+        'For the madlads who wanna HMU the git way',
+        "Type 'info' to see how it works",
       ])
       setMessage('')
       setEmail('')
@@ -60,13 +60,15 @@ function Terminal() {
       setLogs((prevLogs) => [
         ...prevLogs,
         <span className={styles.userCommand}>$ {cmd}</span>,
-        'Use the following commands to send me a message:',
-        '1) git add . "your message"',
-        '2) git commit -m "your email"',
-        '3) git push origin main',
         '',
-        'Other commands:',
-        '▶ clear - To reset terminal',
+        'SEND MESSAGE:',
+        '  1. git add . "your message here"',
+        '  2. git commit -m "your@email.com"',
+        '  3. git push origin main',
+        '',
+        'OTHER COMMANDS:',
+        '  clear  - Reset terminal',
+        '',
       ])
     } else if (addRegex.test(cmd)) {
       const msg = cmd.match(addRegex)[1]

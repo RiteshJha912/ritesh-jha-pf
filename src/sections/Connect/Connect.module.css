@@ -38,9 +38,9 @@
     overflow: hidden;
 }
 
-/* Light theme */
+/* Light theme - Improved visibility */
 [data-theme='light'] .card {
-    background: rgba(250, 250, 250, 0.98);
+    background: rgba(245, 245, 245, 0.98);
 }
 
 /* Dark theme */
@@ -78,7 +78,8 @@
 }
 
 [data-theme='light'] .tierTitle {
-    border-bottom-color: rgba(0, 0, 0, 0.06);
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+    opacity: 1;
 }
 
 .linksContainer {
@@ -107,7 +108,7 @@
 }
 
 [data-theme='light'] .linkItem {
-    border-bottom-color: rgba(0, 0, 0, 0.06);
+    border-bottom-color: rgba(0, 0, 0, 0.12);
 }
 
 .linkItem:last-child {
@@ -145,7 +146,50 @@
     font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
     letter-spacing: 0;
     flex: 1;
-    opacity: 0.95;
+    opacity: 1;
+}
+
+/* Codolio image icon styling */
+.codolioImg {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: opacity 0.2s ease;
+}
+
+[data-theme='dark'] .codolioImg {
+    filter: grayscale(100%) invert(1);
+}
+
+.linkItem:hover .codolioImg {
+    opacity: 0.8;
+}
+
+/* Copy button styling */
+.copyBtn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    opacity: 0.4;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    font-size: 14px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.copyBtn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.copyBtn:active {
+    transform: scale(0.95);
 }
 
 /* Arrow indicator */

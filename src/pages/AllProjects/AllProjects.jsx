@@ -241,7 +241,21 @@ function AllProjects() {
 
   const categories = ['All', 'Featured', 'Full-Stack', 'Blockchain', 'Security', 'AI/ML', 'Gaming'];
 
+  // Helper function to normalize text for search (removes special chars, emojis, extra spaces)
+  const normalizeSearchText = (text) => {
+    return text
+      .toLowerCase()
+      .trim()
+      // Remove emojis and special characters, keep alphanumeric, spaces, and common punctuation
+      .replace(/[^\w\s\-\.\/]/gi, '')
+      // Replace multiple spaces with single space
+      .replace(/\s+/g, ' ');
+  };
+
   const filteredProjects = useMemo(() => {
+    // If search query is empty or just whitespace, skip search filtering
+    const trimmedQuery = searchQuery.trim();
+    
     return projects.filter(project => {
       // Logic for Featured category
       if (activeCategory === 'Featured') {
@@ -264,8 +278,17 @@ function AllProjects() {
         || (activeCategory === 'Gaming' && allTags.includes('Game Type'))
         || (activeCategory === 'AI' && (allTags.includes('AI/ML') || allTags.includes('Agentic AI')));
       
-      const matchesSearch = project.h3.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            project.shortDesc.toLowerCase().includes(searchQuery.toLowerCase());
+      // Enhanced search: title, subtitle, and all tags with normalization
+      if (!trimmedQuery) {
+        return matchesCategory; // No search query, just filter by category
+      }
+
+      const normalizedQuery = normalizeSearchText(trimmedQuery);
+      const matchesSearch = 
+        normalizeSearchText(project.h3).includes(normalizedQuery) || 
+        normalizeSearchText(project.shortDesc).includes(normalizedQuery) ||
+        allTags.some(tag => normalizeSearchText(tag).includes(normalizedQuery));
+      
       return matchesCategory && matchesSearch;
     });
   }, [activeCategory, searchQuery, projects]);
