@@ -2,11 +2,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styles from './BentoGrid.module.css';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../../common/themeContext';
-import { FaCopy, FaDownload, FaEnvelope, FaEnvelopeOpen, FaFileAlt, FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaCode, FaChartLine, FaEthereum, FaLightbulb, FaLink, FaFingerprint, FaBrain, FaDatabase, FaRobot, FaPalette, FaKey, FaHammer, FaArrowRight, FaCheck, FaRegCopy, FaGoogleDrive, FaMapMarkerAlt, FaCircle, FaForward } from 'react-icons/fa';
+import { FaCopy, FaDownload, FaEnvelope, FaEnvelopeOpen, FaFileAlt, FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaCode, FaChartLine, FaEthereum, FaLightbulb, FaLink, FaFingerprint, FaBrain, FaDatabase, FaRobot, FaPalette, FaKey, FaHammer, FaArrowRight, FaCheck, FaRegCopy, FaGoogleDrive, FaMapMarkerAlt, FaCircle, FaForward, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiSolidity, SiCplusplus, SiPug, SiNextdotjs, SiVite, SiTailwindcss, SiFramer, SiThreedotjs, SiChartdotjs, SiExpress, SiFastapi, SiFlask, SiMongodb, SiPostgresql, SiMysql, SiFirebase, SiGooglesheets, SiIpfs, SiPostman, SiJsonwebtokens, SiGoogle, SiAxios, SiDocker, SiKubernetes } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
 import { IoLogoJavascript } from "react-icons/io5";
-import modijiClip from '../../assets/modijiclip.mp4';
+
 
 const BentoGrid = React.memo(() => {
   const { theme } = useTheme();
@@ -14,6 +14,7 @@ const BentoGrid = React.memo(() => {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [visibleDays, setVisibleDays] = useState(365);
   const [isPlayingResumeVideo, setIsPlayingResumeVideo] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,8 +44,17 @@ const BentoGrid = React.memo(() => {
   };
 
   const handleOpenResume = (e) => {
-    if (e) e.stopPropagation(); // Prevent bubbling if triggered by button inside card
-    window.open('https://drive.google.com/file/d/1urfWKJuoSORMONmbX8-0qjpjha7hPXyt/view?usp=sharing', '_blank');
+    if (e) e.stopPropagation();
+    
+    // Create invisible link and click it (better for bypassing blockers)
+    const link = document.createElement('a');
+    link.href = 'https://drive.google.com/file/d/1urfWKJuoSORMONmbX8-0qjpjha7hPXyt/view?usp=sharing';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
     setIsPlayingResumeVideo(false);
   };
 
@@ -252,14 +262,29 @@ const BentoGrid = React.memo(() => {
             setIsPlayingResumeVideo(true);
           }
         }}
+        style={{ position: 'relative' }}
       >
-        {isPlayingResumeVideo ? (
-          <>
+        {/* Default Content - Always rendered to maintain size */}
+        <div style={{ opacity: isPlayingResumeVideo ? 0 : 1, transition: 'opacity 0.3s ease', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
+          <FaFileAlt className={styles.iconLarge} />
+          <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>Resume</h3>
+          <p className={styles.cardContent}>View & Download</p>
+          <div className={styles.cardAction}>
+            <span>Google Drive</span>
+            <FaGoogleDrive className={styles.actionIcon} />
+          </div>
+        </div>
+
+        {/* Video Overlay */}
+        {isPlayingResumeVideo && (
+          <div className={styles.videoOverlay}>
             <video 
-              src={modijiClip}
+              src="/modijiclip.mp4" 
               className={styles.resumeVideo} 
               autoPlay 
               playsInline
+              muted={isMuted}
+              preload="auto"
               onEnded={() => handleOpenResume()}
               onError={(e) => {
                 console.error("Video failed to play", e);
@@ -270,7 +295,18 @@ const BentoGrid = React.memo(() => {
             <div className={styles.resumeLoadingText}>
                😂 opening resume...
             </div>
-            
+
+            {/* Mute Button */}
+            <div 
+              className={styles.muteButton}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMuted(!isMuted);
+              }}
+            >
+              {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+            </div>
+
             {/* Skip Button */}
             <div 
               className={styles.skipButton}
@@ -278,17 +314,7 @@ const BentoGrid = React.memo(() => {
             >
               <FaForward />
             </div>
-          </>
-        ) : (
-          <>
-            <FaFileAlt className={styles.iconLarge} />
-            <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>Resume</h3>
-            <p className={styles.cardContent}>View & Download</p>
-            <div className={styles.cardAction}>
-              <span>Google Drive</span>
-              <FaGoogleDrive className={styles.actionIcon} />
-            </div>
-          </>
+          </div>
         )}
       </div>
     </section>
