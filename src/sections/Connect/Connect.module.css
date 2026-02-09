@@ -22,6 +22,8 @@
     flex-direction: column;
     gap: 0;
     position: relative;
+    height: 100%;
+    /* Match terminal height on PC */
 }
 
 /* Card Design - Minimalist with solid background */
@@ -36,6 +38,9 @@
     gap: 0;
     transition: none;
     overflow: hidden;
+    transition: none;
+    overflow: hidden;
+    /* Removed flex-grow: 1 to prevent small cards from stretching awkwardly */
 }
 
 /* Light theme - Improved visibility */
@@ -59,6 +64,8 @@
 
 .codingTier {
     --accent-color: #9d6ec8;
+    flex-grow: 1;
+    /* Only this card should expand to fill remaining space */
 }
 
 /* Tier titles - Clean and minimal */
@@ -233,6 +240,11 @@
     .rightColumn {
         min-height: 320px;
         order: 1;
+    }
+
+    .leftColumn {
+        height: auto;
+        /* Reset fixed height for mobile */
     }
 
     .linkItem:hover {

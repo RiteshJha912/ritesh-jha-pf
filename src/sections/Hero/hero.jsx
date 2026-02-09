@@ -60,17 +60,23 @@ function Hero({ onImageLoad }) {
     }
   }, [])
 
-  // Easter egg hint tooltip - shows on every page load
+  // Easter egg hint tooltip - shows only once per session (on reload)
   useEffect(() => {
-    const isMobile = window.innerWidth <= 800;
-    const delay = isMobile ? 3000 : 4000; // 3s on mobile, 4s on desktop
+    // Check if hint has already been shown in this session
+    const hasShownHint = sessionStorage.getItem('hasShownEasterEggHint');
     
-    const hintTimer = setTimeout(() => {
-      setShowEasterEggHint(true);
-      setTimeout(() => setShowEasterEggHint(false), 4000);
-    }, delay);
+    if (!hasShownHint) {
+      const isMobile = window.innerWidth <= 800;
+      const delay = isMobile ? 3000 : 4000; // 3s on mobile, 4s on desktop
+      
+      const hintTimer = setTimeout(() => {
+        setShowEasterEggHint(true);
+        sessionStorage.setItem('hasShownEasterEggHint', 'true');
+        setTimeout(() => setShowEasterEggHint(false), 4000);
+      }, delay);
 
-    return () => clearTimeout(hintTimer);
+      return () => clearTimeout(hintTimer);
+    }
   }, []);
 
   useEffect(() => {
