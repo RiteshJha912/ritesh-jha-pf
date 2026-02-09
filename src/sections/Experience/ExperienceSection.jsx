@@ -170,7 +170,7 @@ function Experience() {
       date: 'Jun 2024 - Dec 2024',
       logo: deepCytesLogo,
       idBadge: 'SEC-OPS',
-      internshipType: 'Part-time Internship',
+      internshipType: 'Part-time Sem-long Internship',
       desc: [
         'Engineered the DeepCytes OSINT Toolkit, a proprietary search engine accelerating cybercrime investigations.',
         'Hardened security infrastructure and compliance frameworks for high-profile clients through targeted penetration testing.',

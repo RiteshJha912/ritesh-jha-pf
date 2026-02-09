@@ -173,6 +173,16 @@
     opacity: 1;
 }
 
+/* Featured Tab Active State Override - Fix text visibility */
+.filterTab.featuredTab.activeTab,
+.filterTab.featuredTab.activeTab:hover {
+    background: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(var(--text-color-rgb), 0.15);
+}
+
 /* MYSTERIOUS FEATURED TAB */
 .filterTab.featuredTab {
     position: relative;

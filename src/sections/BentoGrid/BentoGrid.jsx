@@ -174,7 +174,7 @@ function BentoGrid() {
         <div className={styles.marqueeWrapper} style={{ marginTop: '0', padding: '5px 0' }}>
            <div className={styles.marqueeTrack}>
             {[
-              "AI Agents", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
+              "AI Agents", "Kali", "Pen-testing", "OSINT", 
               "Network Security", "SEO", "3D Graphics", "Cryptography", 
               "API Testing", "Serverless Data"
             ].map((skill, index) => (

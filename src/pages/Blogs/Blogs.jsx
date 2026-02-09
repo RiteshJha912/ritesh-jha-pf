@@ -9,18 +9,32 @@ const Blogs = () => {
       display: 'flex', 
       justifyContent: 'center', 
       alignItems: 'center', 
-      height: '100vh', 
+      minHeight: '100vh',
+      height: '100%',
       flexDirection: 'column',
-      gap: '20px',
+      gap: 'clamp(15px, 3vw, 20px)',
       color: theme === 'light' ? '#222' : '#fff',
-      background: theme === 'light' ? '#fff' : '#222'
+      background: theme === 'light' ? '#fff' : '#222',
+      padding: '20px',
+      textAlign: 'center'
     }}>
-      <h1 style={{ fontSize: '3rem', margin: 0, fontFamily: 'Bona Nova SC, serif' }}>Blogs</h1>
+      <h1 style={{ 
+        fontSize: 'clamp(2rem, 5vw, 3rem)', 
+        margin: 0, 
+        fontFamily: 'Bona Nova SC, serif',
+        maxWidth: '90vw',
+        wordWrap: 'break-word'
+      }}>
+        Blogs
+      </h1>
       <p style={{ 
-        fontSize: '1.5rem', 
+        fontSize: 'clamp(1rem, 3vw, 1.5rem)', 
         opacity: 0.7, 
         fontFamily: 'Roboto Mono, monospace',
-        margin: 0
+        margin: 0,
+        maxWidth: '90vw',
+        wordWrap: 'break-word',
+        lineHeight: 1.6
       }}>
         I hope I start writing consistently soon!
       </p>

@@ -149,28 +149,23 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
 
-    /* ... existing ... */
-    .themeToggle {
-        margin-left: 0;
-    }
-
     .navbar {
         width: 80%;
         min-width: 0;
-        /* Reset interfering desktop min-width */
-        padding: 12px 20px;
-        /* Slightly reduced padding for better fit */
+        padding: 10px 20px;
         justify-content: space-between;
+        align-items: center;
+        /* Ensure vertical centering */
         top: 20px;
         border-radius: 8px;
-        /* Less rounded corners, distinct from pill */
+        display: flex;
+        flex-direction: row;
+        /* Explicit row layout */
 
         /* Mobile Performance Optimizations */
         backdrop-filter: blur(8px);
-        /* Reduced blur for performance */
         -webkit-backdrop-filter: blur(8px);
         transform: translateX(-50%) translateZ(0);
-        /* Force GPU acceleration */
         will-change: width, padding, top, border-radius, background-color, box-shadow;
         backface-visibility: hidden;
         transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -183,24 +178,40 @@
 
     .scrolled {
         width: 140px;
-        /* Shrinks to a compact island */
-        padding: 8px 20px;
+        padding: 10px 20px;
         top: 15px;
         border-radius: 50px;
-        /* Becomes a pill */
         justify-content: space-between;
-        /* Keeps icons distinct */
+        align-items: center;
+    }
+
+    .mobileMenuBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .themeToggle {
+        margin-left: 0;
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
     }
 
     .navLinks {
         position: absolute;
-        top: 80px;
-        /* Increased spacing from new navbar height */
+        top: 70px;
         right: 0;
         width: calc(100% + 0px);
-        /* Full width relative to navbar parent */
         max-width: 300px;
-        /* Cap width */
         height: auto;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
@@ -255,22 +266,10 @@
 
     .navLink::after {
         display: none;
-        /* No underline for dropdown items */
-    }
-
-    .mobileMenuBtn {
-        display: block;
     }
 
     .navIcon {
         display: block;
         font-size: 1.2em;
-    }
-
-    /* Move theme toggle to the mobile menu or keep it in header? 
-       Let's keep it visible in header for easy access even on mobile.
-    */
-    .themeToggle {
-        margin-left: 0;
     }
 }
