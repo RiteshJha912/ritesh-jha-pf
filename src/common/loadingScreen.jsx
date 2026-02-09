@@ -20,7 +20,7 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
     browser: 'Detecting...',
     os: 'Detecting...',
     ip: 'Detecting...',
-    location: 'Detecting...',
+
   })
 
   // function to detect the user's browser from the userAgent string
@@ -191,122 +191,6 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
     ])
   }
 
-  // Enhanced function to fetch location with multiple data sources and caching
-  const fetchLocation = async (ip) => {
-    if (ip === 'Unavailable' || !isValidIP(ip)) return 'Unavailable'
-
-    // Multiple location APIs with different data formats
-    const locationApis = [
-      {
-        url: `https://ipapi.co/${ip}/json`,
-        parser: (data) => {
-          if (data.city && data.country_name) {
-            return `${data.city}, ${data.region || ''}, ${data.country_name}`.replace(', ,', ',')
-          }
-          return null
-        }
-      },
-      {
-        url: `https://ipwho.is/${ip}`,
-        parser: (data) => {
-          if (data.city && data.country) {
-            return `${data.city}, ${data.region || ''}, ${data.country}`.replace(', ,', ',')
-          }
-          return null
-        }
-      },
-      {
-        url: `https://ipinfo.io/${ip}/json`,
-        parser: (data) => {
-          if (data.city && data.country) {
-            return `${data.city}, ${data.region || ''}, ${data.country}`.replace(', ,', ',')
-          }
-          return null
-        }
-      },
-      {
-        url: `http://ip-api.com/json/${ip}`,
-        parser: (data) => {
-          if (data.status === 'success' && data.city && data.country) {
-            return `${data.city}, ${data.regionName || ''}, ${data.country}`.replace(', ,', ',')
-          }
-          return null
-        }
-      },
-      {
-        url: `https://freeipapi.com/api/json/${ip}`,
-        parser: (data) => {
-          if (data.cityName && data.countryName) {
-            return `${data.cityName}, ${data.regionName || ''}, ${data.countryName}`.replace(', ,', ',')
-          }
-          return null
-        }
-      },
-      {
-        url: `https://geolocation-db.com/json/${ip}`,
-        parser: (data) => {
-          if (data.city && data.country_name) {
-            return `${data.city}, ${data.state || ''}, ${data.country_name}`.replace(', ,', ',')
-          }
-          return null
-        }
-      },
-      {
-        url: `https://api.techniknews.net/ipgeo/${ip}`,
-        parser: (data) => {
-          if (data.city && data.country) {
-            return `${data.city}, ${data.regionName || ''}, ${data.country}`.replace(', ,', ',')
-          }
-          return null
-        }
-      }
-    ]
-
-    // Try all location APIs in parallel
-    const promises = locationApis.map(api =>
-      fetchWithTimeout(api.url, 4000)
-        .then(response => response.json())
-        .then(data => api.parser(data))
-        .catch(() => null)
-    )
-
-    const results = await Promise.allSettled(promises)
-    const validLocations = results
-      .filter(result => result.status === 'fulfilled' && result.value)
-      .map(result => result.value)
-
-    // Use the most common location if we have multiple results
-    if (validLocations.length > 0) {
-      return getMostCommonLocation(validLocations)
-    }
-
-    // Sequential fallback if parallel approach fails
-    for (let api of locationApis) {
-      try {
-        const response = await fetchWithTimeout(api.url, 5000)
-        const data = await response.json()
-        const location = api.parser(data)
-        if (location) return location
-      } catch (error) {
-        console.warn(`Failed to fetch location from ${api.url}`)
-      }
-    }
-
-    return 'Unavailable'
-  }
-
-  // Helper to find most common location from multiple results
-  function getMostCommonLocation(locations) {
-    const locationCounts = {}
-    locations.forEach(loc => {
-      locationCounts[loc] = (locationCounts[loc] || 0) + 1
-    })
-    
-    return Object.keys(locationCounts).reduce((a, b) => 
-      locationCounts[a] > locationCounts[b] ? a : b
-    )
-  }
-
   // function to load previously saved user data from local storage
   const loadCachedData = () => {
     const cachedData = localStorage.getItem('userInfo')
@@ -339,20 +223,17 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
 
     setStep(1)
     await delay(isFirstLoad ? 1000 : 500)
-    setProgress(35)
+    setProgress(40)
 
     if (cachedData) {
       setInfo(cachedData)
       setStep(2)
       await delay(250)
-      setProgress(50)
+      setProgress(60)
       setStep(3)
       await delay(250)
-      setProgress(65)
-      setStep(4)
-      await delay(250)
       setProgress(80)
-      setStep(5)
+      setStep(4)
       await delay(250)
       setProgress(90)
 
@@ -363,57 +244,27 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
         browser: getBrowser(),
         os: getOS(),
         ip: 'Fetching...',
-        location: 'Fetching...',
       }
 
       setInfo((prev) => ({ ...prev, browser: newInfo.browser }))
       setStep(2)
       await delay(1000)
-      setProgress(50)
+      setProgress(60)
 
       setInfo((prev) => ({ ...prev, os: newInfo.os }))
       setStep(3)
       await delay(1000)
-      setProgress(65)
+      setProgress(80)
 
       // Fetch IP with enhanced logic
       newInfo.ip = await fetchIP()
       setInfo((prev) => ({ ...prev, ip: newInfo.ip }))
-      setStep(4)
-      await delay(1000)
-      setProgress(80)
-
-      // Fetch location with timeout
-      let locationFetched = false
-      const locationPromise = fetchLocation(newInfo.ip)
       
-      const locationTimeout = setTimeout(() => {
-        if (!locationFetched) {
-          console.warn('Location fetch timeout exceeded')
-          setInfo((prev) => ({ ...prev, location: 'Unavailable' }))
-          setStep(5)
-          setProgress(90)
-          setReadyToFinish(true)
-        }
-      }, 5000) // 5 seconds timeout for better coverage
-
-      try {
-        const location = await locationPromise
-        locationFetched = true
-        clearTimeout(locationTimeout)
-        newInfo.location = location
-        setInfo((prev) => ({ ...prev, location: newInfo.location }))
-      } catch {
-        clearTimeout(locationTimeout)
-        newInfo.location = 'Unavailable'
-        setInfo((prev) => ({ ...prev, location: 'Unavailable' }))
-      }
-
       // Save to cache with timestamp
       localStorage.setItem('userInfo', JSON.stringify(newInfo))
       localStorage.setItem('userInfoTimestamp', Date.now().toString())
 
-      setStep(5)
+      setStep(4)
       await delay(500)
       setProgress(90)
     }
@@ -428,13 +279,7 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
       browser: getBrowser(),
       os: getOS(),
       ip: await fetchIP(),
-      location: 'Fetching...',
     }
-
-    newInfo.location =
-      newInfo.ip !== 'Unavailable'
-        ? await fetchLocation(newInfo.ip)
-        : 'Unavailable'
 
     localStorage.setItem('userInfo', JSON.stringify(newInfo))
     localStorage.setItem('userInfoTimestamp', Date.now().toString())
@@ -488,7 +333,7 @@ const LoadingScreen = ({ onFinish, isHeroLoaded }) => {
       {step >= 1 && <p className={styles.infoText}>Browser: <span className={styles.value}>{info.browser}</span></p>}
       {step >= 2 && <p className={styles.infoText}>System: <span className={styles.value}>{info.os}</span></p>}
       {step >= 3 && <p className={styles.infoText}>IP Address: <span className={styles.highlight}>{info.ip}</span></p>}
-      {step >= 4 && <p className={styles.infoText}>Location: <span className={styles.highlight}>{info.location === 'Unavailable' ? 'Unknown' : info.location}</span></p>}
+
       <div className={styles.progressContainer}>
         <div
           className={styles.progressBar}
