@@ -332,12 +332,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Cover: Fills the area, cropping if needed, NO scaling distortion */
     border-radius: 12px;
-    /* Smooth corners */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    /* Significant Lift effect inside the embed */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Image rendering optimizations */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    will-change: opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 /* Specific styling for first 3 projects */

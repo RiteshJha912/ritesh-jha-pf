@@ -22,6 +22,36 @@ function AllProjects() {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Preload all images on component mount
+  useEffect(() => {
+    const imageUrls = [
+      indrafndn, democrazy, paperops, epoch, chromagen, gasdottips,
+      debiased, hackademy, hnltech, taskifyv2, koshkeeper, devflipper,
+      slinket, coffercrypt, ethlogonew
+    ];
+
+    let loadedCount = 0;
+    const totalImages = imageUrls.length;
+
+    imageUrls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+    });
+  }, []);
 
   // Migration of Data from sections/Projects/projects.jsx
   const projects = [
@@ -295,7 +325,14 @@ function AllProjects() {
                 >
                   <div className={styles.imageWrapper}>
                  {project.src ? (
-                    <img src={project.src} alt={project.h3} data-project={project.h3} />
+                    <img 
+                      src={project.src} 
+                      alt={project.h3} 
+                      data-project={project.h3}
+                      fetchpriority="high"
+                      loading="eager"
+                      style={{ opacity: imagesLoaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
+                    />
                  ) : (
                     <div className={styles.imagePlaceholder}></div>
                  )}

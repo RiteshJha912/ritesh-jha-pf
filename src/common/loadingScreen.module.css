@@ -17,6 +17,9 @@
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     padding: 20px;
     letter-spacing: 0.5px;
+
+    /* Subtle ambient glow */
+    box-shadow: inset 0 0 100px rgba(160, 160, 160, 0.03);
 }
 
 .mainText {
@@ -26,6 +29,7 @@
     font-weight: 500;
     text-align: center;
     width: 100%;
+    text-shadow: 0 0 20px rgba(224, 224, 224, 0.1);
 }
 
 .infoText {
@@ -44,14 +48,16 @@
 }
 
 .highlight {
-    color: #4db8ff;
+    color: #b0b0b0;
     font-weight: 500;
-    text-shadow: 0 0 8px rgba(77, 184, 255, 0.3);
+    text-shadow: 0 0 10px rgba(176, 176, 176, 0.2),
+        0 0 20px rgba(176, 176, 176, 0.1);
 }
 
 .online {
-    color: #5eead4;
-    text-shadow: 0 0 6px rgba(94, 234, 212, 0.4);
+    color: #a8a8a8;
+    text-shadow: 0 0 8px rgba(168, 168, 168, 0.25),
+        0 0 15px rgba(168, 168, 168, 0.12);
     font-weight: 500;
 }
 
@@ -72,11 +78,27 @@
 
 .progressBar {
     height: 100%;
-    background: linear-gradient(90deg, #4db8ff 0%, #5eead4 100%);
+    background: linear-gradient(90deg, #888888 0%, #a0a0a0 100%);
     width: 0%;
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 3px;
-    box-shadow: 0 0 12px rgba(77, 184, 255, 0.4);
+    box-shadow: 0 0 12px rgba(136, 136, 136, 0.25),
+        0 0 20px rgba(136, 136, 136, 0.15);
+    animation: subtleGlow 2s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 12px rgba(136, 136, 136, 0.25),
+            0 0 20px rgba(136, 136, 136, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(136, 136, 136, 0.3),
+            0 0 25px rgba(136, 136, 136, 0.18);
+    }
 }
 
 /* Responsive Design */

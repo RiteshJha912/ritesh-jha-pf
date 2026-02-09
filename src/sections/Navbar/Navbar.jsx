@@ -123,10 +123,17 @@ const Navbar = () => {
     };
 
     const navItems = [
-        { label: 'Home', id: 'hero', icon: <FaHome /> },
-        { label: 'Projects', id: 'projects', icon: <FaProjectDiagram /> },
-        { label: 'Blogs', id: 'blogs', icon: <FaCode /> },
+        { label: 'Home', id: 'hero', icon: <FaHome />, path: '/' },
+        { label: 'Projects', id: 'projects', icon: <FaProjectDiagram />, path: '/projects' },
+        { label: 'Blogs', id: 'blogs', icon: <FaCode />, path: '/blogs' },
     ];
+
+    // Helper to determine current active page
+    const getCurrentPage = () => {
+        if (location.pathname === '/projects') return 'projects';
+        if (location.pathname === '/blogs') return 'blogs';
+        return 'hero'; // Default to home
+    };
 
     const scrollToSection = (id) => {
         if (id === 'projects') {
@@ -210,7 +217,7 @@ const Navbar = () => {
                     <NavItem 
                         key={item.id}
                         item={item}
-                        className={styles.navLink}
+                        className={`${styles.navLink} ${getCurrentPage() === item.id ? styles.activeNavLink : ''}`}
                         iconClassName={styles.navIcon}
                         onClick={() => scrollToSection(item.id)}
                     />

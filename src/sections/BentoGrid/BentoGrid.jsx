@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styles from './BentoGrid.module.css';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../../common/themeContext';
@@ -7,7 +7,7 @@ import { SiJavascript, SiTypescript, SiSolidity, SiCplusplus, SiPug, SiNextdotjs
 import { TbApi } from 'react-icons/tb';
 import { IoLogoJavascript } from "react-icons/io5";
 
-function BentoGrid() {
+const BentoGrid = React.memo(() => {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
@@ -39,21 +39,23 @@ function BentoGrid() {
     setTimeout(() => setIsEnvelopeOpen(false), 5000);
   };
 
-  const transformData = (data) => {
-    if (visibleDays) {
-      return data.slice(-visibleDays);
-    }
-    return data;
-  };
+  const transformData = useMemo(() => {
+    return (data) => {
+      if (visibleDays) {
+        return data.slice(-visibleDays);
+      }
+      return data;
+    };
+  }, [visibleDays]);
 
-  const elegantTheme = {
+  const elegantTheme = useMemo(() => ({
     // Light Mode: Bg(Light), Levels: Light -> Black
     light: ['#ebedf0', '#b8b8b8', '#8a8a8a', '#5e5e5e', '#000000'],
     // Dark Mode: Bg(Dark), Levels: Dark -> White
     dark: ['#161b22', '#4a4a4a', '#7a7a7a', '#a9a9a9', '#ffffff'],
-  };
+  }), []);
 
-  const technologies = [
+  const technologies = useMemo(() => [
     { name: 'JavaScript', icon: <IoLogoJavascript /> },
     { name: 'TypeScript', icon: <SiTypescript /> },
     { name: 'Python', icon: <FaPython /> },
@@ -106,7 +108,7 @@ function BentoGrid() {
     { name: 'JWT', icon: <SiJsonwebtokens /> },
     { name: 'Apps Script', icon: <SiGoogle /> },
     { name: 'Axios', icon: <SiAxios /> },
-  ];
+  ], []);
 
   return (
     <section className={styles.container}>
@@ -136,7 +138,7 @@ function BentoGrid() {
 
       {/* 2. Technologies */}
       <div className={`${styles.card} ${styles.techCard}`} style={{ overflow: 'hidden' }}>
-        <h3 className={styles.cardTitle}>Tech Stack</h3>
+        <h3 className={styles.cardTitle}>Technologies I have worked with</h3>
         <div className={styles.marqueeWrapper}>
           {/* Row 1 */}
           <div className={styles.marqueeTrack}>
@@ -169,21 +171,20 @@ function BentoGrid() {
           </div>
         </div>
 
-        {/* Other Skills */}
         <h3 className={styles.cardTitle} style={{ marginTop: '15px' }}>Other Skills</h3>
         <div className={styles.marqueeWrapper} style={{ marginTop: '0', padding: '5px 0' }}>
            <div className={styles.marqueeTrack}>
             {[
               "AI Agents", "Kali", "Pen-testing", "OSINT", 
               "Network Security", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "Serverless Data"
+              "API Testing", "AppSec Testing", "Serverless Data"
             ].map((skill, index) => (
                 <span key={`skill-${index}`} className={styles.techBadge}>{skill}</span>
             ))}
             {[
-              "AI Agents", "Auth & DevOps", "Kali", "Pen-testing", "OSINT", 
+              "AI Agents", "Kali", "Pen-testing", "OSINT", 
               "Network Security", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "Serverless Data"
+              "API Testing", "AppSec Testing", "Serverless Data"
             ].map((skill, index) => (
                 <span key={`dup-${index}`} className={styles.techBadge}>{skill}</span>
             ))}
@@ -249,6 +250,8 @@ function BentoGrid() {
       </div>
     </section>
   );
-}
+});
+
+BentoGrid.displayName = 'BentoGrid';
 
 export default BentoGrid;

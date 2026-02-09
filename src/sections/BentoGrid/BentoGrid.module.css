@@ -15,9 +15,7 @@
     background: var(--project-card-bg);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    /* Slightly tighter radius */
     padding: 16px;
-    /* Further reduced padding */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -27,6 +25,12 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
+
+    /* Performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
+    contain: layout style paint;
+    backface-visibility: hidden;
 }
 
 [data-theme='light'] .card {
@@ -66,8 +70,11 @@
 .githubCard {
     grid-column: span 4;
     min-height: 160px;
-    /* Reduced height */
     align-items: center;
+
+    /* Optimize rendering */
+    content-visibility: auto;
+    contain-intrinsic-size: 160px;
 }
 
 .emailCard {
@@ -130,9 +137,13 @@
 .marqueeTrack {
     display: flex;
     gap: 12px;
-    /* Gap between items */
     width: max-content;
     animation: scroll 40s linear infinite;
+
+    /* GPU acceleration for smooth animation */
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 /* Reverse animation for variety */
@@ -146,11 +157,11 @@
 
 @keyframes scroll {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
@@ -166,12 +177,14 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     color: var(--text-color);
     white-space: nowrap;
-    /* Prevent wrapping */
     transition: all 0.2s ease;
-    flex-shrink: 0;
     flex-shrink: 0;
     user-select: none;
     -webkit-user-select: none;
+
+    /* Performance optimization */
+    will-change: transform, background-color;
+    transform: translateZ(0);
 }
 
 .techIcon {
@@ -186,11 +199,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.techBadge:hover {
-    background: var(--text-color);
-    color: var(--background-color);
-    transform: scale(1.05);
-}
+/* Removed hover color/scale effects - only pause animation */
 
 /* Github */
 .githubContent {
@@ -199,7 +208,22 @@
     justify-content: center;
     overflow-x: auto;
     padding-bottom: 5px;
-    /* Scrollbar space */
+}
+
+/* Elegant GitHub calendar text styling */
+.githubContent text {
+    font-family: 'Roboto Mono', monospace !important;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    opacity: 0.85;
+}
+
+/* Style the contribution count specifically */
+.githubContent>div {
+    font-family: 'Roboto Mono', monospace !important;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
 }
 
 [data-theme='dark'] .githubContent {
@@ -208,6 +232,7 @@
 
 [data-theme='dark'] .githubContent text {
     fill: #fff;
+    opacity: 0.8;
 }
 
 /* Email & CV */
