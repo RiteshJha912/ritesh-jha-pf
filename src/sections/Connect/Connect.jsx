@@ -3,7 +3,8 @@ import styles from './Connect.module.css'
 import Terminal from './Terminal'
 import { 
   SiGmail, 
-  SiDiscord, 
+  SiDiscord,
+  SiLinkedin,
   SiInstagram, 
   SiGithub, 
   SiLeetcode,
@@ -56,6 +57,18 @@ function Connect() {
                           title="Copy ID"
                         >
                           {copiedId === 'discord' ? <IoCheckmark /> : <IoCopy />}
+                        </button>
+                        <div className={styles.arrow}><FaArrowRight size={12} /></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ritesh-j/" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
+                        <span className={styles.icon}><SiLinkedin /></span>
+                        <span className={styles.linkText}>@ritesh-j</span>
+                        <button 
+                          className={styles.copyBtn}
+                          onClick={(e) => { e.preventDefault(); handleCopy('ritesh-j', 'linkedin'); }}
+                          title="Copy ID"
+                        >
+                          {copiedId === 'linkedin' ? <IoCheckmark /> : <IoCopy />}
                         </button>
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
