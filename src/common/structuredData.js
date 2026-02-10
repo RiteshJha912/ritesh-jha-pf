@@ -1,8 +1,8 @@
 
 // Basic SEO Details
 export const defaultSEO = {
-  title: "Ritesh Jha | Full Stack Developer ",
-  description: "Ritesh Jha (Ritzardous) is a Full Stack Developer and Cybersecurity Enthusiast from Mumbai, India. Skilled in React, Next.js, and Security Assessment. Explore my portfolio and projects.",
+  title: "Ritesh Jha | Learner",
+  description: "Ritesh Jha (Ritzardous) is a Full Stack Developer, Software Engineer, and Cybersecurity Enthusiast from Mumbai, India. Skilled in React, Next.js, and Security Assessment. Explore my portfolio and projects.",
   canonical: "https://ritesh-jha.vercel.app/", // Assuming vercel deployment from previous logs
   openGraph: {
     type: 'website',
@@ -65,7 +65,7 @@ export const personSchema = {
     "addressRegion": "Maharashtra",
     "addressCountry": "India"
   },
-  "description": "Full Stack Developer and Cybersecurity Enthusiast specializing in blockchain development and building scalable web applications."
+  "description": "Full Stack Developer, Software Engineer, and Cybersecurity Enthusiast specializing in blockchain development and building scalable web applications."
 };
 
 // 2. WebSite Schema
@@ -79,7 +79,7 @@ export const websiteSchema = {
     "name": "Ritesh Jha"
   },
   "description": "Portfolio of Ritesh Jha - Full Stack Developer ",
-  "keywords": "Ritesh Jha, Ritzardous, Hazardous, Full Stack Developer, React Developer, Next.js Developer, Cybersecurity, Blockchain, Portfolio, Mumbai, India"
+  "keywords": "Ritesh Jha, Ritzardous, Hazardous, Full Stack Developer, Software Developer, Software Engineer, React Developer, Next.js Developer, Cybersecurity, Blockchain, Portfolio, Mumbai, India"
 };
 
 // 3. Organization (for specific work history reference if needed)

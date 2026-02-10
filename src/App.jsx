@@ -136,8 +136,8 @@ function App() {
         <Route path="/" element={
           <>
             <SEO 
-              title="Ritesh Jha | Full Stack Developer | CyberSecurity Enthusiast"
-              description="Ritesh Jha (Ritzardous) - Full Stack Developer & Cybersecurity Enthusiast. Expert in React, Next.js, and Security Assessment. Based in Mumbai, India."
+              title="Ritesh Jha | Learner"
+              description="Ritesh Jha (Ritzardous) - Full Stack Developer, Software Engineer & Cybersecurity Enthusiast. Expert in React, Next.js, and Security Assessment. Based in Mumbai, India."
               canonical="https://ritesh-jha.vercel.app/"
             />
             <Hero onImageLoad={() => setIsHeroLoaded(true)} isLoaded={!showLoader} />
