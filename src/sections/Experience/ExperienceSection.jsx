@@ -195,7 +195,7 @@ function Experience() {
 
   return (
     <section className={styles.section} id="internships" ref={containerRef}>
-      <h1 className="sectionTitle">Experience</h1>
+      <h2 className="sectionTitle">Experience</h2>
 
       <div className={styles.cardsContainer}>
         {experiences.map((exp, index) => (

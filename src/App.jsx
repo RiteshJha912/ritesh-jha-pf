@@ -14,6 +14,7 @@ import BentoGrid from './sections/BentoGrid/BentoGrid.jsx'
 // import Github from './sections/Github/Github.jsx'
 import LoadingScreen from './common/loadingScreen.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
+import SEO from './common/SEO.jsx'
 
 // Create context for Lenis
 const LenisContext = createContext(null)
@@ -134,6 +135,11 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
+            <SEO 
+              title="Ritesh Jha | Full Stack Developer | CyberSecurity Enthusiast"
+              description="Ritesh Jha (Ritzardous) - Full Stack Developer & Cybersecurity Enthusiast. Expert in React, Next.js, and Security Assessment. Based in Mumbai, India."
+              canonical="https://ritesh-jha.vercel.app/"
+            />
             <Hero onImageLoad={() => setIsHeroLoaded(true)} isLoaded={!showLoader} />
             <div id="about">
               <BentoGrid />

@@ -17,6 +17,7 @@ import coffercrypt from '../../assets/coffercrypt.png';
 import ethlogonew from '../../assets/ethlogonew.png';
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../../common/SEO';
 
 function AllProjects() {
   const navigate = useNavigate();
@@ -295,6 +296,11 @@ function AllProjects() {
 
   return (
     <section className={styles.pageContainer}>
+      <SEO 
+        title="Projects | Ritesh Jha | Full Stack Portfolio"
+        description="Explore Ritesh Jha's (Ritzardous) projects in Full Stack Development, Blockchain, AI/ML, and Cybersecurity. Featuring Democrazy, PaperOps.ai, and more."
+        canonical="https://ritesh-jha.vercel.app/projects"
+      />
       <div className={`${styles.header} ${styles.animateIn}`}>
         <button onClick={() => navigate('/')} className={styles.backBtn}>
           <FaArrowLeft /> Back to Home

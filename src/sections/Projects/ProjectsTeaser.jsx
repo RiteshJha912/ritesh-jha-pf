@@ -80,7 +80,7 @@ function ProjectsTeaser() {
 
   return (
     <section id="projects" className={styles.container}>
-      <h1 className="sectionTitle">Projects</h1>
+      <h2 className="sectionTitle">Projects</h2>
       
       <div 
         className={styles.teaserContent} 

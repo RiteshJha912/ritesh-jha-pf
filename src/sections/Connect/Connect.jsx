@@ -25,7 +25,7 @@ function Connect() {
 
   return (
     <section id="connect" className={styles.section}>
-      <h1 className="sectionTitle">Connect</h1>
+      <h2 className="sectionTitle">Connect</h2>
       <div className={styles.container}>
         
         {/* Left Column: Socials & Contact */}
