@@ -134,7 +134,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <Hero onImageLoad={() => setIsHeroLoaded(true)} />
+            <Hero onImageLoad={() => setIsHeroLoaded(true)} isLoaded={!showLoader} />
             <div id="about">
               <BentoGrid />
             </div>

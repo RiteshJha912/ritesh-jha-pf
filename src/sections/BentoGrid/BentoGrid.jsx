@@ -136,7 +136,7 @@ const BentoGrid = React.memo(() => {
         <h3 className={styles.cardTitle}>About Me</h3>
         <p className={styles.aboutText}>
           So, hello 🙋🏻<br/>
-          I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains, ranging from development, cybersecurity, blockchain, IoT to AI and much much more.<br/><br/>
+          I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains. I enjoy solving problems and thinking from first principles.<br/><br/>
           I am currently pursuing a Bachelor's of Information Technology degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside of work, I enjoy listening to music while being on long walks (you'll almost always find me with my headphones on :), I also used to be deep into geopolitics at some point in time. Adding to all of this, I really like explaining concepts to people, and I weirdly love pitching ideas that I actually believe in.
         </p>
         
@@ -195,8 +195,8 @@ const BentoGrid = React.memo(() => {
            <div className={styles.marqueeTrack}>
             {[
               "AI Agents", "Kali", "Pen-testing", "OSINT", 
-              "Network Security", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "AppSec Testing", "Serverless Data"
+              "NetSec","AppSec", "SEO", "3D Graphics", "Cryptography", 
+              "API Testing", "Tiny ML", "Serverless Data"
             ].map((skill, index) => (
                 <span key={`skill-${index}`} className={styles.techBadge}>{skill}</span>
             ))}

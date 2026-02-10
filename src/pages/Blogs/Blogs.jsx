@@ -36,7 +36,7 @@ const Blogs = () => {
         wordWrap: 'break-word',
         lineHeight: 1.6
       }}>
-        I hope I start writing consistently soon!
+        Coming Soon! (As soon as I get my lazy ass to start writing)
       </p>
     </div>
   );

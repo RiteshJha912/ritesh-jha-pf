@@ -645,7 +645,8 @@ a {
         text-align: center;
         font-size: 20px;
         margin-left: 0;
-        transform: translateX(-40px);
+        /* hukka */
+        transform: translateX(-75px);
         /* Align with smaller mobile */
     }
 
@@ -726,7 +727,9 @@ a {
         text-align: center;
         font-size: 20px;
         margin-left: 0;
-        transform: translateX(-40px);
+        /* hukka */
+        transform: translateX(-65px);
+        /* transform: translateX(-16px); */
         /* "Left center" alignment for mobile */
     }
 

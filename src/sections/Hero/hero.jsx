@@ -13,7 +13,7 @@ import heroImg from '../../assets/mp2.jpg'
 
 import { useTheme } from '../../common/themeContext'
 
-function Hero({ onImageLoad }) {
+function Hero({ onImageLoad, isLoaded }) {
   const { theme, toggleTheme } = useTheme()
   const themeIcon = theme === 'light' ? sun : moon
   const githubIcon = theme === 'light' ? githubLight : githubDark
@@ -62,6 +62,8 @@ function Hero({ onImageLoad }) {
 
   // Easter egg hint tooltip - shows only once per session (on reload)
   useEffect(() => {
+    if (!isLoaded) return;
+
     // Check if hint has already been shown in this session
     const hasShownHint = sessionStorage.getItem('hasShownEasterEggHint');
     
@@ -77,7 +79,7 @@ function Hero({ onImageLoad }) {
 
       return () => clearTimeout(hintTimer);
     }
-  }, []);
+  }, [isLoaded]);
 
   useEffect(() => {
     let timer
@@ -130,7 +132,7 @@ function Hero({ onImageLoad }) {
               />
             </div>
             <div className={styles.back}>
-              <div className={styles.backText}>yeah, vincent van gogh! 🎨</div>
+              <div className={styles.backText}>hmm, van gogh!</div>
             </div>
           </div>
           {showEasterEggHint && (
@@ -214,7 +216,7 @@ function Hero({ onImageLoad }) {
 
 
         <p className={styles.description}>
-          after being in development for a while, i felt i needed a sweet, small
+          after being in the dev space for a while, i felt i too needed a sweet little
           corner on the internet for myself, and thats how this website came into
           existence! its just a checkpoint, a
           reminder that i didn't quit & also picked up some{' '}

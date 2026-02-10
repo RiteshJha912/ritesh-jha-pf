@@ -4,7 +4,7 @@ import styles from './Terminal.module.css'
 function Terminal() {
   const [input, setInput] = useState('')
   const [logs, setLogs] = useState([
-    'For the madlads who wanna HMU the git way',
+    'For the madlads who wanna do it the git way',
     "Type 'info' to see how it works",
   ])
   const [message, setMessage] = useState('')
@@ -50,7 +50,7 @@ function Terminal() {
 
     if (cmd === 'clear') {
       setLogs([
-        'For the madlads who wanna HMU the git way',
+        'For the madlads who wanna do it the git way',
         "Type 'info' to see how it works",
       ])
       setMessage('')
