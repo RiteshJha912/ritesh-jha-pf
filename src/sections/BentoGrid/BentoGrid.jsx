@@ -12,6 +12,7 @@ const BentoGrid = React.memo(() => {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const videoRef = React.useRef(null);
   const [visibleDays, setVisibleDays] = useState(365);
   const [isPlayingResumeVideo, setIsPlayingResumeVideo] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -194,16 +195,16 @@ const BentoGrid = React.memo(() => {
         <div className={styles.marqueeWrapper} style={{ marginTop: '0', padding: '5px 0' }}>
            <div className={styles.marqueeTrack}>
             {[
-              "AI Agents", "Kali", "Pen-testing", "OSINT", 
+              "AI Agents", "Kali", "Pen-testing", "OSINT", "SOCMINT", 
               "NetSec","AppSec", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "Tiny ML", "Serverless Data"
+              "API Testing", "Tiny ML", "Serverless Data", "Threat Actor Profiling"
             ].map((skill, index) => (
                 <span key={`skill-${index}`} className={styles.techBadge}>{skill}</span>
             ))}
             {[
-              "AI Agents", "Kali", "Pen-testing", "OSINT", 
-              "Network Security", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "AppSec Testing", "Serverless Data"
+              "AI Agents", "Kali", "Pen-testing", "OSINT", "SOCMINT", 
+              "NetSec","AppSec", "SEO", "3D Graphics", "Cryptography", 
+              "API Testing", "Tiny ML", "Serverless Data", "Threat Actor Profiling"
             ].map((skill, index) => (
                 <span key={`dup-${index}`} className={styles.techBadge}>{skill}</span>
             ))}
@@ -277,8 +278,21 @@ const BentoGrid = React.memo(() => {
 
         {/* Video Overlay */}
         {isPlayingResumeVideo && (
-          <div className={styles.videoOverlay}>
+          <div 
+            className={styles.videoOverlay}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (videoRef.current) {
+                if (videoRef.current.paused) {
+                  videoRef.current.play();
+                } else {
+                  videoRef.current.pause();
+                }
+              }
+            }}
+          >
             <video 
+              ref={videoRef}
               src="/modijiclip.mp4" 
               className={styles.resumeVideo} 
               autoPlay 
@@ -288,7 +302,7 @@ const BentoGrid = React.memo(() => {
               onEnded={() => handleOpenResume()}
               onError={(e) => {
                 console.error("Video failed to play", e);
-                handleOpenResume();
+                handleOpenResume(e);
               }}
             />
             {/* Context Caption */}
@@ -310,7 +324,10 @@ const BentoGrid = React.memo(() => {
             {/* Skip Button */}
             <div 
               className={styles.skipButton}
-              onClick={handleOpenResume}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOpenResume();
+              }}
             >
               <FaForward />
             </div>
