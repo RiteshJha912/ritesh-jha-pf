@@ -95,9 +95,29 @@ const Navbar = () => {
     }, []);
 
     // Prevent scrolling when mobile menu is open
+    const navRef = useRef(null);
+    const btnRef = useRef(null);
+
+    // Prevent scrolling when mobile menu is open
     useEffect(() => {
         if (mobileMenuOpen) {
             document.body.style.overflow = 'hidden';
+            
+            const handleClickOutside = (e) => {
+                if (navRef.current && !navRef.current.contains(e.target) && 
+                    btnRef.current && !btnRef.current.contains(e.target)) {
+                    setMobileMenuOpen(false);
+                }
+            };
+
+            document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener('touchstart', handleClickOutside); 
+
+            return () => {
+                document.body.style.overflow = 'auto'; 
+                document.removeEventListener('mousedown', handleClickOutside);
+                document.removeEventListener('touchstart', handleClickOutside);
+            };
         } else {
             document.body.style.overflow = 'auto';
         }
@@ -205,6 +225,7 @@ const Navbar = () => {
         <nav className={`${styles.navbar} ${scrolled && !mobileMenuOpen ? styles.scrolled : ''}`}>
             
             <button 
+                ref={btnRef}
                 className={styles.mobileMenuBtn} 
                 onClick={toggleMobileMenu}
                 aria-label="Toggle Menu"
@@ -212,7 +233,7 @@ const Navbar = () => {
                 {mobileMenuOpen ? <IoClose /> : <RxHamburgerMenu />}
             </button>
 
-            <ul className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ''}`}>
+            <ul ref={navRef} className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ''}`}>
                 {navItems.map((item) => (
                     <NavItem 
                         key={item.id}
