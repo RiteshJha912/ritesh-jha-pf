@@ -61,13 +61,21 @@ function AllProjects() {
       h3: 'Indradhanu Foundation',
       shortDesc: 'NGO Digital Infra',
       longDesc:
-        'Delivered a complete end-to-end freelance project: React-Vite website with SEO optimization, Google Apps Script integration for serverless form handling, custom domain setup, organizational emails & achieved #1 Google ranking for the foundation\'s name.',
+        "Delivered a complete end-to-end freelance project: React-Vite website with SEO optimization, Google Apps Script integration for serverless form handling, custom domain setup, organizational emails & achieved #1 Google ranking for the foundation's name.",
       github: null, // Proprietary
       live: 'https://www.indradhanufoundation.in/',
       tags: {
-        stack: ['React', 'Vite', 'Google Apps Script', 'Google Sheets API', 'Framer Motion', 'AOS', 'React Router'],
-        domain: ['Freelance', 'Full-Stack', 'SEO', 'Org Setup']
-      }
+        stack: [
+          'React',
+          'Vite',
+          'Google Apps Script',
+          'Google Sheets API',
+          'Framer Motion',
+          'AOS',
+          'React Router',
+        ],
+        domain: ['Freelance', 'Full-Stack', 'SEO', 'Org Setup'],
+      },
     },
     {
       src: democrazy,
@@ -78,9 +86,25 @@ function AllProjects() {
       github: 'https://github.com/RiteshJha912/democrazy',
       live: 'https://votewithdemocrazy.vercel.app/',
       tags: {
-        stack: ['Solidity', 'Hardhat', 'React', 'Ethers.js', 'Node.js', 'Express', 'MongoDB', 'Web3'],
-        domain: ['Blockchain', 'DApp', 'Smart Contracts', 'Full-Stack', 'Ethereum', 'Governance']
-      }
+        stack: [
+          'Solidity',
+          'Hardhat',
+          'React',
+          'Ethers.js',
+          'Node.js',
+          'Express',
+          'MongoDB',
+          'Web3',
+        ],
+        domain: [
+          'Blockchain',
+          'DApp',
+          'Smart Contracts',
+          'Full-Stack',
+          'Ethereum',
+          'Governance',
+        ],
+      },
     },
     {
       src: paperops,
@@ -91,9 +115,21 @@ function AllProjects() {
       github: 'https://github.com/RiteshJha912/PaperOps.ai',
       live: null, // Add when available
       tags: {
-        stack: ['Python', 'LangChain', 'groqAI API', 'Vector Databases', 'AI/ML'],
-        domain: ['Agentic AI', 'Research', 'NLP', 'Automation', 'Reasoning+Action']
-      }
+        stack: [
+          'Python',
+          'LangChain',
+          'groqAI API',
+          'Vector Databases',
+          'AI/ML',
+        ],
+        domain: [
+          'Agentic AI',
+          'Research',
+          'NLP',
+          'Automation',
+          'Reasoning+Action',
+        ],
+      },
     },
     {
       src: epoch,
@@ -104,9 +140,23 @@ function AllProjects() {
       github: 'https://github.com/RiteshJha912/epoch',
       live: 'https://epoch-daily.vercel.app/',
       tags: {
-        stack: ['Next.js', 'React', 'Firebase', 'Firestore', 'Google Auth', 'Vanilla CSS'],
-        domain: ['Full-Stack', 'Productivity', 'Habit Tracking', 'Gamification', 'Social Sharing', 'Frontend']
-      }
+        stack: [
+          'Next.js',
+          'React',
+          'Firebase',
+          'Firestore',
+          'Google Auth',
+          'Vanilla CSS',
+        ],
+        domain: [
+          'Full-Stack',
+          'Productivity',
+          'Habit Tracking',
+          'Gamification',
+          'Social Sharing',
+          'Frontend',
+        ],
+      },
     },
     {
       src: chromagen,
@@ -117,9 +167,26 @@ function AllProjects() {
       github: 'https://github.com/Om-Thanage/bootWinXP_Internal-Round_70',
       live: 'https://www.chromagen.xyz/',
       tags: {
-        stack: ['React', 'Vite', 'TailwindCSS', 'FastAPI', 'Python', 'GAN', 'Pylette', 'GenAI'],
-        domain: ['Full-Stack', 'AI/ML', 'Accessibility', 'Design Tools', 'WCAG', 'Hackathon', 'Frontend']
-      }
+        stack: [
+          'React',
+          'Vite',
+          'TailwindCSS',
+          'FastAPI',
+          'Python',
+          'GAN',
+          'Pylette',
+          'GenAI',
+        ],
+        domain: [
+          'Full-Stack',
+          'AI/ML',
+          'Accessibility',
+          'Design Tools',
+          'WCAG',
+          'Hackathon',
+          'Frontend',
+        ],
+      },
     },
     {
       src: gasdottips,
@@ -130,9 +197,16 @@ function AllProjects() {
       github: 'https://github.com/RiteshJha912/gas.tips',
       live: 'https://gasdottips.vercel.app/',
       tags: {
-        stack: ['React', 'Ethers.js', 'Solidity', 'Web3', 'Smart Contracts',],
-        domain: ['Blockchain', 'DApp', 'Payments', 'Web3', 'Cryptocurrency', 'Frontend']
-      }
+        stack: ['React', 'Ethers.js', 'Solidity', 'Web3', 'Smart Contracts'],
+        domain: [
+          'Blockchain',
+          'DApp',
+          'Payments',
+          'Web3',
+          'Cryptocurrency',
+          'Frontend',
+        ],
+      },
     },
     {
       src: debiased,
@@ -143,9 +217,30 @@ function AllProjects() {
       github: 'https://github.com/ombhanushaliii/debiased',
       live: 'https://ethglobal.com/showcase/debiased-7h24b',
       tags: {
-        stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Solidity', 'IPFS', 'Filecoin', 'Lighthouse', 'Self Protocol SDK', 'Kadena EVM'],
-        domain: ['Blockchain', 'DApp', 'ZKP', 'Privacy', 'Data Collection', 'Smart Contracts', 'Decentralized Storage', 'Web3', 'Hackathon', 'Full-Stack']
-      }
+        stack: [
+          'Next.js',
+          'TypeScript',
+          'Tailwind CSS',
+          'Solidity',
+          'IPFS',
+          'Filecoin',
+          'Lighthouse',
+          'Self Protocol SDK',
+          'Kadena EVM',
+        ],
+        domain: [
+          'Blockchain',
+          'DApp',
+          'ZKP',
+          'Privacy',
+          'Data Collection',
+          'Smart Contracts',
+          'Decentralized Storage',
+          'Web3',
+          'Hackathon',
+          'Full-Stack',
+        ],
+      },
     },
     {
       src: hackademy,
@@ -154,11 +249,26 @@ function AllProjects() {
       longDesc:
         'Comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real world cyber threats through interactive quizzes on digital arrest scams, UPI payment fraud, e-KYC SIM swap, fake job scams & WhatsApp stock scams. Features global leaderboard, real time scoring, progress tracking, detailed scam guides & instant feedback with no registration required.',
       github: 'https://github.com/RiteshJha912/hackademy-final',
-      live: 'https://hackademy-in.onrender.com/',
+      live: 'https://tryhackademy.vercel.app/',
       tags: {
-        stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'Recharts', 'Axios', 'React Router'],
-        domain: ['Education', 'E-Learning', 'Cybersecurity', 'Gamification', 'Full-Stack']
-      }
+        stack: [
+          'React',
+          'Node.js',
+          'Express',
+          'MongoDB',
+          'Chart.js',
+          'Recharts',
+          'Axios',
+          'React Router',
+        ],
+        domain: [
+          'Education',
+          'E-Learning',
+          'Cybersecurity',
+          'Gamification',
+          'Full-Stack',
+        ],
+      },
     },
     {
       src: hnltech,
@@ -169,9 +279,22 @@ function AllProjects() {
       github: 'https://github.com/RiteshJha912/hnltech',
       live: 'https://hnltech.netlify.app/',
       tags: {
-        stack: ['Next.js', 'React', 'Framer Motion', 'Three.js', 'React Three Fiber', 'TypeScript'],
-        domain: ['Frontend', 'Concept Design', 'UI/UX', '3D Graphics', 'Animation']
-      }
+        stack: [
+          'Next.js',
+          'React',
+          'Framer Motion',
+          'Three.js',
+          'React Three Fiber',
+          'TypeScript',
+        ],
+        domain: [
+          'Frontend',
+          'Concept Design',
+          'UI/UX',
+          '3D Graphics',
+          'Animation',
+        ],
+      },
     },
     {
       src: taskifyv2,
@@ -183,8 +306,14 @@ function AllProjects() {
       live: 'https://taskifyv2-final.onrender.com/',
       tags: {
         stack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'REST API'],
-        domain: ['Full-Stack', 'Productivity', 'CRUD', 'Authentication', 'Task Management']
-      }
+        domain: [
+          'Full-Stack',
+          'Productivity',
+          'CRUD',
+          'Authentication',
+          'Task Management',
+        ],
+      },
     },
     {
       src: koshkeeper,
@@ -196,8 +325,15 @@ function AllProjects() {
       live: 'https://expense-tracker99.web.app/',
       tags: {
         stack: ['React', 'Firebase', 'Google Auth', 'Firestore', 'Chart.js'],
-        domain: ['Full-Stack', 'Finance', 'Authentication', 'Data Visualization', 'Cloud', 'Frontend']
-      }
+        domain: [
+          'Full-Stack',
+          'Finance',
+          'Authentication',
+          'Data Visualization',
+          'Cloud',
+          'Frontend',
+        ],
+      },
     },
     {
       src: devflipper,
@@ -208,9 +344,22 @@ function AllProjects() {
       github: 'https://github.com/RiteshJha912/DevFlipper',
       live: 'https://dev-flipper.vercel.app/',
       tags: {
-        stack: ['React', 'Three.js', 'React Three Fiber', 'Tailwind CSS', 'Vite', 'WebGL'],
-        domain: ['Game Type', '3D Graphics', 'Interactive Design', 'Portfolio', 'Frontend']
-      }
+        stack: [
+          'React',
+          'Three.js',
+          'React Three Fiber',
+          'Tailwind CSS',
+          'Vite',
+          'WebGL',
+        ],
+        domain: [
+          'Game Type',
+          '3D Graphics',
+          'Interactive Design',
+          'Portfolio',
+          'Frontend',
+        ],
+      },
     },
     {
       src: slinket,
@@ -222,8 +371,14 @@ function AllProjects() {
       live: 'https://snake-game-lemon-nu.vercel.app/',
       tags: {
         stack: ['React', 'Vite', 'JavaScript', 'CSS', 'Touch Events'],
-        domain: ['Game Type', 'Gaming', 'Interactive', 'Mobile-First', 'Frontend']
-      }
+        domain: [
+          'Game Type',
+          'Gaming',
+          'Interactive',
+          'Mobile-First',
+          'Frontend',
+        ],
+      },
     },
     {
       src: coffercrypt,
@@ -235,10 +390,10 @@ function AllProjects() {
       live: null, // Add when available
       tags: {
         stack: ['C++', 'File I/O', 'Cryptography'],
-        domain: ['Security', 'Encryption', 'Caesar Cipher', 'CLI Tool']
-      }
+        domain: ['Security', 'Encryption', 'Caesar Cipher', 'CLI Tool'],
+      },
     },
-  ];
+  ]
 
   const categories = ['All', 'Featured', 'Full-Stack', 'Blockchain', 'Security', 'AI/ML', 'Gaming'];
 
