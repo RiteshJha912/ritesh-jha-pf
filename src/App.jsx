@@ -6,6 +6,7 @@ import Hero from './sections/Hero/hero.jsx'
 import ProjectsTeaser from './sections/Projects/ProjectsTeaser.jsx'
 import AllProjects from './pages/AllProjects/AllProjects.jsx'
 import Blogs from './pages/Blogs/Blogs.jsx'
+import BusinessPage from './pages/BusinessPage/BusinessPage.jsx'
 
 import Connect from './sections/Connect/Connect.jsx'
 import Footer from './sections/Footer/footer.jsx'
@@ -59,6 +60,12 @@ function ScrollToTop() {
   }, [pathname, lenis])
 
   return null
+}
+
+function ConditionalNavbar() {
+  const { pathname } = useLocation()
+  if (pathname === '/for-business') return null
+  return <Navbar />
 }
 
 function App() {
@@ -130,7 +137,7 @@ function App() {
       )}
       
       <ScrollToTop />
-      <Navbar />
+      <ConditionalNavbar />
       
       <Routes>
         <Route path="/" element={
@@ -153,6 +160,7 @@ function App() {
         
         <Route path="/projects" element={<AllProjects />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/for-business" element={<BusinessPage />} />
       </Routes>
 
       <Footer />

@@ -4,13 +4,12 @@ import Terminal from './Terminal'
 import { 
   SiGmail, 
   SiDiscord,
-  SiLinkedin,
   SiInstagram, 
   SiGithub, 
   SiLeetcode,
   SiCodechef
 } from 'react-icons/si'
-import { FaCode, FaArrowRight } from 'react-icons/fa'
+import { FaCode, FaArrowRight, FaLinkedin } from 'react-icons/fa'
 import { MdEmail, MdAlternateEmail } from 'react-icons/md'
 import { IoCopy, IoCheckmark } from 'react-icons/io5'
 import codolioIcon from '../../assets/codolioicon.png'
@@ -61,7 +60,7 @@ function Connect() {
                         <div className={styles.arrow}><FaArrowRight size={12} /></div>
                     </a>
                     <a href="https://www.linkedin.com/in/ritesh-j/" className={styles.linkItem} target="_blank" rel="noopener noreferrer">
-                        <span className={styles.icon}><SiLinkedin /></span>
+                        <span className={styles.icon}><FaLinkedin /></span>
                         <span className={styles.linkText}>@ritesh-j</span>
                         <button 
                           className={styles.copyBtn}
