@@ -153,7 +153,7 @@ function BusinessPage() {
       name: "InitPhase",
       image: initphase,
       desc: "Built a scalable digital platform from the ground up for businesses to manage operations, workflows, and growth with a structured system.",
-      live: null
+      live: "https://init-phase.vercel.app/"
     },
     {
       name: "Democrazy",
@@ -225,14 +225,14 @@ function BusinessPage() {
             Software Developer · Security Analyst · Helping Businesses Win Online
           </div>
 
-          <h1 className={styles.title}>Your Business Deserves a Website That Actually Works</h1>
+          <h1 className={styles.title}>Your Business Deserves a Website THAT BRINGS YOU REAL CUSTOMERS</h1>
           <p className={styles.subtext}>
-            I help local and growing businesses build fast, professional websites that bring in real customers, not just online traffic.
+            I build fast, professional websites for local and growing businesses that help you get more inquiries, more calls, and more sales not just traffic.
           </p>
 
           <div className={styles.ctaContainer}>
-            <a href="#work" onClick={scrollToWork} className={styles.btnPrimary}>See My Work</a>
-            <a href="#contact" onClick={scrollToContact} className={styles.btnSecondary}>Get in Touch</a>
+            <a href="#contact" onClick={scrollToContact} className={styles.btnPrimary}>Get in Touch</a>
+            <a href="#work" onClick={scrollToWork} className={styles.btnSecondary}>See My Work</a>
           </div>
         </div>
       </section>
@@ -311,20 +311,31 @@ function BusinessPage() {
         <h2 className={styles.sectionTitle}>About</h2>
         <div className={styles.aboutContactContainer}>
 
-          {/* About column */}
+          {/* About column — mirrors contactContent structure exactly */}
           <div className={styles.aboutContent}>
-            <div className={styles.aboutIntro}>
-              <p className={styles.aboutLead}>
-                I'm a <strong>Full Stack Developer and Security Analyst</strong> based in <strong>Mumbai</strong>, with a B.Tech in Information Technology and hands-on experience working with businesses across India and the UK.
+            <div className={styles.aboutSticky}>
+              <h3>Full Stack Developer & Security Analyst</h3>
+              <p>
+                Based in Mumbai with a B.Tech in Information Technology. I build tested, production-ready products for businesses across India and the UK.
               </p>
-              <p className={styles.aboutBody}>
-                When I build something for your business, it is not a freelance experiment. It is a tested, production-ready product you can rely on.
-              </p>
-            </div>
 
-            {/* Companies — the credibility block */}
-            <div className={styles.companiesSection}>
-              <p className={styles.companiesLabel}>Professionally worked with</p>
+              {/* Credentials bar — mirrors contactHighlights */}
+              <div className={styles.aboutHighlights}>
+                <div className={styles.aboutHighlightItem}>
+                  <span className={styles.aboutHighlightNumber}>B.Tech</span>
+                  <span className={styles.aboutHighlightLabel}>Information Technology</span>
+                </div>
+                <div className={styles.aboutHighlightItem}>
+                  <span className={styles.aboutHighlightNumber}>3+</span>
+                  <span className={styles.aboutHighlightLabel}>Years Experience</span>
+                </div>
+                <div className={styles.aboutHighlightItem}>
+                  <span className={styles.aboutHighlightNumber}>India & UK</span>
+                  <span className={styles.aboutHighlightLabel}>Clients Served</span>
+                </div>
+              </div>
+
+              {/* Company grid — mirrors contactActions */}
               <div className={styles.companiesGrid}>
                 {companies.map((company, index) => (
                   <a
@@ -348,7 +359,6 @@ function BusinessPage() {
                       </span>
                       <span className={styles.companyRole}>{company.role}</span>
                     </div>
-                    <FaExternalLinkAlt size={9} className={styles.companyLinkIcon} />
                   </a>
                 ))}
               </div>
@@ -398,7 +408,7 @@ function BusinessPage() {
                 </a>
                 <a
                   href="mailto:ritesh.exe@proton.me?subject=Business Inquiry"
-                  className={styles.btnPrimary}
+                  className={styles.emailCta}
                 >
                   Email Me Now
                 </a>
