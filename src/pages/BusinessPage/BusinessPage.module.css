@@ -590,22 +590,22 @@
   transform: translateY(-1px);
 }
 
-/* Logo */
+/* Logo — made larger and 'fit in full' */
 .companyLogo {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
-  background: #ffffff;
-  padding: 2px;
+  background: rgba(150, 150, 150, 0.08); /* Subtle background instead of solid white */
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid rgba(150, 150, 150, 0.12); /* Faint integrated border */
 }
 
-.companyLogoImg { width: 100%; height: 100%; object-fit: contain; }
-.companyInitials { font-size: 12px; font-weight: bold; color: #333; }
+.companyLogoImg { width: 100%; height: 100%; object-fit: cover; } /* 'fit in full' effect */
+.companyInitials { font-size: 14px; font-weight: bold; color: var(--text-color); }
 
 .companyInfo {
   display: flex;
