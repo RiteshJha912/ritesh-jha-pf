@@ -365,11 +365,11 @@ function BusinessPage() {
 
               <div className={styles.contactHighlights}>
                 <div className={styles.contactHighlightItem}>
-                  <span className={styles.contactHighlightNumber}>8+</span>
+                  <span className={styles.contactHighlightNumber}>15+</span>
                   <span className={styles.contactHighlightLabel}>Projects Shipped</span>
                 </div>
                 <div className={styles.contactHighlightItem}>
-                  <span className={styles.contactHighlightNumber}>4</span>
+                  <span className={styles.contactHighlightNumber}>6</span>
                   <span className={styles.contactHighlightLabel}>Companies Worked With</span>
                 </div>
                 <div className={styles.contactHighlightItem}>
