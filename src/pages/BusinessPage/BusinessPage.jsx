@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from './BusinessPage.module.css';
 import SEO from '../../common/SEO';
 import { useTheme } from '../../common/themeContext';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Icons
 import { FaSearch, FaExternalLinkAlt, FaArrowLeft, FaGlobe, FaDesktop, FaCogs, FaShieldAlt, FaBullhorn, FaPhone, FaWhatsapp } from 'react-icons/fa';
@@ -57,6 +59,12 @@ function BusinessPage() {
 
   useEffect(() => {
     if (theme === 'light') toggleTheme();
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
   }, []);
 
   const scrollToContact = (e) => {
@@ -230,11 +238,16 @@ function BusinessPage() {
       </section>
 
       {/* ── Services ── */}
-      <section className={styles.section}>
+      <section className={styles.section} data-aos="fade-up">
         <h2 className={styles.sectionTitle}>What I Can Help Your Business With</h2>
         <div className={styles.servicesGrid}>
           {services.map((service, index) => (
-            <div key={index} className={styles.serviceCard}>
+            <div 
+              key={index} 
+              className={styles.serviceCard} 
+              data-aos="fade-up" 
+              data-aos-delay={index * 100}
+            >
               <div className={styles.serviceCardHeader}>
                 <div className={styles.serviceIconContainer}>{service.icon}</div>
                 <h3 className={styles.serviceTitle}>{service.title}</h3>
@@ -246,11 +259,16 @@ function BusinessPage() {
       </section>
 
       {/* ── Selected Work ── */}
-      <section id="business-work" className={styles.section}>
+      <section id="business-work" className={styles.section} data-aos="fade-up">
         <h2 className={styles.sectionTitle}>Selected Work</h2>
         <div className={styles.projectsGrid}>
           {highlightedWork.map((project, index) => (
-            <div key={index} className={styles.projectCard}>
+            <div 
+              key={index} 
+              className={styles.projectCard} 
+              data-aos="fade-up" 
+              data-aos-delay={index * 100}
+            >
               {/* Image container: always shows the full image */}
               <div className={styles.projectImgWrap}>
                 {project.image ? (
@@ -289,7 +307,7 @@ function BusinessPage() {
       </section>
 
       {/* ── About & Contact ── */}
-      <section id="business-contact" className={styles.section}>
+      <section id="business-contact" className={styles.section} data-aos="fade-up">
         <h2 className={styles.sectionTitle}>About</h2>
         <div className={styles.aboutContactContainer}>
 
