@@ -5,10 +5,10 @@ import SEO from '../../common/SEO';
 import { useTheme } from '../../common/themeContext';
 
 // Icons
-import { FaCode, FaRocket, FaSearch, FaComments, FaHandshake, FaExternalLinkAlt, FaArrowLeft, FaGlobe, FaPaintBrush, FaDesktop, FaCogs, FaTachometerAlt } from 'react-icons/fa';
+import { FaSearch, FaExternalLinkAlt, FaArrowLeft, FaGlobe, FaDesktop, FaCogs, FaShieldAlt, FaBullhorn, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { MdEmail, MdDarkMode, MdLightMode } from 'react-icons/md';
 
-// Images
+// Project images
 import profileImg from '../../assets/mp2.jpg';
 import indrafndn from '../../assets/indrafndn.png';
 import hnltech from '../../assets/hnltech.png';
@@ -17,6 +17,13 @@ import epoch from '../../assets/epoch.png';
 import gasdottips from '../../assets/gasdottips.png';
 import democrazy from '../../assets/democrazy.png';
 import chromagen from '../../assets/chromagen.png';
+import initphase from '../../assets/initphase.png';
+
+// Company logos
+import stallionLogo from '../../assets/TSP.jpg';
+import deepcytesLogo from '../../assets/deepcytes.jpg';
+import noxalgoLogo from '../../assets/noxalgo.jpg';
+import smowcodeLogo from '../../assets/smowcode.jpeg';
 
 function BusinessPage() {
   const navigate = useNavigate();
@@ -28,13 +35,7 @@ function BusinessPage() {
   const speedRef = useRef(1.5);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -42,7 +43,7 @@ function BusinessPage() {
   useEffect(() => {
     let animationFrameId;
     const animate = () => {
-      const targetSpeed = scrolled ? 0.1 : 0.5; 
+      const targetSpeed = scrolled ? 0.1 : 0.5;
       speedRef.current += (targetSpeed - speedRef.current) * 0.05;
       rotationRef.current += speedRef.current;
       if (toggleRef.current) {
@@ -54,11 +55,8 @@ function BusinessPage() {
     return () => cancelAnimationFrame(animationFrameId);
   }, [scrolled]);
 
-  // Enforce dark mode on page load
   useEffect(() => {
-    if (theme === 'light') {
-      toggleTheme();
-    }
+    if (theme === 'light') toggleTheme();
   }, []);
 
   const scrollToContact = (e) => {
@@ -71,213 +69,217 @@ function BusinessPage() {
     document.getElementById('business-work').scrollIntoView({ behavior: 'smooth' });
   };
 
+  // ── Services (in requested order) ────────────────────────────
   const services = [
     {
-      title: "Business Websites",
-      desc: "Modern, fast and mobile-friendly websites designed to represent your company professionally online.",
-      icon: <FaGlobe />
-    },
-    {
-      title: "Website Redesign",
-      desc: "Upgrade outdated or slow websites with modern UI designs and significantly better performance.",
-      icon: <FaPaintBrush />
-    },
-    {
-      title: "SEO Setup",
-      desc: "Optimize your website's structure so your business can consistently appear on top Google search results.",
-      icon: <FaSearch />
-    },
-    {
       title: "Landing Pages",
-      desc: "High-conversion pages specifically built for your marketing campaigns or product launches.",
+      desc: "High-converting pages built for product launches, campaigns, or service offerings. Designed to turn visitors into paying customers.",
       icon: <FaDesktop />
     },
     {
-      title: "Custom Web Applications",
-      desc: "Tailor-made internal tools, dashboards, or tracking systems designed around your unique business needs.",
+      title: "Business Websites",
+      desc: "Professional websites that make your business look credible and trustworthy to every customer who finds you online.",
+      icon: <FaGlobe />
+    },
+    {
+      title: "Agentic AI Solutions",
+      desc: "Custom AI agents and autonomous workflows that handle repetitive tasks, data processing, and decision-making for your business in real-time.",
       icon: <FaCogs />
     },
     {
-      title: "Performance Optimization",
-      desc: "Auditing and improving the loading speed and reliability of your existing websites or applications.",
-      icon: <FaTachometerAlt />
+      title: "SEO Setups",
+      desc: "Get found on Google without spending on ads. Your website set up to rank for local searches in your city from day one.",
+      icon: <FaSearch />
+    },
+    {
+      title: "Digital Marketing",
+      desc: "Get your business in front of the right people through email campaigns, social assets, and ad-ready web content.",
+      icon: <FaBullhorn />
+    },
+    {
+      title: "Security Consulting",
+      desc: "Find vulnerabilities in your web platforms before someone else does. Keep your business, your data, and your customers safe.",
+      icon: <FaShieldAlt />
     }
   ];
 
+  // ── Projects (in requested order) ────────────────────────────
   const highlightedWork = [
-    {
-      name: "InitPhase",
-      image: null, 
-      desc: "Architected a scalable digital platform built to handle heavy user traffic securely and efficiently for a growing startup initiative.",
-      tech: "Next.js, Full Structure",
-      result: "Provided a robust foundational architecture reducing future tech debt.",
-      live: null
-    },
     {
       name: "Indradhanu Foundation",
       image: indrafndn,
-      desc: "Delivered a complete website for an NGO including SEO setup, domain configuration and form automation.",
-      tech: "React, Google Apps Script, SEO",
-      result: "Achieved #1 Google ranking for the organization name.",
+      desc: "Complete NGO website setup with search visibility, lead capture forms, and reliable digital presence. Delivered fully end-to-end for real impact.",
       live: "https://www.indradhanufoundation.in/"
-    },
-    {
-      name: "Hackademy",
-      image: hackademy,
-      desc: "Comprehensive web platform tracking user progress through complex data dashboards and engaging user experiences.",
-      tech: "React, Node.js, MongoDB",
-      result: "Scalable full-stack application capable of handling complex state management.",
-      live: "https://tryhackademy.vercel.app/"
     },
     {
       name: "HNLTech",
       image: hnltech,
-      desc: "Designed and developed a modern conceptual tech-agency landing page with engaging animations and a highly professional aesthetic.",
-      tech: "Next.js, 3D Graphics, Animations",
-      result: "Created a stunning corporate digital identity ready for high-ticket client conversion.",
+      desc: "A modern business landing page designed to build trust, showcase services clearly, and convert visitors into real clients effectively.",
       live: "https://hnltech.netlify.app/"
     },
     {
-      name: "epoch",
+      name: "Chromagen",
+      image: chromagen,
+      desc: "A smart visual tool that helps businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.",
+      live: "https://www.chromagen.xyz/"
+    },
+    {
+      name: "Hackademy",
+      image: hackademy,
+      desc: "An interactive learning platform that tracks user progress, improves engagement, and helps organizations deliver structured training experiences easily.",
+      live: "https://tryhackademy.vercel.app/"
+    },
+    {
+      name: "Epoch",
       image: epoch,
-      desc: "Developed a minimal and highly reliable productivity habit tracker application with seamless cloud data syncing.",
-      tech: "Next.js, Firebase Auth",
-      result: "Delivered a fast, engaging platform designed for daily user retention.",
+      desc: "A simple daily habit tracking tool that helps users stay consistent, monitor progress, and build routines without unnecessary complexity.",
       live: "https://epoch-daily.vercel.app/"
     },
     {
       name: "GAS.TIPS",
       image: gasdottips,
-      desc: "A decentralized tipping platform enabling direct crypto payments to content creators securely.",
-      tech: "React, Web3, Smart Contracts",
-      result: "Seamless tipping experience on Ethereum networks.",
+      desc: "A direct payment platform enabling creators and businesses to receive instant digital tips without relying on third party intermediaries.",
       live: "https://gasdottips.vercel.app/"
+    },
+    {
+      name: "InitPhase",
+      image: initphase,
+      desc: "Built a scalable digital platform from the ground up for businesses to manage operations, workflows, and growth with a structured system.",
+      live: null
     },
     {
       name: "Democrazy",
       image: democrazy,
-      desc: "Created a censorship-resistant governance platform focusing on immutable, transparent transactions.",
-      tech: "Solidity, Web3, Full-Stack",
-      result: "Atomic voting transactions with a high-speed caching layer.",
+      desc: "A secure digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.",
       live: "https://votewithdemocrazy.vercel.app/"
-    },
-    {
-      name: "Chromagen",
-      image: chromagen,
-      desc: "Intelligent platform bridging modern web tooling with AI to produce high-end design utilities.",
-      tech: "React, AI Tools, APIs",
-      result: "Smart functionality packed into an easily digestible interface.",
-      live: "https://www.chromagen.xyz/"
     }
   ];
 
-  const whyMe = [
+  // ── Companies ─────────────────────────────────────────────────
+  const companies = [
     {
-      title: "Full-Stack Development",
-      desc: "I build both the frontend interfaces that users see and the backend databases that run everything cleanly.",
-      icon: <FaCode />
+      name: "The Stallion Project",
+      role: "Software Developer",
+      url: "https://www.instagram.com/thestallionproject/",
+      logo: stallionLogo,
+      initials: "SP"
     },
     {
-      title: "Performance Focused",
-      desc: "A fast website retains customers. I optimize everything from code to images to ensure lightning-fast loading speeds.",
-      icon: <FaRocket />
+      name: "Deepcytes Cyber Labs",
+      role: "Security Analyst",
+      location: "UK",
+      url: "https://deepcytes.io",
+      logo: deepcytesLogo,
+      initials: "DC"
     },
     {
-      title: "SEO Ready",
-      desc: "Websites are structured from day one for discoverability, ensuring you rank higher organically.",
-      icon: <FaSearch />
+      name: "Noxalgo LLP",
+      role: "Software Developer",
+      url: "https://noxalgo.com",
+      logo: noxalgoLogo,
+      initials: "NA"
     },
     {
-      title: "Direct Communication",
-      desc: "No middlemen or confusing agency processes. You work and communicate directly with the developer.",
-      icon: <FaComments />
-    },
-    {
-      title: "Flexible For Startups",
-      desc: "I understand the exact needs and constrained timelines of small businesses, entrepreneurs and fresh startups.",
-      icon: <FaHandshake />
+      name: "Smowcode Pvt Ltd",
+      role: "Software Developer",
+      url: "https://smowcode.com",
+      logo: smowcodeLogo,
+      initials: "SC"
     }
   ];
 
   return (
     <div className={styles.pageContainer}>
-      <SEO 
+      <SEO
         title="Freelance Web Developer | Websites & Digital Solutions"
         description="Ritesh Jha - Freelance Web Developer offering business websites, redesigns, SEO, and custom web applications for growing businesses."
         canonical="https://ritesh-jha.vercel.app/for-business"
       />
-      
-      {/* Hero Section */}
+
+      {/* ── Hero ── fills 100dvh so nothing below is visible on load */}
       <section className={styles.hero}>
         <div className={styles.themeToggleContainer}>
           <button onClick={toggleTheme} className={styles.themeToggleBtn} aria-label="Toggle Theme" title="Toggle Theme">
             <div ref={toggleRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {theme === 'light' ? <MdDarkMode size={22} /> : <MdLightMode size={22} />}
+              {theme === 'light' ? <MdDarkMode size={20} /> : <MdLightMode size={20} />}
             </div>
           </button>
         </div>
-        <div className={styles.profileSection}>
-          <img src={profileImg} alt="Ritesh Jha" className={styles.profileImg} />
-          <h2 className={styles.name}>Ritesh Jha</h2>
-          <span className={styles.location}>Mumbai, India</span>
-        </div>
-        
-        <div className={styles.trustIndicator}>
-          Software Developer (Fullstack + Blockchain) | Security Analyst
-        </div>
 
-        <h1 className={styles.title}>Websites &amp; Digital Solutions for Growing Businesses</h1>
-        <p className={styles.subtext}>
-          I help businesses build fast, modern, and reliable websites that convert visitors into valuable clients.
-        </p>
+        <div className={styles.heroInner}>
+          <div className={styles.profileSection}>
+            <img src={profileImg} alt="Ritesh Jha" className={styles.profileImg} />
+            <h2 className={styles.name}>Ritesh Jha</h2>
+            <span className={styles.location}>Mumbai, India</span>
+          </div>
 
-        <div className={styles.ctaContainer}>
-          <a href="#work" onClick={scrollToWork} className={styles.btnPrimary}>View My Work</a>
-          <a href="#contact" onClick={scrollToContact} className={styles.btnSecondary}>Contact Me</a>
+          <div className={styles.trustIndicator}>
+            Software Developer · Security Analyst · Helping Businesses Win Online
+          </div>
+
+          <h1 className={styles.title}>Your Business Deserves a Website That Actually Works</h1>
+          <p className={styles.subtext}>
+            I help local and growing businesses build fast, professional websites that bring in real customers, not just online traffic.
+          </p>
+
+          <div className={styles.ctaContainer}>
+            <a href="#work" onClick={scrollToWork} className={styles.btnPrimary}>See My Work</a>
+            <a href="#contact" onClick={scrollToContact} className={styles.btnSecondary}>Get in Touch</a>
+          </div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* ── Services ── */}
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>What I Can Help Your Business With</h2>
         <div className={styles.servicesGrid}>
           {services.map((service, index) => (
             <div key={index} className={styles.serviceCard}>
-              <div className={styles.serviceIconContainer}>{service.icon}</div>
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
+              <div className={styles.serviceCardHeader}>
+                <div className={styles.serviceIconContainer}>{service.icon}</div>
+                <h3 className={styles.serviceTitle}>{service.title}</h3>
+              </div>
               <p className={styles.serviceDesc}>{service.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Selected Work Section */}
+      {/* ── Selected Work ── */}
       <section id="business-work" className={styles.section}>
         <h2 className={styles.sectionTitle}>Selected Work</h2>
         <div className={styles.projectsGrid}>
           {highlightedWork.map((project, index) => (
             <div key={index} className={styles.projectCard}>
-              <div className={styles.projectTopRow}>
-                <div className={styles.projectImgContainer}>
-                  {project.image ? (
-                    <img src={project.image} alt={project.name} className={styles.projectImg} />
-                  ) : (
-                    <div className={styles.projectImgPlaceholder}>
-                        <span className={styles.placeholderText}>{project.name}</span>
-                    </div>
-                  )}
-                </div>
-                <div className={styles.projectHeaderInfo}>
-                  <div className={styles.projectTitleRow}>
-                    <h3 className={styles.projectName}>{project.name}</h3>
-                    {project.live && (
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className={styles.liveLink} aria-label={`View live project for ${project.name}`} title="View Live">
-                        <FaExternalLinkAlt size={20} /> 
-                      </a>
-                    )}
-                  </div>
-                </div>
+              {/* Image container: always shows the full image */}
+              <div className={styles.projectImgWrap}>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className={styles.projectImg}
+                  />
+                ) : (
+                  <div style={{ opacity: 0.1, fontSize: '10px', fontFamily: 'Roboto Mono' }}>{project.name}</div>
+                )}
               </div>
+              {/* Title row */}
+              <div className={styles.projectTopRow}>
+                <h3 className={styles.projectName}>{project.name}</h3>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.liveLink}
+                    aria-label={`View live project for ${project.name}`}
+                    title="View Live"
+                  >
+                    <FaExternalLinkAlt size={12} />
+                  </a>
+                )}
+              </div>
+              {/* Description */}
               <div className={styles.projectContent}>
                 <p className={styles.projectDesc}>{project.desc}</p>
               </div>
@@ -286,42 +288,106 @@ function BusinessPage() {
         </div>
       </section>
 
-      {/* About & Contact Section */}
+      {/* ── About & Contact ── */}
       <section id="business-contact" className={styles.section}>
+        <h2 className={styles.sectionTitle}>About</h2>
         <div className={styles.aboutContactContainer}>
+
+          {/* About column */}
           <div className={styles.aboutContent}>
-            <h3>About & Why Me?</h3>
-            <p><strong>Hi, I'm Ritesh Jha.</strong></p>
-            <p>I am a Full Stack Developer based in Mumbai with experience building full stack applications, web platforms, and security-aware systems.</p>
-            
-            <div className={styles.inlineWhyMe}>
-              {whyMe.map((item, index) => (
-                <div key={index} className={styles.inlineWhyMeItem}>
-                  <div className={styles.inlineWhyMeIcon}>{item.icon}</div>
-                  <div className={styles.inlineWhyMeText}>
-                    <strong>{item.title}:</strong> {item.desc}
-                  </div>
-                </div>
-              ))}
+            <div className={styles.aboutIntro}>
+              <p className={styles.aboutLead}>
+                I'm a <strong>Full Stack Developer and Security Analyst</strong> based in <strong>Mumbai</strong>, with a B.Tech in Information Technology and hands-on experience working with businesses across India and the UK.
+              </p>
+              <p className={styles.aboutBody}>
+                When I build something for your business, it is not a freelance experiment. It is a tested, production-ready product you can rely on.
+              </p>
             </div>
 
-
+            {/* Companies — the credibility block */}
+            <div className={styles.companiesSection}>
+              <p className={styles.companiesLabel}>Professionally worked with</p>
+              <div className={styles.companiesGrid}>
+                {companies.map((company, index) => (
+                  <a
+                    key={index}
+                    href={company.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.companyCard}
+                    title={`${company.name} — ${company.role}`}
+                  >
+                    <div className={styles.companyLogo}>
+                      {company.logo ? (
+                        <img src={company.logo} alt={company.name} className={styles.companyLogoImg} />
+                      ) : (
+                        <span className={styles.companyInitials}>{company.initials}</span>
+                      )}
+                    </div>
+                    <div className={styles.companyInfo}>
+                      <span className={styles.companyName}>
+                        {company.name}{company.location ? `, ${company.location}` : ''}
+                      </span>
+                      <span className={styles.companyRole}>{company.role}</span>
+                    </div>
+                    <FaExternalLinkAlt size={9} className={styles.companyLinkIcon} />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
+          {/* Contact column */}
           <div className={styles.contactContent}>
-            <h3>Ready to upgrade your business?</h3>
-            <p>If you're a business owner looking to build or improve your website, feel free to reach out.</p>
-            
-            <div className={styles.contactActions}>
-              <a href="mailto:ritesh.exe@proton.me" className={styles.emailLink}>
-                <MdEmail size={24} /> ritesh.exe@proton.me
-              </a>
-              
-              <a href="mailto:ritesh.exe@proton.me?subject=Freelance Project Inquiry" className={styles.btnPrimary} style={{ width: 'fit-content', marginTop: '10px' }}>
-                Email Me
-              </a>
+            <div className={styles.contactSticky}>
+              <h3>Ready to grow your business online?</h3>
+              <p>
+                Whether you are starting fresh or your current website is not bringing in customers, let's talk. Most projects are scoped, quoted, and started within a week.
+              </p>
+
+              <div className={styles.contactHighlights}>
+                <div className={styles.contactHighlightItem}>
+                  <span className={styles.contactHighlightNumber}>8+</span>
+                  <span className={styles.contactHighlightLabel}>Projects Shipped</span>
+                </div>
+                <div className={styles.contactHighlightItem}>
+                  <span className={styles.contactHighlightNumber}>4</span>
+                  <span className={styles.contactHighlightLabel}>Companies Worked With</span>
+                </div>
+                <div className={styles.contactHighlightItem}>
+                  <span className={styles.contactHighlightNumber}>Direct</span>
+                  <span className={styles.contactHighlightLabel}>Access to Dev</span>
+                </div>
+              </div>
+
+              <div className={styles.contactActions}>
+                <a href="mailto:ritesh.exe@proton.me" className={styles.contactLink}>
+                  <MdEmail size={16} />
+                  <span>ritesh.exe@proton.me</span>
+                </a>
+                <a href="tel:+918433517682" className={styles.contactLink}>
+                  <FaPhone size={14} />
+                  <span>+91 84335 17682</span>
+                </a>
+                <a
+                  href="https://wa.me/918433517682?text=Hi%20Ritesh%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.whatsappBtn}
+                >
+                  <FaWhatsapp size={17} />
+                  WhatsApp Me
+                </a>
+                <a
+                  href="mailto:ritesh.exe@proton.me?subject=Business Inquiry"
+                  className={styles.btnPrimary}
+                >
+                  Email Me Now
+                </a>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
