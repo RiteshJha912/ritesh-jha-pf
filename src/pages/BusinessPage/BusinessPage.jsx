@@ -64,14 +64,17 @@ function BusinessPage() {
   }, [scrolled]);
 
   useEffect(() => {
-    if (theme === 'light') toggleTheme();
+    if (theme === 'light') {
+      toggleTheme();
+    }
     // Initialize AOS
     AOS.init({
       duration: 1000,
       once: true,
       easing: 'ease-in-out',
     });
-  }, [theme, toggleTheme]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [roleIndex, setRoleIndex] = useState(0);
 
