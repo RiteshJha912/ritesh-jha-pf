@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './BusinessPage.module.css';
 import SEO from '../../common/SEO';
@@ -26,6 +26,12 @@ import stallionLogo from '../../assets/TSP.jpg';
 import deepcytesLogo from '../../assets/deepcytes.jpg';
 import noxalgoLogo from '../../assets/noxalgo.jpg';
 import smowcodeLogo from '../../assets/smowcode.jpeg';
+
+const roles = [
+  "Software Developer",
+  "Security Analyst",
+  "Helping Businesses Win Online"
+];
 
 function BusinessPage() {
   const navigate = useNavigate();
@@ -65,6 +71,15 @@ function BusinessPage() {
       once: true,
       easing: 'ease-in-out',
     });
+  }, [theme, toggleTheme]);
+
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2800);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToContact = (e) => {
@@ -128,13 +143,19 @@ function BusinessPage() {
     {
       name: "Chromagen",
       image: chromagen,
-      desc: "A smart visual tool that helps businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.",
+      desc: "A smart visual tool that helps SaaS businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.",
       live: "https://www.chromagen.xyz/"
+    },
+    {
+      name: "InitPhase",
+      image: initphase,
+      desc: "Built a scalable digital platform from the ground up for software developers to manage operations, workflows, and growth with a structured system.",
+      live: "https://init-phase.vercel.app/"
     },
     {
       name: "Hackademy",
       image: hackademy,
-      desc: "An interactive learning platform that tracks user progress, improves engagement, and helps organizations deliver structured training experiences easily.",
+      desc: "An interactive learning platform that helps people learn about general digial security and online scams using simulations and gamification.",
       live: "https://tryhackademy.vercel.app/"
     },
     {
@@ -148,12 +169,6 @@ function BusinessPage() {
       image: gasdottips,
       desc: "A direct payment platform enabling creators and businesses to receive instant digital tips without relying on third party intermediaries.",
       live: "https://gasdottips.vercel.app/"
-    },
-    {
-      name: "InitPhase",
-      image: initphase,
-      desc: "Built a scalable digital platform from the ground up for businesses to manage operations, workflows, and growth with a structured system.",
-      live: "https://init-phase.vercel.app/"
     },
     {
       name: "Democrazy",
@@ -222,7 +237,9 @@ function BusinessPage() {
           </div>
 
           <div className={styles.trustIndicator}>
-            Software Developer · Security Analyst · Helping Businesses Win Online
+            <span key={roleIndex} className={styles.roleAnimated}>
+              {roles[roleIndex]}
+            </span>
           </div>
 
           <h1 className={styles.title}>Your Business Deserves a Website THAT BRINGS YOU REAL CUSTOMERS</h1>
@@ -370,7 +387,7 @@ function BusinessPage() {
             <div className={styles.contactSticky}>
               <h3>Ready to grow your business online?</h3>
               <p>
-                Whether you are starting fresh or your current website is not bringing in customers, let's talk. Most projects are scoped, quoted, and started within a week.
+                Whether you are starting fresh or your current website is not bringing in customers, let&apos;s talk. Most projects are scoped, quoted, and started within a week.
               </p>
 
               <div className={styles.contactHighlights}>
