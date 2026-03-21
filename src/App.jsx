@@ -17,6 +17,9 @@ import LoadingScreen from './common/loadingScreen.jsx'
 import Navbar from './sections/Navbar/Navbar.jsx'
 import SEO from './common/SEO.jsx'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 // Create context for Lenis
 const LenisContext = createContext(null)
 
@@ -99,6 +102,15 @@ function App() {
 
   // Store Lenis instance in ref
   const lenisRef = useRef(null)
+
+  // Initialize AOS for animations globally
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  }, []);
 
   // Initialize Lenis for smooth scrolling
   useEffect(() => {

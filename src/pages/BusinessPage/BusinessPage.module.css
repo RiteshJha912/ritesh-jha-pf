@@ -562,7 +562,7 @@
   grid-template-columns: 1fr;
   gap: 8px;
 }
-@media (min-width: 420px) {
+@media (min-width: 480px) {
   .companiesGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -630,6 +630,8 @@
   font-family: 'Roboto Mono', monospace;
   opacity: 0.5;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media (min-width: 768px) { .companyRole { font-size: 10px; } }
 
@@ -721,7 +723,7 @@
   grid-template-columns: 1fr;
   gap: 8px;
 }
-@media (min-width: 420px) {
+@media (min-width: 480px) {
   .contactActions {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
