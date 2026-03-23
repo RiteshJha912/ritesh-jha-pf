@@ -10,6 +10,7 @@ function Contact() {
   const [message, setMessage] = useState('')
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [isPushing, setIsPushing] = useState(false)
   const inputRef = useRef(null)
   const sectionRef = useRef(null)
   const terminalRef = useRef(null)
@@ -45,7 +46,7 @@ function Contact() {
   }
 
   const processCommand = (cmd) => {
-    const addRegex = /^git add \. "(.*)"$/
+    const addRegex = /^git add "(.*)"$/
     const commitRegex = /^git commit -m "(.*)"$/
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -81,8 +82,8 @@ function Contact() {
         ...prevLogs,
         <span className={styles.userCommand}>$ {cmd}</span>,
         'Use the following commands to send me a message:',
-        '1) git add . "your message"',
-        '2) git commit -m "your email"',
+        '1) git add "your email"',
+        '2) git commit -m "your message"',
         '3) git push origin main',
         '',
         'Other commands:',
@@ -91,15 +92,7 @@ function Contact() {
         '▶ clear - To reset terminal',
       ])
     } else if (addRegex.test(cmd)) {
-      const msg = cmd.match(addRegex)[1]
-      setMessage(msg)
-      setLogs((prevLogs) => [
-        ...prevLogs,
-        <span className={styles.userCommand}>$ {cmd}</span>,
-        `✔ Message added: "${msg}"`,
-      ])
-    } else if (commitRegex.test(cmd)) {
-      const mail = cmd.match(commitRegex)[1]
+      const mail = cmd.match(addRegex)[1]
 
       if (!emailRegex.test(mail)) {
         setLogs((prevLogs) => [
@@ -114,16 +107,34 @@ function Contact() {
       setLogs((prevLogs) => [
         ...prevLogs,
         <span className={styles.userCommand}>$ {cmd}</span>,
-        `✔ Email set: "${mail}"`,
+        `✔ Email added: "${mail}"`,
+      ])
+    } else if (commitRegex.test(cmd)) {
+      const msg = cmd.match(commitRegex)[1]
+
+      setMessage(msg)
+      setLogs((prevLogs) => [
+        ...prevLogs,
+        <span className={styles.userCommand}>$ {cmd}</span>,
+        `✔ Message committed: "${msg}"`,
       ])
     } else if (cmd === 'git push origin main') {
       if (message && email) {
-        sendFormData()
-      } else {
+        setIsPushing(true)
         setLogs((prevLogs) => [
           ...prevLogs,
           <span className={styles.userCommand}>$ {cmd}</span>,
-          'Please add message and email first!',
+          'Pushing to origin... (shipping message)',
+        ])
+        sendFormData()
+      } else {
+        const missing = []
+        if (!email) missing.push('email')
+        if (!message) missing.push('message')
+        setLogs((prevLogs) => [
+          ...prevLogs,
+          <span className={styles.userCommand}>$ {cmd}</span>,
+          `Please provide ${missing.join(' and ')} first! Use 'info' for commands.`,
         ])
       }
     } else {
@@ -147,17 +158,20 @@ function Contact() {
 
       if (response.ok) {
         setSubmitted(true)
+        setIsPushing(false)
         setLogs((prevLogs) => [
           ...prevLogs,
-          ' Message successfully sent!!! ',
+          '✔ Message successfully shipped!!!',
         ])
       } else {
+        setIsPushing(false)
         setLogs((prevLogs) => [
           ...prevLogs,
-          'Failed to send message. Try again later.',
+          'Failed to ship message. Try again later.',
         ])
       }
     } catch (error) {
+      setIsPushing(false)
       setLogs((prevLogs) => [...prevLogs, 'Network error. Please try again.'])
     }
   }
@@ -175,7 +189,7 @@ function Contact() {
         {logs.map((log, index) => (
           <p key={index}>{log}</p>
         ))}
-        {!submitted && (
+        {!submitted && !isPushing && (
           <form>
             <span className={styles.prompt}>$</span>
             <input
