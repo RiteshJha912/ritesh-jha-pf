@@ -373,12 +373,12 @@
 .serviceDesc {
   color: var(--form-text-color);
   line-height: 1.6;
-  font-size: 12px;
+  font-size: 13px !important;
   opacity: 0.85;
   margin: 0;
   text-align: justify;
 }
-@media (min-width: 768px) { .serviceDesc { font-size: 12.5px; } }
+@media (min-width: 768px) { .serviceDesc { font-size: 13.5px !important; } }
 
 /* ═══════════════════════════════════════════════════════════
    PROJECTS — full image, object-fit: contain
@@ -395,19 +395,21 @@
 
 .projectCard {
   background: var(--project-card-bg);
-  border-radius: 12px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
-  border: 1px solid rgba(150, 150, 150, 0.12);
+  border: 1px solid rgba(150, 150, 150, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Premium top-lit glass effect */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-@media (min-width: 1024px) {
-  .projectCard:hover {
-    transform: translateY(-5px);
-    border-color: rgba(150, 150, 150, 0.3);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
-  }
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(150, 150, 150, 0.35);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /*
@@ -424,6 +426,14 @@
   justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid rgba(150, 150, 150, 0.08);
+  position: relative;
+}
+.projectImgWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(0,0,0,0.06) 100%);
+  pointer-events: none;
 }
 @media (min-width: 580px) { .projectImgWrap { height: 160px; } }
 @media (min-width: 768px) { .projectImgWrap { height: 180px; } }
@@ -442,46 +452,55 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 12px 14px 4px;
+  padding: 16px 16px 6px;
 }
-@media (min-width: 768px) { .projectTopRow { padding: 14px 16px 4px; } }
+@media (min-width: 768px) { .projectTopRow { padding: 18px 20px 8px; } }
 
 .projectName {
   font-family: 'Bona Nova SC', serif;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 600;
   margin: 0;
   text-transform: uppercase;
   color: var(--text-color);
   line-height: 1.3;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
-@media (min-width: 768px) { .projectName { font-size: 14px; } }
+@media (min-width: 768px) { .projectName { font-size: 17px; } }
 
 .liveLink {
   color: var(--text-color);
-  opacity: 0.45;
-  padding: 5px;
-  background: rgba(150, 150, 150, 0.06);
+  opacity: 0.7;
+  padding: 8px;
+  background: rgba(150, 150, 150, 0.08);
   border-radius: 50%;
+  border: 1px solid rgba(150, 150, 150, 0.08);
   display: flex;
   flex-shrink: 0;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.liveLink:hover { opacity: 1; }
+.liveLink:hover {
+  opacity: 1;
+  background: var(--text-color);
+  color: var(--background-color);
+  border-color: var(--text-color);
+  transform: scale(1.08) rotate(10deg);
+}
 
-.projectContent { padding: 4px 14px 14px; }
-@media (min-width: 768px) { .projectContent { padding: 4px 16px 16px; } }
+.projectContent { padding: 4px 16px 18px; }
+@media (min-width: 768px) { .projectContent { padding: 4px 20px 22px; } }
 
 .projectDesc {
   color: var(--text-color);
-  opacity: 0.7;
-  font-size: 11px;
-  line-height: 1.6;
-  font-family: 'Roboto Mono', monospace;
+  opacity: 0.75;
+  font-family: 'Roboto Mono', monospace !important;
+  text-align: justify !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0.01em;
   margin: 0;
-  text-align: justify;
 }
-@media (min-width: 768px) { .projectDesc { font-size: 11.5px; } }
+@media (min-width: 768px) { .projectDesc { font-size: 13.5px !important; } }
 
 /* ═══════════════════════════════════════════════════════════
    ABOUT & CONTACT — symmetric, geometric layout
@@ -530,6 +549,7 @@
   margin: 0 0 18px;
   line-height: 1.65;
   font-size: 12px;
+  text-align: justify;
 }
 @media (min-width: 768px) { .aboutContent p { font-size: 13px; margin-bottom: 22px; } }
 
@@ -690,6 +710,7 @@
   margin: 0 0 18px;
   line-height: 1.65;
   font-size: 12px;
+  text-align: justify;
 }
 @media (min-width: 768px) { .contactContent p { font-size: 13px; margin-bottom: 22px; } }
 

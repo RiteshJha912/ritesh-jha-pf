@@ -192,7 +192,7 @@ function BusinessPage() {
     },
     {
       name: "Deepcytes Cyber Labs",
-      role: "Security Analyst",
+      role: "Developer & Security Analyst",
       location: "UK",
       url: "https://deepcytes.io",
       logo: deepcytesLogo,
@@ -254,75 +254,6 @@ function BusinessPage() {
             <a href="#contact" onClick={scrollToContact} className={styles.btnPrimary}>Get in Touch</a>
             <a href="#work" onClick={scrollToWork} className={styles.btnSecondary}>See My Work</a>
           </div>
-        </div>
-      </section>
-
-      {/* ── Services ── */}
-      <section className={styles.section} data-aos="fade-up">
-        <h2 className={styles.sectionTitle}>What I Can Help Your Business With</h2>
-        <div className={styles.servicesGrid}>
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className={styles.serviceCard} 
-              data-aos="fade-up" 
-              data-aos-delay={index * 100}
-            >
-              <div className={styles.serviceCardHeader}>
-                <div className={styles.serviceIconContainer}>{service.icon}</div>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-              </div>
-              <p className={styles.serviceDesc}>{service.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Selected Work ── */}
-      <section id="business-work" className={styles.section} data-aos="fade-up">
-        <h2 className={styles.sectionTitle}>Selected Work</h2>
-        <div className={styles.projectsGrid}>
-          {highlightedWork.map((project, index) => (
-            <div 
-              key={index} 
-              className={styles.projectCard} 
-              data-aos="fade-up" 
-              data-aos-delay={index * 100}
-            >
-              {/* Image container: always shows the full image */}
-              <div className={styles.projectImgWrap}>
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className={styles.projectImg}
-                  />
-                ) : (
-                  <div style={{ opacity: 0.1, fontSize: '10px', fontFamily: 'Roboto Mono' }}>{project.name}</div>
-                )}
-              </div>
-              {/* Title row */}
-              <div className={styles.projectTopRow}>
-                <h3 className={styles.projectName}>{project.name}</h3>
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.liveLink}
-                    aria-label={`View live project for ${project.name}`}
-                    title="View Live"
-                  >
-                    <FaExternalLinkAlt size={12} />
-                  </a>
-                )}
-              </div>
-              {/* Description */}
-              <div className={styles.projectContent}>
-                <p className={styles.projectDesc}>{project.desc}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -436,6 +367,75 @@ function BusinessPage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* ── Selected Work ── */}
+      <section id="business-work" className={styles.section} data-aos="fade-up">
+        <h2 className={styles.sectionTitle}>Selected Work</h2>
+        <div className={styles.projectsGrid}>
+          {highlightedWork.map((project, index) => (
+            <div 
+              key={index} 
+              className={styles.projectCard} 
+              data-aos="fade-up" 
+              data-aos-delay={index * 100}
+            >
+              {/* Image container: always shows the full image */}
+              <div className={styles.projectImgWrap}>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className={styles.projectImg}
+                  />
+                ) : (
+                  <div style={{ opacity: 0.1, fontSize: '10px', fontFamily: 'Roboto Mono' }}>{project.name}</div>
+                )}
+              </div>
+              {/* Title row */}
+              <div className={styles.projectTopRow}>
+                <h3 className={styles.projectName}>{project.name}</h3>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.liveLink}
+                    aria-label={`View live project for ${project.name}`}
+                    title="View Live"
+                  >
+                    <FaExternalLinkAlt size={12} />
+                  </a>
+                )}
+              </div>
+              {/* Description */}
+              <div className={styles.projectContent}>
+                <p className={styles.projectDesc}>{project.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Services ── */}
+      <section className={styles.section} data-aos="fade-up">
+        <h2 className={styles.sectionTitle}>What I Can Help Your Business With</h2>
+        <div className={styles.servicesGrid}>
+          {services.map((service, index) => (
+            <div 
+              key={index} 
+              className={styles.serviceCard} 
+              data-aos="fade-up" 
+              data-aos-delay={index * 100}
+            >
+              <div className={styles.serviceCardHeader}>
+                <div className={styles.serviceIconContainer}>{service.icon}</div>
+                <h3 className={styles.serviceTitle}>{service.title}</h3>
+              </div>
+              <p className={styles.serviceDesc}>{service.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
