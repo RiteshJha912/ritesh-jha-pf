@@ -30,11 +30,8 @@ function Hero({ onImageLoad, isLoaded }) {
   const delayBetweenWords = 1500
 
   const [showThemeTooltip, setShowThemeTooltip] = useState(false)
-  const [showEasterEggHint, setShowEasterEggHint] = useState(false)
-
   const handleImageClick = () => {
     setRotationDegrees(prev => prev + 180)
-    setShowEasterEggHint(false) // Hide hint once they discover it
   }
 
   useEffect(() => {
@@ -60,26 +57,7 @@ function Hero({ onImageLoad, isLoaded }) {
     }
   }, [])
 
-  // Easter egg hint tooltip - shows only once per session (on reload)
-  useEffect(() => {
-    if (!isLoaded) return;
 
-    // Check if hint has already been shown in this session
-    const hasShownHint = sessionStorage.getItem('hasShownEasterEggHint');
-    
-    if (!hasShownHint) {
-      const isMobile = window.innerWidth <= 800;
-      const delay = isMobile ? 3000 : 4000; // 3s on mobile, 4s on desktop
-      
-      const hintTimer = setTimeout(() => {
-        setShowEasterEggHint(true);
-        sessionStorage.setItem('hasShownEasterEggHint', 'true');
-        setTimeout(() => setShowEasterEggHint(false), 4000);
-      }, delay);
-
-      return () => clearTimeout(hintTimer);
-    }
-  }, [isLoaded]);
 
   useEffect(() => {
     let timer
@@ -135,11 +113,7 @@ function Hero({ onImageLoad, isLoaded }) {
               <div className={styles.backText}>hmm, van gogh!</div>
             </div>
           </div>
-          {showEasterEggHint && (
-            <div className={styles.easterEggHint}>
-              👆🏼👀
-            </div>
-          )}
+
         </div>
 {/* <div className={styles.themeButtonContainer}>
           <img
