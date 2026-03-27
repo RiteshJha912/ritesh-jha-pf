@@ -267,7 +267,7 @@ function BusinessPage() {
             <div className={styles.aboutSticky}>
               <h3>Full Stack Developer & Security Analyst</h3>
               <p>
-                Based in Mumbai with a B.Tech in Information Technology. I build tested, production-ready products for businesses across India and the UK.
+                Based in Mumbai with a B.Tech in Information Technology. I build tested, production-ready products for businesses across India and the United-Kingdom.
               </p>
 
               {/* Credentials bar — mirrors contactHighlights */}
@@ -281,7 +281,11 @@ function BusinessPage() {
                   <span className={styles.aboutHighlightLabel}>Years Experience</span>
                 </div>
                 <div className={styles.aboutHighlightItem}>
-                  <span className={styles.aboutHighlightNumber}>India & UK</span>
+                  <span className={styles.aboutHighlightNumber} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f1ee-1f1f3.svg" alt="IN" style={{ width: '1.2em', height: '1.2em' }} />
+                    <span>&amp;</span>
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f1ec-1f1e7.svg" alt="GB" style={{ width: '1.2em', height: '1.2em' }} />
+                  </span>
                   <span className={styles.aboutHighlightLabel}>Clients Served</span>
                 </div>
               </div>
