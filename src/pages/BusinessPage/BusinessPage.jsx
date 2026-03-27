@@ -170,13 +170,13 @@ function BusinessPage() {
     {
       name: "GAS.TIPS",
       image: gasdottips,
-      desc: "A direct payment platform enabling creators and businesses to receive instant digital tips without relying on third party intermediaries.",
+      desc: "A direct blockchain-payment platform enabling creators and businesses to receive instant digital tips without relying on third party intermediaries.",
       live: "https://gasdottips.vercel.app/"
     },
     {
       name: "Democrazy",
       image: democrazy,
-      desc: "A secure digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.",
+      desc: "A blockchain based digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.",
       live: "https://votewithdemocrazy.vercel.app/"
     }
   ];
