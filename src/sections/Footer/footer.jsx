@@ -22,19 +22,24 @@ function Footer() {
 
   return (
     <section id='footer' className={styles.container}>
-      <p>
-        Connection Status:{' '}
-        <span
-          className={`${styles.status} ${
-            onlineStatus === 'Online' ? styles.online : styles.offline
-          }`}
-        >
-          {onlineStatus === 'Online' ? 'Online' : '🔴 Offline'}
-        </span>
-      </p>
-      <p>
-        Made with <span className={styles.heart}>🫀</span> by Ritesh
-      </p>
+      <div className={styles.leftSection}>
+        <p>
+          Connection Status:{' '}
+          <span
+            className={`${styles.status} ${
+              onlineStatus === 'Online' ? styles.online : styles.offline
+            }`}
+          >
+            {onlineStatus === 'Online' ? 'Online' : '🔴 Offline'}
+          </span>
+        </p>
+        <p>
+          Made with <span className={styles.heart}>🫀</span> by Ritesh
+        </p>
+      </div>
+      <div className={styles.rightSection}>
+        <img src="/autograph-ritesh-jha.png" alt="Ritesh's Autograph" className={styles.autograph} />
+      </div>
     </section>
   )
 }

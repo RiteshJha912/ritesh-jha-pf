@@ -15,6 +15,10 @@ import devflipper from '../../assets/devflipper.png';
 import slinket from '../../assets/slinket.png';
 import coffercrypt from '../../assets/coffercrypt.png';
 import ethlogonew from '../../assets/ethlogonew.png';
+import initphase from '../../assets/initphase.png';
+import coldstart from '../../assets/coldstart.png';
+import cloudchanakya from '../../assets/cloudchanakya.png';
+import startupsurvialsim from '../../assets/startupsurvialsim.png';
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../../common/SEO';
@@ -28,9 +32,8 @@ function AllProjects() {
   // Preload all images on component mount
   useEffect(() => {
     const imageUrls = [
-      indrafndn, democrazy, paperops, epoch, chromagen, gasdottips,
-      debiased, hackademy, hnltech, taskifyv2, koshkeeper, devflipper,
-      slinket, coffercrypt, ethlogonew
+      slinket, coffercrypt, ethlogonew, initphase, coldstart,
+      cloudchanakya, startupsurvialsim
     ];
 
     let loadedCount = 0;
@@ -56,6 +59,22 @@ function AllProjects() {
 
   // Migration of Data from sections/Projects/projects.jsx
   const projects = [
+    {
+      src: initphase,
+      h3: 'InitPhase',
+      shortDesc: 'Enterprise SaaS Project Workspace',
+      longDesc: 'Built an enterprise-grade SaaS platform for managing software project lifecycles including requirements, test cases, RTM analysis, issue tracking, and automated documentation. Designed a modular React SPA with a Node.js + Express backend, implementing JWT authentication, MongoDB data models, and real-time traceability across modules.',
+      github: 'https://github.com/RiteshJha912/InitPhase',
+      live: 'https://init-phase.vercel.app',
+      tags: {
+        stack: [
+          "React 19", "Node.js", "Express.js", "MongoDB", "JWT", "BcryptJS", "Recharts", "html2pdf.js",
+        ],
+        domain: [
+          "SaaS", "Enterprise Software", "Full-Stack", "Project Management", "DevTools", "Software Lifecycle", "Testing & QA"
+        ],
+      },
+    },
     {
       src: indrafndn,
       h3: 'Indradhanu Foundation',
@@ -103,6 +122,35 @@ function AllProjects() {
           'Full-Stack',
           'Ethereum',
           'Governance',
+          'Web3',
+        ],
+      },
+    },
+    {
+      src: hackademy,
+      h3: 'Hackademy',
+      shortDesc: 'Gamified Cybersecurity Education Platform',
+      longDesc:
+        'Comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real world cyber threats through interactive quizzes on digital arrest scams, UPI payment fraud, e-KYC SIM swap, fake job scams & WhatsApp stock scams. Features global leaderboard, real time scoring, progress tracking, detailed scam guides & instant feedback with no registration required.',
+      github: 'https://github.com/RiteshJha912/hackademy-final',
+      live: 'https://tryhackademy.vercel.app/',
+      tags: {
+        stack: [
+          'React',
+          'Node.js',
+          'Express',
+          'MongoDB',
+          'Chart.js',
+          'Recharts',
+          'Axios',
+          'React Router',
+        ],
+        domain: [
+          'Education',
+          'E-Learning',
+          'Cybersecurity',
+          'Gamification',
+          'Full-Stack',
         ],
       },
     },
@@ -159,6 +207,22 @@ function AllProjects() {
       },
     },
     {
+      src: coldstart,
+      h3: 'ColdStart.ai',
+      shortDesc: 'AI Career DNA & Outreach Engine',
+      longDesc: 'Built a multi-agent AI platform that generates a candidate’s Career DNA, analyzes GitHub repositories for real-world competency, scores startup/job opportunities, and auto-generates highly personalized outreach messages. Designed a MERN-based architecture with service-layer agents orchestrating LLM workflows, enabling intelligent talent-to-opportunity matching and automated networking. Built by Team SilentVoid at KJSCE Hack X',
+      github: 'https://github.com/RiteshJha912/hackx-main',
+      live: null,
+      tags: {
+        stack: [
+          "React", "Vite", "Node.js", "Express.js", "MongoDB", "Mongoose", "Google Gemma (NVIDIA)", "Multi-Agent Systems", "REST APIs",
+        ],
+        domain: [
+          "AI/ML", "Agentic AI", "Career Tech", "Automation", "Full-Stack", "LLM Applications",
+        ],
+      },
+    },
+    {
       src: chromagen,
       h3: 'Chromagen',
       shortDesc: 'AI Powered Color Palette Generator',
@@ -184,26 +248,6 @@ function AllProjects() {
           'Design Tools',
           'WCAG',
           'Hackathon',
-          'Frontend',
-        ],
-      },
-    },
-    {
-      src: gasdottips,
-      h3: 'GAS.TIPS',
-      shortDesc: 'Decentralized Tipping Platform',
-      longDesc:
-        'Developed a Web3 tip jar enabling direct crypto payments to content creators. Features wallet connection, smart contract integration for secure transactions & a clean interface for seamless tipping experiences on Ethereum networks.',
-      github: 'https://github.com/RiteshJha912/gas.tips',
-      live: 'https://gasdottips.vercel.app/',
-      tags: {
-        stack: ['React', 'Ethers.js', 'Solidity', 'Web3', 'Smart Contracts'],
-        domain: [
-          'Blockchain',
-          'DApp',
-          'Payments',
-          'Web3',
-          'Cryptocurrency',
           'Frontend',
         ],
       },
@@ -243,30 +287,54 @@ function AllProjects() {
       },
     },
     {
-      src: hackademy,
-      h3: 'Hackademy',
-      shortDesc: 'Gamified Cybersecurity Education Platform',
-      longDesc:
-        'Comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real world cyber threats through interactive quizzes on digital arrest scams, UPI payment fraud, e-KYC SIM swap, fake job scams & WhatsApp stock scams. Features global leaderboard, real time scoring, progress tracking, detailed scam guides & instant feedback with no registration required.',
-      github: 'https://github.com/RiteshJha912/hackademy-final',
-      live: 'https://tryhackademy.vercel.app/',
+      src: cloudchanakya,
+      h3: 'Cloud Chanakya',
+      shortDesc: 'Cloud Cost Optimization Engine',
+      longDesc: 'Built a full-stack platform that simulates cloud workloads and identifies cost-saving arbitrage opportunities across AWS, Azure, and GCP. Implemented FinOps-driven logic to compare regional pricing, suggest optimization strategies like spot/reserved instances, and visualize scaling cost impacts, enabling developers to make data-driven cloud decisions.',
+      github: 'https://github.com/Ha3ar6ous/cloud-arbitrage-engine',
+      live: 'https://cloud-chanakya.vercel.app/',
       tags: {
         stack: [
-          'React',
-          'Node.js',
-          'Express',
-          'MongoDB',
-          'Chart.js',
-          'Recharts',
-          'Axios',
-          'React Router',
+          "React", "Vite", "Node.js", "Express.js", "MongoDB", "Mongoose", "REST APIs", "CSS"
         ],
         domain: [
-          'Education',
-          'E-Learning',
-          'Cybersecurity',
-          'Gamification',
-          'Full-Stack',
+          "Cloud Computing", "FinOps", "Cost Optimization", "Full-Stack", "Simulation", "DevTools"
+        ],
+      },
+    },
+    {
+      src: startupsurvialsim,
+      h3: 'Startup Survival Simulator',
+      shortDesc: 'Monte Carlo Startup Simulator',
+      longDesc: 'Developed an interactive simulation platform that models startup survival using Monte Carlo methods and stochastic processes. Enabled users to analyze revenue variability, cost spikes, and funding uncertainty through real-time visualizations, probability distributions, and survival metrics, turning complex modeling concepts into an intuitive decision tool.',
+      github: 'https://github.com/Ha3ar6ous/startupsurvivalsimulator',
+      live: 'https://startupsurvivalsim.netlify.app/',
+      tags: {
+        stack: [
+          "React", "TypeScript", "Vite", "Recharts", "Lucide React", "CSS"
+        ],
+        domain: [
+          "Simulation", "Data Visualization", "FinTech", "Modeling & Statistics", "Frontend", "Decision Systems"
+        ],
+      },
+    },
+    {
+      src: gasdottips,
+      h3: 'GAS.TIPS',
+      shortDesc: 'Decentralized Tipping Platform',
+      longDesc:
+        'Developed a Web3 tip jar enabling direct crypto payments to content creators. Features wallet connection, smart contract integration for secure transactions & a clean interface for seamless tipping experiences on Ethereum networks.',
+      github: 'https://github.com/RiteshJha912/gas.tips',
+      live: 'https://gasdottips.vercel.app/',
+      tags: {
+        stack: ['React', 'Ethers.js', 'Solidity', 'Web3', 'Smart Contracts'],
+        domain: [
+          'Blockchain',
+          'DApp',
+          'Payments',
+          'Web3',
+          'Cryptocurrency',
+          'Frontend',
         ],
       },
     },
@@ -416,6 +484,7 @@ function AllProjects() {
       // Logic for Featured category
       if (activeCategory === 'Featured') {
         const featuredProjects = [
+            'InitPhase',
             'Indradhanu Foundation', 
             'Democrazy', 
             'epoch', 
@@ -495,6 +564,7 @@ function AllProjects() {
           filteredProjects.map((project, index) => {
             // Check if this project is one of the featured ones to apply special styling
             const isFeatured = [
+                'InitPhase',
                 'Indradhanu Foundation', 
                 'Democrazy', 
                 'epoch', 

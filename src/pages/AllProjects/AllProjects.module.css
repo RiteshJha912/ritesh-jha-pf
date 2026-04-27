@@ -331,7 +331,7 @@
 .imageWrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -342,14 +342,6 @@
     will-change: opacity;
     backface-visibility: hidden;
     transform: translateZ(0);
-}
-
-/* Specific styling for first 3 projects */
-.imageWrapper img[data-project="Indradhanu Foundation"],
-.imageWrapper img[data-project="Democrazy"],
-.imageWrapper img[data-project="PaperOps.ai"] {
-    object-fit: fill;
-    /* Keep fill for these specific projects */
 }
 
 [data-theme='dark'] .imageWrapper {

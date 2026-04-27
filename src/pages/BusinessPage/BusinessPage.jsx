@@ -12,6 +12,10 @@ import { MdEmail, MdDarkMode, MdLightMode } from 'react-icons/md';
 
 // Project images
 import profileImg from '../../assets/mp2.jpg';
+import initphase from '../../assets/initphase.png';
+import coldstart from '../../assets/coldstart.png';
+import cloudchanakya from '../../assets/cloudchanakya.png';
+import startupsurvialsim from '../../assets/startupsurvialsim.png';
 import indrafndn from '../../assets/indrafndn.png';
 import hnltech from '../../assets/hnltech.png';
 import hackademy from '../../assets/hackademy.png';
@@ -19,7 +23,6 @@ import epoch from '../../assets/epoch.png';
 import gasdottips from '../../assets/gasdottips.png';
 import democrazy from '../../assets/democrazy.png';
 import chromagen from '../../assets/chromagen.png';
-import initphase from '../../assets/initphase.png';
 
 // Company logos
 import stallionLogo from '../../assets/TSP.jpg';
@@ -132,28 +135,22 @@ function BusinessPage() {
   // ── Projects (in requested order) ────────────────────────────
   const highlightedWork = [
     {
+      name: "InitPhase",
+      image: initphase,
+      desc: "Built a scalable digital platform from the ground up for software developers to manage operations, workflows, and growth with a structured system.",
+      live: "https://init-phase.vercel.app/"
+    },
+    {
       name: "Indradhanu Foundation",
       image: indrafndn,
       desc: "Complete NGO website setup with search visibility, lead capture forms, and reliable digital presence. Delivered fully end-to-end for real impact.",
       live: "https://www.indradhanufoundation.in/"
     },
     {
-      name: "HNLTech",
-      image: hnltech,
-      desc: "A modern business landing page designed to build trust, showcase services clearly, and convert visitors into real clients effectively.",
-      live: "https://hnltech.netlify.app/"
-    },
-    {
-      name: "Chromagen",
-      image: chromagen,
-      desc: "A smart visual tool that helps SaaS businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.",
-      live: "https://www.chromagen.xyz/"
-    },
-    {
-      name: "InitPhase",
-      image: initphase,
-      desc: "Built a scalable digital platform from the ground up for software developers to manage operations, workflows, and growth with a structured system.",
-      live: "https://init-phase.vercel.app/"
+      name: "Democrazy",
+      image: democrazy,
+      desc: "A blockchain based digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.",
+      live: "https://votewithdemocrazy.vercel.app/"
     },
     {
       name: "Hackademy",
@@ -162,22 +159,34 @@ function BusinessPage() {
       live: "https://tryhackademy.vercel.app/"
     },
     {
+      name: "PaperOps.ai",
+      image: paperops,
+      desc: "Built an intelligent research agent that automates academic paper discovery, summarization & analysis, leveraging LLM capabilities for deep research synthesis.",
+      live: null
+    },
+    {
       name: "Epoch",
       image: epoch,
       desc: "A simple daily habit tracking tool that helps users stay consistent, monitor progress, and build routines without unnecessary complexity.",
       live: "https://epoch-daily.vercel.app/"
     },
     {
-      name: "GAS.TIPS",
-      image: gasdottips,
-      desc: "A direct blockchain-payment platform enabling creators and businesses to receive instant digital tips without relying on third party intermediaries.",
-      live: "https://gasdottips.vercel.app/"
+      name: "ColdStart.ai",
+      image: coldstart,
+      desc: "Built a multi-agent AI platform that generates candidate Career DNA, analyzes repositories for real-world competency, and orchestrates intelligent LLM workflows.",
+      live: null
     },
     {
-      name: "Democrazy",
-      image: democrazy,
-      desc: "A blockchain based digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.",
-      live: "https://votewithdemocrazy.vercel.app/"
+      name: "Chromagen",
+      image: chromagen,
+      desc: "A smart visual tool that helps SaaS businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.",
+      live: "https://www.chromagen.xyz/"
+    },
+    {
+      name: "DeBiased",
+      image: debiased,
+      desc: "A privacy-first survey platform leveraging zero-knowledge cryptography to eliminate opinion bias and verify demographics without revealing identity.",
+      live: "https://ethglobal.com/showcase/debiased-7h24b"
     }
   ];
 

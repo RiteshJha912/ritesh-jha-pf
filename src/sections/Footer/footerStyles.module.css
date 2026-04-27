@@ -1,6 +1,47 @@
 .container {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 30px auto;
+    padding: 0 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.leftSection {
+    text-align: left;
+}
+
+.rightSection {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.autograph {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    transform: translateY(10px); /* Optically center it against the text by pushing it down slightly */
+    pointer-events: none; /* Disables right-click, dragging, and long-press saving */
+    user-select: none; /* Prevents selection */
+    -webkit-user-drag: none; /* Specifically prevents dragging on Webkit browsers */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .leftSection {
+        text-align: center;
+    }
+    
+    .rightSection {
+        justify-content: center;
+    }
 }
 
 p {
@@ -11,7 +52,6 @@ p {
 
 /* Online/Offline status animation */
 .status {
-    margin-top: 60px;
     font-weight: bold;
     display: inline-flex;
     align-items: center;
