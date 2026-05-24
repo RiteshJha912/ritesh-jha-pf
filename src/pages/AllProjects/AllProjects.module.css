@@ -173,74 +173,60 @@
     opacity: 1;
 }
 
-/* Featured Tab Active State Override - Fix text visibility */
-.filterTab.featuredTab.activeTab,
-.filterTab.featuredTab.activeTab:hover {
-    background: var(--background-color);
-    color: var(--text-color);
+/* Serious Projects Tab Active State Override - keep consistent with other active tabs */
+.filterTab.seriousTab.activeTab,
+.filterTab.seriousTab.activeTab:hover {
+    background: var(--text-color);
+    color: var(--background-color);
     border-color: var(--text-color);
-    font-weight: 700;
-    box-shadow: 0 0 15px rgba(var(--text-color-rgb), 0.15);
+    font-weight: 600;
+    box-shadow: none;
 }
 
-/* MYSTERIOUS FEATURED TAB */
-.filterTab.featuredTab {
+/* Serious Projects Tab Shiny Border */
+.filterTab.seriousTab {
     position: relative;
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-color);
-    border: 1px solid transparent;
-    /* Hide default border */
+    border: 1px solid rgba(var(--accent-color-rgb, 129, 97, 255), 0.2);
     overflow: hidden;
     opacity: 1;
-    font-weight: 700;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    transition: all 0.25s ease;
     z-index: 1;
 }
 
-/* Moving gradient border effect */
-.filterTab.featuredTab::before {
+.filterTab.seriousTab::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 20px;
-    padding: 1.5px;
-    /* Border width */
-    background: linear-gradient(90deg,
-            transparent 0%,
-            var(--text-color) 50%,
-            transparent 100%);
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    background-size: 200% 100%;
-    animation: snakeBorder 3s linear infinite;
-    z-index: -1;
+    inset: 0;
+    background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0.0) 0%,
+      rgba(255, 255, 255, 0.25) 40%,
+      rgba(255, 255, 255, 0.0) 80%);
+    transform: translateX(-120%) skewX(-15deg);
+    opacity: 1;
     pointer-events: none;
 }
 
-/* Subtle inner glow on active/hover */
-.filterTab.featuredTab:hover,
-.filterTab.featuredTab.activeTab {
-    background: rgba(var(--text-color-rgb), 0.05);
-    /* Very subtle fill */
-    box-shadow: 0 0 15px rgba(var(--text-color-rgb), 0.15);
+.filterTab.seriousTab:not(.activeTab) {
+    box-shadow: 0 0 18px rgba(var(--accent-color-rgb, 129, 97, 255), 0.18);
 }
 
-.filterTab.featuredTab.activeTab::before {
-    background: linear-gradient(90deg,
-            var(--text-color) 0%,
-            var(--accent-color, #c084fc) 50%,
-            var(--text-color) 100%);
-    background-size: 200% 100%;
-    animation: snakeBorder 2s linear infinite;
+.filterTab.seriousTab:not(.activeTab)::before {
+    animation: seriousShine 2.5s ease-in-out infinite;
+}
+
+@keyframes seriousShine {
+    0% {
+        transform: translateX(-120%) skewX(-15deg);
+    }
+    50% {
+        transform: translateX(120%) skewX(-15deg);
+    }
+    100% {
+        transform: translateX(360%) skewX(-15deg);
+    }
 }
 
 @keyframes snakeBorder {

@@ -1,61 +1,71 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import styles from './AllProjects.module.css';
-import indrafndn from '../../assets/indrafndn.png';
-import democrazy from '../../assets/democrazy.png';
-import paperops from '../../assets/paperops.png';
-import epoch from '../../assets/epoch.png';
-import chromagen from '../../assets/chromagen.png';
-import gasdottips from '../../assets/gasdottips.png';
-import debiased from '../../assets/debiased.jpg';
-import hackademy from '../../assets/hackademy.png';
-import hnltech from '../../assets/hnltech.png';
-import taskifyv2 from '../../assets/taskifyv2.png';
-import koshkeeper from '../../assets/koshkeeper.png';
-import devflipper from '../../assets/devflipper.png';
-import slinket from '../../assets/slinket.png';
-import coffercrypt from '../../assets/coffercrypt.png';
-import ethlogonew from '../../assets/ethlogonew.png';
-import initphase from '../../assets/initphase.png';
-import coldstart from '../../assets/coldstart.png';
-import cloudchanakya from '../../assets/cloudchanakya.png';
-import startupsurvialsim from '../../assets/startupsurvialsim.png';
-import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaSearch } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import SEO from '../../common/SEO';
+import React, { useEffect, useState, useMemo } from 'react'
+import styles from './AllProjects.module.css'
+import indrafndn from '../../assets/indrafndn.png'
+import democrazy from '../../assets/democrazy.png'
+import paperops from '../../assets/paperops.png'
+import epoch from '../../assets/epoch.png'
+import chromagen from '../../assets/chromagen.png'
+import gasdottips from '../../assets/gasdottips.png'
+import debiased from '../../assets/debiased.jpg'
+import hackademy from '../../assets/hackademy.png'
+import hnltech from '../../assets/hnltech.png'
+import taskifyv2 from '../../assets/taskifyv2.png'
+import koshkeeper from '../../assets/koshkeeper.png'
+import devflipper from '../../assets/devflipper.png'
+import slinket from '../../assets/slinket.png'
+import coffercrypt from '../../assets/coffercrypt.png'
+import ethlogonew from '../../assets/ethlogonew.png'
+import initphase from '../../assets/initphase.png'
+import coldstart from '../../assets/coldstart.png'
+import cloudchanakya from '../../assets/cloudchanakya.png'
+import startupsurvialsim from '../../assets/startupsurvialsim.png'
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaArrowLeft,
+  FaSearch,
+} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import SEO from '../../common/SEO'
 
 function AllProjects() {
-  const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const navigate = useNavigate()
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [imagesLoaded, setImagesLoaded] = useState(false)
 
   // Preload all images on component mount
   useEffect(() => {
     const imageUrls = [
-      slinket, coffercrypt, ethlogonew, initphase, coldstart,
-      cloudchanakya, startupsurvialsim
-    ];
+      slinket,
+      coffercrypt,
+      ethlogonew,
+      initphase,
+      coldstart,
+      cloudchanakya,
+      startupsurvialsim,
+    ]
 
-    let loadedCount = 0;
-    const totalImages = imageUrls.length;
+    let loadedCount = 0
+    const totalImages = imageUrls.length
 
     imageUrls.forEach((url) => {
-      const img = new Image();
-      img.src = url;
+      const img = new Image()
+      img.src = url
       img.onload = () => {
-        loadedCount++;
+        loadedCount++
         if (loadedCount === totalImages) {
-          setImagesLoaded(true);
+          setImagesLoaded(true)
         }
-      };
+      }
       img.onerror = () => {
-        loadedCount++;
+        loadedCount++
         if (loadedCount === totalImages) {
-          setImagesLoaded(true);
+          setImagesLoaded(true)
         }
-      };
-    });
-  }, []);
+      }
+    })
+  }, [])
 
   // Migration of Data from sections/Projects/projects.jsx
   const projects = [
@@ -63,15 +73,30 @@ function AllProjects() {
       src: initphase,
       h3: 'InitPhase',
       shortDesc: 'Enterprise SaaS Project Workspace',
-      longDesc: 'Built an enterprise-grade SaaS platform for managing software project lifecycles including requirements, test cases, RTM analysis, issue tracking, and automated documentation. Designed a modular React SPA with a Node.js + Express backend, implementing JWT authentication, MongoDB data models, and real-time traceability across modules.',
+      longDesc:
+        'Built an enterprise-grade SaaS platform for managing software project lifecycles including requirements, test cases, RTM analysis, issue tracking, and automated documentation. Designed a modular React SPA with a Node.js + Express backend, implementing JWT authentication, MongoDB data models, and real-time traceability across modules.',
       github: 'https://github.com/RiteshJha912/InitPhase',
       live: 'https://init-phase.vercel.app',
+      group: 'Serious Projects',
       tags: {
         stack: [
-          "React 19", "Node.js", "Express.js", "MongoDB", "JWT", "BcryptJS", "Recharts", "html2pdf.js",
+          'React 19',
+          'Node.js',
+          'Express.js',
+          'MongoDB',
+          'JWT',
+          'BcryptJS',
+          'Recharts',
+          'html2pdf.js',
         ],
         domain: [
-          "SaaS", "Enterprise Software", "Full-Stack", "Project Management", "DevTools", "Software Lifecycle", "Testing & QA"
+          'SaaS',
+          'Enterprise Software',
+          'Full-Stack',
+          'Project Management',
+          'DevTools',
+          'Software Lifecycle',
+          'Testing & QA',
         ],
       },
     },
@@ -104,6 +129,7 @@ function AllProjects() {
         'Created a censorship resistant governance platform on Ethereum Sepolia with Solidity smart contracts. Implements atomic voting transactions, wallet integration via ethers.js v6 & a Node.js/MongoDB caching layer to optimize RPC latency for real time state updates.',
       github: 'https://github.com/RiteshJha912/democrazy',
       live: 'https://votewithdemocrazy.vercel.app/',
+      group: 'Serious Projects',
       tags: {
         stack: [
           'Solidity',
@@ -134,6 +160,7 @@ function AllProjects() {
         'Comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real world cyber threats through interactive quizzes on digital arrest scams, UPI payment fraud, e-KYC SIM swap, fake job scams & WhatsApp stock scams. Features global leaderboard, real time scoring, progress tracking, detailed scam guides & instant feedback with no registration required.',
       github: 'https://github.com/RiteshJha912/hackademy-final',
       live: 'https://tryhackademy.vercel.app/',
+      group: 'Serious Projects',
       tags: {
         stack: [
           'React',
@@ -162,6 +189,7 @@ function AllProjects() {
         'Built an intelligent research agent that automates academic paper discovery, summarization & analysis. Leverages LLM capabilities for deep research synthesis, citation extraction & generates comprehensive literature reviews from multiple sources.',
       github: 'https://github.com/RiteshJha912/PaperOps.ai',
       live: null, // Add when available
+      group: 'Serious Projects',
       tags: {
         stack: [
           'Python',
@@ -210,15 +238,30 @@ function AllProjects() {
       src: coldstart,
       h3: 'ColdStart.ai',
       shortDesc: 'AI Career DNA & Outreach Engine',
-      longDesc: 'Built a multi-agent AI platform that generates a candidate’s Career DNA, analyzes GitHub repositories for real-world competency, scores startup/job opportunities, and auto-generates highly personalized outreach messages. Designed a MERN-based architecture with service-layer agents orchestrating LLM workflows, enabling intelligent talent-to-opportunity matching and automated networking. Built by Team SilentVoid at KJSCE Hack X',
+      longDesc:
+        'Built a multi-agent AI platform that generates a candidate’s Career DNA, analyzes GitHub repositories for real-world competency, scores startup/job opportunities, and auto-generates highly personalized outreach messages. Designed a MERN-based architecture with service-layer agents orchestrating LLM workflows, enabling intelligent talent-to-opportunity matching and automated networking. Built by Team SilentVoid at KJSCE Hack X',
       github: 'https://github.com/RiteshJha912/hackx-main',
       live: null,
+      group: 'Serious Projects',
       tags: {
         stack: [
-          "React", "Vite", "Node.js", "Express.js", "MongoDB", "Mongoose", "Google Gemma (NVIDIA)", "Multi-Agent Systems", "REST APIs",
+          'React',
+          'Vite',
+          'Node.js',
+          'Express.js',
+          'MongoDB',
+          'Mongoose',
+          'Google Gemma (NVIDIA)',
+          'Multi-Agent Systems',
+          'REST APIs',
         ],
         domain: [
-          "AI/ML", "Agentic AI", "Career Tech", "Automation", "Full-Stack", "LLM Applications",
+          'AI/ML',
+          'Agentic AI',
+          'Career Tech',
+          'Automation',
+          'Full-Stack',
+          'LLM Applications',
         ],
       },
     },
@@ -230,6 +273,7 @@ function AllProjects() {
         'Intelligent color palette generator for designers & developers. Generate palettes from text prompts using GAN, extract colors from images with Pylette, test WCAG AA/AAA compliance, simulate color blindness, preview on live UI mockups & export as CSS/JSON. Features browser extension for extracting palettes from any webpage. Built by Team BootWinXP at Bit N Build.',
       github: 'https://github.com/Om-Thanage/bootWinXP_Internal-Round_70',
       live: 'https://www.chromagen.xyz/',
+      group: 'Serious Projects',
       tags: {
         stack: [
           'React',
@@ -260,6 +304,7 @@ function AllProjects() {
         'A privacy first survey platform leveraging zero knowledge cryptography to eliminate opinion bias. Enables truthful feedback collection on sensitive topics by verifying respondent demographics via Self Protocol without revealing identity. Features automated rewards through Kadena EVM smart contracts & immutable, encrypted data storage on IPFS/Filecoin. Built by Team BootWinXP at ETHGlobal New Delhi.',
       github: 'https://github.com/ombhanushaliii/debiased',
       live: 'https://ethglobal.com/showcase/debiased-7h24b',
+      group: 'Serious Projects',
       tags: {
         stack: [
           'Next.js',
@@ -290,15 +335,28 @@ function AllProjects() {
       src: cloudchanakya,
       h3: 'Cloud Chanakya',
       shortDesc: 'Cloud Cost Optimization Engine',
-      longDesc: 'Built a full-stack platform that simulates cloud workloads and identifies cost-saving arbitrage opportunities across AWS, Azure, and GCP. Implemented FinOps-driven logic to compare regional pricing, suggest optimization strategies like spot/reserved instances, and visualize scaling cost impacts, enabling developers to make data-driven cloud decisions.',
+      longDesc:
+        'Built a full-stack platform that simulates cloud workloads and identifies cost-saving arbitrage opportunities across AWS, Azure, and GCP. Implemented FinOps-driven logic to compare regional pricing, suggest optimization strategies like spot/reserved instances, and visualize scaling cost impacts, enabling developers to make data-driven cloud decisions.',
       github: 'https://github.com/Ha3ar6ous/cloud-arbitrage-engine',
       live: 'https://cloud-chanakya.vercel.app/',
       tags: {
         stack: [
-          "React", "Vite", "Node.js", "Express.js", "MongoDB", "Mongoose", "REST APIs", "CSS"
+          'React',
+          'Vite',
+          'Node.js',
+          'Express.js',
+          'MongoDB',
+          'Mongoose',
+          'REST APIs',
+          'CSS',
         ],
         domain: [
-          "Cloud Computing", "FinOps", "Cost Optimization", "Full-Stack", "Simulation", "DevTools"
+          'Cloud Computing',
+          'FinOps',
+          'Cost Optimization',
+          'Full-Stack',
+          'Simulation',
+          'DevTools',
         ],
       },
     },
@@ -306,15 +364,26 @@ function AllProjects() {
       src: startupsurvialsim,
       h3: 'Startup Survival Simulator',
       shortDesc: 'Monte Carlo Startup Simulator',
-      longDesc: 'Developed an interactive simulation platform that models startup survival using Monte Carlo methods and stochastic processes. Enabled users to analyze revenue variability, cost spikes, and funding uncertainty through real-time visualizations, probability distributions, and survival metrics, turning complex modeling concepts into an intuitive decision tool.',
+      longDesc:
+        'Developed an interactive simulation platform that models startup survival using Monte Carlo methods and stochastic processes. Enabled users to analyze revenue variability, cost spikes, and funding uncertainty through real-time visualizations, probability distributions, and survival metrics, turning complex modeling concepts into an intuitive decision tool.',
       github: 'https://github.com/Ha3ar6ous/startupsurvivalsimulator',
       live: 'https://startupsurvivalsim.netlify.app/',
       tags: {
         stack: [
-          "React", "TypeScript", "Vite", "Recharts", "Lucide React", "CSS"
+          'React',
+          'TypeScript',
+          'Vite',
+          'Recharts',
+          'Lucide React',
+          'CSS',
         ],
         domain: [
-          "Simulation", "Data Visualization", "FinTech", "Modeling & Statistics", "Frontend", "Decision Systems"
+          'Simulation',
+          'Data Visualization',
+          'FinTech',
+          'Modeling & Statistics',
+          'Frontend',
+          'Decision Systems',
         ],
       },
     },
@@ -463,67 +532,60 @@ function AllProjects() {
     },
   ]
 
-  const categories = ['All', 'Featured', 'Full-Stack', 'Blockchain', 'Security', 'AI/ML', 'Gaming'];
+  const categories = ['All', 'Serious Projects', 'Fun Projects']
 
   // Helper function to normalize text for search (removes special chars, emojis, extra spaces)
   const normalizeSearchText = (text) => {
-    return text
-      .toLowerCase()
-      .trim()
-      // Remove emojis and special characters, keep alphanumeric, spaces, and common punctuation
-      .replace(/[^\w\s\-\.\/]/gi, '')
-      // Replace multiple spaces with single space
-      .replace(/\s+/g, ' ');
-  };
+    return (
+      text
+        .toLowerCase()
+        .trim()
+        // Remove emojis and special characters, keep alphanumeric, spaces, and common punctuation
+        .replace(/[^\w\s\-\.\/]/gi, '')
+        // Replace multiple spaces with single space
+        .replace(/\s+/g, ' ')
+    )
+  }
 
   const filteredProjects = useMemo(() => {
     // If search query is empty or just whitespace, skip search filtering
-    const trimmedQuery = searchQuery.trim();
-    
-    return projects.filter(project => {
-      // Logic for Featured category
-      if (activeCategory === 'Featured') {
-        const featuredProjects = [
-            'InitPhase',
-            'Indradhanu Foundation', 
-            'Democrazy', 
-            'epoch', 
-            'PaperOps.ai', 
-            'DevFlipper'
-        ];
-        return featuredProjects.includes(project.h3);
-      }
+    const trimmedQuery = searchQuery.trim()
 
-      // Check both stack and domain arrays for the active category
-      // Handle mapping of "AI" to "AI/ML" or similar variations if necessary
-      const allTags = [...(project.tags.stack || []), ...(project.tags.domain || [])];
-      
-      const matchesCategory = activeCategory === 'All' 
-        || allTags.includes(activeCategory)
-        || (activeCategory === 'Gaming' && allTags.includes('Game Type'))
-        || (activeCategory === 'AI' && (allTags.includes('AI/ML') || allTags.includes('Agentic AI')));
-      
+    return projects.filter((project) => {
+      const allTags = [
+        ...(project.tags.stack || []),
+        ...(project.tags.domain || []),
+      ]
+
+      const matchesCategory =
+        activeCategory === 'All' ||
+        (project.group
+          ? project.group === activeCategory
+          : activeCategory === 'Fun Projects')
+
       // Enhanced search: title, subtitle, and all tags with normalization
       if (!trimmedQuery) {
-        return matchesCategory; // No search query, just filter by category
+        return matchesCategory // No search query, just filter by category
       }
 
-      const normalizedQuery = normalizeSearchText(trimmedQuery);
-      const matchesSearch = 
-        normalizeSearchText(project.h3).includes(normalizedQuery) || 
+      const normalizedQuery = normalizeSearchText(trimmedQuery)
+      const matchesSearch =
+        normalizeSearchText(project.h3).includes(normalizedQuery) ||
         normalizeSearchText(project.shortDesc).includes(normalizedQuery) ||
-        allTags.some(tag => normalizeSearchText(tag).includes(normalizedQuery));
-      
-      return matchesCategory && matchesSearch;
-    });
-  }, [activeCategory, searchQuery, projects]);
+        allTags.some((tag) =>
+          normalizeSearchText(tag).includes(normalizedQuery),
+        )
+
+      return matchesCategory && matchesSearch
+    })
+  }, [activeCategory, searchQuery, projects])
 
   return (
     <section className={styles.pageContainer}>
-      <SEO 
-        title="Projects | Ritesh Jha | Full Stack Portfolio"
+      <SEO
+        title='Projects | Ritesh Jha | Full Stack Portfolio'
         description="Explore Ritesh Jha's (Ritzardous) projects in Full Stack Development, Blockchain, AI/ML, and Cybersecurity. Featuring Democrazy, PaperOps.ai, and more."
-        canonical="https://ritesh-jha.vercel.app/projects"
+        canonical='https://ritesh-jha.vercel.app/projects'
       />
       <div className={`${styles.header} ${styles.animateIn}`}>
         <button onClick={() => navigate('/')} className={styles.backBtn}>
@@ -531,29 +593,29 @@ function AllProjects() {
         </button>
         <h1>Projects</h1>
         <p className={styles.subtitle}>
-         every weird and wonderful thing I've ever tinkered with
+          every weird and wonderful thing I've ever tinkered with
         </p>
       </div>
 
       <div className={`${styles.controls} ${styles.animateIn}`}>
         <div className={styles.searchBar}>
           <FaSearch className={styles.searchIcon} />
-          <input 
-            type="text" 
-            placeholder="search project " 
+          <input
+            type='text'
+            placeholder='search project '
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
 
         <div className={styles.filterTabs}>
-          {categories.map(category => (
+          {categories.map((category) => (
             <button
               key={category}
-              className={`${styles.filterTab} ${activeCategory === category ? styles.activeTab : ''} ${category === 'Featured' ? styles.featuredTab : ''}`}
+              className={`${styles.filterTab} ${activeCategory === category ? styles.activeTab : ''} ${category === 'Serious Projects' ? styles.seriousTab : ''}`}
               onClick={() => setActiveCategory(category)}
             >
-              {category === 'Featured' ? 'Featured' : category}
+              {category}
             </button>
           ))}
         </div>
@@ -562,84 +624,92 @@ function AllProjects() {
       <div className={`${styles.grid} ${styles.animateIn}`}>
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => {
-            // Check if this project is one of the featured ones to apply special styling
-            const isFeatured = [
-                'InitPhase',
-                'Indradhanu Foundation', 
-                'Democrazy', 
-                'epoch', 
-                'PaperOps.ai', 
-                'DevFlipper'
-            ].includes(project.h3);
-
             return (
-                <div 
-                  key={index} 
-                  className={`${styles.card} ${isFeatured && activeCategory === 'Featured' ? styles.featuredCard : ''}`}
-                >
-                  <div className={styles.imageWrapper}>
-                 {project.src ? (
-                    <img 
-                      src={project.src} 
-                      alt={project.h3} 
+              <div key={index} className={styles.card}>
+                <div className={styles.imageWrapper}>
+                  {project.src ? (
+                    <img
+                      src={project.src}
+                      alt={project.h3}
                       data-project={project.h3}
-                      fetchpriority="high"
-                      loading="eager"
-                      style={{ opacity: imagesLoaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
+                      fetchpriority='high'
+                      loading='eager'
+                      style={{
+                        opacity: imagesLoaded ? 1 : 0,
+                        transition: 'opacity 0.3s ease',
+                      }}
                     />
-                 ) : (
+                  ) : (
                     <div className={styles.imagePlaceholder}></div>
-                 )}
+                  )}
+                </div>
+                <div className={styles.cardHeader}>
+                  <h3>{project.h3}</h3>
+                  <div className={styles.links}>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target='_blank'
+                        rel='noreferrer'
+                        title='View Code'
+                      >
+                        <FaGithub />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target='_blank'
+                        rel='noreferrer'
+                        title='Live Demo'
+                      >
+                        {project.h3 === 'DeBiased' ? (
+                          <img
+                            src={ethlogonew}
+                            alt='ETHGlobal'
+                            className={styles.customIcon}
+                          />
+                        ) : (
+                          <FaExternalLinkAlt />
+                        )}
+                      </a>
+                    )}
                   </div>
-                 <div className={styles.cardHeader}>
-                   <h3>{project.h3}</h3>
-                   <div className={styles.links}>
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noreferrer" title="View Code">
-                          <FaGithub />
-                        </a>
-                      )}
-                      {project.live && (
-                        <a href={project.live} target="_blank" rel="noreferrer" title="Live Demo">
-                          {project.h3 === 'DeBiased' ? (
-                              <img src={ethlogonew} alt="ETHGlobal" className={styles.customIcon} />
-                          ) : (
-                              <FaExternalLinkAlt />
-                          )}
-                        </a>
-                      )}
-                   </div>
-                 </div>
-              
-              <div className={styles.content}>
-                <p className={styles.shortDesc}>{project.shortDesc}</p>
-                <p className={styles.longDesc}>{project.longDesc}</p>
-                
-                {/* Updated Tags Section */}
-                <div className={styles.tagsContainer}>
-                  <div className={styles.tagGroup}>
-                    {/* <span className={styles.tagLabel}>Stack</span> */}
-                    <div className={styles.tags}>
-                      {project.tags.stack.map((tag, i) => (
-                        <span key={i} className={styles.stackTag}>{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {project.tags.domain && project.tags.domain.length > 0 && (
+                </div>
+
+                <div className={styles.content}>
+                  <p className={styles.shortDesc}>{project.shortDesc}</p>
+                  <p className={styles.longDesc}>{project.longDesc}</p>
+
+                  {/* Updated Tags Section */}
+                  <div className={styles.tagsContainer}>
                     <div className={styles.tagGroup}>
-                      {/* <span className={styles.tagLabel}>Domain</span> */}
+                      {/* <span className={styles.tagLabel}>Stack</span> */}
                       <div className={styles.tags}>
-                        {project.tags.domain.map((tag, i) => (
-                          <span key={i} className={styles.domainTag}>{tag}</span>
+                        {project.tags.stack.map((tag, i) => (
+                          <span key={i} className={styles.stackTag}>
+                            {tag}
+                          </span>
                         ))}
                       </div>
                     </div>
-                  )}
+
+                    {project.tags.domain && project.tags.domain.length > 0 && (
+                      <div className={styles.tagGroup}>
+                        {/* <span className={styles.tagLabel}>Domain</span> */}
+                        <div className={styles.tags}>
+                          {project.tags.domain.map((tag, i) => (
+                            <span key={i} className={styles.domainTag}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            );
+            )
           })
         ) : (
           <div className={styles.noResults}>
@@ -648,7 +718,7 @@ function AllProjects() {
         )}
       </div>
     </section>
-  );
+  )
 }
 
-export default AllProjects;
+export default AllProjects
