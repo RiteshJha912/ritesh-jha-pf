@@ -10,8 +10,9 @@ import linkedinDark from '../../assets/linkedin-dark.svg'
 // import heroImg from '../../assets/MainPic3.jpg'
 import heroImg from '../../assets/mp2.jpg'
 
-
 import { useTheme } from '../../common/themeContext'
+import startPreloading from '../../common/imagePreloader'
+import projectImages from '../../data/projectImages'
 
 function Hero({ onImageLoad, isLoaded }) {
   const { theme, toggleTheme } = useTheme()
@@ -31,7 +32,7 @@ function Hero({ onImageLoad, isLoaded }) {
 
   const [showThemeTooltip, setShowThemeTooltip] = useState(false)
   const handleImageClick = () => {
-    setRotationDegrees(prev => prev + 180)
+    setRotationDegrees((prev) => prev + 180)
   }
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function Hero({ onImageLoad, isLoaded }) {
     const tooltipTimers = tooltipIntervals.map((time, index) =>
       setTimeout(() => {
         showTooltip()
-      }, time)
+      }, time),
     )
 
     return () => {
@@ -57,7 +58,59 @@ function Hero({ onImageLoad, isLoaded }) {
     }
   }, [])
 
+  // Start preloading project images after the Home page has painted and
+  // the page is interactive. We use double rAF to ensure paint completed,
+  // then requestIdleCallback (with fallback) to run preload during idle time.
+  useEffect(() => {
+    if (!projectImages || projectImages.length === 0) return
 
+    // Respect user network preferences: startPreloading checks save-data/effectiveType
+    let cancelled = false
+
+    const start = () => {
+      if (cancelled) return
+      // copy array so module-level preloader can mutate safely
+      const imgs = projectImages.slice()
+      // startPreloading returns a cancel function
+      const cancel = startPreloading(imgs, { batchSize: 4 })
+      // store cancel on closure for cleanup
+      cleanup.cancel = cancel
+    }
+
+    // Wait for the next two animation frames to ensure the page has rendered
+    const raf1 = requestAnimationFrame(() => {
+      const raf2 = requestAnimationFrame(() => {
+        // Schedule during idle time
+        if ('requestIdleCallback' in window) {
+          const id = window.requestIdleCallback(() => start(), {
+            timeout: 3000,
+          })
+          cleanup.idle = () => window.cancelIdleCallback(id)
+        } else {
+          // fallback to small timeout
+          const t = setTimeout(() => start(), 1200)
+          cleanup.timeout = () => clearTimeout(t)
+        }
+      })
+      cleanup.raf2 = () => cancelAnimationFrame(raf2)
+    })
+    const cleanup = {
+      raf1: () => cancelAnimationFrame(raf1),
+      raf2: null,
+      idle: null,
+      timeout: null,
+      cancel: null,
+    }
+
+    return () => {
+      cancelled = true
+      cleanup.raf1 && cleanup.raf1()
+      cleanup.raf2 && cleanup.raf2()
+      cleanup.idle && cleanup.idle()
+      cleanup.timeout && cleanup.timeout()
+      cleanup.cancel && cleanup.cancel()
+    }
+  }, [])
 
   useEffect(() => {
     let timer
@@ -66,7 +119,7 @@ function Hero({ onImageLoad, isLoaded }) {
       const currentWord = texts[loopIndex % texts.length]
       const nextWord = currentWord.substring(
         0,
-        currentText.length + (isDeleting ? -1 : 1)
+        currentText.length + (isDeleting ? -1 : 1),
       )
 
       setCurrentText(nextWord)
@@ -79,7 +132,7 @@ function Hero({ onImageLoad, isLoaded }) {
       } else {
         timer = setTimeout(
           handleTyping,
-          isDeleting ? erasingSpeed : typingSpeed
+          isDeleting ? erasingSpeed : typingSpeed,
         )
       }
     }
@@ -92,11 +145,8 @@ function Hero({ onImageLoad, isLoaded }) {
   return (
     <section id='hero' className={styles.container}>
       <div className={styles.colorModeContainer}>
-        <div 
-          className={styles.flipContainer}
-          onClick={handleImageClick}
-        >
-          <div 
+        <div className={styles.flipContainer} onClick={handleImageClick}>
+          <div
             className={styles.flipper}
             style={{ transform: `rotateY(${rotationDegrees}deg)` }}
           >
@@ -113,9 +163,8 @@ function Hero({ onImageLoad, isLoaded }) {
               <div className={styles.backText}>hmm, van gogh!</div>
             </div>
           </div>
-
         </div>
-{/* <div className={styles.themeButtonContainer}>
+        {/* <div className={styles.themeButtonContainer}>
           <img
             className={styles.colorMode}
             src={themeIcon}
@@ -132,7 +181,10 @@ function Hero({ onImageLoad, isLoaded }) {
       </div>
 
       <div className={styles.info}>
-        <h2 className={styles.h2}> <span className={styles.codeBracket}>{'>'}_</span> Hi I am </h2>
+        <h2 className={styles.h2}>
+          {' '}
+          <span className={styles.codeBracket}>{'>'}_</span> Hi I am{' '}
+        </h2>
         <div className={styles.typewriterContainer}>
           <h1 className={styles.typewriter}>
             <span>{currentText || '\u00A0'}</span>
@@ -171,10 +223,7 @@ function Hero({ onImageLoad, isLoaded }) {
           </div>
           <div
             onClick={() =>
-              window.open(
-                'https://www.linkedin.com/in/ritesh-j/',
-                '_blank'
-              )
+              window.open('https://www.linkedin.com/in/ritesh-j/', '_blank')
             }
             className={styles.logoWrapper}
           >
@@ -187,19 +236,17 @@ function Hero({ onImageLoad, isLoaded }) {
           </div>
         </div>
 
-
-
         <p className={styles.description}>
-          after being in the dev space for a while, i felt i too needed a sweet little
-          corner on the internet for myself, and thats how this website came into
-          existence! its just a checkpoint, a
-          reminder that i didn't quit & also picked up some{' '}
+          after being in the dev space for a while, i felt i too needed a sweet
+          little corner on the internet for myself, and thats how this website
+          came into existence! its just a checkpoint, a reminder that i didn't
+          quit & also picked up some{' '}
           <span
             onClick={() =>
               window.open(
                 'https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun',
                 '_blank',
-                'noopener,noreferrer'
+                'noopener,noreferrer',
               )
             }
             className={styles.ritzyLink}
@@ -210,7 +257,7 @@ function Hero({ onImageLoad, isLoaded }) {
               window.open(
                 'https://www.merriam-webster.com/dictionary/ritzy#:~:text=%3A%20impressively%20or%20ostentatiously%20fancy%20or,ritziness%20noun',
                 '_blank',
-                'noopener,noreferrer'
+                'noopener,noreferrer',
               )
             }
             style={{ display: 'inline', cursor: 'pointer' }}
@@ -220,19 +267,19 @@ function Hero({ onImageLoad, isLoaded }) {
           along the way
         </p>
 
-          <button
-            className={styles.hireBtn}
-            onClick={() =>
-              document
-                .getElementById('connect')
-                .scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            <div className={styles.btnTextContainer}>
-              <span className={styles.btnText}>Hire me!</span>
-              <span className={styles.btnTextHover}>Let's Talk</span>
-            </div>
-          </button>
+        <button
+          className={styles.hireBtn}
+          onClick={() =>
+            document
+              .getElementById('connect')
+              .scrollIntoView({ behavior: 'smooth' })
+          }
+        >
+          <div className={styles.btnTextContainer}>
+            <span className={styles.btnText}>Hire me!</span>
+            <span className={styles.btnTextHover}>Let's Talk</span>
+          </div>
+        </button>
       </div>
     </section>
   )
