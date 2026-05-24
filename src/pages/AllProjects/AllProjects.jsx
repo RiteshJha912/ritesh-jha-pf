@@ -540,25 +540,46 @@ function AllProjects() {
     {
       src: apiRPP,
       h3: 'Behaviour-Based API Bot Detection Using Anomaly Detection, Sequential Deep Learning, and Probabilistic State Modeling',
-      shortDesc: 'Explores advanced techniques for identifying malicious bot traffic through behavioral analysis and machine learning models.',
+      shortDesc:
+        'Explores advanced techniques for identifying malicious bot traffic through behavioral analysis and machine learning models.',
       link: 'https://drive.google.com/file/d/1Exp-SosOBnSkeD-2R5JWSEeuqrUwgKJM/view?usp=sharing',
-      tags: ['Anomaly Detection', 'Deep Learning', 'Sequential Models', 'Security', 'API Security'],
+      tags: [
+        'Anomaly Detection',
+        'Deep Learning',
+        'Sequential Models',
+        'Security',
+        'API Security',
+      ],
       publishStatus: 'Research Paper (Unpublished)',
     },
     {
       src: blockchainRPP,
       h3: 'Decentralized Identity and Verifiable Credentials in Blockchain-Based Information Security',
-      shortDesc: 'Analyzes the intersection of decentralized identity systems and blockchain technology for secure credential management.',
+      shortDesc:
+        'Analyzes the intersection of decentralized identity systems and blockchain technology for secure credential management.',
       link: 'https://drive.google.com/file/d/1dLEGZiz4jBiP7z3dAh26lkMsaZH6umez/view?usp=sharing',
-      tags: ['Blockchain', 'Decentralized Identity', 'Verifiable Credentials', 'Web3', 'Cryptography'],
+      tags: [
+        'Blockchain',
+        'Decentralized Identity',
+        'Verifiable Credentials',
+        'Web3',
+        'Cryptography',
+      ],
       publishStatus: 'Research Paper (Unpublished)',
     },
     {
       src: iotRPP,
       h3: 'Secure Over-the-Air Firmware Update Framework Using Smart Contracts for Industrial IoT',
-      shortDesc: 'Proposes a blockchain-based framework leveraging smart contracts to ensure secure firmware updates in industrial IoT environments.',
+      shortDesc:
+        'Proposes a blockchain-based framework leveraging smart contracts to ensure secure firmware updates in industrial IoT environments.',
       link: 'https://drive.google.com/file/d/1r-i4yub-5v_tkKC6wvjIjrusP4xZbaDk/view?usp=sharing',
-      tags: ['IoT', 'Smart Contracts', 'Firmware Security', 'Industrial Systems', 'Blockchain'],
+      tags: [
+        'IoT',
+        'Smart Contracts',
+        'Firmware Security',
+        'Industrial Systems',
+        'Blockchain',
+      ],
       publishStatus: 'Research Paper (Unpublished)',
     },
   ]
@@ -696,7 +717,9 @@ function AllProjects() {
                 </div>
                 <div className={styles.paperContent}>
                   <div className={styles.paperHeader}>
-                    <span className={styles.paperStatus}>{paper.publishStatus}</span>
+                    <span className={styles.paperStatus}>
+                      {paper.publishStatus}
+                    </span>
                   </div>
                   <h3 className={styles.paperTitle}>{paper.h3}</h3>
                   <p className={styles.paperDescription}>{paper.shortDesc}</p>
