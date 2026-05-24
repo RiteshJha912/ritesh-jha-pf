@@ -20,6 +20,9 @@ import initphase from '../assets/initphase.png'
 import coldstart from '../assets/coldstart.png'
 import cloudchanakya from '../assets/cloudchanakya.png'
 import startupsurvialsim from '../assets/startupsurvialsim.png'
+import apiRPP from '../assets/APIRPP.png'
+import blockchainRPP from '../assets/BlockchainRPP.png'
+import iotRPP from '../assets/IoTRPP.png'
 
 const projectImages = [
   indrafndn,
@@ -41,6 +44,9 @@ const projectImages = [
   coldstart,
   cloudchanakya,
   startupsurvialsim,
+  apiRPP,
+  blockchainRPP,
+  iotRPP,
 ]
 
 export default projectImages

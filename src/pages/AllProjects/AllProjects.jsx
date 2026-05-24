@@ -19,11 +19,15 @@ import initphase from '../../assets/initphase.png'
 import coldstart from '../../assets/coldstart.png'
 import cloudchanakya from '../../assets/cloudchanakya.png'
 import startupsurvialsim from '../../assets/startupsurvialsim.png'
+import apiRPP from '../../assets/APIRPP.png'
+import blockchainRPP from '../../assets/BlockchainRPP.png'
+import iotRPP from '../../assets/IoTRPP.png'
 import {
   FaGithub,
   FaExternalLinkAlt,
   FaArrowLeft,
   FaSearch,
+  FaFilePdf,
 } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import SEO from '../../common/SEO'
@@ -532,7 +536,34 @@ function AllProjects() {
     },
   ]
 
-  const categories = ['All', 'Serious Projects', 'Fun Projects']
+  const papers = [
+    {
+      src: apiRPP,
+      h3: 'Behaviour-Based API Bot Detection Using Anomaly Detection, Sequential Deep Learning, and Probabilistic State Modeling',
+      shortDesc: 'Explores advanced techniques for identifying malicious bot traffic through behavioral analysis and machine learning models.',
+      link: 'https://drive.google.com/file/d/1Exp-SosOBnSkeD-2R5JWSEeuqrUwgKJM/view?usp=sharing',
+      tags: ['Anomaly Detection', 'Deep Learning', 'Sequential Models', 'Security', 'API Security'],
+      publishStatus: 'Research Paper (Unpublished)',
+    },
+    {
+      src: blockchainRPP,
+      h3: 'Decentralized Identity and Verifiable Credentials in Blockchain-Based Information Security',
+      shortDesc: 'Analyzes the intersection of decentralized identity systems and blockchain technology for secure credential management.',
+      link: 'https://drive.google.com/file/d/1dLEGZiz4jBiP7z3dAh26lkMsaZH6umez/view?usp=sharing',
+      tags: ['Blockchain', 'Decentralized Identity', 'Verifiable Credentials', 'Web3', 'Cryptography'],
+      publishStatus: 'Research Paper (Unpublished)',
+    },
+    {
+      src: iotRPP,
+      h3: 'Secure Over-the-Air Firmware Update Framework Using Smart Contracts for Industrial IoT',
+      shortDesc: 'Proposes a blockchain-based framework leveraging smart contracts to ensure secure firmware updates in industrial IoT environments.',
+      link: 'https://drive.google.com/file/d/1r-i4yub-5v_tkKC6wvjIjrusP4xZbaDk/view?usp=sharing',
+      tags: ['IoT', 'Smart Contracts', 'Firmware Security', 'Industrial Systems', 'Blockchain'],
+      publishStatus: 'Research Paper (Unpublished)',
+    },
+  ]
+
+  const categories = ['All', 'Serious Projects', 'Fun Projects', 'Papers']
 
   // Helper function to normalize text for search (removes special chars, emojis, extra spaces)
   const normalizeSearchText = (text) => {
@@ -580,6 +611,24 @@ function AllProjects() {
     })
   }, [activeCategory, searchQuery, projects])
 
+  const filteredPapers = useMemo(() => {
+    if (activeCategory === 'Papers') {
+      const trimmedQuery = searchQuery.trim()
+      return papers.filter((paper) => {
+        if (!trimmedQuery) return true
+        const normalizedQuery = normalizeSearchText(trimmedQuery)
+        return (
+          normalizeSearchText(paper.h3).includes(normalizedQuery) ||
+          normalizeSearchText(paper.shortDesc).includes(normalizedQuery) ||
+          paper.tags.some((tag) =>
+            normalizeSearchText(tag).includes(normalizedQuery),
+          )
+        )
+      })
+    }
+    return []
+  }, [activeCategory, searchQuery, papers])
+
   return (
     <section className={styles.pageContainer}>
       <SEO
@@ -622,7 +671,52 @@ function AllProjects() {
       </div>
 
       <div className={`${styles.grid} ${styles.animateIn}`}>
-        {filteredProjects.length > 0 ? (
+        {activeCategory === 'Papers' ? (
+          // Papers Grid
+          filteredPapers.length > 0 ? (
+            filteredPapers.map((paper, index) => (
+              <div key={index} className={`${styles.card} ${styles.paperCard}`}>
+                <div className={styles.paperImageWrapper}>
+                  <img
+                    src={paper.src}
+                    alt={paper.h3}
+                    className={styles.paperImage}
+                  />
+                  <div className={styles.paperOverlay}>
+                    <a
+                      href={paper.link}
+                      target='_blank'
+                      rel='noreferrer'
+                      className={styles.paperDownloadBtn}
+                      title='Read Paper'
+                    >
+                      <FaFilePdf /> Read Paper
+                    </a>
+                  </div>
+                </div>
+                <div className={styles.paperContent}>
+                  <div className={styles.paperHeader}>
+                    <span className={styles.paperStatus}>{paper.publishStatus}</span>
+                  </div>
+                  <h3 className={styles.paperTitle}>{paper.h3}</h3>
+                  <p className={styles.paperDescription}>{paper.shortDesc}</p>
+                  <div className={styles.paperTags}>
+                    {paper.tags.map((tag, i) => (
+                      <span key={i} className={styles.paperTag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className={styles.noResults}>
+              <p>No papers found matching your criteria.</p>
+            </div>
+          )
+        ) : // Projects Grid
+        filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => {
             return (
               <div key={index} className={styles.card}>
