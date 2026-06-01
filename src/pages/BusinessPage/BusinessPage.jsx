@@ -23,6 +23,8 @@ import epoch from '../../assets/epoch.png';
 import gasdottips from '../../assets/gasdottips.png';
 import democrazy from '../../assets/democrazy.png';
 import chromagen from '../../assets/chromagen.png';
+import paperops from '../../assets/paperops.png';
+import debiased from '../../assets/debiased.jpg';
 
 // Company logos
 import stallionLogo from '../../assets/TSP.jpg';
