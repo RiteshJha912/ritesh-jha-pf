@@ -17,24 +17,46 @@
     /* Ensure full width */
 }
 
-.container::before {
-    content: '';
+.animatedBackgroundWrapper {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    /* Tech Background Grid */
-    background-image: linear-gradient(var(--form-text-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--form-text-color) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: center center;
-    opacity: 0.1;
-    /* Subtle grid */
-    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    overflow: hidden;
+    /* Use an ellipse instead of a circle so the fade naturally respects the container's height, preventing sharp cuts at the bottom */
+    mask-image: radial-gradient(ellipse at center, black 10%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 10%, transparent 75%);
     z-index: 0;
     pointer-events: none;
+}
+
+.animatedBackground {
+    position: absolute;
+    /* Expanding boundaries to allow seamless panning without showing edges */
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    /* Crosshatch Pattern using CSS variables for light/dark mode support */
+    background-image: 
+        repeating-linear-gradient(22.5deg, transparent, transparent 2px, var(--pattern-color-1) 2px, var(--pattern-color-1) 3px, transparent 3px, transparent 8px),
+        repeating-linear-gradient(67.5deg, transparent, transparent 2px, var(--pattern-color-2) 2px, var(--pattern-color-2) 3px, transparent 3px, transparent 8px),
+        repeating-linear-gradient(112.5deg, transparent, transparent 2px, var(--pattern-color-3) 2px, var(--pattern-color-3) 3px, transparent 3px, transparent 8px),
+        repeating-linear-gradient(157.5deg, transparent, transparent 2px, var(--pattern-color-4) 2px, var(--pattern-color-4) 3px, transparent 3px, transparent 8px);
+    /* Hardware acceleration for ultra-smooth animation without layout thrashing */
+    will-change: transform;
+    /* Move left to right and back, seamlessly and subtly over 2 minutes */
+    animation: panBackground 120s linear infinite alternate;
+}
+
+@keyframes panBackground {
+    0% {
+        transform: translate3d(-10%, 0, 0);
+    }
+    100% {
+        transform: translate3d(10%, 0, 0);
+    }
 }
 
 /* Ensure content is above the grid */

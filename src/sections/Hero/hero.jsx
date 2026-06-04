@@ -144,6 +144,9 @@ function Hero({ onImageLoad, isLoaded }) {
 
   return (
     <section id='hero' className={styles.container}>
+      <div className={styles.animatedBackgroundWrapper}>
+        <div className={styles.animatedBackground} />
+      </div>
       <div className={styles.colorModeContainer}>
         <div className={styles.flipContainer} onClick={handleImageClick}>
           <div
