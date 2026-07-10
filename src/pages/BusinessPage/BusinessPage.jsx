@@ -294,8 +294,8 @@ function BusinessPage() {
               {/* Credentials bar — mirrors contactHighlights */}
               <div className={styles.aboutHighlights}>
                 <div className={styles.aboutHighlightItem}>
-                  <span className={styles.aboutHighlightNumber}>B.Tech</span>
-                  <span className={styles.aboutHighlightLabel}>Information Technology</span>
+                  <span className={styles.aboutHighlightNumber}>Fast</span>
+                  <span className={styles.aboutHighlightLabel}>Project Delivery</span>
                 </div>
                 <div className={styles.aboutHighlightItem}>
                   <span className={styles.aboutHighlightNumber}>3+</span>
