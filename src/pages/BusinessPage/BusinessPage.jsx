@@ -25,6 +25,7 @@ import democrazy from '../../assets/democrazy.png';
 import chromagen from '../../assets/chromagen.png';
 import paperops from '../../assets/paperops.png';
 import debiased from '../../assets/debiased.jpg';
+import pearlcare from '../../assets/pearlcare.png';
 
 // Company logos
 import stallionLogo from '../../assets/TSP.jpg';
@@ -137,60 +138,69 @@ function BusinessPage() {
   // ── Projects (in requested order) ────────────────────────────
   const highlightedWork = [
     {
-      name: "InitPhase",
+      name: 'InitPhase',
       image: initphase,
-      desc: "Built a scalable digital platform from the ground up for software developers to manage operations, workflows, and growth with a structured system.",
-      live: "https://init-phase.vercel.app/"
+      desc: 'Built a scalable digital platform from the ground up for software developers to manage operations, workflows, and growth with a structured system.',
+      live: 'https://init-phase.vercel.app/',
     },
     {
-      name: "Indradhanu Foundation",
+      name: 'Indradhanu Foundation',
       image: indrafndn,
-      desc: "Complete NGO website setup with search visibility, lead capture forms, and reliable digital presence. Delivered fully end-to-end for real impact.",
-      live: "https://www.indradhanufoundation.in/"
+      desc: 'Complete NGO website setup with search visibility, lead capture forms, and reliable digital presence. Delivered fully end-to-end for real impact.',
+      live: 'https://www.indradhanufoundation.in/',
     },
     {
-      name: "Democrazy",
-      image: democrazy,
-      desc: "A blockchain based digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.",
-      live: "https://votewithdemocrazy.vercel.app/"
+      name: 'PearlCare Dental Studio',
+      image: pearlcare,
+      desc: 'A premium dental clinic landing page focused on building patient trust, showcasing treatments, simplifying appointment bookings, and creating a modern, professional online presence.',
+      live: 'https://pearlcare-dentalstudio.netlify.app/',
     },
     {
-      name: "Hackademy",
+      name: 'Hackademy',
       image: hackademy,
-      desc: "An interactive learning platform that helps people learn about general digial security and online scams using simulations and gamification.",
-      live: "https://tryhackademy.vercel.app/"
+      desc: 'An interactive learning platform that helps people learn about general digial security and online scams using simulations and gamification.',
+      live: 'https://tryhackademy.vercel.app/',
     },
     {
-      name: "PaperOps.ai",
-      image: paperops,
-      desc: "Built an intelligent research agent that automates academic paper discovery, summarization & analysis, leveraging LLM capabilities for deep research synthesis.",
-      live: null
+      name: 'Democrazy',
+      image: democrazy,
+      desc: 'A blockchain based digital voting platform ensuring transparency, trust, and tamper proof decision making for communities and organizational use cases.',
+      live: 'https://votewithdemocrazy.vercel.app/',
     },
+
     {
-      name: "Epoch",
-      image: epoch,
-      desc: "A simple daily habit tracking tool that helps users stay consistent, monitor progress, and build routines without unnecessary complexity.",
-      live: "https://epoch-daily.vercel.app/"
-    },
-    {
-      name: "ColdStart.ai",
-      image: coldstart,
-      desc: "Built a multi-agent AI platform that generates candidate Career DNA, analyzes repositories for real-world competency, and orchestrates intelligent LLM workflows.",
-      live: null
-    },
-    {
-      name: "Chromagen",
+      name: 'Chromagen',
       image: chromagen,
-      desc: "A smart visual tool that helps SaaS businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.",
-      live: "https://www.chromagen.xyz/"
+      desc: 'A smart visual tool that helps SaaS businesses quickly generate branding colors, design assets, and maintain a consistent digital identity.',
+      live: 'https://www.chromagen.xyz/',
+    },
+    
+    {
+      name: 'PaperOps.ai',
+      image: paperops,
+      desc: 'Built an intelligent research agent that automates academic paper discovery, summarization & analysis, leveraging LLM capabilities for deep research synthesis.',
+      live: null,
     },
     {
-      name: "DeBiased",
+      name: 'Epoch',
+      image: epoch,
+      desc: 'A simple daily habit tracking tool that helps users stay consistent, monitor progress, and build routines without unnecessary complexity.',
+      live: 'https://epoch-daily.vercel.app/',
+    },
+    {
+      name: 'ColdStart.ai',
+      image: coldstart,
+      desc: 'Built a multi-agent AI platform that generates candidate Career DNA, analyzes repositories for real-world competency, and orchestrates intelligent LLM workflows.',
+      live: null,
+    },
+
+    {
+      name: 'DeBiased',
       image: debiased,
-      desc: "A privacy-first survey platform leveraging zero-knowledge cryptography to eliminate opinion bias and verify demographics without revealing identity.",
-      live: "https://ethglobal.com/showcase/debiased-7h24b"
-    }
-  ];
+      desc: 'A privacy-first survey platform leveraging zero-knowledge cryptography to eliminate opinion bias and verify demographics without revealing identity.',
+      live: 'https://ethglobal.com/showcase/debiased-7h24b',
+    },
+  ]
 
   // ── Companies ─────────────────────────────────────────────────
   const companies = [
