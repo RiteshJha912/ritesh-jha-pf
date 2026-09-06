@@ -10,14 +10,52 @@ import { FaChevronDown } from 'react-icons/fa'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const CountdownTimer = ({ targetDate }) => {
+  const calculateDaysLeft = () => {
+    const target = new Date(targetDate).getTime()
+    const now = new Date().getTime()
+    const diff = target - now
+
+    if (diff <= 0) {
+      return { isExpired: true, days: 0 }
+    }
+    return {
+      isExpired: false,
+      days: Math.ceil(diff / (1000 * 60 * 60 * 24)),
+    }
+  }
+
+  const [status, setStatus] = useState(calculateDaysLeft)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStatus(calculateDaysLeft())
+    }, 60000)
+    return () => clearInterval(timer)
+  }, [targetDate])
+
+  return (
+    <div className={styles.subtleTimer}>
+      <span className={status.isExpired ? styles.activeDot : styles.pulseDot} />
+      <span className={styles.timerText}>
+        {status.isExpired ? 'Internship in Progress' : `${status.days} days remaining`}
+      </span>
+      <span className={styles.timerTarget}>
+        {status.isExpired ? '// Pune, India' : 'most prolly'}
+      </span>
+    </div>
+  )
+}
+
 const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
   const cardRef = useRef(null)
+  const hasPoints = exp.desc && exp.desc.length > 0
   
   // Sync state changes to CSS variables immediately (even without mouse movement)
   useEffect(() => {
     if (!cardRef.current) return;
     
-    if (isExpanded) {
+    if (isExpanded && hasPoints) {
         // Reset tilt and scale up
         cardRef.current.style.setProperty('--x-rot', '0deg');
         cardRef.current.style.setProperty('--y-rot', '0deg');
@@ -26,13 +64,10 @@ const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
         // Reset to neutral if not hovering, or handleMouseMove will pick up
         // We set scale back to 1.
         cardRef.current.style.setProperty('--scale', '1');
-        // We don't necessarily reset rotation here because mouse might still be hovering?
-        // Actually, if we just collapsed, we might want to reset or let mouse move handle it.
-        // Let's reset to be safe/clean.
         cardRef.current.style.setProperty('--x-rot', '0deg');
         cardRef.current.style.setProperty('--y-rot', '0deg');
     }
-  }, [isExpanded]);
+  }, [isExpanded, hasPoints]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -49,7 +84,7 @@ const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
     const xRot = (0.5 - yPct) * 10;
     const yRot = (xPct - 0.5) * 10;
     
-    if (isExpanded) {
+    if (isExpanded && hasPoints) {
         cardRef.current.style.setProperty('--x-rot', '0deg');
         cardRef.current.style.setProperty('--y-rot', '0deg');
         cardRef.current.style.setProperty('--scale', '1.02');
@@ -70,7 +105,7 @@ const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
     cardRef.current.style.setProperty('--x-rot', `0deg`);
     cardRef.current.style.setProperty('--y-rot', `0deg`);
     // Scale follows expanded state
-    cardRef.current.style.setProperty('--scale', isExpanded ? '1.02' : '1');
+    cardRef.current.style.setProperty('--scale', isExpanded && hasPoints ? '1.02' : '1');
   };
 
   return (
@@ -85,26 +120,37 @@ const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
       data-aos-delay={index * 100}
     >
       <div 
-        className={styles.card}
-        data-expanded={isExpanded}
-        onClick={onToggle}
+        className={`${styles.card} ${exp.isUpcoming ? styles.mysteryCard : ''}`}
+        data-expanded={isExpanded && hasPoints}
+        data-expandable={hasPoints}
+        onClick={hasPoints ? onToggle : undefined}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
         <div className={styles.spotlight} />
         <div className={styles.barcode} />
         <div className={styles.watermark}>
-          {exp.company === 'The Stallion Project' ? 'Stallion' : exp.company.split(' ')[0]}
+          {exp.watermark ? exp.watermark : (exp.company === 'The Stallion Project' ? 'Stallion' : exp.company.split(' ')[0])}
         </div>
 
         <div className={styles.header}>
-          <img src={exp.logo} alt={`${exp.company} Logo`} className={styles.logo} />
+          {exp.isMystery ? (
+            <div className={styles.mysteryLogo} aria-label="Confidential Company">
+              <span className={styles.mysteryQuestionMark}>?</span>
+            </div>
+          ) : (
+            <img src={exp.logo} alt={`${exp.company} Logo`} className={styles.logo} />
+          )}
           <div className={styles.titleArea}>
             <h3 className={styles.company}>{exp.company}</h3>
             <h4 className={styles.role}>{exp.role}</h4>
           </div>
-          <FaChevronDown className={styles.arrowIcon} />
+          {hasPoints && <FaChevronDown className={styles.arrowIcon} />}
         </div>
+
+        {exp.isUpcoming && (
+          <CountdownTimer targetDate={exp.targetDate} />
+        )}
 
         <div className={styles.metaInfo}>
            <span className={styles.idBadge}>ID: {exp.idBadge}</span>
@@ -112,15 +158,17 @@ const ExperienceCard = ({ exp, index, isExpanded, onToggle }) => {
            <span className={styles.duration}>{exp.date}</span>
         </div>
 
-        <div className={`${styles.content} ${isExpanded ? styles.expandedContent : ''}`}>
-          <ul className={styles.bulletList}>
-            {exp.desc.map((point, i) => (
-              <li key={i} className={styles.bulletItem}>
-                {point}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {hasPoints && (
+          <div className={`${styles.content} ${isExpanded ? styles.expandedContent : ''}`}>
+            <ul className={styles.bulletList}>
+              {exp.desc.map((point, i) => (
+                <li key={i} className={styles.bulletItem}>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -135,6 +183,20 @@ function Experience() {
   }
 
   const experiences = [
+    {
+      id: 0,
+      company: 'MNC @ Pune',
+      role: 'Upcoming Full Time Intern',
+      date: 'Starting Jan 2027',
+      logo: null,
+      isMystery: true,
+      isUpcoming: true,
+      targetDate: '2027-01-01T00:00:00',
+      idBadge: 'CLASSIFIED',
+      watermark: 'CLASSIFIED',
+      internshipType: 'Upcoming Full-time Internship',
+      desc: [],
+    },
     {
       id: 1,
       company: 'SmowCode',

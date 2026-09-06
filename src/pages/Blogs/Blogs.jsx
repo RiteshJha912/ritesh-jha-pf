@@ -19,14 +19,15 @@ const Blogs = () => {
   return (
     <div className={styles.container}>
       <SEO 
-        title="Blogs | Ritesh Jha | Technical Articles"
+        title="clarity happens here"
         description="Technical blogs and insights by Ritesh Jha (Ritzardous) on Full Stack Development, Cybersecurity, and Web3."
         canonical="https://ritesh-jha.vercel.app/blogs"
       />
       
       <h1 className={styles.title}>Blogs</h1>
       <p className={styles.subtitle}>
-        i write things to understand them better 
+        i write things to understand them better.<br/>
+        will make sure to get my lazy ass to write more!
       </p>
 
       <div className={styles.grid}>

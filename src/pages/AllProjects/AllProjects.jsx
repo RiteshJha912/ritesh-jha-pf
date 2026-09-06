@@ -691,7 +691,7 @@ function AllProjects() {
   return (
     <section className={styles.pageContainer}>
       <SEO
-        title='Projects | Ritesh Jha | Full Stack Portfolio'
+        title='My Projects '
         description="Explore Ritesh Jha's (Ritzardous) projects in Full Stack Development, Blockchain, AI/ML, and Cybersecurity. Featuring Democrazy, PaperOps.ai, and more."
         canonical='https://ritesh-jha.vercel.app/projects'
       />
