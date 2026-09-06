@@ -1,49 +1,61 @@
 import React from 'react';
-import { useTheme } from '../../common/themeContext';
 import SEO from '../../common/SEO';
+import styles from './Blogs.module.css';
+import blog1Img from '../../assets/blog1.png';
+
+const blogsData = [
+  {
+    id: 1,
+    title: "I finally understood how ChatGPT works",
+    excerpt: "an attempt to understand how GPTs work in general",
+    date: "Aug 12, 2023",
+    image: blog1Img,
+    url: "https://ritzardous.medium.com/i-finally-understood-how-chatgpt-works-c8a9c97b8d3e?sharedUserId=ritzardous",
+    platform: "Medium"
+  }
+];
 
 const Blogs = () => {
-  const { theme } = useTheme();
-  
   return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      minHeight: '100vh',
-      height: '100%',
-      flexDirection: 'column',
-      gap: 'clamp(15px, 3vw, 20px)',
-      color: theme === 'light' ? '#222' : '#fff',
-      background: theme === 'light' ? '#fff' : '#222',
-      padding: '20px',
-      textAlign: 'center'
-    }}>
+    <div className={styles.container}>
       <SEO 
         title="Blogs | Ritesh Jha | Technical Articles"
-        description="Technical blogs and insights by Ritesh Jha (Ritzardous) on Full Stack Development, Cybersecurity, and Web3. Coming soon."
+        description="Technical blogs and insights by Ritesh Jha (Ritzardous) on Full Stack Development, Cybersecurity, and Web3."
         canonical="https://ritesh-jha.vercel.app/blogs"
       />
-      <h1 style={{ 
-        fontSize: 'clamp(2rem, 5vw, 3rem)', 
-        margin: 0, 
-        fontFamily: 'Bona Nova SC, serif',
-        maxWidth: '90vw',
-        wordWrap: 'break-word'
-      }}>
-        Blogs
-      </h1>
-      <p style={{ 
-        fontSize: 'clamp(1rem, 3vw, 1.5rem)', 
-        opacity: 0.7, 
-        fontFamily: 'Roboto Mono, monospace',
-        margin: 0,
-        maxWidth: '90vw',
-        wordWrap: 'break-word',
-        lineHeight: 1.6
-      }}>
-        Coming Soon! (As soon as I get my lazy ass to start writing)
+      
+      <h1 className={styles.title}>Blogs</h1>
+      <p className={styles.subtitle}>
+        i write things to understand them better 
       </p>
+
+      <div className={styles.grid}>
+        {blogsData.map((blog) => (
+          <div 
+            key={blog.id} 
+            onClick={() => window.open(blog.url, '_blank')}
+            className={styles.card}
+          >
+            <div className={styles.imageWrapper}>
+              <img src={blog.image} alt={blog.title} className={styles.image} />
+            </div>
+            
+            <div className={styles.content}>
+              <span className={styles.date}>{blog.date}</span>
+              <h2 className={styles.blogTitle}>{blog.title}</h2>
+              <p className={styles.excerpt}>{blog.excerpt}</p>
+              
+              <div className={styles.footer}>
+                <span className={styles.readMore}>
+                  Read Article 
+                  <span className={styles.arrow}>→</span>
+                </span>
+                <span className={styles.platform}>{blog.platform}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
