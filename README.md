@@ -112,7 +112,7 @@ ritesh-jha/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/RiteshJha912/ritesh-jha.git
+git clone https://github.com/ritzardous/ritesh-jha-pf.git
 cd ritesh-jha
 ```
 
@@ -162,4 +162,4 @@ This is one of those only projects for me as a developer which really gave me en
 
 ---
 
-**Built with passion by Ritesh Jha** | [Live Site](https://about-ritesh.vercel.app/) | [GitHub](https://github.com/RiteshJha912)
+**Built with passion by Ritesh Jha** | [Live Site](https://about-ritesh.vercel.app/) | [GitHub](https://github.com/ritzardous)

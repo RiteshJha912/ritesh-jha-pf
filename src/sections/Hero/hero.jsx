@@ -217,7 +217,7 @@ function Hero({ onImageLoad, isLoaded }) {
         <div className={styles.logoContainer}>
           <div
             onClick={() =>
-              window.open('https://github.com/RiteshJha912', '_blank')
+              window.open('https://github.com/ritzardous', '_blank')
             }
             className={styles.logoWrapper}
           >

@@ -136,19 +136,33 @@ const BentoGrid = React.memo(() => {
       <div className={`${styles.card} ${styles.aboutCard}`}>
         <h3 className={styles.cardTitle}>About Me</h3>
         <p className={styles.aboutText}>
-          So, hello 🙋🏻<br/>
-          I am Ritesh, I build stuff on the internet, I have professionally worked across a bunch of domains. I enjoy solving problems and thinking from first principles.<br/><br/>
-          I am currently pursuing a Bachelor's of Information Technology degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside of work, I enjoy listening to music while being on long walks (you'll almost always find me with my headphones on :), I also used to be deep into geopolitics at some point in time. Adding to all of this, I really like explaining concepts to people, and I weirdly love pitching ideas that I actually believe in.
+          So, hello 🙋🏻
+          <br />
+          I am Ritesh, I build stuff on the internet, I have professionally
+          worked across a bunch of domains. I enjoy solving problems and
+          thinking from first principles.
+          <br />
+          <br />I am currently pursuing a Bachelor's of Information Technology
+          degree at KJSCE, Vidyavihar and would be graduating in 2027. Outside
+          of work, I enjoy listening to music while being on long walks (you'll
+          almost always find me with my headphones on :), I also used to be deep
+          into geopolitics at some point in time. Adding to all of this, I
+          really like explaining concepts to people, and I weirdly love pitching
+          ideas that I actually believe in.
         </p>
-        
+
         <div className={styles.locationContainer}>
           <div className={styles.locationItem}>
             <FaMapMarkerAlt className={styles.locationIcon} />
             <span>Mumbai, India</span>
           </div>
-          <div 
+          <div
             className={styles.availabilityLink}
-            onClick={() => document.getElementById('connect')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() =>
+              document
+                .getElementById('connect')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
           >
             <span>Available for projects, HMU</span>
             <FaArrowRight className={styles.arrowIcon} />
@@ -157,56 +171,96 @@ const BentoGrid = React.memo(() => {
       </div>
 
       {/* 2. Technologies */}
-      <div className={`${styles.card} ${styles.techCard}`} style={{ overflow: 'hidden' }}>
+      <div
+        className={`${styles.card} ${styles.techCard}`}
+        style={{ overflow: 'hidden' }}
+      >
         <h3 className={styles.cardTitle}>Technologies I have worked with</h3>
         <div className={styles.marqueeWrapper}>
           {/* Row 1 */}
           <div className={styles.marqueeTrack}>
-            {[...technologies.slice(0, 16), ...technologies.slice(0, 16)].map((tech, index) => (
-              <span key={`row1-${index}`} className={styles.techBadge}>
-                <span className={styles.techIcon}>{tech.icon}</span>
-                {tech.name}
-              </span>
-            ))}
+            {[...technologies.slice(0, 16), ...technologies.slice(0, 16)].map(
+              (tech, index) => (
+                <span key={`row1-${index}`} className={styles.techBadge}>
+                  <span className={styles.techIcon}>{tech.icon}</span>
+                  {tech.name}
+                </span>
+              ),
+            )}
           </div>
 
           {/* Row 2 (Reverse) */}
           <div className={`${styles.marqueeTrack} ${styles.reverse}`}>
-            {[...technologies.slice(16, 32), ...technologies.slice(16, 32)].map((tech, index) => (
-              <span key={`row2-${index}`} className={styles.techBadge}>
-                <span className={styles.techIcon}>{tech.icon}</span>
-                {tech.name}
-              </span>
-            ))}
+            {[...technologies.slice(16, 32), ...technologies.slice(16, 32)].map(
+              (tech, index) => (
+                <span key={`row2-${index}`} className={styles.techBadge}>
+                  <span className={styles.techIcon}>{tech.icon}</span>
+                  {tech.name}
+                </span>
+              ),
+            )}
           </div>
 
           {/* Row 3 */}
           <div className={styles.marqueeTrack}>
-            {[...technologies.slice(32), ...technologies.slice(32)].map((tech, index) => (
-              <span key={`row3-${index}`} className={styles.techBadge}>
-                <span className={styles.techIcon}>{tech.icon}</span>
-                {tech.name}
-              </span>
-            ))}
+            {[...technologies.slice(32), ...technologies.slice(32)].map(
+              (tech, index) => (
+                <span key={`row3-${index}`} className={styles.techBadge}>
+                  <span className={styles.techIcon}>{tech.icon}</span>
+                  {tech.name}
+                </span>
+              ),
+            )}
           </div>
         </div>
 
-        <h3 className={styles.cardTitle} style={{ marginTop: '15px' }}>Other Skills</h3>
-        <div className={styles.marqueeWrapper} style={{ marginTop: '0', padding: '5px 0' }}>
-           <div className={styles.marqueeTrack}>
+        <h3 className={styles.cardTitle} style={{ marginTop: '15px' }}>
+          Other Skills
+        </h3>
+        <div
+          className={styles.marqueeWrapper}
+          style={{ marginTop: '0', padding: '5px 0' }}
+        >
+          <div className={styles.marqueeTrack}>
             {[
-              "AI Agents", "Kali", "Pen-testing", "OSINT", "SOCMINT", 
-              "NetSec","AppSec", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "Tiny ML", "Serverless Data", "Threat Actor Profiling"
+              'AI Agents',
+              'Kali',
+              'Pen-testing',
+              'OSINT',
+              'SOCMINT',
+              'NetSec',
+              'AppSec',
+              'SEO',
+              '3D Graphics',
+              'Cryptography',
+              'API Testing',
+              'Tiny ML',
+              'Serverless Data',
+              'Threat Actor Profiling',
             ].map((skill, index) => (
-                <span key={`skill-${index}`} className={styles.techBadge}>{skill}</span>
+              <span key={`skill-${index}`} className={styles.techBadge}>
+                {skill}
+              </span>
             ))}
             {[
-              "AI Agents", "Kali", "Pen-testing", "OSINT", "SOCMINT", 
-              "NetSec","AppSec", "SEO", "3D Graphics", "Cryptography", 
-              "API Testing", "Tiny ML", "Serverless Data", "Threat Actor Profiling"
+              'AI Agents',
+              'Kali',
+              'Pen-testing',
+              'OSINT',
+              'SOCMINT',
+              'NetSec',
+              'AppSec',
+              'SEO',
+              '3D Graphics',
+              'Cryptography',
+              'API Testing',
+              'Tiny ML',
+              'Serverless Data',
+              'Threat Actor Profiling',
             ].map((skill, index) => (
-                <span key={`dup-${index}`} className={styles.techBadge}>{skill}</span>
+              <span key={`dup-${index}`} className={styles.techBadge}>
+                {skill}
+              </span>
             ))}
           </div>
         </div>
@@ -216,8 +270,8 @@ const BentoGrid = React.memo(() => {
       <div className={`${styles.card} ${styles.githubCard}`}>
         <h3 className={styles.cardTitle}>Days I Code</h3>
         <div className={styles.githubContent}>
-          <GitHubCalendar 
-            username="RiteshJha912"
+          <GitHubCalendar
+            username='ritzardous'
             blockSize={10}
             blockRadius={3}
             blockMargin={3}
@@ -229,46 +283,70 @@ const BentoGrid = React.memo(() => {
             hideMonthLabels={visibleDays !== null && visibleDays < 100}
             labels={{
               totalCount: `{{count}} contributions in the ${
-                visibleDays === 150 ? 'last 5 months' :
-                visibleDays === 210 ? 'last 7 months' : 'last year'
-              }`
+                visibleDays === 150
+                  ? 'last 5 months'
+                  : visibleDays === 210
+                    ? 'last 7 months'
+                    : 'last year'
+              }`,
             }}
           />
         </div>
       </div>
 
       {/* 4. Email */}
-      <div 
-        className={`${styles.card} ${styles.emailCard}`} 
+      <div
+        className={`${styles.card} ${styles.emailCard}`}
         onClick={handleCopyEmail}
       >
-        {isEnvelopeOpen ? 
-          <FaEnvelopeOpen className={`${styles.iconLarge} ${styles.iconOpen}`} /> 
-          : 
+        {isEnvelopeOpen ? (
+          <FaEnvelopeOpen
+            className={`${styles.iconLarge} ${styles.iconOpen}`}
+          />
+        ) : (
           <FaEnvelope className={styles.iconLarge} />
-        }
-        <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>Email</h3>
+        )}
+        <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>
+          Email
+        </h3>
         <p className={styles.cardContent}>ritesh.exe@proton.me</p>
         <div className={styles.cardAction}>
           <span>Tap to Copy</span>
-          {copied ? <FaCheck className={styles.actionIcon} /> : <FaRegCopy className={styles.actionIcon} />}
+          {copied ? (
+            <FaCheck className={styles.actionIcon} />
+          ) : (
+            <FaRegCopy className={styles.actionIcon} />
+          )}
         </div>
       </div>
 
       {/* 5. CV Download */}
-      <div 
-        className={`${styles.card} ${styles.cvCard}`} 
+      <div
+        className={`${styles.card} ${styles.cvCard}`}
         onClick={() => {
           if (!isPlayingResumeVideo) {
-            setIsPlayingResumeVideo(true);
+            setIsPlayingResumeVideo(true)
           }
         }}
         style={{ position: 'relative' }}
       >
         {/* Default Content - Always rendered to maintain size */}
-        <div style={{ opacity: isPlayingResumeVideo ? 0 : 1, transition: 'opacity 0.3s ease', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
+        <div
+          style={{
+            opacity: isPlayingResumeVideo ? 0 : 1,
+            transition: 'opacity 0.3s ease',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+          }}
+        >
           <FaFileAlt className={styles.iconLarge} />
-          <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>Resume</h3>
+          <h3 className={styles.cardTitle} style={{ marginBottom: '5px' }}>
+            Resume
+          </h3>
           <p className={styles.cardContent}>View & Download</p>
           <div className={styles.cardAction}>
             <span>Google Drive</span>
@@ -278,55 +356,53 @@ const BentoGrid = React.memo(() => {
 
         {/* Video Overlay */}
         {isPlayingResumeVideo && (
-          <div 
+          <div
             className={styles.videoOverlay}
             onClick={(e) => {
-              e.stopPropagation();
+              e.stopPropagation()
               if (videoRef.current) {
                 if (videoRef.current.paused) {
-                  videoRef.current.play();
+                  videoRef.current.play()
                 } else {
-                  videoRef.current.pause();
+                  videoRef.current.pause()
                 }
               }
             }}
           >
-            <video 
+            <video
               ref={videoRef}
-              src="/modijiclip.mp4" 
-              className={styles.resumeVideo} 
-              autoPlay 
+              src='/modijiclip.mp4'
+              className={styles.resumeVideo}
+              autoPlay
               playsInline
               muted={isMuted}
-              preload="auto"
+              preload='auto'
               onEnded={() => handleOpenResume()}
               onError={(e) => {
-                console.error("Video failed to play", e);
-                handleOpenResume(e);
+                console.error('Video failed to play', e)
+                handleOpenResume(e)
               }}
             />
             {/* Context Caption */}
-            <div className={styles.resumeLoadingText}>
-               😂 opening resume...
-            </div>
+            <div className={styles.resumeLoadingText}>😂 opening resume...</div>
 
             {/* Mute Button */}
-            <div 
+            <div
               className={styles.muteButton}
               onClick={(e) => {
-                e.stopPropagation();
-                setIsMuted(!isMuted);
+                e.stopPropagation()
+                setIsMuted(!isMuted)
               }}
             >
               {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </div>
 
             {/* Skip Button */}
-            <div 
+            <div
               className={styles.skipButton}
               onClick={(e) => {
-                e.stopPropagation();
-                handleOpenResume();
+                e.stopPropagation()
+                handleOpenResume()
               }}
             >
               <FaForward />
@@ -335,7 +411,7 @@ const BentoGrid = React.memo(() => {
         )}
       </div>
     </section>
-  );
+  )
 });
 
 BentoGrid.displayName = 'BentoGrid';

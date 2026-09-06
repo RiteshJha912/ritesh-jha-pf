@@ -28,7 +28,7 @@ function Github() {
       
       <div className={styles.calendarWrapper}>
         <GitHubCalendar 
-          username="RiteshJha912"
+          username="ritzardous"
           blockSize={10}
           blockRadius={2}
           blockMargin={3}

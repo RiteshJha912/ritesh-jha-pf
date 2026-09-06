@@ -29,44 +29,45 @@ export const defaultSEO = {
 
 // 1. Person Schema (The main entity)
 export const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ritesh Jha",
-  "alternateName": ["Ritzardous", "Hazardous"],
-  "url": "https://ritesh-jha.vercel.app/",
-  "image": "https://ritesh-jha.vercel.app/RJinitials.png",
-  "sameAs": [
-    "https://github.com/RiteshJha912",
-    "https://www.linkedin.com/in/ritesh-j/"
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ritesh Jha',
+  alternateName: ['Ritzardous', 'Hazardous'],
+  url: 'https://ritesh-jha.vercel.app/',
+  image: 'https://ritesh-jha.vercel.app/RJinitials.png',
+  sameAs: [
+    'https://github.com/ritzardous',
+    'https://www.linkedin.com/in/ritesh-j/',
   ],
-  "jobTitle": "Full Stack Developer",
-  "worksFor": [
+  jobTitle: 'Full Stack Developer',
+  worksFor: [
     {
-      "@type": "Organization",
-      "name": "Smowcode"
+      '@type': 'Organization',
+      name: 'Smowcode',
     },
     {
-      "@type": "Organization",
-      "name": "Noxalgo LLP"
+      '@type': 'Organization',
+      name: 'Noxalgo LLP',
     },
     {
-      "@type": "Organization",
-      "name": "DeepCytes Cyber Labs"
-    }
+      '@type': 'Organization',
+      name: 'DeepCytes Cyber Labs',
+    },
   ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "K. J. Somaiya College of Engineering", 
-    "sameAs": "https://kjsieit.somaiya.edu/en"
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'K. J. Somaiya College of Engineering',
+    sameAs: 'https://kjsieit.somaiya.edu/en',
   },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Mumbai",
-    "addressRegion": "Maharashtra",
-    "addressCountry": "India"
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Mumbai',
+    addressRegion: 'Maharashtra',
+    addressCountry: 'India',
   },
-  "description": "Full Stack Developer, Software Engineer, and Cybersecurity Enthusiast specializing in blockchain development and building scalable web applications."
-};
+  description:
+    'Full Stack Developer, Software Engineer, and Cybersecurity Enthusiast specializing in blockchain development and building scalable web applications.',
+}
 
 // 2. WebSite Schema
 export const websiteSchema = {

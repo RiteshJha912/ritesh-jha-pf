@@ -79,7 +79,7 @@ function AllProjects() {
       shortDesc: 'Enterprise SaaS Project Workspace',
       longDesc:
         'Built an enterprise-grade SaaS platform for managing software project lifecycles including requirements, test cases, RTM analysis, issue tracking, and automated documentation. Designed a modular React SPA with a Node.js + Express backend, implementing JWT authentication, MongoDB data models, and real-time traceability across modules.',
-      github: 'https://github.com/RiteshJha912/InitPhase',
+      github: 'https://github.com/ritzardous/InitPhase',
       live: 'https://init-phase.vercel.app',
       group: 'Serious Projects',
       tags: {
@@ -131,7 +131,7 @@ function AllProjects() {
       shortDesc: 'Web3 Voting dApp',
       longDesc:
         'Created a censorship resistant governance platform on Ethereum Sepolia with Solidity smart contracts. Implements atomic voting transactions, wallet integration via ethers.js v6 & a Node.js/MongoDB caching layer to optimize RPC latency for real time state updates.',
-      github: 'https://github.com/RiteshJha912/democrazy',
+      github: 'https://github.com/ritzardous/democrazy',
       live: 'https://votewithdemocrazy.vercel.app/',
       group: 'Serious Projects',
       tags: {
@@ -162,7 +162,7 @@ function AllProjects() {
       shortDesc: 'Gamified Cybersecurity Education Platform',
       longDesc:
         'Comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real world cyber threats through interactive quizzes on digital arrest scams, UPI payment fraud, e-KYC SIM swap, fake job scams & WhatsApp stock scams. Features global leaderboard, real time scoring, progress tracking, detailed scam guides & instant feedback with no registration required.',
-      github: 'https://github.com/RiteshJha912/hackademy-final',
+      github: 'https://github.com/ritzardous/hackademy-final',
       live: 'https://tryhackademy.vercel.app/',
       group: 'Serious Projects',
       tags: {
@@ -191,7 +191,7 @@ function AllProjects() {
       shortDesc: 'AI Research Assistant',
       longDesc:
         'Built an intelligent research agent that automates academic paper discovery, summarization & analysis. Leverages LLM capabilities for deep research synthesis, citation extraction & generates comprehensive literature reviews from multiple sources.',
-      github: 'https://github.com/RiteshJha912/PaperOps.ai',
+      github: 'https://github.com/ritzardous/PaperOps.ai',
       live: null, // Add when available
       group: 'Serious Projects',
       tags: {
@@ -217,7 +217,7 @@ function AllProjects() {
       shortDesc: 'Github style Habit Tracker',
       longDesc:
         'Build habits that actually stick: a minimal, open source habit tracker with a GitHub inspired contributions graph. Features Firebase authentication, real time habit tracking, visual progress monitoring & shareable milestone certificates for social media. Includes push notifications & community engagement through achievement sharing.',
-      github: 'https://github.com/RiteshJha912/epoch',
+      github: 'https://github.com/ritzardous/epoch',
       live: 'https://epoch-daily.vercel.app/',
       tags: {
         stack: [
@@ -244,7 +244,7 @@ function AllProjects() {
       shortDesc: 'AI Career DNA & Outreach Engine',
       longDesc:
         'Built a multi-agent AI platform that generates a candidate’s Career DNA, analyzes GitHub repositories for real-world competency, scores startup/job opportunities, and auto-generates highly personalized outreach messages. Designed a MERN-based architecture with service-layer agents orchestrating LLM workflows, enabling intelligent talent-to-opportunity matching and automated networking. Built by Team SilentVoid at KJSCE Hack X',
-      github: 'https://github.com/RiteshJha912/hackx-main',
+      github: 'https://github.com/ritzardous/hackx-main',
       live: null,
       group: 'Serious Projects',
       tags: {
@@ -397,7 +397,7 @@ function AllProjects() {
       shortDesc: 'Decentralized Tipping Platform',
       longDesc:
         'Developed a Web3 tip jar enabling direct crypto payments to content creators. Features wallet connection, smart contract integration for secure transactions & a clean interface for seamless tipping experiences on Ethereum networks.',
-      github: 'https://github.com/RiteshJha912/gas.tips',
+      github: 'https://github.com/ritzardous/gas.tips',
       live: 'https://gasdottips.vercel.app/',
       tags: {
         stack: ['React', 'Ethers.js', 'Solidity', 'Web3', 'Smart Contracts'],
@@ -417,7 +417,7 @@ function AllProjects() {
       shortDesc: 'Modern Agency Landing Page Concept',
       longDesc:
         'Designed & developed a hypothetical tech agency landing page to explore advanced frontend techniques. Leverages Next.js 14 & React Three Fiber to demonstrate how modern animations & 3D elements can elevate corporate digital identities.',
-      github: 'https://github.com/RiteshJha912/hnltech',
+      github: 'https://github.com/ritzardous/hnltech',
       live: 'https://hnltech.netlify.app/',
       tags: {
         stack: [
@@ -443,7 +443,7 @@ function AllProjects() {
       shortDesc: 'Full Stack Task Manager',
       longDesc:
         'Engineered a robust task management system with user authentication, persistent MongoDB storage & real time updates. Implements CRUD operations, task categorization, priority levels & deadline tracking through a responsive MERN stack architecture.',
-      github: 'https://github.com/RiteshJha912/TaskifyV2-UserSpecific',
+      github: 'https://github.com/ritzardous/TaskifyV2-UserSpecific',
       live: 'https://taskifyv2-final.onrender.com/',
       tags: {
         stack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'REST API'],
@@ -462,7 +462,7 @@ function AllProjects() {
       shortDesc: 'Firebase Expense Tracker',
       longDesc:
         'Developed a personal finance tracker with Google OAuth authentication & Firebase Realtime Database. Categorizes transactions, visualizes spending patterns, stores data permanently in the cloud & provides insights into financial habits through intuitive dashboards.',
-      github: 'https://github.com/RiteshJha912/KoshKeeper',
+      github: 'https://github.com/ritzardous/KoshKeeper',
       live: 'https://expense-tracker99.web.app/',
       tags: {
         stack: ['React', 'Firebase', 'Google Auth', 'Firestore', 'Chart.js'],
@@ -482,7 +482,7 @@ function AllProjects() {
       shortDesc: '3D Portfolio Showcase',
       longDesc:
         'Crafted an immersive 3D portfolio experience using Three.js & React Three Fiber. Projects are displayed in an interactive flipbook format with realistic physics, smooth page transitions & WebGL rendering for a memorable browsing experience.',
-      github: 'https://github.com/RiteshJha912/DevFlipper',
+      github: 'https://github.com/ritzardous/DevFlipper',
       live: 'https://dev-flipper.vercel.app/',
       tags: {
         stack: [
@@ -508,7 +508,7 @@ function AllProjects() {
       shortDesc: 'Modern Snake Game',
       longDesc:
         'Recreated the classic Snake game with modern web technologies. Features responsive controls for desktop & mobile, dynamic difficulty scaling, pause/resume functionality & polished UI with smooth animations for an addictive gaming experience.',
-      github: 'https://github.com/RiteshJha912/snake-game',
+      github: 'https://github.com/ritzardous/snake-game',
       live: 'https://snake-game-lemon-nu.vercel.app/',
       tags: {
         stack: ['React', 'Vite', 'JavaScript', 'CSS', 'Touch Events'],
@@ -527,7 +527,7 @@ function AllProjects() {
       shortDesc: 'Password Based File Encryption Tool',
       longDesc:
         'A simple & effective tool for encrypting & decrypting text files with a password using the Caesar cipher technique. Users can set a password that determines the encryption shift, making it secure & customizable. Demonstrates basic file handling & encryption techniques in C++.',
-      github: 'https://github.com/RiteshJha912/CofferCrypt',
+      github: 'https://github.com/ritzardous/CofferCrypt',
       live: null, // Add when available
       tags: {
         stack: ['C++', 'File I/O', 'Cryptography'],
