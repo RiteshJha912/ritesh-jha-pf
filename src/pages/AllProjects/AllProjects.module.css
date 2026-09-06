@@ -509,6 +509,21 @@
     border-color: rgba(168, 85, 247, 0.3);
 }
 
+/* PAPERS GRID (2x2 Layout) */
+.papersGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 36px;
+}
+
+@media (max-width: 850px) {
+    .papersGrid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+}
+
 /* PAPER CARD STYLES */
 .paperCard {
     background: linear-gradient(135deg, var(--background-color) 0%, rgba(255, 255, 255, 0.02) 100%);
@@ -635,6 +650,18 @@
     background: rgba(248, 113, 113, 0.1);
     color: #fca5a5;
     border-color: rgba(248, 113, 113, 0.2);
+}
+
+.paperStatusPublishing {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+    border-color: rgba(245, 158, 11, 0.25);
+}
+
+[data-theme='dark'] .paperStatusPublishing {
+    background: rgba(251, 191, 36, 0.12);
+    color: #fcd34d;
+    border-color: rgba(251, 191, 36, 0.28);
 }
 
 .paperTitle {

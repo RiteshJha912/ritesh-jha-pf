@@ -22,6 +22,7 @@ import startupsurvialsim from '../../assets/startupsurvialsim.png'
 import apiRPP from '../../assets/APIRPP.png'
 import blockchainRPP from '../../assets/BlockchainRPP.png'
 import iotRPP from '../../assets/IoTRPP.png'
+import gigRPP from '../../assets/GigRPP.png'
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -538,6 +539,22 @@ function AllProjects() {
 
   const papers = [
     {
+      src: gigRPP,
+      h3: 'A Risk-Aware Financial Decision Framework for Gig Workers with Irregular Income',
+      shortDesc:
+        'A safety-first financial decision framework for gig workers with volatile income. Evaluates cashflow volatility, emergency savings, and debt to enforce "safety before investment" via rule-based routing, micro-investment recommendations, and LLM explanations.',
+      link: 'https://drive.google.com/file/d/1FnjLKuEZXdLhmd_g7a6ivKg8QzdD8s_X/view?usp=sharing',
+      tags: [
+        'FinTech',
+        'Decision Systems',
+        'Risk Analysis',
+        'Forecasting',
+        'LLMs',
+        'Gig Economy',
+      ],
+      publishStatus: 'Research Paper (Might Attempt Publishing)',
+    },
+    {
       src: apiRPP,
       h3: 'Behaviour-Based API Bot Detection Using Anomaly Detection, Sequential Deep Learning, and Probabilistic State Modeling',
       shortDesc:
@@ -691,7 +708,7 @@ function AllProjects() {
         </div>
       </div>
 
-      <div className={`${styles.grid} ${styles.animateIn}`}>
+      <div className={`${styles.grid} ${activeCategory === 'Papers' ? styles.papersGrid : ''} ${styles.animateIn}`}>
         {activeCategory === 'Papers' ? (
           // Papers Grid
           filteredPapers.length > 0 ? (
@@ -704,20 +721,35 @@ function AllProjects() {
                     className={styles.paperImage}
                   />
                   <div className={styles.paperOverlay}>
-                    <a
-                      href={paper.link}
-                      target='_blank'
-                      rel='noreferrer'
-                      className={styles.paperDownloadBtn}
-                      title='Read Paper'
-                    >
-                      <FaFilePdf /> Read Paper
-                    </a>
+                    {paper.link ? (
+                      <a
+                        href={paper.link}
+                        target='_blank'
+                        rel='noreferrer'
+                        className={styles.paperDownloadBtn}
+                        title='Read Paper'
+                      >
+                        <FaFilePdf /> Read Paper
+                      </a>
+                    ) : (
+                      <span
+                        className={styles.paperDownloadBtn}
+                        style={{ cursor: 'default' }}
+                      >
+                        <FaFilePdf /> In Progress
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className={styles.paperContent}>
                   <div className={styles.paperHeader}>
-                    <span className={styles.paperStatus}>
+                    <span
+                      className={`${styles.paperStatus} ${
+                        paper.publishStatus.includes('Publishing')
+                          ? styles.paperStatusPublishing
+                          : ''
+                      }`}
+                    >
                       {paper.publishStatus}
                     </span>
                   </div>

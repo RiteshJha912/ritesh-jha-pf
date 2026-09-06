@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './Connect.module.css'
 import Terminal from './Terminal'
 import { 
@@ -7,7 +7,8 @@ import {
   SiInstagram, 
   SiGithub, 
   SiLeetcode,
-  SiCodechef
+  SiCodechef,
+  SiMedium
 } from 'react-icons/si'
 import { FaCode, FaArrowRight, FaLinkedin } from 'react-icons/fa'
 import { MdEmail, MdAlternateEmail } from 'react-icons/md'
@@ -16,6 +17,31 @@ import codolioIcon from '../../assets/codolioicon.png'
 
 function Connect() {
   const [copiedId, setCopiedId] = useState(null)
+  const leftColumnRef = useRef(null)
+  const [leftHeight, setLeftHeight] = useState(null)
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (leftColumnRef.current && window.innerWidth > 900) {
+        setLeftHeight(leftColumnRef.current.getBoundingClientRect().height)
+      } else {
+        setLeftHeight(null)
+      }
+    }
+
+    updateHeight()
+
+    const observer = new ResizeObserver(updateHeight)
+    if (leftColumnRef.current) {
+      observer.observe(leftColumnRef.current)
+    }
+    window.addEventListener('resize', updateHeight)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', updateHeight)
+    }
+  }, [])
 
   const handleCopy = (text, id) => {
     navigator.clipboard.writeText(text)
@@ -28,7 +54,7 @@ function Connect() {
       <h2 className='sectionTitle'>Connect</h2>
       <div className={styles.container}>
         {/* Left Column: Socials & Contact */}
-        <div className={styles.leftColumn}>
+        <div className={styles.leftColumn} ref={leftColumnRef}>
           {/* Contact Tier */}
           <div className={`${styles.card} ${styles.contactTier}`}>
             <h3 className={styles.tierTitle}>Start a Conversation</h3>
@@ -121,6 +147,30 @@ function Connect() {
                   title='Copy ID'
                 >
                   {copiedId === 'instagram' ? <IoCheckmark /> : <IoCopy />}
+                </button>
+                <div className={styles.arrow}>
+                  <FaArrowRight size={12} />
+                </div>
+              </a>
+              <a
+                href='https://ritzardous.medium.com/'
+                className={styles.linkItem}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <span className={styles.icon}>
+                  <SiMedium />
+                </span>
+                <span className={styles.linkText}>@ritzardous</span>
+                <button
+                  className={styles.copyBtn}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleCopy('ritzardous', 'medium')
+                  }}
+                  title='Copy ID'
+                >
+                  {copiedId === 'medium' ? <IoCheckmark /> : <IoCopy />}
                 </button>
                 <div className={styles.arrow}>
                   <FaArrowRight size={12} />
@@ -238,18 +288,22 @@ function Connect() {
         </div>
 
         {/* Right Column: Terminal */}
-        <div className={styles.rightColumn}>
+        <div 
+          className={styles.rightColumn}
+          style={leftHeight ? { height: `${leftHeight}px`, maxHeight: `${leftHeight}px` } : undefined}
+        >
           <div
             className={styles.card}
             style={{
               height: '100%',
+              maxHeight: '100%',
               padding: '0',
               overflow: 'hidden',
               border: 'none',
               background: 'transparent',
             }}
           >
-            <Terminal />
+            <Terminal height={leftHeight} />
           </div>
         </div>
       </div>

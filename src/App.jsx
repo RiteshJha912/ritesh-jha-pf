@@ -155,7 +155,7 @@ function App() {
         <Route path="/" element={
           <>
             <SEO 
-              title="Ritesh Jha | Learner"
+              title="Ritesh here!"
               description="Ritesh Jha (Ritzardous) - Full Stack Developer, Software Engineer & Cybersecurity Enthusiast. Expert in React, Next.js, and Security Assessment. Based in Mumbai, India."
               canonical="https://ritesh-jha.vercel.app/"
             />

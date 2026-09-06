@@ -1,13 +1,13 @@
 .terminal {
     width: 100%;
     height: 100%;
-    min-height: 450px;
     background: #0d1117;
     color: #8b949e;
     font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
     padding: 20px;
     border-radius: 8px;
     overflow-y: auto;
+    overflow-x: hidden;
     border: 1px solid #30363d;
     display: flex;
     flex-direction: column;
@@ -17,6 +17,11 @@
     -webkit-overflow-scrolling: touch;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     position: relative;
+    box-sizing: border-box;
+}
+
+.terminal:focus {
+    outline: none;
 }
 
 /* Terminal header dots */
@@ -56,6 +61,7 @@
     text-align: left;
     line-height: 1.6;
     font-size: 13px;
+    flex-shrink: 0;
 }
 
 .terminal p:first-child {
@@ -73,6 +79,7 @@ form {
     gap: 8px;
     width: 100%;
     margin-top: 4px;
+    flex-shrink: 0;
 }
 
 .prompt {
@@ -102,6 +109,7 @@ form {
     .terminal {
         height: 400px;
         min-height: auto;
+        max-height: 400px;
         padding: 16px;
     }
 
@@ -122,6 +130,8 @@ form {
 @media (max-width: 480px) {
     .terminal {
         height: 380px;
+        min-height: auto;
+        max-height: 380px;
         padding: 14px;
     }
 
