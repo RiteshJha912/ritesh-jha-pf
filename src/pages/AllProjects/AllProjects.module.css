@@ -173,27 +173,10 @@
     opacity: 1;
 }
 
-/* Serious Projects Tab Active State Override - keep consistent with other active tabs */
-.filterTab.seriousTab.activeTab,
-.filterTab.seriousTab.activeTab:hover {
-    background: var(--text-color);
-    color: var(--background-color);
-    border-color: var(--text-color);
-    font-weight: 600;
-    box-shadow: none;
-}
-
-/* Serious Projects Tab Shiny Border */
+/* Serious Projects Tab - Clean Shine Effect (No Violet Boundary) */
 .filterTab.seriousTab {
     position: relative;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-color);
-    border: 1px solid rgba(var(--accent-color-rgb, 129, 97, 255), 0.2);
     overflow: hidden;
-    opacity: 1;
-    font-weight: 600;
-    transition: all 0.25s ease;
-    z-index: 1;
 }
 
 .filterTab.seriousTab::before {
@@ -207,10 +190,6 @@
     transform: translateX(-120%) skewX(-15deg);
     opacity: 1;
     pointer-events: none;
-}
-
-.filterTab.seriousTab:not(.activeTab) {
-    box-shadow: 0 0 18px rgba(var(--accent-color-rgb, 129, 97, 255), 0.18);
 }
 
 .filterTab.seriousTab:not(.activeTab)::before {
@@ -228,7 +207,6 @@
         transform: translateX(360%) skewX(-15deg);
     }
 }
-
 @keyframes snakeBorder {
     0% {
         background-position: 100% 0;

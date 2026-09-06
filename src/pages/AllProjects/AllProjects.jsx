@@ -3,6 +3,7 @@ import styles from './AllProjects.module.css'
 import indrafndn from '../../assets/indrafndn.png'
 import democrazy from '../../assets/democrazy.png'
 import paperops from '../../assets/paperops.png'
+import placementstats from '../../assets/placementstats.png'
 import epoch from '../../assets/epoch.png'
 import chromagen from '../../assets/chromagen.png'
 import gasdottips from '../../assets/gasdottips.png'
@@ -209,6 +210,26 @@ function AllProjects() {
           'NLP',
           'Automation',
           'Reasoning+Action',
+        ],
+      },
+    },
+    {
+      src: placementstats,
+      h3: 'Placement Stats KJSCE',
+      shortDesc: 'Placement Statistics Dashboard',
+      longDesc:
+        'A centralized dashboard built to help college peers navigate placement stats for the 2026 passout batch in a clean, organized manner, solving the issue of data scattered across multiple unorganized sources. Gained viral traction across campus: 1K+ active users, 2.3K+ page views, and a 31% returning user rate.',
+      github: null,
+      live: null,
+      group: 'Fun Projects',
+      tags: {
+        stack: ['HTML'],
+        domain: [
+          'Analytics',
+          'Dashboard',
+          'Campus Tool',
+          'College Stats',
+          'Student Utility',
         ],
       },
     },
