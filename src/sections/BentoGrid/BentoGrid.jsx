@@ -49,7 +49,8 @@ const BentoGrid = React.memo(() => {
     
     // Create invisible link and click it (better for bypassing blockers)
     const link = document.createElement('a');
-    link.href = 'https://drive.google.com/file/d/1urfWKJuoSORMONmbX8-0qjpjha7hPXyt/view?usp=sharing';
+    link.href =
+      'https://drive.google.com/file/d/1nK3v8rQVz_gSIWIwPDKLzJF49EIDCvW9/view?usp=sharing'
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     document.body.appendChild(link);

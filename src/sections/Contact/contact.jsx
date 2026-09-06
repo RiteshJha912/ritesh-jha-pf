@@ -75,7 +75,7 @@ function Contact() {
       setLogs((prevLogs) => [
         ...prevLogs,
         <span className={styles.userCommand}>$ {cmd}</span>,
-        'Email: riteshjha2174@gmail.com / ritesh.exe@proton.me',
+        'Email: riteshjha.exe@gmail.com / ritesh.exe@proton.me',
       ])
     } else if (cmd === 'info') {
       setLogs((prevLogs) => [

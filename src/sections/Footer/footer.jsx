@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import styles from './footerStyles.module.css'
+import { useTheme } from '../../common/themeContext'
 
 function Footer() {
+  const { theme } = useTheme()
   const [onlineStatus, setOnlineStatus] = useState(
     navigator.onLine ? 'Online' : 'Offline'
   )
@@ -38,7 +40,11 @@ function Footer() {
         </p>
       </div>
       <div className={styles.rightSection}>
-        <img src="/autograph-ritesh-jha.png" alt="Ritesh's Autograph" className={styles.autograph} />
+        <img
+          src={theme === 'light' ? '/autograph-ritesh-jha-lightmode.png' : '/autograph-ritesh-jha.png'}
+          alt="Ritesh's Autograph"
+          className={styles.autograph}
+        />
       </div>
     </section>
   )
