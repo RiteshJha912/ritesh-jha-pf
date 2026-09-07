@@ -219,8 +219,8 @@ function AllProjects() {
       shortDesc: 'Placement Statistics Dashboard',
       longDesc:
         'A centralized dashboard built to help college peers navigate placement stats for the 2026 passout batch in a clean, organized manner, solving the issue of data scattered across multiple unorganized sources. Gained viral traction across campus: 1K+ active users, 2.3K+ page views, and a 31% returning user rate.',
-      github: null,
-      live: null,
+      github: 'https://github.com/ritzardous/placementsatkjsce-26',
+      live: 'https://placementsatkjsce-26.vercel.app/',
       group: 'Fun Projects',
       tags: {
         stack: ['HTML'],
@@ -729,7 +729,9 @@ function AllProjects() {
         </div>
       </div>
 
-      <div className={`${styles.grid} ${activeCategory === 'Papers' ? styles.papersGrid : ''} ${styles.animateIn}`}>
+      <div
+        className={`${styles.grid} ${activeCategory === 'Papers' ? styles.papersGrid : ''} ${styles.animateIn}`}
+      >
         {activeCategory === 'Papers' ? (
           // Papers Grid
           filteredPapers.length > 0 ? (
